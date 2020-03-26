@@ -1,0 +1,321 @@
+[15-Mar-2020 08:57:27 UTC] WordPress database error Deadlock found when trying to get lock; try restarting transaction for query DELETE FROM `wp_options` WHERE `option_name` = '_transient_jetpack_idc_allowed' made by include('phar:///Applications/Local.app/Contents/Resources/extraResources/bin/wp-cli/wp-cli.phar/php/boot-phar.php'), include('phar:///Applications/Local.app/Contents/Resources/extraResources/bin/wp-cli/wp-cli.phar/vendor/wp-cli/wp-cli/php/wp-cli.php'), WP_CLI\bootstrap, WP_CLI\Bootstrap\LaunchRunner->process, WP_CLI\Runner->start, WP_CLI\Runner->load_wordpress, require('wp-settings.php'), do_action('plugins_loaded'), WP_Hook->do_action, WP_Hook->apply_filters, Automattic\Jetpack\Config->on_plugins_loaded, Automattic\Jetpack\Config->ensure_feature, Automattic\Jetpack\Config->enable_sync, Automattic\Jetpack\Sync\Main::configure, Automattic\Jetpack\Sync\Actions::sync_allowed, Automattic\Jetpack\Status->is_staging_site, Jetpack::validate_sync_error_idc_option, get_transient, delete_option
+[15-Mar-2020 19:28:15 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function pepseeactus_posted_on() in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/components/post/content-meta.php:2
+Stack trace:
+#0 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/template.php(724): require()
+#1 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/template.php(671): load_template('/Users/PepseeAc...', false)
+#2 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/general-template.php(168): locate_template(Array, true, false)
+#3 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/components/post/content.php(30): get_template_part('components/post...', 'meta')
+#4 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/template.php(724): require('/Users/PepseeAc...')
+#5 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/template.php(671): load_template('/Users/PepseeAc...', false)
+#6 /Users/PepseeActus/Local Si in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/components/post/content-meta.php on line 2
+[15-Mar-2020 19:29:09 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function pepseeactus_posted_on() in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/components/post/content-meta.php:2
+Stack trace:
+#0 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/template.php(724): require()
+#1 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/template.php(671): load_template('/Users/PepseeAc...', false)
+#2 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/general-template.php(168): locate_template(Array, true, false)
+#3 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/components/post/content.php(30): get_template_part('components/post...', 'meta')
+#4 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/template.php(724): require('/Users/PepseeAc...')
+#5 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/template.php(671): load_template('/Users/PepseeAc...', false)
+#6 /Users/PepseeActus/Local Si in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/components/post/content-meta.php on line 2
+[15-Mar-2020 19:29:14 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function pepseeactus_posted_on() in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/components/post/content-meta.php:2
+Stack trace:
+#0 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/template.php(724): require()
+#1 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/template.php(671): load_template('/Users/PepseeAc...', false)
+#2 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/general-template.php(168): locate_template(Array, true, false)
+#3 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/components/post/content.php(30): get_template_part('components/post...', 'meta')
+#4 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/template.php(724): require('/Users/PepseeAc...')
+#5 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/template.php(671): load_template('/Users/PepseeAc...', false)
+#6 /Users/PepseeActus/Local Si in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/components/post/content-meta.php on line 2
+[15-Mar-2020 22:07:29 UTC] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/header.php on line 40
+[15-Mar-2020 22:07:43 UTC] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/header.php on line 40
+[15-Mar-2020 23:06:49 UTC] PHP Parse error:  syntax error, unexpected ':' in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/header.php on line 34
+[15-Mar-2020 23:08:34 UTC] PHP Parse error:  syntax error, unexpected '?' in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/header.php on line 34
+[15-Mar-2020 23:14:46 UTC] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO), expecting ',' or ';' in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/header.php on line 38
+[15-Mar-2020 23:15:03 UTC] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO), expecting ',' or ';' in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/header.php on line 38
+[15-Mar-2020 23:15:05 UTC] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO), expecting ',' or ';' in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/header.php on line 38
+[15-Mar-2020 23:18:32 UTC] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/header.php on line 38
+[15-Mar-2020 23:18:49 UTC] PHP Parse error:  syntax error, unexpected '.' in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/header.php on line 38
+[15-Mar-2020 23:19:02 UTC] PHP Parse error:  syntax error, unexpected 'get_stylesheet_directory_uri' (T_STRING), expecting ',' or ';' in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/header.php on line 38
+[15-Mar-2020 23:19:45 UTC] PHP Parse error:  syntax error, unexpected 'get_stylesheet_directory_uri' (T_STRING), expecting ',' or ';' in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/header.php on line 38
+[16-Mar-2020 20:33:49 UTC] WordPress database error Deadlock found when trying to get lock; try restarting transaction for query DELETE FROM `wp_options` WHERE `option_name` = '_transient_jetpack_idc_allowed' made by include('phar:///Applications/Local.app/Contents/Resources/extraResources/bin/wp-cli/wp-cli.phar/php/boot-phar.php'), include('phar:///Applications/Local.app/Contents/Resources/extraResources/bin/wp-cli/wp-cli.phar/vendor/wp-cli/wp-cli/php/wp-cli.php'), WP_CLI\bootstrap, WP_CLI\Bootstrap\LaunchRunner->process, WP_CLI\Runner->start, WP_CLI\Runner->load_wordpress, require('wp-settings.php'), do_action('plugins_loaded'), WP_Hook->do_action, WP_Hook->apply_filters, Automattic\Jetpack\Config->on_plugins_loaded, Automattic\Jetpack\Config->ensure_feature, Automattic\Jetpack\Config->enable_sync, Automattic\Jetpack\Sync\Main::configure, Automattic\Jetpack\Sync\Actions::sync_allowed, Automattic\Jetpack\Status->is_staging_site, Jetpack::validate_sync_error_idc_option, get_transient, delete_option
+[16-Mar-2020 20:36:06 UTC] PHP Parse error:  syntax error, unexpected 'get_stylesheet_directory_uri' (T_STRING), expecting ',' or ';' in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/header.php on line 35
+[16-Mar-2020 22:29:10 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function pepseeactus_categorized_blog() in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/404.php:28
+Stack trace:
+#0 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/template-loader.php(98): include()
+#1 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-blog-header.php(19): require_once('/Users/PepseeAc...')
+#2 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/index.php(17): require('/Users/PepseeAc...')
+#3 {main}
+  thrown in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/404.php on line 28
+[17-Mar-2020 20:27:16 UTC] PHP Parse error:  syntax error, unexpected 'endwhile' (T_ENDWHILE), expecting elseif (T_ELSEIF) or else (T_ELSE) or endif (T_ENDIF) in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/single-artist.php on line 72
+[17-Mar-2020 22:50:43 UTC] PHP Parse error:  syntax error, unexpected '?>' in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/single-artist.php on line 70
+[18-Mar-2020 12:40:26 UTC] PHP Warning:  Illegal offset type in isset or empty in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/media.php on line 799
+[18-Mar-2020 12:40:26 UTC] PHP Stack trace:
+[18-Mar-2020 12:40:26 UTC] PHP   1. {main}() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/index.php:0
+[18-Mar-2020 12:40:26 UTC] PHP   2. require() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/index.php:17
+[18-Mar-2020 12:40:26 UTC] PHP   3. require_once() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-blog-header.php:19
+[18-Mar-2020 12:40:26 UTC] PHP   4. include() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/template-loader.php:98
+[18-Mar-2020 12:40:26 UTC] PHP   5. the_post_thumbnail() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/single-artist.php:107
+[18-Mar-2020 12:40:26 UTC] PHP   6. get_the_post_thumbnail() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/post-thumbnail-template.php:78
+[18-Mar-2020 12:40:26 UTC] PHP   7. wp_get_attachment_image() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/post-thumbnail-template.php:171
+[18-Mar-2020 12:40:26 UTC] PHP   8. wp_get_attachment_image_src() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/media.php:985
+[18-Mar-2020 12:40:26 UTC] PHP   9. image_downsize() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/media.php:932
+[18-Mar-2020 12:40:26 UTC] PHP  10. image_get_intermediate_size() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/media.php:228
+[18-Mar-2020 12:40:26 UTC] PHP Catchable fatal error:  Object of class WP_Post could not be converted to string in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/media.php on line 996
+[18-Mar-2020 12:40:26 UTC] PHP Stack trace:
+[18-Mar-2020 12:40:26 UTC] PHP   1. {main}() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/index.php:0
+[18-Mar-2020 12:40:26 UTC] PHP   2. require() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/index.php:17
+[18-Mar-2020 12:40:26 UTC] PHP   3. require_once() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-blog-header.php:19
+[18-Mar-2020 12:40:26 UTC] PHP   4. include() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/template-loader.php:98
+[18-Mar-2020 12:40:26 UTC] PHP   5. the_post_thumbnail() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/single-artist.php:107
+[18-Mar-2020 12:40:26 UTC] PHP   6. get_the_post_thumbnail() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/post-thumbnail-template.php:78
+[18-Mar-2020 12:40:26 UTC] PHP   7. wp_get_attachment_image() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/post-thumbnail-template.php:171
+[18-Mar-2020 12:50:18 UTC] PHP Catchable fatal error:  Object of class WP_Post could not be converted to string in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/post-template.php on line 49
+[18-Mar-2020 12:50:18 UTC] PHP Stack trace:
+[18-Mar-2020 12:50:18 UTC] PHP   1. {main}() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/index.php:0
+[18-Mar-2020 12:50:18 UTC] PHP   2. require() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/index.php:17
+[18-Mar-2020 12:50:18 UTC] PHP   3. require_once() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-blog-header.php:19
+[18-Mar-2020 12:50:18 UTC] PHP   4. include() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/template-loader.php:98
+[18-Mar-2020 12:50:18 UTC] PHP   5. the_title() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/single-artist.php:108
+[18-Mar-2020 23:51:47 UTC] PHP Warning:  array_merge(): Expected parameter 2 to be an array, null given in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/plugins/acf-quickedit-fields/include/ACFQuickEdit/Core/Plugin.php on line 186
+[18-Mar-2020 23:51:47 UTC] PHP Stack trace:
+[18-Mar-2020 23:51:47 UTC] PHP   1. {main}() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-admin/plugins.php:0
+[18-Mar-2020 23:51:47 UTC] PHP   2. activate_plugin() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-admin/plugins.php:44
+[18-Mar-2020 23:51:47 UTC] PHP   3. do_action() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-admin/includes/plugin.php:681
+[18-Mar-2020 23:51:47 UTC] PHP   4. WP_Hook->do_action() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/plugin.php:478
+[18-Mar-2020 23:51:47 UTC] PHP   5. WP_Hook->apply_filters() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/class-wp-hook.php:312
+[18-Mar-2020 23:51:47 UTC] PHP   6. ACFQuickEdit\Core\Core->activate() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/class-wp-hook.php:288
+[18-Mar-2020 23:51:47 UTC] PHP   7. ACFQuickEdit\Core\Core->maybe_upgrade() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/plugins/acf-quickedit-fields/include/ACFQuickEdit/Core/Plugin.php:156
+[18-Mar-2020 23:51:47 UTC] PHP   8. ACFQuickEdit\Core\Core->upgrade() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/plugins/acf-quickedit-fields/include/ACFQuickEdit/Core/Plugin.php:131
+[18-Mar-2020 23:51:47 UTC] PHP   9. array_merge() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/plugins/acf-quickedit-fields/include/ACFQuickEdit/Core/Plugin.php:186
+[19-Mar-2020 00:00:33 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function rint_r() in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/single-music.php:54
+Stack trace:
+#0 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/template-loader.php(98): include()
+#1 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-blog-header.php(19): require_once('/Users/PepseeAc...')
+#2 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/index.php(17): require('/Users/PepseeAc...')
+#3 {main}
+  thrown in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/single-music.php on line 54
+[19-Mar-2020 22:45:01 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function length() in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/single-music.php:58
+Stack trace:
+#0 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/template-loader.php(98): include()
+#1 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-blog-header.php(19): require_once('/Users/PepseeAc...')
+#2 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/index.php(17): require('/Users/PepseeAc...')
+#3 {main}
+  thrown in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/single-music.php on line 58
+[19-Mar-2020 22:45:50 UTC] PHP Warning:  count() expects at least 1 parameter, 0 given in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/single-music.php on line 58
+[19-Mar-2020 22:45:50 UTC] PHP Stack trace:
+[19-Mar-2020 22:45:50 UTC] PHP   1. {main}() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/index.php:0
+[19-Mar-2020 22:45:50 UTC] PHP   2. require() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/index.php:17
+[19-Mar-2020 22:45:50 UTC] PHP   3. require_once() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-blog-header.php:19
+[19-Mar-2020 22:45:50 UTC] PHP   4. include() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/template-loader.php:98
+[19-Mar-2020 22:45:50 UTC] PHP   5. count() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/single-music.php:58
+[20-Mar-2020 11:22:53 UTC] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/header.php on line 37
+[20-Mar-2020 22:09:30 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function he_title() in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/single.php:26
+Stack trace:
+#0 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/template-loader.php(98): include()
+#1 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-blog-header.php(19): require_once('/Users/PepseeAc...')
+#2 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/index.php(17): require('/Users/PepseeAc...')
+#3 {main}
+  thrown in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/single.php on line 26
+[20-Mar-2020 23:19:53 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function get_post_type_archive_link(), 0 passed in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/header.php on line 53 and exactly 1 expected in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/link-template.php:1213
+Stack trace:
+#0 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/header.php(53): get_post_type_archive_link()
+#1 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/template.php(722): require_once('/Users/PepseeAc...')
+#2 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/template.php(671): load_template('/Users/PepseeAc...', true)
+#3 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/general-template.php(41): locate_template(Array, true)
+#4 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/page.php(15): get_header()
+#5 /Users/PepseeActus/Local Sites/pepseeactusv3/app/ in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/link-template.php on line 1213
+[21-Mar-2020 23:04:06 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function haves_posts() in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/index.php:2
+Stack trace:
+#0 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/template-loader.php(98): include()
+#1 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-blog-header.php(19): require_once('/Users/PepseeAc...')
+#2 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/index.php(17): require('/Users/PepseeAc...')
+#3 {main}
+  thrown in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/index.php on line 2
+[22-Mar-2020 14:16:50 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function is_hpme() in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/header.php:61
+Stack trace:
+#0 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/template.php(722): require_once()
+#1 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/template.php(671): load_template('/Users/PepseeAc...', true)
+#2 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/general-template.php(41): locate_template(Array, true)
+#3 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/front-page.php(15): get_header()
+#4 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/template-loader.php(98): include('/Users/PepseeAc...')
+#5 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-blog-header.php(19): require_once('/Users/PepseeAc...')
+#6 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/index.php(17): require('/Users/PepseeAc...')
+#7 {main}
+  thrown in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/header.php on line 61
+[22-Mar-2020 14:17:49 UTC] PHP Fatal error:  Uncaught Error: Function name must be a string in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/header.php:49
+Stack trace:
+#0 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/template.php(722): require_once()
+#1 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/template.php(671): load_template('/Users/PepseeAc...', true)
+#2 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/general-template.php(41): locate_template(Array, true)
+#3 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/front-page.php(15): get_header()
+#4 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/template-loader.php(98): include('/Users/PepseeAc...')
+#5 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-blog-header.php(19): require_once('/Users/PepseeAc...')
+#6 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/index.php(17): require('/Users/PepseeAc...')
+#7 {main}
+  thrown in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/header.php on line 49
+[22-Mar-2020 21:45:56 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function get_category_link(), 0 passed in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/front-page.php on line 150 and exactly 1 expected in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/category-template.php:19
+Stack trace:
+#0 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/front-page.php(150): get_category_link()
+#1 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/template-loader.php(98): include('/Users/PepseeAc...')
+#2 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-blog-header.php(19): require_once('/Users/PepseeAc...')
+#3 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/index.php(17): require('/Users/PepseeAc...')
+#4 {main}
+  thrown in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/category-template.php on line 19
+[23-Mar-2020 22:14:21 UTC] PHP Catchable fatal error:  Object of class WP_Post could not be converted to string in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/post-template.php on line 49
+[23-Mar-2020 22:14:21 UTC] PHP Stack trace:
+[23-Mar-2020 22:14:21 UTC] PHP   1. {main}() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/index.php:0
+[23-Mar-2020 22:14:21 UTC] PHP   2. require() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/index.php:17
+[23-Mar-2020 22:14:21 UTC] PHP   3. require_once() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-blog-header.php:19
+[23-Mar-2020 22:14:21 UTC] PHP   4. include() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/template-loader.php:98
+[23-Mar-2020 22:14:21 UTC] PHP   5. do_shortcode() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/archive-artist.php:11
+[23-Mar-2020 22:14:21 UTC] PHP   6. preg_replace_callback() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/shortcodes.php:199
+[23-Mar-2020 22:14:21 UTC] PHP   7. do_shortcode_tag() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/shortcodes.php:199
+[23-Mar-2020 22:14:21 UTC] PHP   8. list_glossary_posts() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/shortcodes.php:325
+[23-Mar-2020 22:14:21 UTC] PHP   9. the_title() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/functions.php:194
+[23-Mar-2020 22:18:31 UTC] PHP Fatal error:  Uncaught Error: Cannot use object of type WP_Post as array in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/functions.php:194
+Stack trace:
+#0 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/shortcodes.php(325): list_glossary_posts('', '', 'list_glossary_p...')
+#1 [internal function]: do_shortcode_tag(Array)
+#2 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/shortcodes.php(199): preg_replace_callback('/\\[(\\[?)(list_g...', 'do_shortcode_ta...', '[list_glossary_...')
+#3 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/archive-artist.php(11): do_shortcode('[list_glossary_...')
+#4 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/template-loader.php(98): include('/Users/PepseeAc...')
+#5 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-blog-header.php(19): require_once('/Users/PepseeAc...')
+#6 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/index.php(17): require in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/functions.php on line 194
+[23-Mar-2020 22:18:52 UTC] PHP Fatal error:  Uncaught Error: Cannot use object of type WP_Post as array in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/functions.php:194
+Stack trace:
+#0 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/shortcodes.php(325): list_glossary_posts('', '', 'list_glossary_p...')
+#1 [internal function]: do_shortcode_tag(Array)
+#2 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/shortcodes.php(199): preg_replace_callback('/\\[(\\[?)(list_g...', 'do_shortcode_ta...', '[list_glossary_...')
+#3 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/archive-artist.php(11): do_shortcode('[list_glossary_...')
+#4 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/template-loader.php(98): include('/Users/PepseeAc...')
+#5 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-blog-header.php(19): require_once('/Users/PepseeAc...')
+#6 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/index.php(17): require in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/functions.php on line 194
+[23-Mar-2020 22:19:03 UTC] PHP Warning:  Use of undefined constant post_title - assumed 'post_title' (this will throw an Error in a future version of PHP) in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/functions.php on line 195
+[23-Mar-2020 22:19:03 UTC] PHP Stack trace:
+[23-Mar-2020 22:19:03 UTC] PHP   1. {main}() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/index.php:0
+[23-Mar-2020 22:19:03 UTC] PHP   2. require() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/index.php:17
+[23-Mar-2020 22:19:03 UTC] PHP   3. require_once() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-blog-header.php:19
+[23-Mar-2020 22:19:03 UTC] PHP   4. include() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/template-loader.php:98
+[23-Mar-2020 22:19:03 UTC] PHP   5. do_shortcode() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/archive-artist.php:11
+[23-Mar-2020 22:19:03 UTC] PHP   6. preg_replace_callback() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/shortcodes.php:199
+[23-Mar-2020 22:19:03 UTC] PHP   7. do_shortcode_tag() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/shortcodes.php:199
+[23-Mar-2020 22:19:03 UTC] PHP   8. list_glossary_posts() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/shortcodes.php:325
+[23-Mar-2020 22:19:03 UTC] PHP Warning:  Use of undefined constant post_excerpt - assumed 'post_excerpt' (this will throw an Error in a future version of PHP) in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/functions.php on line 196
+[23-Mar-2020 22:19:03 UTC] PHP Stack trace:
+[23-Mar-2020 22:19:03 UTC] PHP   1. {main}() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/index.php:0
+[23-Mar-2020 22:19:03 UTC] PHP   2. require() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/index.php:17
+[23-Mar-2020 22:19:03 UTC] PHP   3. require_once() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-blog-header.php:19
+[23-Mar-2020 22:19:03 UTC] PHP   4. include() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/template-loader.php:98
+[23-Mar-2020 22:19:03 UTC] PHP   5. do_shortcode() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/archive-artist.php:11
+[23-Mar-2020 22:19:03 UTC] PHP   6. preg_replace_callback() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/shortcodes.php:199
+[23-Mar-2020 22:19:03 UTC] PHP   7. do_shortcode_tag() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/shortcodes.php:199
+[23-Mar-2020 22:19:03 UTC] PHP   8. list_glossary_posts() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/shortcodes.php:325
+[23-Mar-2020 22:19:03 UTC] PHP Warning:  Use of undefined constant post_title - assumed 'post_title' (this will throw an Error in a future version of PHP) in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/functions.php on line 195
+[23-Mar-2020 22:19:03 UTC] PHP Stack trace:
+[23-Mar-2020 22:19:03 UTC] PHP   1. {main}() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/index.php:0
+[23-Mar-2020 22:19:03 UTC] PHP   2. require() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/index.php:17
+[23-Mar-2020 22:19:03 UTC] PHP   3. require_once() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-blog-header.php:19
+[23-Mar-2020 22:19:03 UTC] PHP   4. include() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/template-loader.php:98
+[23-Mar-2020 22:19:03 UTC] PHP   5. do_shortcode() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/archive-artist.php:11
+[23-Mar-2020 22:19:03 UTC] PHP   6. preg_replace_callback() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/shortcodes.php:199
+[23-Mar-2020 22:19:03 UTC] PHP   7. do_shortcode_tag() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/shortcodes.php:199
+[23-Mar-2020 22:19:03 UTC] PHP   8. list_glossary_posts() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/shortcodes.php:325
+[23-Mar-2020 22:19:03 UTC] PHP Warning:  Use of undefined constant post_excerpt - assumed 'post_excerpt' (this will throw an Error in a future version of PHP) in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/functions.php on line 196
+[23-Mar-2020 22:19:03 UTC] PHP Stack trace:
+[23-Mar-2020 22:19:03 UTC] PHP   1. {main}() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/index.php:0
+[23-Mar-2020 22:19:03 UTC] PHP   2. require() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/index.php:17
+[23-Mar-2020 22:19:03 UTC] PHP   3. require_once() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-blog-header.php:19
+[23-Mar-2020 22:19:03 UTC] PHP   4. include() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/template-loader.php:98
+[23-Mar-2020 22:19:03 UTC] PHP   5. do_shortcode() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/archive-artist.php:11
+[23-Mar-2020 22:19:03 UTC] PHP   6. preg_replace_callback() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/shortcodes.php:199
+[23-Mar-2020 22:19:03 UTC] PHP   7. do_shortcode_tag() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/shortcodes.php:199
+[23-Mar-2020 22:19:03 UTC] PHP   8. list_glossary_posts() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/shortcodes.php:325
+[23-Mar-2020 22:19:03 UTC] PHP Warning:  Use of undefined constant post_title - assumed 'post_title' (this will throw an Error in a future version of PHP) in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/functions.php on line 195
+[23-Mar-2020 22:19:03 UTC] PHP Stack trace:
+[23-Mar-2020 22:19:03 UTC] PHP   1. {main}() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/index.php:0
+[23-Mar-2020 22:19:03 UTC] PHP   2. require() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/index.php:17
+[23-Mar-2020 22:19:03 UTC] PHP   3. require_once() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-blog-header.php:19
+[23-Mar-2020 22:19:03 UTC] PHP   4. include() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/template-loader.php:98
+[23-Mar-2020 22:19:03 UTC] PHP   5. do_shortcode() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/archive-artist.php:11
+[23-Mar-2020 22:19:03 UTC] PHP   6. preg_replace_callback() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/shortcodes.php:199
+[23-Mar-2020 22:19:03 UTC] PHP   7. do_shortcode_tag() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/shortcodes.php:199
+[23-Mar-2020 22:19:03 UTC] PHP   8. list_glossary_posts() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/shortcodes.php:325
+[23-Mar-2020 22:19:03 UTC] PHP Warning:  Use of undefined constant post_excerpt - assumed 'post_excerpt' (this will throw an Error in a future version of PHP) in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/functions.php on line 196
+[23-Mar-2020 22:19:03 UTC] PHP Stack trace:
+[23-Mar-2020 22:19:03 UTC] PHP   1. {main}() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/index.php:0
+[23-Mar-2020 22:19:03 UTC] PHP   2. require() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/index.php:17
+[23-Mar-2020 22:19:03 UTC] PHP   3. require_once() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-blog-header.php:19
+[23-Mar-2020 22:19:03 UTC] PHP   4. include() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/template-loader.php:98
+[23-Mar-2020 22:19:03 UTC] PHP   5. do_shortcode() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/archive-artist.php:11
+[23-Mar-2020 22:19:03 UTC] PHP   6. preg_replace_callback() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/shortcodes.php:199
+[23-Mar-2020 22:19:03 UTC] PHP   7. do_shortcode_tag() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/shortcodes.php:199
+[23-Mar-2020 22:19:03 UTC] PHP   8. list_glossary_posts() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/shortcodes.php:325
+[23-Mar-2020 22:21:32 UTC] PHP Fatal error:  Uncaught Error: Cannot use object of type WP_Post as array in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/functions.php:194
+Stack trace:
+#0 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/shortcodes.php(325): list_glossary_posts('', '', 'list_glossary_p...')
+#1 [internal function]: do_shortcode_tag(Array)
+#2 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/shortcodes.php(199): preg_replace_callback('/\\[(\\[?)(list_g...', 'do_shortcode_ta...', '[list_glossary_...')
+#3 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/archive-artist.php(11): do_shortcode('[list_glossary_...')
+#4 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/template-loader.php(98): include('/Users/PepseeAc...')
+#5 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-blog-header.php(19): require_once('/Users/PepseeAc...')
+#6 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/index.php(17): require in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/functions.php on line 194
+[24-Mar-2020 22:54:49 UTC] PHP Fatal error:  Uncaught Error: Call to a member function the_post() on array in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/inc/search-route.php:18
+Stack trace:
+#0 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/rest-api/class-wp-rest-server.php(946): pepseeSearchResults(Object(WP_REST_Request))
+#1 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#2 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/rest-api.php(305): WP_REST_Server->serve_request('/pepsee/v1/sear...')
+#3 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/class-wp-hook.php(288): rest_api_loaded(Object(WP))
+#4 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/class-wp-hook.php(312): WP_Hook->apply_filters('', Array)
+#5 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/plugin.php(544): WP_Hook->do_action(Array)
+#6 /Users/P in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/inc/search-route.php on line 18
+[24-Mar-2020 22:55:50 UTC] PHP Fatal error:  Uncaught Error: Call to a member function the_post() on array in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/inc/search-route.php:18
+Stack trace:
+#0 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/rest-api/class-wp-rest-server.php(946): pepseeSearchResults(Object(WP_REST_Request))
+#1 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#2 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/rest-api.php(305): WP_REST_Server->serve_request('/pepsee/v1/sear...')
+#3 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/class-wp-hook.php(288): rest_api_loaded(Object(WP))
+#4 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/class-wp-hook.php(312): WP_Hook->apply_filters('', Array)
+#5 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/plugin.php(544): WP_Hook->do_action(Array)
+#6 /Users/P in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/inc/search-route.php on line 18
+[24-Mar-2020 22:55:53 UTC] PHP Fatal error:  Uncaught Error: Call to a member function the_post() on array in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/inc/search-route.php:18
+Stack trace:
+#0 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/rest-api/class-wp-rest-server.php(946): pepseeSearchResults(Object(WP_REST_Request))
+#1 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#2 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/rest-api.php(305): WP_REST_Server->serve_request('/pepsee/v1/sear...')
+#3 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/class-wp-hook.php(288): rest_api_loaded(Object(WP))
+#4 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/class-wp-hook.php(312): WP_Hook->apply_filters('', Array)
+#5 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/plugin.php(544): WP_Hook->do_action(Array)
+#6 /Users/P in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/inc/search-route.php on line 18
+[24-Mar-2020 22:55:54 UTC] PHP Fatal error:  Uncaught Error: Call to a member function the_post() on array in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/inc/search-route.php:18
+Stack trace:
+#0 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/rest-api/class-wp-rest-server.php(946): pepseeSearchResults(Object(WP_REST_Request))
+#1 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#2 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/rest-api.php(305): WP_REST_Server->serve_request('/pepsee/v1/sear...')
+#3 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/class-wp-hook.php(288): rest_api_loaded(Object(WP))
+#4 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/class-wp-hook.php(312): WP_Hook->apply_filters('', Array)
+#5 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/plugin.php(544): WP_Hook->do_action(Array)
+#6 /Users/P in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/inc/search-route.php on line 18
+[24-Mar-2020 22:55:56 UTC] PHP Fatal error:  Uncaught Error: Call to a member function the_post() on array in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/inc/search-route.php:18
+Stack trace:
+#0 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/rest-api/class-wp-rest-server.php(946): pepseeSearchResults(Object(WP_REST_Request))
+#1 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#2 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/rest-api.php(305): WP_REST_Server->serve_request('/pepsee/v1/sear...')
+#3 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/class-wp-hook.php(288): rest_api_loaded(Object(WP))
+#4 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/class-wp-hook.php(312): WP_Hook->apply_filters('', Array)
+#5 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/plugin.php(544): WP_Hook->do_action(Array)
+#6 /Users/P in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/inc/search-route.php on line 18
+[24-Mar-2020 22:55:56 UTC] PHP Fatal error:  Uncaught Error: Call to a member function the_post() on array in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/inc/search-route.php:18
+Stack trace:
+#0 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/rest-api/class-wp-rest-server.php(946): pepseeSearchResults(Object(WP_REST_Request))
+#1 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#2 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/rest-api.php(305): WP_REST_Server->serve_request('/pepsee/v1/sear...')
+#3 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/class-wp-hook.php(288): rest_api_loaded(Object(WP))
+#4 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/class-wp-hook.php(312): WP_Hook->apply_filters('', Array)
+#5 /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-includes/plugin.php(544): WP_Hook->do_action(Array)
+#6 /Users/P in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-content/themes/pepseeactus/inc/search-route.php on line 18
+[26-Mar-2020 22:29:58 UTC] PHP Warning:  file_exists() expects exactly 1 parameter, 0 given in /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-config.php on line 22
+[26-Mar-2020 22:29:58 UTC] PHP Stack trace:
+[26-Mar-2020 22:29:58 UTC] PHP   1. {main}() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-admin/admin-ajax.php:0
+[26-Mar-2020 22:29:58 UTC] PHP   2. require_once() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-admin/admin-ajax.php:22
+[26-Mar-2020 22:29:58 UTC] PHP   3. require_once() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-load.php:37
+[26-Mar-2020 22:29:58 UTC] PHP   4. file_exists() /Users/PepseeActus/Local Sites/pepseeactusv3/app/public/wp-config.php:22

@@ -1,0 +1,111 @@
+@import "colors";
+@import "typography";
+
+// Grid breakpoints
+//
+// Define the minimum dimensions at which your layout will change,
+// adapting to different screen sizes, for use in media queries.
+
+$grid-breakpoints: (
+	xs: 0,
+	sm: 375px,
+	md: 768px,
+	lg: 1024px,
+	xl: 1280px
+) !default;
+
+@include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
+@include _assert-starts-at-zero($grid-breakpoints);
+
+// Grid containers
+//
+// Define the maximum width of `.container` for different screen sizes.
+$container-max-widths: (
+	sm: 350px,
+	md: 670px,
+	lg: 860px,
+	xl: 1150px
+) !default;
+
+@include _assert-ascending($container-max-widths, "$container-max-widths");
+
+// Grid columns
+//
+// Set the number of columns and specify the width of the gutters.
+$grid-columns:                12 !default;
+$grid-gutter-width:           20px !default;
+$small-gutter-width:          10px !default;
+
+// media queries mixins
+@mixin media($b) {
+	@if $b == 'phone-small' {
+		@include media-breakpoint-down(xs) {
+			@content;
+		}
+	} @else if $b == 'phone' {
+		@include media-breakpoint-down(sm) {
+			@content;
+		}
+	} @else if $b == 'phone-tablet' {
+		@include media-breakpoint-down(md) {
+			@content;
+		}
+	} @else if $b == 'phone-tablet-desktop-small' {
+		@include media-breakpoint-down(lg) {
+			@content;
+		}
+	} @else if $b == 'tablet-only' or $b == 'tablet' {
+		@include media-breakpoint-only(md) {
+			@content;
+		}
+	} @else if $b == 'desktop-small-only' or $b == 'desktop-small' {
+		@include media-breakpoint-only(lg) {
+			@content;
+		}
+	} @else if $b == 'phone-tablet-desktop' {
+		@include media-breakpoint-up(sm) {
+			@content;
+		}
+	} @else if $b == 'tablet-desktop' {
+		@include media-breakpoint-up(md) {
+			@content;
+		}
+	} @else if $b == 'desktop' {
+		@include media-breakpoint-up(lg) {
+			@content;
+		}
+	} @else if $b == 'desktop-large' {
+		@include media-breakpoint-up(xl) {
+			@content;
+		}
+	}	
+	@else {
+		@content;
+	}
+}
+
+// global classes
+@mixin visually-hidden() {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+}
+
+.visually-hidden {
+	@include visually-hidden();
+}
+
+@mixin visually-visible() {
+	position: relative;
+	width: auto;
+	height: auto;
+	margin: 0;
+	overflow: visible;
+	display: inline-block;
+	clip: auto;
+}
