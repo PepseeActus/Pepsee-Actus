@@ -1,8 +1,0 @@
-.pepsee-container {
-    max-width: 130rem;
-    margin: 0 auto;
-
-    @include media(phone-tablet) {
-        max-width: 90%;
-    }
-}
