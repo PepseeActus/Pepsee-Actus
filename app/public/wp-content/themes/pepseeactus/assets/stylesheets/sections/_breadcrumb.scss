@@ -1,0 +1,17 @@
+#breadcrumbs {
+    @include media(phone) {
+        font-size: 1.2rem;
+    }
+
+    .breadcrumb_last {
+        color: #c3990f;
+
+        @include media(phone) {
+            display: block;
+        }
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+}

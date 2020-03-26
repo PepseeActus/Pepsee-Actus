@@ -1,0 +1,27 @@
+.post-type-archive-artist {
+    main {
+        padding-top: 0;
+    }
+
+    h2 {
+        letter-spacing: .3rem;
+        margin-bottom: 1rem;
+
+        @include media(phone) {
+            letter-spacing: 0;
+        }
+    }
+
+    .letter {
+        font-size: 3rem;
+        font-weight: 700;
+    }
+
+    .bloc-letter {
+        margin-bottom: 2rem;
+
+        a:hover {
+            text-decoration: underline;
+        }
+    }
+}

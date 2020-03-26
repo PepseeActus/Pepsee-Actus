@@ -1,0 +1,226 @@
+.single-artist {
+    header {
+        background-size: cover;
+        background-repeat: no-repeat;
+        opacity: 0.75;
+    }
+
+    h2 {
+        font-size: 4rem;
+        font-weight: 600;
+        letter-spacing: inherit;
+        margin-bottom: 2rem;
+    }
+
+    .more {
+        background: linear-gradient(to top, transparent 10%, rgba($color__yellow, 0.5) 10.01%, rgba($color__yellow, 0.5) 40%, transparent 40.01%) no-repeat left bottom / 0 100%;
+        transition: background-size 0.3s;
+        margin: 2rem 0 0;
+        display: inline-block;
+
+        &:hover {
+            background-size: 100% 100%;
+        }
+    }
+
+    .artist-presentation {
+        display: flex;
+        align-items: flex-end;
+        position: relative;
+        top: -6.5rem;
+
+        &__picture {
+            margin-right: 2rem;
+
+            img {
+                border-radius: 50%;
+            }
+        }
+
+        &__info {
+            &-name {
+                display: flex;
+                align-items: center;
+
+                .entry-title {
+                    margin: 0 .5rem 0 0;
+                    text-transform: uppercase;
+                    font-weight: 600;
+                }
+
+                i {
+                    font-size: 2rem;
+                    color: $color__yellow;
+                }
+            }
+
+            &-reseaux {
+                li {
+                    display: inline-block;
+                    margin-right: 1rem;
+                }
+
+                i {
+                    font-size: 2rem;
+                    transition: all .3s;
+
+                    &.fa-twitter:hover {
+                        color: $color__twitter;
+                    }
+
+                    &.fa-instagram:hover {
+                        background: $color__instagram;
+                        -webkit-text-fill-color: transparent;
+                        -webkit-background-clip: text;
+                        box-decoration-break: clone;
+                    }
+
+                    &.fa-facebook-f:hover {
+                        color: $color__facebook;
+                    }
+
+                    &.fa-youtube:hover {
+                        color: $color__youtube;
+                    }
+                }
+            }
+        }
+    }
+
+    .artist-bio {
+        margin-bottom: 5rem;
+        text-align: justify;
+    }
+
+    .artist-album{
+        margin-bottom: 5rem;
+        
+        &__container {
+            display: flex;
+            flex-flow: wrap;
+
+            &-box {
+                display: flex;
+                margin-bottom: 2rem;
+
+                .album-image {
+                    margin-right: 1rem;
+                }
+
+                .album-info {
+                    .album-title {
+                        font-weight: 600;
+                    }
+
+                    a {
+                        display: block;
+                    }
+
+                    ul {
+                        margin-top: .5rem;
+
+                        li {
+                            display: inline-block;
+                            margin-right: .5rem;
+
+                            a {
+                                transition: transform .3s ease-out;
+
+                                &:hover {
+                                    transform: translateY(.5rem);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .artist-music{
+        margin-bottom: 5rem;
+        
+        &__container {
+            display: flex;
+            flex-flow: wrap;
+
+            &-box {
+                display: flex;
+                margin-bottom: 2rem;
+
+                .music-image {
+                    margin-right: 1rem;
+                }
+
+                .music-info {
+                    .music-title {
+                        font-weight: 600;
+                    }
+
+                    a {
+                        display: block;
+                    }
+
+                    ul {
+                        margin-top: .5rem;
+
+                        li {
+                            display: inline-block;
+                            margin-right: .5rem;
+
+                            a {
+                                transition: transform .3s ease-out;
+
+                                &:hover {
+                                    transform: translateY(.5rem);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .artist-clip {
+        &__container {
+            display: flex;
+            flex-wrap: wrap;
+
+            &-box {
+                > div {
+                    position: relative;
+
+                    &:hover {
+                        img {
+                            opacity: .7;
+                        }
+
+                        i {
+                            transform: translate(-50%, -50%) scale(1.1);
+                        }
+                    }
+
+                    img {
+                        transition: all .3s ease-out;
+                    }
+
+                    i {
+                        color: white;
+                        position: absolute;
+                        left: 50%;
+                        top: 50%;
+                        transform: translate(-50%, -50%);
+                        font-size: 6rem;
+                        cursor: pointer;
+                        transition: all .3s ease-out;
+                    }
+                }
+            }
+        }
+    }
+
+    aside {
+        margin-top: 1.5rem;
+    }
+}
