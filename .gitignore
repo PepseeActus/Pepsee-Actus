@@ -1,4 +1,4 @@
-app/local.php
+app/public/local.php
 conf/
 logs/
 sql/
