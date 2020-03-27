@@ -1,7 +1,6 @@
 app/public/local.php
 conf/
 logs/
-sql/
 uploads/
 
 # Numerous always-ignore extensions
