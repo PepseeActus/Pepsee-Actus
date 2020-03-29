@@ -43,23 +43,16 @@
 		<div class="site-header" role="banner">
 			<div class="container">
 				<nav>
-					<input type="checkbox" id="nav" class="hidden">
 					<div class="logo">
 						<a href="<?= site_url(); ?>" class="brand"><span>PEPSEE</span>ACTUS</a>
 					</div>
-					<label for="nav" class="nav-btn">
-						<i></i>
-						<i></i>
-						<i></i>
-					</label>
 					<div class="nav-wrapper">
 						<ul>
 							<li class="search-trigger js-search-trigger"><i class="fa fa-search" aria-hidden="true"></i></li>
 							<li <?php if (is_front_page()) echo 'class="current-menu-item"'; ?>><a href="<?= site_url(); ?>">Home</a></li>
 							<li <?php if (get_post_type() == 'music') echo 'class="current-menu-item"'; ?>><a href="<?= get_post_type_archive_link('music'); ?>">Musique</a></li>
 							<li <?php if (get_post_type() == 'artist') echo 'class="current-menu-item"'; ?>><a href="<?= get_post_type_archive_link('artist'); ?>">Artistes</a></li>
-							<li <?php if (get_post_type() == 'post') echo 'class="current-menu-item"'; ?>><a href="<?= get_category_link(5); ?>">Actus</a></li>
-							<li <?php if (is_page('/a-propos')) echo 'class="current-menu-item"'; ?>><a href="<?= site_url('/a-propos'); ?>">A propos</a></li>
+							<li class="mobile-visually-hidden <?php if (is_page('/a-propos')) echo 'current-menu-item'; ?>"><a href="<?= site_url('/a-propos'); ?>">A propos</a></li>
 						</ul>
 					</div>
 				</nav>

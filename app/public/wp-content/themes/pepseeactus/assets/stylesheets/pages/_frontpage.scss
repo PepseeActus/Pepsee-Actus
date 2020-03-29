@@ -13,6 +13,7 @@
         display: inline-block;
         top: -100px;
         min-width: 250px;
+        z-index: 1;
 
         @include media(phone-tablet) {
             min-width: inherit;

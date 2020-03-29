@@ -597,7 +597,8 @@ header {
   background-repeat: repeat;
   background-size: cover;
   background-attachment: fixed;
-  min-height: 30rem; }
+  min-height: 30rem;
+  position: relative; }
   @media (max-width: 767.98px) {
     header {
       min-height: 18rem; } }
@@ -605,58 +606,19 @@ header {
 .site-header {
   background: white;
   width: 100%;
-  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5); }
-  @media (min-width: 1024px) {
-    .site-header {
-      top: 0;
-      z-index: 99;
-      position: fixed; } }
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5);
+  top: 0;
+  position: fixed;
+  z-index: 2; }
   .site-header nav {
     display: flex;
     justify-content: space-between; }
-  .site-header .hidden {
-    display: none; }
-  .site-header #nav:checked + .nav-btn {
-    transform: rotate(45deg); }
-    .site-header #nav:checked + .nav-btn i {
-      background: black;
-      transition: transform 0.2s ease; }
-      .site-header #nav:checked + .nav-btn i:nth-child(1) {
-        transform: translateY(6px) rotate(180deg); }
-      .site-header #nav:checked + .nav-btn i:nth-child(2) {
-        opacity: 0; }
-      .site-header #nav:checked + .nav-btn i:nth-child(3) {
-        transform: translateY(-6px) rotate(90deg); }
-  .site-header #nav:checked ~ .nav-wrapper {
-    z-index: 9990;
-    opacity: 1; }
-    .site-header #nav:checked ~ .nav-wrapper ul li a {
-      opacity: 1;
-      transform: translateX(0); }
-  .site-header .nav-btn {
-    display: none; }
-    @media (max-width: 767.98px) {
-      .site-header .nav-btn {
-        display: block;
-        cursor: pointer;
-        z-index: 9999; }
-        .site-header .nav-btn i {
-          display: block;
-          width: 2rem;
-          height: .2rem;
-          background: black;
-          border-radius: .2rem;
-          margin-left: 1.4rem; }
-          .site-header .nav-btn i:nth-child(1) {
-            margin-top: 16px; }
-          .site-header .nav-btn i:nth-child(2) {
-            margin-top: 4px;
-            opacity: 1; }
-          .site-header .nav-btn i:nth-child(3) {
-            margin-top: 4px; } }
   .site-header .logo {
     display: inline-block;
     margin: 1rem 0; }
+    @media (max-width: 767.98px) {
+      .site-header .logo {
+        display: none; } }
     .site-header .logo a {
       color: black;
       text-transform: uppercase;
@@ -664,63 +626,20 @@ header {
       font-size: 2.2rem; }
       .site-header .logo a span {
         font-weight: 700; }
-  @media (max-width: 767.98px) {
-    .site-header .nav-wrapper {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      background: #fff;
-      opacity: 0;
-      transition: all .2s ease; } }
   .site-header .nav-wrapper ul {
     display: flex;
     align-items: center;
     height: 100%; }
     @media (max-width: 767.98px) {
       .site-header .nav-wrapper ul {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 100%;
-        height: auto;
-        flex-direction: column; } }
+        padding: 2rem 0; } }
     .site-header .nav-wrapper ul li {
       margin: 0 1rem; }
-      @media (max-width: 767.98px) {
-        .site-header .nav-wrapper ul li {
-          display: block;
-          width: 100%;
-          text-align: right;
-          margin: 0 0 1rem; }
-          .site-header .nav-wrapper ul li:nth-child(1) a {
-            transition-delay: .2s; }
-          .site-header .nav-wrapper ul li:nth-child(2) a {
-            transition-delay: .3s; }
-          .site-header .nav-wrapper ul li:nth-child(3) a {
-            transition-delay: .4s; }
-          .site-header .nav-wrapper ul li:nth-child(4) a {
-            transition-delay: .5s; } }
       .site-header .nav-wrapper ul li.current-menu-item a {
         color: #FBC003;
         border-bottom: 1px solid #FBC003; }
-      @media (max-width: 767.98px) {
-        .site-header .nav-wrapper ul li i {
-          padding: 1rem 2.4rem; } }
       .site-header .nav-wrapper ul li a {
         transition: all 0.2s ease; }
-        @media (max-width: 767.98px) {
-          .site-header .nav-wrapper ul li a {
-            padding: 1rem 2.4rem;
-            opacity: 0;
-            color: #000;
-            font-size: 2.5rem;
-            font-weight: 600;
-            letter-spacing: 1.2px;
-            transform: translateX(-2rem);
-            transition: all 0.2s ease; } }
         .site-header .nav-wrapper ul li a:hover {
           color: #FBC003;
           border-bottom: 1px solid #FBC003; }
@@ -793,7 +712,8 @@ header {
     text-decoration: underline; }
   .search-overlay #search-overlay__results .artist-card {
     display: flex;
-    align-items: center; }
+    align-items: center;
+    margin-bottom: 2rem; }
     .search-overlay #search-overlay__results .artist-card .artist-image {
       border-radius: 50%;
       overflow: hidden;
@@ -924,7 +844,8 @@ main {
   position: relative;
   display: inline-block;
   top: -100px;
-  min-width: 250px; }
+  min-width: 250px;
+  z-index: 1; }
   @media (max-width: 1023.98px) {
     .home .post {
       min-width: inherit; } }
