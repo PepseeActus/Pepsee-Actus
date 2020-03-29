@@ -805,6 +805,7 @@ header {
       .search-overlay #search-overlay__results .artist-card .artist-image:hover img {
         transform: scale(1.1); }
 
+body.admin-bar .site-header,
 body.admin-bar .search-overlay {
   top: 32px; }
 

@@ -36,7 +36,6 @@ get_header(); ?>
 								<?php the_title( '<h3 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h3>' ); ?>
 							</div>
 							<div class="post-meta">
-								<i class="fas fa-comment-alt"></i> <?php comments_number(); ?>
 								<i class="fas fa-clock"></i> <?php echo meks_time_ago(); ?>
 							</div>
 						</div>

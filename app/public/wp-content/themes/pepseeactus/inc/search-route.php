@@ -1,7 +1,7 @@
 <?php
 
 function pepseeactusRegisterSearch() {
-    register_rest_route('pepsee/v1', 'search', [
+    register_rest_route('pepsee/v1', '/search', [
         'methods' => WP_REST_SERVER::READABLE,
         'callback' => 'pepseeSearchResults'
     ]);
@@ -9,8 +9,9 @@ function pepseeactusRegisterSearch() {
 
 function pepseeSearchResults($data) {
     $mainQuery = new WP_Query([
-        'post_type' => ['post', 'artist', 'music', 'album'],
-        's' => sanitize_text_field($data['term'])
+        'posts_per_page' => -1,
+        'post_type'      => ['post', 'artist', 'music', 'album'],
+        's'              => sanitize_text_field($data['term'])
     ]);
 
     $results = [

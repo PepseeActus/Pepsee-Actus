@@ -38,12 +38,7 @@ while ( have_posts() ) : the_post();
 				Posté le <?php the_date(); ?>
 				par <?php the_author(); ?>
 			</div>
-			<?php
-				// If comments are open or we have at least one comment, load up the comment template.
-				if ( comments_open() || get_comments_number() ) :
-					comments_template();
-				endif;
-			?>
+			<div id="graphcomment"></div>
 		</article>
 		<aside class="col-12 col-md-3">
 			<?php $posts = get_field('artistes_associes');

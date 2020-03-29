@@ -320,8 +320,11 @@ header {
     }
 }
 
-body.admin-bar .search-overlay {
-    top: 32px;
+body.admin-bar {
+    .site-header,
+    .search-overlay {
+        top: 32px;
+    }
 }
 
 .body-no-scroll {
