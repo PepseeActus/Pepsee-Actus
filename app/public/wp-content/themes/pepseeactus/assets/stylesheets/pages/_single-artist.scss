@@ -1,5 +1,5 @@
 .single-artist {
-    header {
+    .hero-banner {
         background-size: cover;
         background-repeat: no-repeat;
         opacity: 0.75;
@@ -13,13 +13,12 @@
     }
 
     .more {
-        background: linear-gradient(to top, transparent 10%, rgba($color__yellow, 0.5) 10.01%, rgba($color__yellow, 0.5) 40%, transparent 40.01%) no-repeat left bottom / 0 100%;
-        transition: background-size 0.3s;
-        margin: 2rem 0 0;
-        display: inline-block;
+        text-decoration: underline;
 
-        &:hover {
-            background-size: 100% 100%;
+        @include media(desktop) {
+            position: absolute;
+            top: 2rem;
+            right: 0;
         }
     }
 
@@ -138,6 +137,7 @@
     }
 
     .artist-music{
+        position: relative;
         margin-bottom: 5rem;
         
         &__container {
@@ -183,6 +183,8 @@
     }
 
     .artist-clip {
+        position: relative;
+
         &__container {
             display: flex;
             flex-wrap: wrap;

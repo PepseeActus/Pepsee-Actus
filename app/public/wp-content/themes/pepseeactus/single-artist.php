@@ -122,21 +122,21 @@ get_header(); ?>
                                     <a href="<?= get_the_permalink($post); ?>"><?= $artistes; ?></a>
                                     <a class="music-title" href="<?= get_the_permalink($post); ?>"><?= $titre; ?></a>
                                     <ul>
-                                        <?= ($download) ? '<li><a href="'.get_the_permalink($post).'" target="_blank"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo-download.png" alt="download"></a></li>' : ''; ?>
-                                        <?= ($soundcloud) ? '<li><a href="'.get_the_permalink($post).'" target="_blank"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo-soundcloud.png" alt="soundcloud"></a></li>' : ''; ?>
-                                        <?= ($youtube) ? '<li><a href="'.get_the_permalink($post).'" target="_blank"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo-youtube.png" alt="youtube music"></a></li>' : ''; ?>
-                                        <?= ($spotify) ? '<li><a href="'.get_the_permalink($post).'" target="_blank"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo-spotify.png" alt="spotify"></a></li>' : ''; ?>
-                                        <?= ($deezer) ? '<li><a href="'.get_the_permalink($post).'" target="_blank"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo-deezer.png" alt="deezer"></a></li>' : ''; ?>
-                                        <?= ($google) ? '<li><a href="'.get_the_permalink($post).'" target="_blank"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo-google.png" alt="google play music"></a></li>' : ''; ?>
-                                        <?= ($tidal) ? '<li><a href="'.get_the_permalink($post).'" target="_blank"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo-tidal.png" alt="tidal"></a></li>' : ''; ?>
-                                        <?= ($apple) ? '<li><a href="'.get_the_permalink($post).'" target="_blank"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo-apple.png" alt="apple music"></a></li>' : ''; ?>
+                                        <?= ($download) ? '<li><a href="'.$download.'" target="_blank"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo-download.png" alt="download"></a></li>' : ''; ?>
+                                        <?= ($soundcloud) ? '<li><a href="'.$soundcloud.'" target="_blank"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo-soundcloud.png" alt="soundcloud"></a></li>' : ''; ?>
+                                        <?= ($youtube) ? '<li><a href="'.$youtube.'" target="_blank"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo-youtube.png" alt="youtube music"></a></li>' : ''; ?>
+                                        <?= ($spotify) ? '<li><a href="'.$spotify.'" target="_blank"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo-spotify.png" alt="spotify"></a></li>' : ''; ?>
+                                        <?= ($deezer) ? '<li><a href="'.$deezer.'" target="_blank"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo-deezer.png" alt="deezer"></a></li>' : ''; ?>
+                                        <?= ($google) ? '<li><a href="'.$google.'" target="_blank"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo-google.png" alt="google play music"></a></li>' : ''; ?>
+                                        <?= ($tidal) ? '<li><a href="'.$tidal.'" target="_blank"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo-tidal.png" alt="tidal"></a></li>' : ''; ?>
+                                        <?= ($apple) ? '<li><a href="'.$apple.'" target="_blank"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo-apple.png" alt="apple music"></a></li>' : ''; ?>
                                     </ul>
                                 </div>
                             </div>
                         <?php } ?>
                         <?php wp_reset_postdata(); ?>
                     </div>
-                    <a class="more" href="<?= get_post_type_archive_link('music'); ?>">Plus de sons de <?php the_title() ?> ici</a>
+                    <a class="more" href="<?= get_post_type_archive_link('music'); ?>">Plus de sons de ici</a>
                 <?php endif; ?>
             </div>
             <div class="artist-clip">
@@ -155,11 +155,25 @@ get_header(); ?>
                         <?php } ?>
                         <?php wp_reset_postdata(); ?>
                     </div>
-                    <a class="more" href="<?= site_url('/category/clips/'); ?>">Plus de clips de <?php the_title() ?> ici</a>
+                    <a class="more" href="<?= site_url('/category/clips/'); ?>">Plus de clips ici</a>
                 <?php endif; ?>
             </div>
         </div>
-        <aside class="col-12 col-md-3"></aside>
+        <aside class="col-12 col-md-3">
+            <?php 
+            $popular_post_object = new WDS_JetPack_Popular_Posts( array( 'count' => 5, 'days' => 2, 'transient_affix' => '_mypp' ) );
+            $popular_post_results = $popular_post_object->get_posts();
+            if ( !empty( $popular_post_results ) ) {
+                $output = '<ol>';
+                foreach( $popular_post_results as $popular_post ) {
+                    $output .= '<li class="popular-post-' . $popular_post['post_id'] . '"><a href="' . $popular_post['permalink'] . '">' . $popular_post['title'] . '</a></li>';
+                }
+                $output .= '</ol>';
+            
+                echo $output;
+            }
+            ?>
+        </aside>
     </div>
 <?php endwhile; ?>
 

@@ -31,34 +31,34 @@
 </head>
 
 <body <?php body_class(); ?>>
-	<?php 
-		$pageBanner = get_field('image_arriere_plan');
-		$pageBannerImage = $pageBanner['url'];
-	
-		if ((get_post_type() == 'artist') && $pageBannerImage) : ?>
-			<header style='background-image: radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.5), #100e17), url("<?= $pageBannerImage; ?>")'>
-		<?php else : ?>
-			<header style='background-image: url("<?= get_stylesheet_directory_uri(); ?>/assets/img/88891.jpg")'>
-		<?php endif; ?>
-		<div class="site-header" role="banner">
-			<div class="container">
-				<nav>
-					<div class="logo">
-						<a href="<?= site_url(); ?>" class="brand"><span>PEPSEE</span>ACTUS</a>
-					</div>
-					<div class="nav-wrapper">
-						<ul>
-							<li class="search-trigger js-search-trigger"><i class="fa fa-search" aria-hidden="true"></i></li>
-							<li <?php if (is_front_page()) echo 'class="current-menu-item"'; ?>><a href="<?= site_url(); ?>">Home</a></li>
-							<li <?php if (get_post_type() == 'music') echo 'class="current-menu-item"'; ?>><a href="<?= get_post_type_archive_link('music'); ?>">Musique</a></li>
-							<li <?php if (get_post_type() == 'artist') echo 'class="current-menu-item"'; ?>><a href="<?= get_post_type_archive_link('artist'); ?>">Artistes</a></li>
-							<li class="mobile-visually-hidden <?php if (is_page('/a-propos')) echo 'current-menu-item'; ?>"><a href="<?= site_url('/a-propos'); ?>">A propos</a></li>
-						</ul>
-					</div>
-				</nav>
-			</div>
+	<header class="site-header" role="banner">
+		<div class="container">
+			<nav>
+				<div class="logo">
+					<a href="<?= site_url(); ?>" class="brand"><span>PEPSEE</span>ACTUS</a>
+				</div>
+				<div class="nav-wrapper">
+					<ul>
+						<li class="search-trigger js-search-trigger"><i class="fa fa-search" aria-hidden="true"></i></li>
+						<li <?php if (is_front_page()) echo 'class="current-menu-item"'; ?>><a href="<?= site_url(); ?>">Home</a></li>
+						<li <?php if (get_post_type() == 'music') echo 'class="current-menu-item"'; ?>><a href="<?= get_post_type_archive_link('music'); ?>">Musique</a></li>
+						<li <?php if (get_post_type() == 'artist') echo 'class="current-menu-item"'; ?>><a href="<?= get_post_type_archive_link('artist'); ?>">Artistes</a></li>
+						<li class="mobile-visually-hidden <?php if (is_page('/a-propos')) echo 'current-menu-item'; ?>"><a href="<?= site_url('/a-propos'); ?>">A propos</a></li>
+					</ul>
+				</div>
+			</nav>
 		</div>
 	</header>
+	<?php 
+	$pageBanner = get_field('image_arriere_plan');
+	$pageBannerImage = $pageBanner['url'];
+
+	if ((get_post_type() == 'artist') && $pageBannerImage) : ?>
+		<div class="hero-banner" style='background-image: radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.5), #100e17), url("<?= $pageBannerImage; ?>")'>
+	<?php else : ?>
+		<div class="hero-banner" style='background-image: url("<?= get_stylesheet_directory_uri(); ?>/assets/img/88891.jpg")'>
+	<?php endif; ?>
+	</div>
 
 	<?php
 	if ( function_exists('yoast_breadcrumb') && !is_front_page()) {

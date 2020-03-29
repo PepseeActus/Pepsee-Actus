@@ -35,14 +35,14 @@ get_header(); ?>
                     </div>
                     <div class="music-presentation__info-reseaux">
                         <ul>
-                            <?= ($download) ? '<li><a href="'.get_the_permalink($post).'" target="_blank"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo-download.png" alt="download"></a></li>' : ''; ?>
-                            <?= ($soundcloud) ? '<li><a href="'.get_the_permalink($post).'" target="_blank"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo-soundcloud.png" alt="soundcloud"></a></li>' : ''; ?>
-                            <?= ($youtube) ? '<li><a href="'.get_the_permalink($post).'" target="_blank"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo-youtube.png" alt="youtube music"></a></li>' : ''; ?>
-                            <?= ($spotify) ? '<li><a href="'.get_the_permalink($post).'" target="_blank"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo-spotify.png" alt="spotify"></a></li>' : ''; ?>
-                            <?= ($deezer) ? '<li><a href="'.get_the_permalink($post).'" target="_blank"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo-deezer.png" alt="deezer"></a></li>' : ''; ?>
-                            <?= ($google) ? '<li><a href="'.get_the_permalink($post).'" target="_blank"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo-google.png" alt="google play music"></a></li>' : ''; ?>
-                            <?= ($tidal) ? '<li><a href="'.get_the_permalink($post).'" target="_blank"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo-tidal.png" alt="tidal"></a></li>' : ''; ?>
-                            <?= ($apple) ? '<li><a href="'.get_the_permalink($post).'" target="_blank"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo-apple.png" alt="apple music"></a></li>' : ''; ?>
+                            <?= ($download) ? '<li><a href="'.$download.'" target="_blank"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo-download.png" alt="download"></a></li>' : ''; ?>
+                            <?= ($soundcloud) ? '<li><a href="'.$soundcloud.'" target="_blank"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo-soundcloud.png" alt="soundcloud"></a></li>' : ''; ?>
+                            <?= ($youtube) ? '<li><a href="'.$youtube.'" target="_blank"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo-youtube.png" alt="youtube music"></a></li>' : ''; ?>
+                            <?= ($spotify) ? '<li><a href="'.$spotify.'" target="_blank"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo-spotify.png" alt="spotify"></a></li>' : ''; ?>
+                            <?= ($deezer) ? '<li><a href="'.$deezer.'" target="_blank"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo-deezer.png" alt="deezer"></a></li>' : ''; ?>
+                            <?= ($google) ? '<li><a href="'.$google.'" target="_blank"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo-google.png" alt="google play music"></a></li>' : ''; ?>
+                            <?= ($tidal) ? '<li><a href="'.$tidal.'" target="_blank"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo-tidal.png" alt="tidal"></a></li>' : ''; ?>
+                            <?= ($apple) ? '<li><a href="'.$apple.'" target="_blank"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo-apple.png" alt="apple music"></a></li>' : ''; ?>
                         </ul>
                     </div>
                 </div>
