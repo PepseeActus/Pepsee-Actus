@@ -57,6 +57,14 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
   position: absolute;
   width: 1px; }
 
+.padding-inside {
+  padding-top: 2rem;
+  padding-bottom: 2rem; }
+
+.post-meta {
+  color: grey;
+  font-size: 1.2rem; }
+
 @media (max-width: 1023.98px) {
   .mobile-visually-hidden {
     border: 0;
@@ -769,6 +777,7 @@ main {
   background-color: #FBC003;
   text-align: center;
   font-size: 2rem;
+  z-index: 3;
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5); }
   .playlist-nav a {
     padding: 1rem;
@@ -1108,7 +1117,11 @@ main {
 .single-post .post-thumbnail {
   margin: 0 auto 5rem;
   text-align: center;
-  position: relative; }
+  position: relative;
+  width: 65%; }
+  @media (max-width: 767.98px) {
+    .single-post .post-thumbnail {
+      width: 100%; } }
   .single-post .post-thumbnail .single-title {
     position: absolute;
     bottom: -3rem;
@@ -1117,7 +1130,11 @@ main {
     font-weight: 700;
     font-size: 3.2rem;
     line-height: 4.5rem;
-    text-align: left; }
+    text-align: left;
+    width: 65%; }
+    @media (max-width: 767.98px) {
+      .single-post .post-thumbnail .single-title {
+        width: 90%; } }
     @media (max-width: 374.98px) {
       .single-post .post-thumbnail .single-title {
         display: none; } }
@@ -1314,9 +1331,6 @@ main {
         cursor: pointer;
         transition: all .3s ease-out; }
 
-.single-artist aside {
-  margin-top: 1.5rem; }
-
 .single-music .hero-banner {
   background-size: cover;
   background-repeat: no-repeat;
@@ -1364,55 +1378,54 @@ main {
         .single-music .music-presentation__info-reseaux li img:hover {
           transform: translateY(0.5rem); }
 
-.single-music aside {
-  margin-top: 1.5rem; }
-  .single-music aside h2 {
-    font-size: 3.2rem; }
-  .single-music aside .artist-album__container-box {
-    display: flex;
-    align-items: center;
-    margin-bottom: 2rem; }
+.single-music aside h2 {
+  font-size: 3.2rem; }
+
+.single-music aside .artist-album__container-box {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem; }
+  @media (min-width: 768px) and (max-width: 1023.98px) {
+    .single-music aside .artist-album__container-box {
+      justify-content: center;
+      flex-direction: column; } }
+  .single-music aside .artist-album__container-box .artist-image {
+    margin-right: 1rem; }
     @media (min-width: 768px) and (max-width: 1023.98px) {
-      .single-music aside .artist-album__container-box {
-        justify-content: center;
-        flex-direction: column; } }
-    .single-music aside .artist-album__container-box .artist-image {
-      margin-right: 1rem; }
-      @media (min-width: 768px) and (max-width: 1023.98px) {
-        .single-music aside .artist-album__container-box .artist-image {
-          margin-right: 0; } }
-      .single-music aside .artist-album__container-box .artist-image img {
-        border-radius: 50%;
-        max-width: 12rem;
-        box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5); }
-    @media (min-width: 768px) and (max-width: 1023.98px) {
-      .single-music aside .artist-album__container-box .artist-info {
-        margin-top: 2rem; } }
-    .single-music aside .artist-album__container-box .artist-info .artist-title {
-      font-weight: 600; }
-    .single-music aside .artist-album__container-box .artist-info > i {
-      color: #FBC003; }
-    .single-music aside .artist-album__container-box .artist-info ul {
-      margin-top: .5rem; }
-      .single-music aside .artist-album__container-box .artist-info ul li {
-        display: inline-block;
-        margin-right: .5rem; }
-        .single-music aside .artist-album__container-box .artist-info ul li a {
-          display: block; }
-        .single-music aside .artist-album__container-box .artist-info ul li i {
-          font-size: 2rem;
-          transition: all .3s; }
-          .single-music aside .artist-album__container-box .artist-info ul li i.fa-twitter:hover {
-            color: #55ACEE; }
-          .single-music aside .artist-album__container-box .artist-info ul li i.fa-instagram:hover {
-            background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
-            -webkit-text-fill-color: transparent;
-            -webkit-background-clip: text;
-            box-decoration-break: clone; }
-          .single-music aside .artist-album__container-box .artist-info ul li i.fa-facebook-f:hover {
-            color: #4267B2; }
-          .single-music aside .artist-album__container-box .artist-info ul li i.fa-youtube:hover {
-            color: #F50E02; }
+      .single-music aside .artist-album__container-box .artist-image {
+        margin-right: 0; } }
+    .single-music aside .artist-album__container-box .artist-image img {
+      border-radius: 50%;
+      max-width: 12rem;
+      box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5); }
+  @media (min-width: 768px) and (max-width: 1023.98px) {
+    .single-music aside .artist-album__container-box .artist-info {
+      margin-top: 2rem; } }
+  .single-music aside .artist-album__container-box .artist-info .artist-title {
+    font-weight: 600; }
+  .single-music aside .artist-album__container-box .artist-info > i {
+    color: #FBC003; }
+  .single-music aside .artist-album__container-box .artist-info ul {
+    margin-top: .5rem; }
+    .single-music aside .artist-album__container-box .artist-info ul li {
+      display: inline-block;
+      margin-right: .5rem; }
+      .single-music aside .artist-album__container-box .artist-info ul li a {
+        display: block; }
+      .single-music aside .artist-album__container-box .artist-info ul li i {
+        font-size: 2rem;
+        transition: all .3s; }
+        .single-music aside .artist-album__container-box .artist-info ul li i.fa-twitter:hover {
+          color: #55ACEE; }
+        .single-music aside .artist-album__container-box .artist-info ul li i.fa-instagram:hover {
+          background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+          -webkit-text-fill-color: transparent;
+          -webkit-background-clip: text;
+          box-decoration-break: clone; }
+        .single-music aside .artist-album__container-box .artist-info ul li i.fa-facebook-f:hover {
+          color: #4267B2; }
+        .single-music aside .artist-album__container-box .artist-info ul li i.fa-youtube:hover {
+          color: #F50E02; }
 
 .single-album .hero-banner {
   background-size: cover;

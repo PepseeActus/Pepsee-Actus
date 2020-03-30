@@ -8,6 +8,7 @@
     background-color: $color__yellow;
     text-align: center;
     font-size: 2rem;
+    z-index: 3;
     @include shadow();
 
 

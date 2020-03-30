@@ -40,7 +40,7 @@ while ( have_posts() ) : the_post();
 			</div>
 			<div id="graphcomment"></div>
 		</article>
-		<aside class="col-12 col-md-3">
+		<aside class="col-12 col-md-3 padding-inside">
 			<?php $posts = get_field('artistes_associes');
 			if ($posts): ?>
 				<div class="artist">

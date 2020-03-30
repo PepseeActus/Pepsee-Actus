@@ -29,7 +29,7 @@
 							<li><a href="<?= site_url('/download'); ?>"><span>Musique</span></a></li>
 							<li><a href="<?= site_url('/artistes'); ?>"><span>Artistes</span></a></li>
 							<li><a href="<?= site_url('/actus'); ?>"><span>Actus</span></a></li>
-							<li><a href="<?= site_url('/a-propos'); ?>"><span>A propos</span></a></li>
+							<li><a href="<?= site_url('/a-propos'); ?>"><span>À propos</span></a></li>
 						</ul>
 					</div>
 					<div class="footer-section-rgpd col-4">

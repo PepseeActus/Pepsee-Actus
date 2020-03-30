@@ -83,8 +83,7 @@ get_header(); ?>
 			</div>
 		</section>
 	</div>
-	<div class="sidebar col-12 col-lg-3">
-	</div>
+	<?php get_sidebar(); ?>
 </div>
 <div class="wrapper row">
 	<section class="actus col-12 col-lg-9">

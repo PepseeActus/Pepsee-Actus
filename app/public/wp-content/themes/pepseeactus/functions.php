@@ -198,3 +198,17 @@ function list_glossary_posts() {
 	return $output;
 }
 add_shortcode('list_glossary_posts', 'list_glossary_posts');
+
+// Sidebar
+function pepseeactus_widgets_init() {
+    register_sidebar([
+        'name'          => __( 'Blog Sidebar', 'pepseeactus' ),
+        'id'            => 'sidebar-1',
+        'description'   => __( 'Ajouter les widgets ici.', 'pepseeactus' ),
+        'before_widget' => '<section id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</section>',
+        'before_title'  => '<h2 class="widget-title h5">',
+        'after_title'   => '</h2>',
+	]);
+}
+add_action( 'widgets_init', 'pepseeactus_widgets_init' );

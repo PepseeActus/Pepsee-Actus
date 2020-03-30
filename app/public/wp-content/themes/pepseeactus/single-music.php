@@ -51,7 +51,7 @@ while ( have_posts() ) : the_post(); ?>
                 <?php the_content(); ?>
             </div>
         </div>
-        <aside class="col-12 col-md-3">
+        <aside class="col-12 col-md-3 padding-inside">
             <div class="artist-album">
                 <?php $posts = get_field('artistes_associes');
                 if ($posts): ?>

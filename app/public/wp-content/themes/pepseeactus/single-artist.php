@@ -159,23 +159,7 @@ get_header(); ?>
                 <?php endif; ?>
             </div>
         </div>
-        <aside class="col-12 col-md-3">
-            <?php 
-            $popular_post_object = new WDS_JetPack_Popular_Posts( array( 'count' => 5, 'days' => 2, 'transient_affix' => '_mypp' ) );
-            $popular_post_results = $popular_post_object->get_posts();
-            if ( !empty( $popular_post_results ) ) {
-                $output = '<ol>';
-                foreach( $popular_post_results as $popular_post ) {
-                    $output .= '<li class="popular-post-' . $popular_post['post_id'] . '"><a href="' . $popular_post['permalink'] . '">' . $popular_post['title'] . '</a></li>';
-                }
-                $output .= '</ol>';
-            
-                echo $output;
-            }
-            ?>
-        </aside>
+        <?php get_sidebar(); ?>
     </div>
 <?php endwhile; ?>
-
-<?php
-get_footer();
+<?php get_footer();
