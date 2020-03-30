@@ -8,40 +8,35 @@
  */
 
 get_header(); ?>
+<section class="content-area padding-inside">
+	<?php
+	if ( have_posts() ) : ?>
 
-	<section id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+		<div class="page-header">
+			<h2 class="page-title"><?php printf( esc_html__( 'Les résultats pour: %s', 'pepseeactus' ), '<span>' . get_search_query() . '</span>' ); ?></h2>
+		</div>
+		<?php while ( have_posts() ) : the_post(); ?>
+			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+				<div class="entry-header">
+					<?php the_title( sprintf( '<h3 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h3>' ); ?>
+				</div>
+				<div class="entry-summary">
+					<?php the_excerpt(); ?>
+				</div>
+			</article>
+		<?php endwhile;
+		the_posts_navigation();
 
-		<?php
-		if ( have_posts() ) : ?>
+	else : ?>
 
-			<header class="page-header">
-				<h1 class="page-title"><?php printf( esc_html__( 'Search Results for: %s', 'pepseeactus' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
-			</header>
-			<?php
-			/* Start the Loop */
-			while ( have_posts() ) : the_post();
-
-				/**
-				 * Run the loop for the search to output the results.
-				 * If you want to overload this in a child theme then include a file
-				 * called content-search.php and that will be used instead.
-				 */
-				get_template_part( 'components/post/content', 'search' );
-
-			endwhile;
-
-			the_posts_navigation();
-
-		else :
-
-			get_template_part( 'components/post/content', 'none' );
-
-		endif; ?>
-
-		</main>
+		<section class="no-results not-found">
+		<div class="page-header">
+			<h2 class="page-title"><?php esc_html_e( 'Rien trouvé', 'pepseeactus' ); ?></h2>
+		</div>
+		<div class="page-content">
+			<p><?php esc_html_e( 'Désolé mais votre rechecherche ne remonte aucun résultat.', 'pepseeactus' ); ?></p>
+		</div>
 	</section>
-<?php
-get_sidebar();
-get_sidebar( '2' );
-get_footer();
+	<?php endif; ?>
+</section>
+<?php get_footer();

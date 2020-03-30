@@ -1,11 +1,6 @@
 .home {
     main {
         background: white;
-        padding-top: 0;
-
-        @include media(phone-tablet) {
-            padding-top: 2rem;
-        }
     }
 
     .post {
@@ -113,12 +108,6 @@
     }
 
     .releases {
-        margin-bottom: 3rem;
-
-        @include media(phone-tablet) {
-            margin-bottom: 5rem;
-        }
-
         &-wrap {
             display: flex;
             flex-wrap: wrap;
@@ -164,12 +153,6 @@
     }
 
     .clips {
-        margin-bottom: 10rem;
-
-        @include media(tablet) {
-            margin-bottom: 5rem;;
-        }
-
         @include media(phone) {
             display: none;
         }
@@ -208,12 +191,6 @@
     }
 
     .actus {
-        margin-bottom: 3rem;
-
-        @include media(phone-tablet) {
-            margin-bottom: 5rem;
-        }
-
         &-wrap {
             display: flex;
             flex-wrap: wrap;
@@ -316,8 +293,6 @@
     }
 
     .artists {
-        margin: 4rem auto 0;
-
         &-wrap {
             display: flex;
             flex-wrap: wrap;

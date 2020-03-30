@@ -1,0 +1,47 @@
+.search {
+    a:hover {
+        text-decoration: underline;
+    }
+
+    .page-header {
+        margin-bottom: 4rem;
+    }
+
+    .entry-title {
+        font-size: 3rem;
+        font-weight: 500;
+    }
+
+    .entry-summary {
+        margin-top: .5rem;
+    }
+
+    .nav-links {
+        margin-top: 4rem;
+
+        @include media(phone) {
+            text-align: center;
+            display: flex;
+        }
+
+        .nav-previous {
+            margin-right: 1rem;
+        }
+
+        .nav-previous,
+        .nav-next {
+            display: inline-block;
+            background-color: $color__yellow;
+            padding: .5rem 1rem;
+            font-weight: 600;
+
+            @include media(phone) {
+                padding: .2rem 0;
+            }
+
+            a {
+                color: white;
+            }
+        }
+    }
+}

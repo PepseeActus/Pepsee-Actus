@@ -85,7 +85,7 @@ get_header(); ?>
 	</div>
 	<?php get_sidebar(); ?>
 </div>
-<div class="wrapper row">
+<div class="wrapper row padding-inside">
 	<section class="actus col-12 col-lg-9">
 		<div class="big-title">
 			<h2>Actus</h2>
@@ -149,7 +149,7 @@ get_header(); ?>
 		</div>
 	</div>
 </div>
-<section class="artists">
+<section class="artists padding-inside">
 	<div class="big-title">
 		<h2>Artistes</h2>
 		<a href="<?= get_post_type_archive_link('artist'); ?>">Tout afficher</a>

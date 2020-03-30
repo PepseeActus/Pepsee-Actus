@@ -74,14 +74,13 @@ h2 {
 	font-size: 5rem;
 	text-transform: uppercase;
 	font-weight: 700;
-	letter-spacing: 1.5rem;
+	letter-spacing: .5rem;
 	background: linear-gradient(to top, transparent 10%, $color__yellow 10.01%, $color__yellow 40%, transparent 40.01%) no-repeat left bottom / 0 100%;
 	transition: background-size 0.3s;
 	cursor: default;
 	
 	@include media(phone) {
 		font-size: 3rem;
-		letter-spacing: .5rem;
 	}
 
 	&:hover {

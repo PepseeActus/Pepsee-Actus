@@ -103,7 +103,7 @@ function pepseeactus_scripts() {
 
 	wp_enqueue_script('bootstrap');
 	wp_enqueue_script('font-awesome');
-	wp_enqueue_script('pepseeactus-app', get_template_directory_uri() . '/assets/js/app.js', [], true );
+	wp_enqueue_script('pepseeactus-app', get_template_directory_uri() . '/assets/js/app.js', [], '', true);
 	wp_localize_script('pepseeactus-app', 'pepseeData', array(
 		'root_url' => get_site_url()
 	));
@@ -207,7 +207,7 @@ function pepseeactus_widgets_init() {
         'description'   => __( 'Ajouter les widgets ici.', 'pepseeactus' ),
         'before_widget' => '<section id="%1$s" class="widget %2$s">',
         'after_widget'  => '</section>',
-        'before_title'  => '<h2 class="widget-title h5">',
+        'before_title'  => '<h2 class="widget-title">',
         'after_title'   => '</h2>',
 	]);
 }
