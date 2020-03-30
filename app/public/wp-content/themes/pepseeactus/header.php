@@ -16,6 +16,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-49685610-1"></script>
+	<!-- Pinterest -->
+	<meta name="p:domain_verify" content="7c0bae2cf0019086bbedd32c8b902c9d"/>
 	<script>
 	window.dataLayer = window.dataLayer || [];
 	function gtag(){dataLayer.push(arguments);}
