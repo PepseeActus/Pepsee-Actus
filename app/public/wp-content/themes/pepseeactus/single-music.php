@@ -25,7 +25,7 @@ while ( have_posts() ) : the_post(); ?>
                 $apple = get_field('apple_music'); 
             ?>
             <div class="music-presentation">
-                <div class="music-presentation__picture">
+                <div class="music-presentation__picture rotate">
                     <?php the_post_thumbnail('thumbnail'); ?>
                 </div>
                 <div class="music-presentation__info">

@@ -52,8 +52,7 @@
                         display: inline;
                         text-transform: uppercase;
                         font-weight: $bold;
-                        font-size: 2.3rem;
-                        letter-spacing: 1.5px;
+                        font-size: 2.2rem;
                         box-shadow: 10px 0 0 white, -10px 0 0 white;
                         position: relative;
                         left: 10px;
@@ -67,6 +66,11 @@
                     color: grey;
                     font-size: 1.2rem;
                     border-radius: .3rem;
+
+                    .icon-date {
+                        fill: currentColor;
+                        height: 1.8rem;
+                    }
                 }
             }
 
@@ -120,8 +124,6 @@
             
             article {
                 width: 19rem;
-                margin: 0 .5rem;
-                text-align: left;
 
                 @include media(phone) {
                     width: 18rem;
@@ -133,11 +135,12 @@
 
                 img {
                     width: 100%;
-                    max-width: inherit;
                     @include shadow;
                 }
 
                 .releases-info {
+                    text-align: center;
+
                     .entry-title {
                         font-size: 1.5rem;
                         display: block;
@@ -152,41 +155,92 @@
         }
     }
 
-    .clips {
-        @include media(phone) {
-            display: none;
+    .videos {
+        background-color: $color__black;
+        position: relative;
+
+        &:before,
+        &:after {
+            position: absolute;
+            content: '';
+            top: 0;
+            bottom: 0;
+            display: block;
+            background-color: $color__black;
+            width: 15px;
         }
 
-        &-wrap {
-            article {
-                margin-bottom: 2rem;
-                position: relative;
+        &:before {
+            left: -15px;
+        }
 
-                &:hover {
-                    img {
-                        opacity: .7;
-                    }
+        &:after {
+            right: -15px;
+        }
 
-                    i {
-                        transform: translate(-50%, -50%) scale(1.1);
-                    }
-                }
+        .videos-nav {
+            margin-bottom: 2rem;
 
-                img {
-                    transition: all .3s ease-out;
-                }
+            ul {
+                display: flex;
 
-                i {
-                    color: white;
-                    position: absolute;
-                    left: 50%;
-                    top: 50%;
-                    transform: translate(-50%, -50%);
-                    font-size: 6rem;
-                    cursor: pointer;
-                    transition: all .3s ease-out;
+                li {
+                    margin-right: 2rem;
                 }
             }
+
+            a {
+                color: white;
+            }
+        }
+
+        .swiper-container {
+            padding: 0 3rem;
+        }
+
+        .swiper-slide {
+            &:hover {
+                img {
+                    opacity: .7;
+                }
+
+                svg {
+                    transform: translate(-50%, -50%) scale(1.1);
+
+                    .ytp-large-play-button-bg {
+                        fill: $color__youtube;
+                    }
+                }
+            }
+
+            img {
+                transition: all .3s ease-out;
+                position: relative;
+                width: 100%;
+            }
+
+            svg {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                cursor: pointer;
+                transition: all .3s ease-out;
+                height: 3.5rem;
+            }
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: white;
+        }
+
+        .swiper-button-next {
+            right: 0;
+        }
+
+        .swiper-button-prev {
+            left: 0;
         }
     }
 
@@ -276,8 +330,9 @@
                         font-size: 1.2rem;
                         margin-bottom: 1rem;
 
-                        i {
-                            color: grey;
+                        .icon-date {
+                            fill: currentColor;
+                            height: 1.8rem;
                         }
 
                         div {

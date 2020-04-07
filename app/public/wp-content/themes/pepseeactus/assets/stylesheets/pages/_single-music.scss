@@ -24,11 +24,6 @@
 
         &__picture {
             margin-right: 2rem;
-
-            img {
-                border-radius: .5rem;
-                @include shadow;
-            }
         }
 
         &__info {

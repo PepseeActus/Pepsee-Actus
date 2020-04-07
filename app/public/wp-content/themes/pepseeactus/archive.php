@@ -12,7 +12,7 @@ get_header(); ?>
 		if ( have_posts() ) : ?>
 
 			<div class="archive-header">
-				<h1>Nos derniers ajouts :</h1>
+				<h2>Les derniers ajouts :</h2>
 			</div>
 			<?php
 			/* Start the Loop */
@@ -20,7 +20,8 @@ get_header(); ?>
 				<div class="post-item">
 					<ul>
 						<li>
-							<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+							<a class="rotate" href="<?php the_permalink(); ?>"><?php the_post_thumbnail('thumbnail'); ?></a>
+							<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
 						</li>
 					</ul>
 				</div>

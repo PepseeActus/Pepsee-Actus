@@ -61,9 +61,51 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
   padding-top: 2rem;
   padding-bottom: 2rem; }
 
+.margin-outside {
+  margin-top: 5rem;
+  margin-bottom: 5rem; }
+
 .post-meta {
   color: grey;
   font-size: 1.2rem; }
+
+.rotate {
+  position: relative;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #F4F4F4;
+  display: block; }
+  .rotate::before {
+    position: absolute;
+    content: '';
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid #F4F4F4;
+    border-radius: 50%;
+    z-index: 2; }
+  .rotate::after {
+    position: absolute;
+    content: '';
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1rem;
+    height: 1rem;
+    background-color: #F4F4F4;
+    border-radius: 50%;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5); }
+  .rotate:hover {
+    animation: rotating 2s linear infinite; }
+
+@keyframes rotating {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg); } }
 
 @media (max-width: 1023.98px) {
   .mobile-visually-hidden {
@@ -881,8 +923,7 @@ body.admin-bar .search-overlay {
           display: inline;
           text-transform: uppercase;
           font-weight: 700;
-          font-size: 2.3rem;
-          letter-spacing: 1.5px;
+          font-size: 2.2rem;
           box-shadow: 10px 0 0 white, -10px 0 0 white;
           position: relative;
           left: 10px; }
@@ -893,6 +934,9 @@ body.admin-bar .search-overlay {
         color: grey;
         font-size: 1.2rem;
         border-radius: .3rem; }
+        .home .post .head-thumbnail .post-infos .post-meta .icon-date {
+          fill: currentColor;
+          height: 1.8rem; }
     .home .post .head-thumbnail img {
       width: 100%;
       transition: transform .3s ease-out; }
@@ -927,9 +971,7 @@ body.admin-bar .search-overlay {
       text-align: center;
       justify-content: center; } }
   .home .releases-wrap article {
-    width: 19rem;
-    margin: 0 .5rem;
-    text-align: left; }
+    width: 19rem; }
     @media (max-width: 767.98px) {
       .home .releases-wrap article {
         width: 18rem; } }
@@ -938,37 +980,66 @@ body.admin-bar .search-overlay {
         width: 13rem; } }
     .home .releases-wrap article img {
       width: 100%;
-      max-width: inherit;
       box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5); }
-    .home .releases-wrap article .releases-info .entry-title {
-      font-size: 1.5rem;
-      display: block;
-      margin-top: 1rem; }
-    .home .releases-wrap article .releases-info p {
-      font-weight: 600; }
+    .home .releases-wrap article .releases-info {
+      text-align: center; }
+      .home .releases-wrap article .releases-info .entry-title {
+        font-size: 1.5rem;
+        display: block;
+        margin-top: 1rem; }
+      .home .releases-wrap article .releases-info p {
+        font-weight: 600; }
 
-@media (max-width: 767.98px) {
-  .home .clips {
-    display: none; } }
-
-.home .clips-wrap article {
-  margin-bottom: 2rem;
+.home .videos {
+  background-color: #1C1C1C;
   position: relative; }
-  .home .clips-wrap article:hover img {
+  .home .videos:before, .home .videos:after {
+    position: absolute;
+    content: '';
+    top: 0;
+    bottom: 0;
+    display: block;
+    background-color: #1C1C1C;
+    width: 15px; }
+  .home .videos:before {
+    left: -15px; }
+  .home .videos:after {
+    right: -15px; }
+  .home .videos .videos-nav {
+    margin-bottom: 2rem; }
+    .home .videos .videos-nav ul {
+      display: flex; }
+      .home .videos .videos-nav ul li {
+        margin-right: 2rem; }
+    .home .videos .videos-nav a {
+      color: white; }
+  .home .videos .swiper-container {
+    padding: 0 3rem; }
+  .home .videos .swiper-slide:hover img {
     opacity: .7; }
-  .home .clips-wrap article:hover i {
+  .home .videos .swiper-slide:hover svg {
     transform: translate(-50%, -50%) scale(1.1); }
-  .home .clips-wrap article img {
-    transition: all .3s ease-out; }
-  .home .clips-wrap article i {
-    color: white;
+    .home .videos .swiper-slide:hover svg .ytp-large-play-button-bg {
+      fill: #F50E02; }
+  .home .videos .swiper-slide img {
+    transition: all .3s ease-out;
+    position: relative;
+    width: 100%; }
+  .home .videos .swiper-slide svg {
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    font-size: 6rem;
     cursor: pointer;
-    transition: all .3s ease-out; }
+    transition: all .3s ease-out;
+    height: 3.5rem; }
+  .home .videos .swiper-button-next,
+  .home .videos .swiper-button-prev {
+    color: white; }
+  .home .videos .swiper-button-next {
+    right: 0; }
+  .home .videos .swiper-button-prev {
+    left: 0; }
 
 .home .actus-wrap {
   display: flex;
@@ -1035,8 +1106,9 @@ body.admin-bar .search-overlay {
         color: grey;
         font-size: 1.2rem;
         margin-bottom: 1rem; }
-        .home .actus-wrap .category-actus .actus-info .post-meta i {
-          color: grey; }
+        .home .actus-wrap .category-actus .actus-info .post-meta .icon-date {
+          fill: currentColor;
+          height: 1.8rem; }
         .home .actus-wrap .category-actus .actus-info .post-meta div {
           display: inline-block;
           background: white;
@@ -1079,7 +1151,6 @@ body.admin-bar .search-overlay {
 
 .single-post .single-title-clip {
   font-size: 4rem;
-  letter-spacing: .5rem;
   margin-bottom: 1rem; }
   @media (max-width: 1023.98px) {
     .single-post .single-title-clip {
@@ -1245,6 +1316,8 @@ body.admin-bar .search-overlay {
       margin-bottom: 2rem; }
       .single-artist .artist-album__container-box .album-image {
         margin-right: 1rem; }
+        .single-artist .artist-album__container-box .album-image img {
+          box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5); }
       .single-artist .artist-album__container-box .album-info .album-title {
         font-weight: 600; }
       .single-artist .artist-album__container-box .album-info a {
@@ -1290,22 +1363,24 @@ body.admin-bar .search-overlay {
     display: flex;
     flex-wrap: wrap; }
     .single-artist .artist-clip__container-box > div {
-      position: relative; }
+      position: relative;
+      box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5); }
       .single-artist .artist-clip__container-box > div:hover img {
         opacity: .7; }
-      .single-artist .artist-clip__container-box > div:hover i {
+      .single-artist .artist-clip__container-box > div:hover svg {
         transform: translate(-50%, -50%) scale(1.1); }
+        .single-artist .artist-clip__container-box > div:hover svg .ytp-large-play-button-bg {
+          fill: #F50E02; }
       .single-artist .artist-clip__container-box > div img {
         transition: all .3s ease-out; }
-      .single-artist .artist-clip__container-box > div i {
-        color: white;
+      .single-artist .artist-clip__container-box > div svg {
         position: absolute;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
-        font-size: 6rem;
         cursor: pointer;
-        transition: all .3s ease-out; }
+        transition: all .3s ease-out;
+        height: 3.5rem; }
 
 .single-music main {
   padding-top: 5rem;
@@ -1328,9 +1403,6 @@ body.admin-bar .search-overlay {
   top: -5rem; }
   .single-music .music-presentation__picture {
     margin-right: 2rem; }
-    .single-music .music-presentation__picture img {
-      border-radius: .5rem;
-      box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5); }
   .single-music .music-presentation__info {
     display: flex;
     flex-direction: column;
@@ -1515,16 +1587,31 @@ body.admin-bar .search-overlay {
 
 .post-type-archive-music h2 {
   font-size: 4rem;
-  font-weight: 500;
   letter-spacing: 0;
-  margin-bottom: 1rem;
-  text-transform: capitalize; }
+  margin-bottom: 4rem; }
   @media (max-width: 767.98px) {
     .post-type-archive-music h2 {
-      font-size: 1.8rem; } }
+      font-size: 3rem; } }
+
+.post-type-archive-music .post-item li {
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center; }
+  .post-type-archive-music .post-item li .rotate {
+    margin-right: 2rem; }
+  .post-type-archive-music .post-item li img {
+    width: 7rem;
+    min-width: 7rem; }
+  .post-type-archive-music .post-item li h3 {
+    font-size: 3rem; }
+    @media (max-width: 767.98px) {
+      .post-type-archive-music .post-item li h3 {
+        font-size: 2rem; } }
+    .post-type-archive-music .post-item li h3 a:hover {
+      text-decoration: underline; }
 
 .post-type-archive-music .page-numbers {
-  margin-top: 3rem; }
+  margin: 4rem 0; }
   @media (max-width: 767.98px) {
     .post-type-archive-music .page-numbers {
       line-height: 4.5rem; } }

@@ -109,6 +109,10 @@
 
                 .album-image {
                     margin-right: 1rem;
+
+                    img {
+                        @include shadow();
+                    }
                 }
 
                 .album-info {
@@ -197,14 +201,19 @@
             &-box {
                 > div {
                     position: relative;
+                    @include shadow();
 
                     &:hover {
                         img {
                             opacity: .7;
                         }
 
-                        i {
+                        svg {
                             transform: translate(-50%, -50%) scale(1.1);
+
+                            .ytp-large-play-button-bg {
+                                fill: $color__youtube;
+                            }
                         }
                     }
 
@@ -212,15 +221,14 @@
                         transition: all .3s ease-out;
                     }
 
-                    i {
-                        color: white;
+                    svg {
                         position: absolute;
                         left: 50%;
                         top: 50%;
                         transform: translate(-50%, -50%);
-                        font-size: 6rem;
                         cursor: pointer;
                         transition: all .3s ease-out;
+                        height: 3.5rem;
                     }
                 }
             }

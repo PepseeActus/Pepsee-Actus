@@ -141,4 +141,29 @@ $(document).ready(function(){
         gc.src = 'https://graphcomment.com/js/integration.js?' + Math.round(Math.random() * 1e8);
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(gc);
     })();
+
+    var mySwiper = new Swiper ('.swiper-container', {
+        // Optional parameters
+        spaceBetween: 30,
+        slidesPerView: 3,
+        slidesPerGroup: 3,
+        breakpoints: {
+            // when window width is >= 320px
+            320: {
+                slidesPerView: 1
+            },
+            // when window width is >= 480px
+            480: {
+                slidesPerView: 2
+            },
+            // when window width is >= 640px
+            640: {
+                slidesPerView: 3
+            }
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        }
+    });
 });

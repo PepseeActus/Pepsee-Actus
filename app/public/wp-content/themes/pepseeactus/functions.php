@@ -1,5 +1,4 @@
 <?php
-
 require get_theme_file_path('/inc/search-route.php');
 
 if ( ! function_exists( 'pepseeactus_setup' ) ) :
@@ -93,15 +92,19 @@ function pepseeactus_the_custom_logo() {
 function pepseeactus_scripts() {
 	wp_register_style('bootstrap', 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css', []);
 	wp_register_script('bootstrap', 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js', ['popper', 'jquery'], false, true);
+	wp_register_style('swiperjs', 'https://unpkg.com/swiper/css/swiper.min.css', []);
+	wp_register_script('swiperjs', 'https://unpkg.com/swiper/js/swiper.min.js', [], false, true);	
 	wp_register_script('popper', 'https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js', [], false, true);
 	wp_deregister_script('jquery');
 	wp_register_script('jquery', 'https://code.jquery.com/jquery-3.4.1.js', [], false, true);	
 	wp_register_script('font-awesome', 'https://kit.fontawesome.com/628ddd9372.js', [], false, true);	
 	
 	wp_enqueue_style('bootstrap');
+	wp_enqueue_style('swiperjs');
 	wp_enqueue_style('pepseeactus-style', get_stylesheet_uri());
 
 	wp_enqueue_script('bootstrap');
+	wp_enqueue_script('swiperjs');
 	wp_enqueue_script('font-awesome');
 	wp_enqueue_script('pepseeactus-app', get_template_directory_uri() . '/assets/js/app.js', [], '', true);
 	wp_localize_script('pepseeactus-app', 'pepseeData', array(
@@ -199,16 +202,19 @@ function list_glossary_posts() {
 }
 add_shortcode('list_glossary_posts', 'list_glossary_posts');
 
-// Sidebar
+// Sidebar & Widgets
+require_once 'widgets/YoutubeWidget.php';
+
 function pepseeactus_widgets_init() {
+	register_widget(YoutubeWidget::class);
     register_sidebar([
         'name'          => __( 'Blog Sidebar', 'pepseeactus' ),
         'id'            => 'sidebar-1',
         'description'   => __( 'Ajouter les widgets ici.', 'pepseeactus' ),
-        'before_widget' => '<section id="%1$s" class="widget %2$s">',
+        'before_widget' => '<section class="widget %2$s">',
         'after_widget'  => '</section>',
-        'before_title'  => '<h2 class="widget-title">',
-        'after_title'   => '</h2>',
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
 	]);
 }
 add_action( 'widgets_init', 'pepseeactus_widgets_init' );
