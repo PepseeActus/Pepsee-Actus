@@ -235,4 +235,7 @@ get_header(); ?>
 	</section>
 	<?php get_sidebar(); ?>
 </div>
+<div class="instagram-feed">
+	<?= do_shortcode("[instagram-feed]"); ?>
+</div>
 <?php get_footer();
