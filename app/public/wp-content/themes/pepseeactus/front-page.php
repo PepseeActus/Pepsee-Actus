@@ -47,17 +47,24 @@ get_header(); ?>
 	wp_reset_postdata(); ?>
 </section>
 <section class="releases">
+	<div class="releases-head">
+		<img src="<?= get_stylesheet_directory_uri(); ?>/assets/img/h2-frontpage.png">
+	</div>
 	<div class="big-title">
 		<h2>Releases</h2>
 		<a href="<?= get_post_type_archive_link('music'); ?>">Tout afficher</a>
 	</div>
 	<div class="releases-wrap">
 		<?php
-			$args = array(
+			$args = [
 				'posts_per_page' => 12,
 				'orderby' => 'date',
-				'post_type' => ['music', 'album']
-			);
+				'post_type' => 'music',
+				'date_query' => [[
+					'after' => ['year' => 2015],
+					'inclusive' => true
+				]],
+			];
 			
 			$query = new WP_Query( $args );
 			if ( $query->have_posts() ) {
@@ -69,9 +76,83 @@ get_header(); ?>
 						<a class="rotate" href="<?php the_permalink(); ?>">
 							<?php the_post_thumbnail( 'pepseeactus-Music' ); ?>
 						</a>
-						<div class="releases-info">
-							<h3 class="entry-title"><a href="<?php the_permalink(); ?>" target="_blank"><?= $artistes; ?></a></h3>
+						<div class="info">
+							<h3 class="title"><a href="<?php the_permalink(); ?>" target="_blank"><?= $artistes; ?></a></h3>
 							<p><a href="<?php the_permalink(); ?>" target="_blank"><?= $titre; ?></a></p>
+						</div>
+					</article>
+
+				<?php }
+			}
+		wp_reset_postdata(); ?>
+	</div>
+</section>
+<section class="classic margin-outside">
+	<div class="big-title">
+		<h2>Classics<span>(1990 - 2015)</span></h2>
+		<a href="<?= get_post_type_archive_link('music'); ?>">Tout afficher</a>
+	</div>
+	<div class="classic-wrap">
+		<?php
+			$args = [
+				'posts_per_page' => 12,
+				'orderby' => 'date',
+				'post_type' => 'music',
+				'date_query' => [[
+					'before' => ['year' => 2015],
+					'inclusive' => true
+				]],
+			];
+
+			$query = new WP_Query( $args );
+			if ( $query->have_posts() ) {
+				while ( $query->have_posts() ) {
+					$query->the_post();
+					$artistes = get_field('artistes');
+					$titre = get_field('titre'); ?>
+					<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+						<a class="rotate" href="<?php the_permalink(); ?>">
+							<?php the_post_thumbnail( 'pepseeactus-Music' ); ?>
+						</a>
+						<div class="info">
+							<h3 class="title"><a href="<?php the_permalink(); ?>" target="_blank"><?= $artistes; ?></a></h3>
+							<p><a href="<?php the_permalink(); ?>" target="_blank"><?= $titre; ?></a></p>
+							<p><?php the_date('Y'); ?></p>
+						</div>
+					</article>
+
+				<?php }
+			}
+		wp_reset_postdata(); ?>
+	</div>
+</section>
+<section class="album margin-outside">
+	<div class="big-title">
+		<h2>Albums & Mixtapes</h2>
+		<a href="<?= get_post_type_archive_link('music'); ?>">Tout afficher</a>
+	</div>
+	<div class="album-wrap">
+		<?php
+			$args = array(
+				'posts_per_page' => 12,
+				'orderby' => 'date',
+				'post_type' => 'album'
+			);
+			
+			$query = new WP_Query( $args );
+			if ( $query->have_posts() ) {
+				while ( $query->have_posts() ) {
+					$query->the_post();
+					$artistes = get_field('artistes');
+					$titre = get_field('titre'); ?>
+					<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+						<a href="<?php the_permalink(); ?>">
+							<?php the_post_thumbnail( 'pepseeactus-Music' ); ?>
+						</a>
+						<div class="info">
+							<h3 class="title"><a href="<?php the_permalink(); ?>" target="_blank"><?= $artistes; ?></a></h3>
+							<p><a href="<?php the_permalink(); ?>" target="_blank"><?= $titre; ?></a></p>
+							<p><?php the_date('Y'); ?></p>
 						</div>
 					</article>
 
@@ -154,32 +235,4 @@ get_header(); ?>
 	</section>
 	<?php get_sidebar(); ?>
 </div>
-<section class="artists padding-inside">
-	<div class="big-title">
-		<h2>Artistes</h2>
-		<a href="<?= get_post_type_archive_link('artist'); ?>">Tout afficher</a>
-	</div>
-	<div class="artists-wrap">
-		<?php
-			$args = array(
-				'posts_per_page' => 4,
-				'orderby' => 'date',
-				'post_type' => 'artist'
-			);
-
-			$query = new WP_Query( $args );
-			if ( $query->have_posts() ) {
-				while ( $query->have_posts() ) {
-					$query->the_post(); ?>
-
-					<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-						<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail( 'pepseeactus-ArtistsFront' ); ?></a>
-					</article>
-
-				<?php }
-			}
-		wp_reset_postdata(); ?>
-	</div>
-</section>
-
 <?php get_footer();

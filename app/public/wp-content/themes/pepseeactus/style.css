@@ -962,33 +962,68 @@ body.admin-bar .search-overlay {
   display: flex;
   justify-content: space-between; }
 
-.home .releases-wrap {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between; }
-  @media (max-width: 1023.98px) {
-    .home .releases-wrap {
-      text-align: center;
-      justify-content: center; } }
-  .home .releases-wrap article {
-    width: 19rem; }
+.home .releases,
+.home .classic,
+.home .album {
+  position: relative; }
+  .home .releases .releases-head,
+  .home .classic .releases-head,
+  .home .album .releases-head {
+    position: absolute;
+    top: -6rem;
+    left: 26%;
+    transform: rotate(-5deg); }
+    .home .releases .releases-head img,
+    .home .classic .releases-head img,
+    .home .album .releases-head img {
+      width: 25rem; }
+  .home .releases .big-title span,
+  .home .classic .big-title span,
+  .home .album .big-title span {
+    font-size: 1.4rem;
+    letter-spacing: 0;
+    font-weight: 400; }
+  .home .releases-wrap,
+  .home .classic-wrap,
+  .home .album-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; }
     @media (max-width: 767.98px) {
-      .home .releases-wrap article {
-        width: 18rem; } }
-    @media (max-width: 374.98px) {
-      .home .releases-wrap article {
-        width: 13rem; } }
-    .home .releases-wrap article img {
-      width: 100%;
-      box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5); }
-    .home .releases-wrap article .releases-info {
-      text-align: center; }
-      .home .releases-wrap article .releases-info .entry-title {
-        font-size: 1.5rem;
-        display: block;
-        margin-top: 1rem; }
-      .home .releases-wrap article .releases-info p {
-        font-weight: 600; }
+      .home .releases-wrap,
+      .home .classic-wrap,
+      .home .album-wrap {
+        justify-content: center; } }
+    .home .releases-wrap article,
+    .home .classic-wrap article,
+    .home .album-wrap article {
+      width: 19rem;
+      margin-bottom: 1rem; }
+      @media (max-width: 767.98px) {
+        .home .releases-wrap article,
+        .home .classic-wrap article,
+        .home .album-wrap article {
+          width: 85%; } }
+      .home .releases-wrap article img,
+      .home .classic-wrap article img,
+      .home .album-wrap article img {
+        width: 100%;
+        box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5); }
+      .home .releases-wrap article .info,
+      .home .classic-wrap article .info,
+      .home .album-wrap article .info {
+        text-align: center; }
+        .home .releases-wrap article .info .title,
+        .home .classic-wrap article .info .title,
+        .home .album-wrap article .info .title {
+          font-size: 1.5rem;
+          display: block;
+          margin-top: 1rem; }
+        .home .releases-wrap article .info p,
+        .home .classic-wrap article .info p,
+        .home .album-wrap article .info p {
+          font-weight: 600;
+          margin: 0; }
 
 .home .videos {
   background-color: #1C1C1C;
@@ -1036,6 +1071,9 @@ body.admin-bar .search-overlay {
   .home .videos .swiper-button-next,
   .home .videos .swiper-button-prev {
     color: white; }
+    .home .videos .swiper-button-next:after,
+    .home .videos .swiper-button-prev:after {
+      font-size: 2rem; }
   .home .videos .swiper-button-next {
     right: 0; }
   .home .videos .swiper-button-prev {
@@ -1046,6 +1084,9 @@ body.admin-bar .search-overlay {
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: space-between; }
+  @media (max-width: 767.98px) {
+    .home .actus-wrap {
+      justify-content: center; } }
   .home .actus-wrap .post {
     box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5); }
   .home .actus-wrap .category-actus {
@@ -1055,9 +1096,9 @@ body.admin-bar .search-overlay {
     width: 19rem;
     border-radius: .5rem;
     margin-bottom: 1rem; }
-    @media (max-width: 374.98px) {
+    @media (max-width: 767.98px) {
       .home .actus-wrap .category-actus {
-        min-width: 29rem; } }
+        width: 100%; } }
     .home .actus-wrap .category-actus:hover .overlay {
       height: 0; }
     .home .actus-wrap .category-actus .overlay {
@@ -1114,37 +1155,6 @@ body.admin-bar .search-overlay {
           background: white;
           padding: .4rem 1rem;
           border-radius: .3rem; }
-
-.home .artists-wrap {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between; }
-  @media (max-width: 767.98px) {
-    .home .artists-wrap {
-      justify-content: center; } }
-  .home .artists-wrap article {
-    width: 24%;
-    position: relative;
-    height: 50rem;
-    overflow: hidden;
-    border-radius: 1rem;
-    box-shadow: 0 0.1rem 0.3rem 0 rgba(0, 0, 0, 0.7); }
-    @media (max-width: 767.98px) {
-      .home .artists-wrap article {
-        width: 90%;
-        margin-bottom: 1rem; } }
-    .home .artists-wrap article:hover img {
-      transform: translateX(-50%) scale(1.1);
-      opacity: 1; }
-    .home .artists-wrap article img {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      height: 100%;
-      width: auto;
-      max-width: inherit;
-      transition: all .3s ease-out;
-      opacity: .8; }
 
 .single-post .background-white {
   padding-top: 1.5rem; }

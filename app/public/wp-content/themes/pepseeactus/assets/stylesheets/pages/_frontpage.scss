@@ -111,26 +111,43 @@
         justify-content: space-between;
     }
 
-    .releases {
+    .releases,
+    .classic,
+    .album {
+        position: relative;
+
+        .releases-head {
+            position: absolute;
+            top: -6rem;
+            left: 26%;
+            transform: rotate(-5deg);
+
+            img {
+                width: 25rem;
+            }
+        }
+
+        .big-title span {
+            font-size: 1.4rem;
+            letter-spacing: 0;
+            font-weight: 400;
+        }
+
         &-wrap {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
 
-            @include media(phone-tablet) {
-                text-align: center;
+            @include media(phone) {
                 justify-content: center;
             }
             
             article {
                 width: 19rem;
+                margin-bottom: 1rem;
 
                 @include media(phone) {
-                    width: 18rem;
-                }
-
-                @include media(phone-small) {
-                    width: 13rem;
+                    width: 85%;
                 }
 
                 img {
@@ -138,10 +155,10 @@
                     @include shadow;
                 }
 
-                .releases-info {
+                .info {
                     text-align: center;
 
-                    .entry-title {
+                    .title {
                         font-size: 1.5rem;
                         display: block;
                         margin-top: 1rem;
@@ -149,6 +166,7 @@
 
                     p {
                         font-weight: 600;
+                        margin: 0;
                     }
                 }
             }
@@ -233,6 +251,10 @@
         .swiper-button-next,
         .swiper-button-prev {
             color: white;
+
+            &:after {
+                font-size: 2rem;
+            }
         }
 
         .swiper-button-next {
@@ -251,6 +273,10 @@
             align-items: flex-start;
             justify-content: space-between;
 
+            @include media(phone) {
+                justify-content: center;
+            }
+
             .post {
                 @include shadow();
             }
@@ -263,8 +289,8 @@
                 border-radius: .5rem;
                 margin-bottom: 1rem;
 
-                @include media(phone-small) {
-                    min-width: 29rem;
+                @include media(phone) {
+                    width: 100%;
                 }
 
                 &:hover .overlay {
@@ -342,50 +368,6 @@
                             border-radius: .3rem;
                         }
                     }        
-                }
-            }
-        }
-    }
-
-    .artists {
-        &-wrap {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-
-            @include media(phone) {
-                justify-content: center;
-            }
-            
-            article {
-                width: 24%;
-                position: relative;
-                height: 50rem;
-                overflow: hidden;
-                border-radius: 1rem;
-                box-shadow: 0 .1rem .3rem 0 rgba(0, 0, 0, 0.7);
-
-                @include media(phone) {
-                    width: 90%;
-                    margin-bottom: 1rem;
-                }
-
-                &:hover {
-                    img {
-                        transform: translateX(-50%) scale(1.1);
-                        opacity: 1;
-                    }
-                }
-
-                img {
-                    position: absolute;
-                    left: 50%;
-                    transform: translateX(-50%);
-                    height: 100%;
-                    width: auto;
-                    max-width: inherit;
-                    transition: all .3s ease-out;
-                    opacity: .8;
                 }
             }
         }
