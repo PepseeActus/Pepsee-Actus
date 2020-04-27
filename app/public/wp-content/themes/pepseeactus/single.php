@@ -37,6 +37,8 @@ while ( have_posts() ) : the_post();
 			<div class="post-meta">
 				Posté le <?php the_date(); ?>
 				par <?php the_author(); ?>
+				<i class="fa fa-eye"></i>
+				<?php if (function_exists('the_views')) {the_views();} ?>
 			</div>
 			<div id="graphcomment"></div>
 		</article>

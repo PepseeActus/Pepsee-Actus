@@ -15,7 +15,7 @@
 				<a href="https://open.spotify.com/user/21b27shenyft7hkmfguizsl5q" target="_blank" rel="noopener noreferrer"><i class="fab fa-spotify"></i></a>
 				<a href="https://soundcloud.com/pepsee/sets" target="_blank" rel="noopener noreferrer"><i class="fab fa-soundcloud"></i></a>
 				<a href="https://www.youtube.com/channel/UCrgv-BXDaZ39gdWUl_c7qHQ" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
-				<a href="http://" target="_blank" rel="noopener noreferrer"><i class="fab fa-apple"></i></a>
+				<a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-apple"></i></a>
 			</div>
 			<footer class="site-footer">
 				<div class="footer-wrap">
@@ -29,14 +29,14 @@
 							<li><a href="<?= site_url('/download'); ?>"><span>Musique</span></a></li>
 							<li><a href="<?= site_url('/artistes'); ?>"><span>Artistes</span></a></li>
 							<li><a href="<?= site_url('/actus'); ?>"><span>Actus</span></a></li>
-							<li><a href="<?= site_url('/a-propos'); ?>"><span>À propos</span></a></li>
 						</ul>
 					</div>
 					<div class="footer-section-rgpd col-4">
 						<ul>
+							<li><a href="<?= site_url('/a-propos'); ?>"><span>À propos</span></a></li>
 							<li><a href="<?= site_url('/a-propos/contact'); ?>"><span>Contact</span></a></li>
-							<li><a href="<?= site_url(); ?>"><span>Publicité</span></a></li>
-							<li><a href="<?= site_url(); ?>"><span>Mentions légales</span></a></li>
+							<li><a href="<?= site_url('/publicite'); ?>"><span>Publicité</span></a></li>
+							<li><a href="<?= site_url('/mentions-legales'); ?>"><span>Mentions légales</span></a></li>
 						</ul>
 					</div>
 				</div>

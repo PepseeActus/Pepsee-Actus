@@ -20,8 +20,11 @@ get_header(); ?>
 				<div class="post-item">
 					<ul>
 						<li>
-							<a class="rotate" href="<?php the_permalink(); ?>"><?php the_post_thumbnail('thumbnail'); ?></a>
+							<a <?php if (get_post_type() == 'music') echo 'class="rotate"'; ?> href="<?php the_permalink(); ?>"><?php the_post_thumbnail('thumbnail'); ?></a>
 							<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+							<?php if ((site_url('/actus')) && !(get_post_type() == 'music')) { ?>
+								<i class="fa fa-eye"></i> <?php if (function_exists('the_views')) {the_views();}
+							} ?>
 						</li>
 					</ul>
 				</div>
