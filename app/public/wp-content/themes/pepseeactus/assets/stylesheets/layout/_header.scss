@@ -69,13 +69,66 @@
 
 .hero-banner {
     background-position: center;
-    background-repeat: repeat;
+    background-repeat: no-repeat;
     background-size: cover;
-    background-attachment: fixed;
-    min-height: 30rem;
+    min-height: 40rem;
+    position: relative;
 
     @include media(phone) {
         min-height: 18rem;
+    }
+
+    .banner-info {
+        position: absolute;
+        bottom: 6rem;
+        left: 10rem;
+        color: white;
+        max-width: 30rem;
+
+        .name {
+            font-size: 5rem;
+            text-transform: uppercase;
+            font-weight: 900;
+            line-height: 0;
+        }
+
+        .album {
+            font-size: 5rem;
+            text-transform: uppercase;
+            font-weight: 900;
+        }
+
+        button {
+            margin-top: 2.3rem;
+            background-color: $color__yellow;
+            border-radius: 2.5rem;
+            padding: 1.3rem 3.2rem;
+
+            a {
+                color: white;
+            }
+        }
+    }
+
+    .banner-more {
+        position: absolute;
+        top: 50%;
+        right: 10rem;
+        transform: translateY(-50%);
+
+        .artist-image {
+            overflow: hidden;
+            border-radius: 50%;
+            border: 2px solid white;
+
+            &:hover img {
+                transform: scale(1.1);
+            }
+
+            img {
+                transition: transform ease-out .2s;
+            }
+        }
     }
 }
 
@@ -191,10 +244,6 @@
                     transform: scale(1.1);
                 }
             }
-
-            .artist-info {
-
-            }
         }
     }
 }
@@ -212,12 +261,11 @@ body.admin-bar {
 
 @keyframes spin {
     0% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
+        transform: rotate(0deg);
     }
+
     100% {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+        transform: rotate(360deg);
     }
 }
 

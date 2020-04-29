@@ -56,11 +56,45 @@
 	$pageBannerImage = $pageBanner['url'];
 
 	if ((get_post_type() == 'artist') && $pageBannerImage) : ?>
-		<div class="hero-banner" style='background-image: radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.5), #100e17), url("<?= $pageBannerImage; ?>")'>
-	<?php else : ?>
-		<div class="hero-banner" style='background-image: url("<?= get_stylesheet_directory_uri(); ?>/assets/img/88891.jpg")'>
+
+		<div class="hero-banner" style='background-image: radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.5), #100e17), url("<?= $pageBannerImage; ?>")'></div>
+	
+	<?php else :
+		$args = [
+			'posts_per_page' => 1,
+			'orderby' => 'date',
+			'post_type' => 'banner'
+		];
+					
+		$query = new WP_Query($args);
+		if ( $query->have_posts() ) {
+			while ( $query->have_posts() ) {
+				$query->the_post();
+				$image_banner = get_field('image_banner');
+				$link = get_field('link');
+				$artiste = get_field('artiste');
+				$album = get_field('album'); ?>
+
+				<div class="hero-banner" style='background-image: url("<?= $image_banner['url']; ?>'>
+					<div class="banner-info">
+						<p class="name"><?= $artiste; ?></p>
+						<p class="album"><?= $album; ?></p>
+						<?php the_content(); ?>
+						<button><a href="<?= $link; ?>">Acheter l'album</a></button>
+					</div>
+					<div class="banner-more">
+						<div class="artist-image">
+							<a href="<?= $link; ?>"><?php the_post_thumbnail('thumbnail'); ?></a>
+						</div>
+					</div>
+				</div>
+
+			<?php }
+		}
+
+		wp_reset_postdata(); ?>
+
 	<?php endif; ?>
-	</div>
 
 	<?php
 	if ( function_exists('yoast_breadcrumb') && !is_front_page()) {

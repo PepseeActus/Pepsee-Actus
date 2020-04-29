@@ -16,10 +16,6 @@ h1, h2, h3, h4, h5, h6 {
 	clear: both;
 }
 
-p {
-	margin-bottom: 1.5em;
-}
-
 dfn, cite, em, i {
 	font-style: italic;
 }
@@ -69,21 +65,73 @@ blockquote, q {
 	}
 }
 
+h1 {
+	font-size: 6rem;
+}
+
 h2 {
-	display: inline-block;
 	font-size: 5rem;
-	text-transform: uppercase;
-	font-weight: 700;
-	letter-spacing: .5rem;
-	background: linear-gradient(to top, transparent 10%, $color__yellow 10.01%, $color__yellow 40%, transparent 40.01%) no-repeat left bottom / 0 100%;
-	transition: background-size 0.3s;
-	cursor: default;
 	
 	@include media(phone) {
 		font-size: 3rem;
 	}
+}
 
-	&:hover {
-		background-size: 100% 100%;
+h3 {
+	font-size: 3rem;
+}
+
+strong {
+	box-shadow: rgba($color__yellow, .5) 0px -5px 0px inset;
+}
+
+em {
+	font-weight: 300;
+}
+
+figure {
+	margin-right: 0;
+	margin-left: 0;
+	margin-top: 0;
+	text-align: center;
+}
+
+figcaption {
+	font-size: 1.2rem;
+	color: grey;
+}
+
+.single article, .page .page-content {
+	a {
+		position: relative;
+		color: $color__yellow;
+		font-weight: 500;
+		transition: transform 0.2s;
+
+		&:hover,
+		&:focus {
+			transform: scale(0.8333);
+		}
+
+		&::before {
+			position: absolute;
+			top: -2px;
+			left: -7px;
+			box-sizing: content-box;
+			padding: 0 5px;
+			width: 100%;
+			height: 100%;
+			border: 2px solid $color__yellow;
+			content: '';
+			opacity: 0;
+			transition: opacity 0.2s, transform 0.2s;
+			transform: scale(0.8333);
+		}
+
+		&:hover::before,
+		&:focus::before {
+			opacity: 1;
+			transform: scale(1.2);
+		}
 	}
 }

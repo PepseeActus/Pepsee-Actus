@@ -12,7 +12,7 @@ get_header();
 while ( have_posts() ) : the_post();
 	if ( '' != get_the_post_thumbnail() && !has_post_format( 'video' )) : ?>
 		<div class="post-thumbnail">
-			<?php the_post_thumbnail(); ?>
+			<?php the_post_thumbnail('large'); ?>
 			<?php the_title( '<h3 class="single-title"><span>', '</span></h3>' ); ?>
 		</div>
 	<?php else : ?>
@@ -76,6 +76,9 @@ while ( have_posts() ) : the_post();
 					</div>
 				</div>
 			<?php endif; ?>
+			<div class="instagram-feed">
+				<?= do_shortcode("[instagram-feed]"); ?>
+			</div>
 		</aside>
 	</div>
 <?php endwhile; ?>

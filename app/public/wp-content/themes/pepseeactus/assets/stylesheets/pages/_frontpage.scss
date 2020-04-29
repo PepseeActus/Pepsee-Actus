@@ -1,4 +1,18 @@
 .home {
+    h2 {
+        text-transform: uppercase;
+        font-weight: 700;
+        margin-bottom: 2rem;
+
+        @include media(phone) {
+            text-align: center;
+        }
+    }
+
+    i.fa-eye {
+        margin-left: 5px;
+    }
+
     main {
         background: white;
     }
@@ -6,8 +20,8 @@
     .post {
         position: relative;
         display: inline-block;
-        top: -100px;
-        min-width: 250px;
+        top: -55px;
+        min-width: 25rem;
         z-index: 1;
 
         @include media(phone-tablet) {
@@ -22,14 +36,14 @@
             position: relative;
             height: auto;
             overflow: hidden;
-            box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
             border-radius: 5px;    
 
             .post-infos {
                 position: absolute;
-                left: 10px;
-                bottom: 10px;
-                right: 10px;
+                left: 1rem;
+                bottom: 1rem;
+                right: 1rem;
             
                 .category {
                     margin-bottom: 0.5rem;
@@ -85,27 +99,6 @@
         }
     }
 
-    .big-title {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-        margin-bottom: 3rem;
-        border-bottom: 1px solid $color__grey;
-
-        @include media(phone) {
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        a {
-            margin-right: 1rem;
-
-            &:hover {
-                text-decoration: underline;
-            }
-        }
-    }
-
     .wrapper {
         display: flex;
         justify-content: space-between;
@@ -119,18 +112,16 @@
         .releases-head {
             position: absolute;
             top: -6rem;
-            left: 26%;
+            left: 20%;
             transform: rotate(-5deg);
+
+            @include media(phone) {
+                display: none;
+            }
 
             img {
                 width: 25rem;
             }
-        }
-
-        .big-title span {
-            font-size: 1.4rem;
-            letter-spacing: 0;
-            font-weight: 400;
         }
 
         &-wrap {
@@ -143,23 +134,38 @@
             }
             
             article {
-                width: 19rem;
                 margin-bottom: 1rem;
+                display: flex;
 
                 @include media(phone) {
-                    width: 85%;
+                    width: 90%;
+                }
+
+                .rotate {
+                    width: 7rem;
+
+                    @include media(phone) {
+                        width: inherit;
+                    }
                 }
 
                 img {
-                    width: 100%;
                     @include shadow;
+                    width: 100%;
+                }
+
+                &.album img {
+                    min-width: 11rem;
                 }
 
                 .info {
-                    text-align: center;
+                    width: 19rem;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    margin-left: 1rem;
 
                     .title {
-                        font-size: 1.5rem;
                         display: block;
                         margin-top: 1rem;
                     }
@@ -176,6 +182,10 @@
     .videos {
         background-color: $color__black;
         position: relative;
+
+        @include media(phone) {
+            display: none;
+        }
 
         &:before,
         &:after {
@@ -285,31 +295,13 @@
                 top: inherit;
                 overflow: hidden;
                 position: relative;
-                width: 19rem;
                 border-radius: .5rem;
                 margin-bottom: 1rem;
+                width: 32.5%;
+                max-height: 35rem;
 
                 @include media(phone) {
                     width: 100%;
-                }
-
-                &:hover .overlay {
-                    height: 0;
-                }
-
-                .overlay {
-                    background: white;
-                    height: 16.5rem;
-                    position: absolute;
-                    bottom: 0;
-                    left: 0;
-                    right: 0;
-                    width: 100%;
-                    transition: height 0.5s;
-
-                    @include media(phone-tablet) {
-                        background: transparent;
-                    }
                 }
 
                 .actus-info {
@@ -336,11 +328,10 @@
                     }
 
                     .entry-title {
-                        padding: 0.5rem 0 2rem;
+                        padding: 0.5rem 0;
                         text-transform: uppercase;
                         font-weight: $bold;
                         font-size: 1.7rem;
-                        letter-spacing: 0.5px;
 
                         a {
                             background: white;

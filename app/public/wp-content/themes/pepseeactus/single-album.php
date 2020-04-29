@@ -35,7 +35,7 @@ get_header(); ?>
                     </div>
                     <div class="music-presentation__info-reseaux">
                         <ul>
-                            <?= ($download) ? '<li><a href="'.$download.'" target="_blank"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo-download.png" alt="download"></a></li>' : ''; ?>
+                            <?= ($download) ? '<li><a href="'.$download.'" target="_blank"><i class="fa fa-cloud-download"></i> Download</li>' : ''; ?>
                             <?= ($soundcloud) ? '<li><a href="'.$soundcloud.'" target="_blank"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo-soundcloud.png" alt="soundcloud"></a></li>' : ''; ?>
                             <?= ($youtube) ? '<li><a href="'.$youtube.'" target="_blank"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo-youtube.png" alt="youtube music"></a></li>' : ''; ?>
                             <?= ($spotify) ? '<li><a href="'.$spotify.'" target="_blank"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo-spotify.png" alt="spotify"></a></li>' : ''; ?>
@@ -85,6 +85,9 @@ get_header(); ?>
                         <?php wp_reset_postdata(); ?>
                     </div>
                 <?php endif; ?>
+            </div>
+            <div class="instagram-feed">
+                <?= do_shortcode("[instagram-feed]"); ?>
             </div>
         </aside>
     </div>

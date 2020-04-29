@@ -53,6 +53,23 @@ function pepsee_post_types() {
             'singular_name' => 'Album'
         ]
     ]);
+
+    // Banner Post Type
+    register_post_type('banner', [
+        'supports'     => ['title', 'editor', 'thumbnail', 'revisions', 'custom-fields'],
+        'rewrite'      => ['slug' => 'banner'],
+        'menu_position'=> 6,
+        'public'       => true,
+        'show_in_rest' => true,
+        'menu_icon'    => 'dashicons-format-image',
+        'labels' => [
+            'name'          => 'banner',
+            'add_new_item'  => 'Ajouter un nouvel banner',
+            'edit_item'     => 'Éditer un banner',
+            'all_items'     => 'Tous les banners',
+            'singular_name' => 'banner'
+        ]
+    ]);
 }
 
 add_action('init', 'pepsee_post_types');
