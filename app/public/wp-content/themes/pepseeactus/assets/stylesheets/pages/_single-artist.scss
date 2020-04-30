@@ -11,16 +11,6 @@
         margin-bottom: 2rem;
     }
 
-    .more {
-        text-decoration: underline;
-
-        @include media(desktop) {
-            position: absolute;
-            top: 2rem;
-            right: 0;
-        }
-    }
-
     .artist-presentation {
         display: flex;
         align-items: flex-end;
@@ -90,7 +80,7 @@
         text-align: justify;
     }
 
-    .artist-album{
+    .artist-album {
         margin-bottom: 5rem;
         
         &__container {
@@ -139,7 +129,7 @@
         }
     }
 
-    .artist-music{
+    .artist-music {
         position: relative;
         margin-bottom: 5rem;
         
@@ -193,6 +183,8 @@
             flex-wrap: wrap;
 
             &-box {
+                margin-bottom: 2rem;
+
                 > div {
                     position: relative;
                     @include shadow();
@@ -227,8 +219,5 @@
                 }
             }
         }
-    }
-
-    aside {
     }
 }

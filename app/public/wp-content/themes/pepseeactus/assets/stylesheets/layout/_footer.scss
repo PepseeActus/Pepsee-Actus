@@ -103,43 +103,182 @@
     }
 }
 
-.cd-top {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
+// BACK TO TOP
+#button {
     display: inline-block;
-    height: 4rem;
+    background-color: $color__yellow;
     width: 4rem;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-    background: url('assets/img/cd-top-arrow.svg') no-repeat center 50%;
-    background-color: rgba($color__yellow, 0.8);
+    height: 4rem;
+    text-align: center;
+    border-radius: 4px;
+    position: fixed;
+    bottom: 1rem;
+    left: 1rem;
+    transition: background-color .3s, opacity .5s, visibility .5s;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    @include shadow();
 
-    @include media(phone) {
-        bottom: 3rem;
-        right: 3rem;
-        height: 6rem;
-        width: 6rem;
+    &:hover {
+        cursor: pointer;
+        background-color: #333;
+        text-decoration: none;
+    }
+
+    &:active {
+        background-color: #555;
+    }
+
+    &::after {
+        content: "\f077";
+        font-family: FontAwesome;
+        font-weight: normal;
+        font-style: normal;
+        font-size: 2rem;
+        line-height: 4rem;
+        color: #fff;
+    }
+
+    &.show {
+        opacity: 1;
+        visibility: visible;
     }
 }
 
-.js {
-    .cd-top {
-        visibility: hidden;
+// ABOUT
+.about {
+    $cubic: cubic-bezier(0.64, 0.01, 0.07, 1.65);
+    $transition: 0.6s $cubic;
+    position: fixed;
+    z-index: 10;
+    bottom: 10px;
+    right: 10px;
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    transition: all 0.2s ease;
+
+    .bg_links {
+        width: 4rem;
+        height: 4rem;
+        border-radius: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(#000, 0.5);
+        border-radius: 100%;
+        backdrop-filter: blur(5px);
+        position: absolute;
+    }
+
+    .logo {
+        width: 4rem;
+        height: 4rem;
+        z-index: 9;
+        background-image: url('assets/img/logo-perso.png');
+        background-size: 65%;
+        background-repeat: no-repeat;
+        background-position: 7px 7px;
+        opacity: 0.9;
+        transition: all 1s 0.2s ease;
+        bottom: 0;
+        right: 0;
+    }
+
+    .social {
         opacity: 0;
-        transition: opacity .3s, visibility .3s, background-color .3s;
+        right: 0;
+        bottom: 0;
+
+        .icon {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            transition: all 0.2s ease, background-color 0.4s ease;
+            opacity: 0;
+            border-radius: 100%;
+
+            i {
+                font-size: 24px;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        &.facebook,
+        &.youtube,
+        &.instagram {
+            transition: all 0.8s ease;
+        }
     }
 
-    .cd-top--is-visible { // back-to-top button visible
-        visibility: visible;
-        opacity: 1;
-    }
+    &:hover {
+        width: 105px;
+        height: 105px;
+        transition: all $transition;
 
-    .cd-top--fade-out { // reduce button opacity if user keeps scrolling
-        opacity: .5;
-    }
+        .logo {
+            opacity: 1;
+            transition: all 0.6s ease;
+        }
 
-    .cd-top:hover {
-        background-color: $color__yellow;
-        opacity: 1;
+        .social {
+            opacity: 1;
+
+            .icon {
+                opacity: 0.9;
+            }
+
+            &:hover {
+                background-size: 28px;
+
+                .icon {
+                    background-size: 65%;
+                    opacity: 1;
+                }
+            }
+
+            &.facebook {
+                right: 0;
+                bottom: calc(100% - 40px);
+                transition: all 0.3s 0s $cubic;
+
+                .icon {
+                    &:hover {
+                        background-color: $color__facebook;
+                    }
+                }
+            }
+
+            &.youtube {
+                bottom: 45%;
+                right: 45%;
+                transition: all 0.3s 0.15s $cubic;
+
+                .icon {
+                    &:hover {
+                        background-color: $color__youtube;
+                    }
+                }
+            }
+
+            &.instagram {
+                bottom: 0;
+                right: calc(100% - 40px);
+                transition: all 0.3s 0.25s $cubic;
+
+                .icon {
+                    &:hover {
+                        background: $color__instagram;
+                    }
+                }
+            }
+        }
     }
 }

@@ -21,7 +21,6 @@
 				<div class="footer-wrap">
 					<div class="footer-section-1 col-4">
 						<p>L'univers Reggae Dancehall des Antilles françaises.</p>
-						<?php pepseeactus_the_custom_logo(); ?>
 					</div>
 					<div class="footer-section-menu col-4">
 						<ul>
@@ -41,8 +40,25 @@
 					</div>
 				</div>
 				<div class="site-info">PepseeActus since 2010 ©Copyright 2010-<?= date("Y"); ?></div>
+
+				<!-- back to top -->
+				<a id="button"></a>
+				
+				<!-- about -->
+				<div class="about">
+					<a class="bg_links social facebook" href="https://www.facebook.com/PepseeActus/" target="_blank">
+						<span class="icon"><i class="fab fa-facebook"></i></span>
+					</a>
+					<a class="bg_links social youtube" href="https://www.youtube.com/channel/UCrgv-BXDaZ39gdWUl_c7qHQ" target="_blank">
+						<span class="icon"><i class="fab fa-youtube"></i></span>
+					</a>
+					<a class="bg_links social instagram" href="https://www.instagram.com/pepseeactus/" target="_blank">
+						<span class="icon"><i class="fab fa-instagram"></i></span>
+					</a>
+					<a class="bg_links logo"></a>
+				</div>
+
 			</footer>
-			<a href="#" class="cd-top text-replace js-cd-top">Top</a>
 		<?php wp_footer(); ?>
 	</body>
 </html>

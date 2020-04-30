@@ -55,7 +55,7 @@ get_header(); ?>
             <div class="artist-album">
                 <?php $posts = get_field('albums_associes');
                 if ($posts): ?>
-                    <h2>discographie</h2>
+                    <h2>Discographie</h2>
                     <div class="artist-album__container">
                         <?php foreach ($posts as $post) {
                             $artistes = get_field('artistes');
@@ -98,7 +98,7 @@ get_header(); ?>
             <div class="artist-music">
                 <?php $posts = get_field('musique_associees');
                 if ($posts): ?>
-                    <h2>brand new</h2>
+                    <h2>Singles</h2>
                     <div class="artist-music__container">
                         <?php foreach ($posts as $post) {
                             $artistes = get_field('artistes');
@@ -136,13 +136,12 @@ get_header(); ?>
                         <?php } ?>
                         <?php wp_reset_postdata(); ?>
                     </div>
-                    <a class="more" href="<?= get_post_type_archive_link('music'); ?>">Plus de sons de ici</a>
                 <?php endif; ?>
             </div>
             <div class="artist-clip">
                 <?php $posts = get_field('clips_associes');
                 if ($posts):?>
-                    <h2>videos</h2>
+                    <h2>Videos</h2>
                     <div class="artist-clip__container">
                         <?php foreach ($posts as $post) { ?>
                             <div class="artist-clip__container-box col-12 col-md-6">
@@ -155,7 +154,6 @@ get_header(); ?>
                         <?php } ?>
                         <?php wp_reset_postdata(); ?>
                     </div>
-                    <a class="more" href="<?= site_url('/category/clips/'); ?>">Plus de clips ici</a>
                 <?php endif; ?>
             </div>
         </div>

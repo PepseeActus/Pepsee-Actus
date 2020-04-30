@@ -275,7 +275,8 @@
     }
 
     .actus {
-        &-wrap {
+        &-wrap,
+        .clips-wrap {
             display: flex;
             flex-wrap: wrap;
             align-items: flex-start;
@@ -289,20 +290,31 @@
                 @include shadow();
             }
 
-            .category-actus {
+            .category-actus,
+            .category-clips {
                 top: inherit;
                 overflow: hidden;
                 position: relative;
                 border-radius: .5rem;
                 margin-bottom: 1rem;
                 width: 32.5%;
-                max-height: 35rem;
+                max-height: 25rem;
 
                 @include media(phone) {
                     width: 100%;
                 }
 
-                .actus-info {
+                &:hover .wp-post-image {
+                    filter: none;
+                }
+
+                .wp-post-image {
+                    filter: blur(5px);
+                    transition: filter .3s ease-out;
+                }
+
+                .actus-info,
+                .clips-info {
                     text-align: center;
                     position: absolute;
                     bottom: 0;
@@ -313,12 +325,7 @@
                     flex-direction: column;
                     padding: 0 2rem;
 
-                    img {
-                        border-radius: .3rem;
-                    }
-
                     .category a {
-                        background: $color__red;
                         color: white;
                         padding: .5rem;
                         font-weight: 600;
@@ -344,6 +351,7 @@
                         color: grey;
                         font-size: 1.2rem;
                         margin-bottom: 1rem;
+                        margin-top: 0;
 
                         .icon-date {
                             fill: currentColor;
@@ -357,6 +365,14 @@
                             border-radius: .3rem;
                         }
                     }        
+                }
+
+                .actus-info .category a {
+                    background: $color__yellow;
+                }
+
+                .clips-info .category a {
+                    background: $color__red;
                 }
             }
         }

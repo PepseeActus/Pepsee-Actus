@@ -125,79 +125,52 @@ class Search {
 }
 
 $(document).ready(function(){
-    var search = new Search();
+
+    // SEARCH
+    const search = new Search();
 
     window.gc_params = {
         graphcomment_id: 'PepseeActus',
         fixed_header_height: 0,
     };
 
-    var gc_params = {
+    let gc_params = {
         graphcomment_id: 'PepseeActus'
     };
 
     (function() {
-        var gc = document.createElement('script'); gc.type = 'text/javascript'; gc.async = true;
+        const gc = document.createElement('script'); gc.type = 'text/javascript'; gc.async = true;
         gc.src = 'https://graphcomment.com/js/integration.js?' + Math.round(Math.random() * 1e8);
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(gc);
     })();
 
-    // SWIPER JS
-    var mySwiper = new Swiper ('.swiper-container', {
-        // Optional parameters
-        spaceBetween: 30,
-        slidesPerView: 3,
-        slidesPerGroup: 3,
-        breakpoints: {
-            // when window width is >= 320px
-            320: {
-                slidesPerView: 1
-            },
-            // when window width is >= 480px
-            480: {
-                slidesPerView: 2
-            },
-            // when window width is >= 640px
-            640: {
-                slidesPerView: 3
-            }
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
+    // BACK TO TOP
+    const btn = $('#button');
+
+    $(window).scroll(function() {
+        if ($(window).scrollTop() > 300) {
+        btn.addClass('show');
+        } else {
+        btn.removeClass('show');
         }
     });
 
-    // BACK TO TOP
-    (function(){
-        // Back to Top - by CodyHouse.co
-        var backTop = document.getElementsByClassName('js-cd-top')[0],
-            offset = 300, // browser window scroll (in pixels) after which the "back to top" link is shown
-            offsetOpacity = 1200, //browser window scroll (in pixels) after which the "back to top" link opacity is reduced
-            scrollDuration = 700,
-            scrolling = false;
-    
-        if( backTop ) {
-            //update back to top visibility on scrolling
-            window.addEventListener("scroll", function(event) {
-                if( !scrolling ) {
-                    scrolling = true;
-                    (!window.requestAnimationFrame) ? setTimeout(checkBackToTop, 250) : window.requestAnimationFrame(checkBackToTop);
-                }
-            });
-    
-            //smooth scroll to top
-            backTop.addEventListener('click', function(event) {
-                event.preventDefault();
-                (!window.requestAnimationFrame) ? window.scrollTo(0, 0) : Util.scrollTo(0, scrollDuration);
-            });
-        }
-    
-        function checkBackToTop() {
-            var windowTop = window.scrollY || document.documentElement.scrollTop;
-            ( windowTop > offset ) ? Util.addClass(backTop, 'cd-top--is-visible') : Util.removeClass(backTop, 'cd-top--is-visible cd-top--fade-out');
-            ( windowTop > offsetOpacity ) && Util.addClass(backTop, 'cd-top--fade-out');
-            scrolling = false;
-        }
-    })();
+    btn.on('click', function(e) {
+        e.preventDefault();
+        $('html, body').animate({scrollTop:0}, '300');
+    });
+
+    // MOUSE EFFECT ON SINGLE TITLE
+    let mouseX, mouseY;
+    let ww = $( window ).width();
+    let wh = $( window ).height();
+    let traX, traY;
+    $(document).mousemove(function(e){
+        mouseX = e.pageX;
+        mouseY = e.pageY;
+        traX = ((4 * mouseX) / 570) + 40;
+        traY = ((4 * mouseY) / 570) + 50;
+        console.log(traX);
+        $(".hero-banner .info").css({"background-position": traX + "%" + traY + "%"});
+    });
 });

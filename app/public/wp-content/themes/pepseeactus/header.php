@@ -57,7 +57,10 @@
 
 	if (!(is_front_page()) && $pageBannerImage) : ?>
 
-		<div class="hero-banner" style='background-image: url("<?= $pageBannerImage; ?>")'></div>
+		<div class="hero-banner">
+			<div class="banner" style='background-image: url("<?= $pageBannerImage; ?>")'></div>
+			<div class="info"><?php the_title(); ?></div>
+		</div>
 
 	<?php elseif (is_front_page() || is_page()) :
 
@@ -91,7 +94,7 @@
 						<p class="name"><?= $artiste; ?></p>
 						<p class="album"><?= $album; ?></p>
 						<?php the_content(); ?>
-						<button><a href="<?= $link; ?>">Acheter l'album</a></button>
+						<button><a target="_blank" href="<?= $link; ?>">Acheter l'album</a></button>
 					</div>
 					<div class="banner-more">
 						<div class="artist-image">
