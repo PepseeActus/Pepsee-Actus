@@ -106,6 +106,7 @@ function pepseeactus_scripts() {
 	wp_enqueue_script('bootstrap');
 	wp_enqueue_script('swiperjs');
 	wp_enqueue_script('font-awesome');
+	wp_enqueue_script('pepseeactus-app', get_template_directory_uri() . '/assets/js/util.js', [], '', true);
 	wp_enqueue_script('pepseeactus-app', get_template_directory_uri() . '/assets/js/app.js', [], '', true);
 	wp_localize_script('pepseeactus-app', 'pepseeData', array(
 		'root_url' => get_site_url()

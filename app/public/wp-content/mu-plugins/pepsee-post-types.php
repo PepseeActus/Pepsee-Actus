@@ -63,7 +63,7 @@ function pepsee_post_types() {
         'show_in_rest' => true,
         'menu_icon'    => 'dashicons-format-image',
         'labels' => [
-            'name'          => 'banner',
+            'name'          => 'Banner',
             'add_new_item'  => 'Ajouter un nouvel banner',
             'edit_item'     => 'Éditer un banner',
             'all_items'     => 'Tous les banners',

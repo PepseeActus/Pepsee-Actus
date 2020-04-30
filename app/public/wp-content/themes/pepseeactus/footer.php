@@ -42,6 +42,7 @@
 				</div>
 				<div class="site-info">PepseeActus since 2010 ©Copyright 2010-<?= date("Y"); ?></div>
 			</footer>
+			<a href="#" class="cd-top text-replace js-cd-top">Top</a>
 		<?php wp_footer(); ?>
 	</body>
 </html>

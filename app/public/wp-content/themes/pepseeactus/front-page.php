@@ -171,7 +171,7 @@ get_header(); ?>
 	<?php get_sidebar(); ?>
 </div>
 
-<section class="videos margin-outside padding-inside">
+<section class="videos padding-inside">
 	<div class="videos-nav">
 		<ul>
 			<li><a href="">Clips</a></li>
@@ -205,7 +205,7 @@ get_header(); ?>
 	</div>
 </section>
 
-<section class="actus">
+<section class="actus padding-inside">
 	<div>
 		<h2>Actus</h2>
 	</div>
@@ -244,8 +244,4 @@ get_header(); ?>
 		wp_reset_postdata(); ?>
 	</div>
 </section>
-
-<div class="instagram-feed margin-outside">
-	<?= do_shortcode("[instagram-feed]"); ?>
-</div>
 <?php get_footer();

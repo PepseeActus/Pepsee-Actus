@@ -452,7 +452,7 @@ h3 {
   font-size: 3rem; }
 
 strong {
-  box-shadow: rgba(251, 192, 3, 0.5) 0px -5px 0px inset; }
+  font-weight: 600; }
 
 em {
   font-weight: 300; }
@@ -467,11 +467,15 @@ figcaption {
   font-size: 1.2rem;
   color: grey; }
 
+.single article p, .page .page-content p {
+  margin: 1rem 0 3rem; }
+
 .single article a, .page .page-content a {
   position: relative;
-  color: #FBC003;
   font-weight: 500;
-  transition: transform 0.2s; }
+  transition: transform 0.2s;
+  box-shadow: none;
+  box-shadow: rgba(251, 192, 3, 0.5) 0px -5px 0px inset; }
   .single article a:hover, .single article a:focus, .page .page-content a:hover, .page .page-content a:focus {
     transform: scale(0.8333); }
   .single article a::before, .page .page-content a::before {
@@ -514,18 +518,19 @@ a {
 .bypostauthor {
   display: block; }
 
-@media (max-width: 767.98px) {
-  #breadcrumbs {
-    font-size: 1.2rem; } }
-
-#breadcrumbs .breadcrumb_last {
-  color: #c3990f; }
+#breadcrumbs {
+  margin-top: 1rem;
+  margin-bottom: 3rem; }
   @media (max-width: 767.98px) {
-    #breadcrumbs .breadcrumb_last {
-      display: block; } }
-
-#breadcrumbs a:hover {
-  text-decoration: underline; }
+    #breadcrumbs {
+      font-size: 1.2rem; } }
+  #breadcrumbs .breadcrumb_last {
+    color: #c3990f; }
+    @media (max-width: 767.98px) {
+      #breadcrumbs .breadcrumb_last {
+        display: block; } }
+  #breadcrumbs a:hover {
+    text-decoration: underline; }
 
 .music-content,
 .artist-bio,
@@ -704,31 +709,80 @@ html {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  min-height: 40rem;
-  position: relative; }
+  min-height: 65rem;
+  position: relative;
+  overflow: hidden; }
   @media (max-width: 767.98px) {
     .hero-banner {
-      min-height: 18rem; } }
+      min-height: 30rem; } }
+  .hero-banner .video-background {
+    background: #000;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -99;
+    filter: blur(5px); }
+  .hero-banner .video-foreground,
+  .hero-banner .video-background iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; }
+  @media (min-aspect-ratio: 16 / 9) {
+    .hero-banner .video-foreground {
+      height: 300%;
+      top: -100%; } }
+  @media (max-aspect-ratio: 16 / 9) {
+    .hero-banner .video-foreground {
+      width: 300%;
+      left: -100%; } }
   .hero-banner .banner-info {
     position: absolute;
     bottom: 6rem;
     left: 10rem;
     color: white;
-    max-width: 30rem; }
-    .hero-banner .banner-info .name {
-      font-size: 5rem;
+    max-width: 30rem;
+    top: 50%;
+    transform: translateY(-50%); }
+    @media (max-width: 767.98px) {
+      .hero-banner .banner-info {
+        left: 50%;
+        top: 45%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        max-width: 100%; } }
+    .hero-banner .banner-info .name,
+    .hero-banner .banner-info .album {
+      background-color: transparent;
+      background-image: linear-gradient(270deg, #abb2c4 0%, #FBC003 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 6rem;
       text-transform: uppercase;
       font-weight: 900;
-      line-height: 0; }
+      line-height: 4.2rem; }
+      @media (max-width: 767.98px) {
+        .hero-banner .banner-info .name,
+        .hero-banner .banner-info .album {
+          font-size: 4rem;
+          line-height: 2.9rem; } }
     .hero-banner .banner-info .album {
-      font-size: 5rem;
-      text-transform: uppercase;
-      font-weight: 900; }
+      margin-bottom: 2.3rem; }
+      @media (max-width: 767.98px) {
+        .hero-banner .banner-info .album {
+          margin-bottom: .5rem; } }
     .hero-banner .banner-info button {
       margin-top: 2.3rem;
       background-color: #FBC003;
       border-radius: 2.5rem;
       padding: 1.3rem 3.2rem; }
+      @media (max-width: 767.98px) {
+        .hero-banner .banner-info button {
+          margin-top: .5rem; } }
       .hero-banner .banner-info button a {
         color: white; }
   .hero-banner .banner-more {
@@ -736,17 +790,25 @@ html {
     top: 50%;
     right: 10rem;
     transform: translateY(-50%); }
+    @media (max-width: 767.98px) {
+      .hero-banner .banner-more {
+        display: none; } }
     .hero-banner .banner-more .artist-image {
       overflow: hidden;
       border-radius: 50%;
-      border: 2px solid white; }
+      border: 2px solid white;
+      max-width: 13rem; }
       .hero-banner .banner-more .artist-image:hover img {
         transform: scale(1.1); }
       .hero-banner .banner-more .artist-image img {
         transition: transform ease-out .2s; }
 
-#breadcrumbs {
-  margin-top: 1rem; }
+.single .hero-banner {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+  filter: blur(3px);
+  min-height: 35rem; }
 
 .search-overlay {
   overflow-y: auto;
@@ -924,6 +986,39 @@ body.admin-bar .search-overlay {
     font-size: 1.2rem;
     font-weight: 100; }
 
+.cd-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  display: inline-block;
+  height: 4rem;
+  width: 4rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  background: url("assets/img/cd-top-arrow.svg") no-repeat center 50%;
+  background-color: rgba(251, 192, 3, 0.8); }
+  @media (max-width: 767.98px) {
+    .cd-top {
+      bottom: 3rem;
+      right: 3rem;
+      height: 6rem;
+      width: 6rem; } }
+
+.js .cd-top {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity .3s, visibility .3s, background-color .3s; }
+
+.js .cd-top--is-visible {
+  visibility: visible;
+  opacity: 1; }
+
+.js .cd-top--fade-out {
+  opacity: .5; }
+
+.js .cd-top:hover {
+  background-color: #FBC003;
+  opacity: 1; }
+
 /*--------------------------------------------------------------
 # Pages
 --------------------------------------------------------------*/
@@ -937,9 +1032,6 @@ body.admin-bar .search-overlay {
 
 .home i.fa-eye {
   margin-left: 5px; }
-
-.home main {
-  background: white; }
 
 .home .post {
   position: relative;
@@ -1001,7 +1093,9 @@ body.admin-bar .search-overlay {
 
 .home .wrapper {
   display: flex;
-  justify-content: space-between; }
+  justify-content: space-between;
+  background-color: white;
+  border-radius: 1rem; }
 
 .home .releases,
 .home .classic,
@@ -1298,11 +1392,6 @@ body.admin-bar .search-overlay {
   padding-top: 5rem;
   padding-bottom: 2rem; }
 
-.single-artist .hero-banner {
-  background-size: cover;
-  background-repeat: no-repeat;
-  opacity: 0.75; }
-
 .single-artist h2 {
   font-size: 4rem;
   font-weight: 600;
@@ -1438,11 +1527,6 @@ body.admin-bar .search-overlay {
   padding-top: 5rem;
   padding-bottom: 2rem; }
 
-.single-music .hero-banner {
-  background-size: cover;
-  background-repeat: no-repeat;
-  opacity: 0.75; }
-
 .single-music h2 {
   font-size: 4rem;
   font-weight: 600;
@@ -1534,11 +1618,6 @@ body.admin-bar .search-overlay {
 .single-album main {
   padding-top: 5rem;
   padding-bottom: 2rem; }
-
-.single-album .hero-banner {
-  background-size: cover;
-  background-repeat: no-repeat;
-  opacity: 0.75; }
 
 .single-album h2 {
   font-size: 4rem;

@@ -13,10 +13,6 @@
         margin-left: 5px;
     }
 
-    main {
-        background: white;
-    }
-
     .post {
         position: relative;
         display: inline-block;
@@ -102,6 +98,8 @@
     .wrapper {
         display: flex;
         justify-content: space-between;
+        background-color: white;
+        border-radius: 1rem;
     }
 
     .releases,

@@ -82,7 +82,7 @@ h3 {
 }
 
 strong {
-	box-shadow: rgba($color__yellow, .5) 0px -5px 0px inset;
+	font-weight: 600;
 }
 
 em {
@@ -102,11 +102,16 @@ figcaption {
 }
 
 .single article, .page .page-content {
+	p {
+		margin: 1rem 0 3rem;
+	}
+
 	a {
 		position: relative;
-		color: $color__yellow;
 		font-weight: 500;
 		transition: transform 0.2s;
+		box-shadow: none;
+		box-shadow: rgba($color__yellow, .5) 0px -5px 0px inset;
 
 		&:hover,
 		&:focus {

@@ -102,3 +102,44 @@
         font-weight: 100;
     }
 }
+
+.cd-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    display: inline-block;
+    height: 4rem;
+    width: 4rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    background: url('assets/img/cd-top-arrow.svg') no-repeat center 50%;
+    background-color: rgba($color__yellow, 0.8);
+
+    @include media(phone) {
+        bottom: 3rem;
+        right: 3rem;
+        height: 6rem;
+        width: 6rem;
+    }
+}
+
+.js {
+    .cd-top {
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity .3s, visibility .3s, background-color .3s;
+    }
+
+    .cd-top--is-visible { // back-to-top button visible
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .cd-top--fade-out { // reduce button opacity if user keeps scrolling
+        opacity: .5;
+    }
+
+    .cd-top:hover {
+        background-color: $color__yellow;
+        opacity: 1;
+    }
+}

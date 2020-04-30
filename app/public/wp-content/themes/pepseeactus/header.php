@@ -32,7 +32,7 @@
 	<?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
+<body <?php body_class('js'); ?>>
 	<header class="site-header" role="banner">
 		<div class="container">
 			<nav>
@@ -55,17 +55,18 @@
 	$pageBanner = get_field('image_arriere_plan');
 	$pageBannerImage = $pageBanner['url'];
 
-	if ((get_post_type() == 'artist') && $pageBannerImage) : ?>
+	if (!(is_front_page()) && $pageBannerImage) : ?>
 
-		<div class="hero-banner" style='background-image: radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.5), #100e17), url("<?= $pageBannerImage; ?>")'></div>
-	
-	<?php else :
+		<div class="hero-banner" style='background-image: url("<?= $pageBannerImage; ?>")'></div>
+
+	<?php elseif (is_front_page() || is_page()) :
+
 		$args = [
 			'posts_per_page' => 1,
 			'orderby' => 'date',
 			'post_type' => 'banner'
 		];
-					
+
 		$query = new WP_Query($args);
 		if ( $query->have_posts() ) {
 			while ( $query->have_posts() ) {
@@ -73,9 +74,19 @@
 				$image_banner = get_field('image_banner');
 				$link = get_field('link');
 				$artiste = get_field('artiste');
-				$album = get_field('album'); ?>
+				$album = get_field('album');
+				$youtube_id = get_field('youtube_id'); ?>
 
 				<div class="hero-banner" style='background-image: url("<?= $image_banner['url']; ?>'>
+					<div class="video-background">
+						<div class="video-foreground">
+							<iframe src="https://www.youtube.com/embed/<?= $youtube_id; ?>?autoplay=1&loop=1&mute=1&playlist=<?= $youtube_id; ?>"
+									frameborder="0"
+									allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+									allowfullscreen>
+							</iframe>
+						</div>
+					</div>
 					<div class="banner-info">
 						<p class="name"><?= $artiste; ?></p>
 						<p class="album"><?= $album; ?></p>
@@ -92,7 +103,11 @@
 			<?php }
 		}
 
-		wp_reset_postdata(); ?>
+		wp_reset_postdata();
+
+	else : ?>
+
+		<div class="hero-banner" style='background-image: url("<?= get_stylesheet_directory_uri(); ?>/assets/img/88891.jpg")'></div>
 
 	<?php endif; ?>
 
