@@ -16,9 +16,10 @@ get_header(); ?>
 
 <section class="d-flex justify-content-between mobile-visually-hidden">
 	<?php
-		$args = array(
-			'cat' => '5'
-		);
+		$args = [
+			'cat' => '5',
+			'posts_per_page' => 3
+		];
 		
 		$query = new WP_Query( $args );
 		if ( $query->have_posts() ) {
@@ -50,7 +51,7 @@ get_header(); ?>
 </section>
 
 <div class="wrapper row padding-inside">
-	<div class="col-12 col-lg-9">
+	<div class="principal col-12 col-lg-9">
 		<section class="releases">
 			<div class="releases-head">
 				<img src="<?= get_stylesheet_directory_uri(); ?>/assets/img/h2-frontpage.png">
@@ -75,7 +76,8 @@ get_header(); ?>
 						while ( $query->have_posts() ) {
 							$query->the_post();
 							$artistes = get_field('artistes');
-							$titre = get_field('titre'); ?>
+							$titre = get_field('titre');
+							$download = get_field('download'); ?>
 							<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 								<a class="rotate" href="<?php the_permalink(); ?>">
 									<?php the_post_thumbnail('thumbnail'); ?>
@@ -83,11 +85,9 @@ get_header(); ?>
 								<div class="info">
 									<div class="title"><a href="<?php the_permalink(); ?>" target="_blank"><?= $artistes; ?></a></div>
 									<p><a href="<?php the_permalink(); ?>" target="_blank"><?= $titre; ?></a></p>
-									<?php $download = get_field('download'); ?>
 									<?= ($download) ? '<a href="'.get_the_permalink().'" target="_blank"><i class="fa fa-cloud-download"></i> Download</a>' : ''; ?>
 								</div>
 							</article>
-		
 						<?php }
 					}
 				wp_reset_postdata(); ?>

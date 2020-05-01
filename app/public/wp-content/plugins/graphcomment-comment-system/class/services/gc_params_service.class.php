@@ -175,7 +175,9 @@ class GcParamsService
 
   public function createNewApplication() {
     // Create the client
-    $response = wp_remote_post(constant('API_URL_OAUTH_CLIENT_CREATE'), array('sslverify' => constant('SSLVERIFY')));
+    $response = wp_remote_post(constant('API_URL_OAUTH_CLIENT_CREATE'), array(
+      'sslverify' => constant('SSLVERIFY')
+    ));
 
     // Extract the HTTP ret code
     $httpCode = wp_remote_retrieve_response_code($response);
@@ -189,6 +191,7 @@ class GcParamsService
     }
     $response = json_decode($response);
 
+    GcLogger::getLogger()->debug('GcParamsService::createNewApplication() - key and secret found.');
     update_option('gc_oauth_client_key', $response->clientKey);
     $this->gc_params['gc_oauth_client_key'] = $response->clientKey;
     update_option('gc_oauth_client_secret', $response->clientSecret);
@@ -560,8 +563,8 @@ class GcParamsService
     $httpCode = wp_remote_retrieve_response_code($response);
     $response = json_decode(wp_remote_retrieve_body($response));
 
-    update_option('gc_api_public_key', $response->sso_public_key);
-    update_option('gc_api_private_key', $response->sso_private_key);
+    if ($response->sso_public_key) update_option('gc_api_public_key', $response->sso_public_key);
+    if ($response->sso_private_key) update_option('gc_api_private_key', $response->sso_private_key);
   }
 
   public function graphcommentUpdateOverlay($overlayActivated, $options) {
@@ -639,7 +642,10 @@ class GcParamsService
    * Begin Identifier Functions
    */
   public function graphcommentIdenfitierGetPostTitle($post) {
-    return html_entity_decode(get_the_title($post), ENT_QUOTES, 'UTF-8');
+    return str_replace(
+      '\'', '’', // we need to replace single quotes for comments.php
+      html_entity_decode(get_the_title($post), ENT_QUOTES, 'UTF-8')
+    );
   }
 
   public function graphcommentIdenfitierGetPostUrl($post) {

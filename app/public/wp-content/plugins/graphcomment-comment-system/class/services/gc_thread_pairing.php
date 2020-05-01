@@ -38,7 +38,7 @@ class GcThreadPairingService
     return $uid;
   }
 
-  private static function getPostFromSlug($identifier, $uid, $guid)
+  private static function getPostFromSlug($identifier, $uid)
   {
     // using the identifier
     $args = array(

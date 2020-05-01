@@ -8,9 +8,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2020-02-15 11:07+0200\n"
+"PO-Revision-Date: 2020-04-26 13:30+0300\n"
 "Language-Team: \n"
-"X-Generator: Poedit 2.2.4\n"
+"X-Generator: Poedit 2.3\n"
 "Last-Translator: \n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n==0 || (n!=1 && n%100>=1 && n%100<=19) ? 1 : 2);\n"
 "Language: ro\n"
@@ -790,6 +790,14 @@ msgstr "Această opțiune vă permite să generați doar imagini care se potrive
 msgid "generate only perfect fit sizes"
 msgstr "se generează doar mărimi care se potrivesc perfect"
 
+#: image-regenerate-select-crop.php:1546
+msgid "attempt to upscale when generating only perfect fit sizes"
+msgstr "încearcă mărirea când se generează doar mărimi care se potrivesc perfect"
+
+#: image-regenerate-select-crop.php:1541
+msgid "This option allows you to upscale the images when using the perfect fit option. This allows that images that have at least the original width close to the expected width or the original height close to the expected height (for example, the original image has 800x600 and the crop size 700x700) to be generated from a upscaled image."
+msgstr "Această opțiune vă permite să măriți imaginile când se folosește opțiunea de portivire perfectă. Acest lucru permite ca imaginile care au cel putin lațimea originală apropiată de lățimea așteptată sau înălțimea originală apropiată de înălțimea așteptată (de exemplu, imaginea originală are 800x600 și mărimea tăiată 700x700) să poată fi generate dintr-o imagine mărită."
+
 #: image-regenerate-select-crop.php:1547
 msgid "regenerate only missing files"
 msgstr "se generează doar fișierele lipsă"
@@ -857,6 +865,18 @@ msgstr "Acest tip de curățare se aplică tuturor atașamentelor, și păstreaz
 #: image-regenerate-select-crop.php:1538
 msgid "Cleanup Raw"
 msgstr "Curățare brută"
+
+#: image-regenerate-select-crop.php:1538
+msgid "Raw Cleanup"
+msgstr "Curățare brută"
+
+#: image-regenerate-select-crop.php:1538
+msgid "show attachment image sizes summary in the media screen"
+msgstr "afișare sumar mărimi de imagine atașament în ecranul media"
+
+#: image-regenerate-select-crop.php:1538
+msgid "This action will remove all images generated for this attachment, except for the original file. Are you sure you want proceed?"
+msgstr "Această acțiune va înlătura toate imaginile genereate pentru acest atașament, exectând fișierul original. Siguri doriți să continuați?"
 
 #: image-regenerate-select-crop.php:1538
 msgid "You can see below some additional information about the files generated, recorded in the database, also files left behind from image sizes that are no longer registered in your site, or other image processing (but not linked in the database anymore, hence, probably no used anymore)."

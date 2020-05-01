@@ -31,7 +31,24 @@
       // you'll get an exception most commonly when the date/time string passed isn't a valid date/time
     }
 
-    return __('Last Sync', 'graphcomment-comment-system') . ' ' . $date_from_str . ' ('. $wp_timezone .')';
+    try {
+      $wp_timezone = GcDateTools::wp_get_timezone_string();
+      // get datetime object from site timezone
+      $datetime = new DateTime();
+      $datetime->setTimestamp(wp_next_scheduled('graphcomment_cron_task_sync_comments_action'));
+      $datetime->setTimezone(new DateTimeZone($wp_timezone));
+
+      $next_date_from_str = $datetime->format(__('Date Format', 'graphcomment-comment-system'));
+    } catch ( Exception $e ) {
+      // you'll get an exception most commonly when the date/time string passed isn't a valid date/time
+    }
+
+    return (
+      __('Last Sync', 'graphcomment-comment-system') . ' ' .
+      $date_from_str . ' ('. $wp_timezone .')' . '<br>' .
+      __('Next Sync', 'graphcomment-comment-system') . ' ' .
+      $next_date_from_str . ' ('. $wp_timezone .')'
+    );
   }
 ?>
 

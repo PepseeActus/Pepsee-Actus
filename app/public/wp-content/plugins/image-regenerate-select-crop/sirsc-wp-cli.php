@@ -228,6 +228,10 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 									}
 									unset( $image_meta['sizes'][ $sn ] );
 									wp_update_attachment_metadata( $v['ID'], $image_meta );
+
+									// Re-fetch the meta.
+									$image_meta = wp_get_attachment_metadata( $v['ID'] );
+									do_action( 'sirsc_attachment_images_ready', $image_meta, $v['ID'] );
 								}
 								$progress->tick();
 							}
@@ -283,6 +287,10 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 							// Update the cleaned meta.
 							$meta['sizes'] = array();
 							wp_update_attachment_metadata( $v['ID'], $meta );
+
+							// Re-fetch the meta.
+							$image_meta = wp_get_attachment_metadata( $v['ID'] );
+							do_action( 'sirsc_attachment_images_ready', $image_meta, $v['ID'] );
 						}
 						$progress->tick();
 					}
@@ -366,6 +374,10 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 						if ( $initial != $meta ) {
 							// Update the cleaned meta.
 							wp_update_attachment_metadata( $v['ID'], $meta );
+
+							// Re-fetch the meta.
+							$image_meta = wp_get_attachment_metadata( $v['ID'] );
+							do_action( 'sirsc_attachment_images_ready', $image_meta, $v['ID'] );
 						}
 						$progress->tick();
 					}

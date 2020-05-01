@@ -24,11 +24,9 @@
                 min-width: 7rem;
             }
 
-            h3 {
-                font-size: 3rem;
-
-                @include media(phone) {
-                    font-size: 2rem;
+            div {
+                a {
+                    display: block;
                 }
 
                 a:hover {

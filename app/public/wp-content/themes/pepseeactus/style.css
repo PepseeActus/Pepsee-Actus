@@ -1207,8 +1207,9 @@ body.admin-bar .search-overlay {
 .home .wrapper {
   display: flex;
   justify-content: space-between;
-  background-color: white;
   border-radius: 1rem; }
+  .home .wrapper .principal {
+    background-color: white; }
 
 .home .releases,
 .home .classic,
@@ -1917,13 +1918,10 @@ body.admin-bar .search-overlay {
   .post-type-archive-music .post-item li img {
     width: 7rem;
     min-width: 7rem; }
-  .post-type-archive-music .post-item li h3 {
-    font-size: 3rem; }
-    @media (max-width: 767.98px) {
-      .post-type-archive-music .post-item li h3 {
-        font-size: 2rem; } }
-    .post-type-archive-music .post-item li h3 a:hover {
-      text-decoration: underline; }
+  .post-type-archive-music .post-item li div a {
+    display: block; }
+  .post-type-archive-music .post-item li div a:hover {
+    text-decoration: underline; }
 
 .post-type-archive-music .page-numbers {
   margin: 4rem 0; }

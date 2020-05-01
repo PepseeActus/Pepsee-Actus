@@ -70,12 +70,11 @@ if (!class_exists('GcSynchronisationController')) {
       GcParamsService::getInstance()->fetchApiKeys();
 
       // Init CRON task to sync comments
-      if (!wp_next_scheduled( 'graphcomment_cron_task_sync_comments_action')) {
-        GcLogger::getLogger()->debug('GcSynchronisationController::handleOptionForm() - Init sync cron: ' . get_option('gc_sync_interval'));
-        wp_schedule_event(time(), get_option('gc_sync_interval'), 'graphcomment_cron_task_sync_comments_action');
+      GcLogger::getLogger()->debug('GcSynchronisationController::handleOptionForm() - Init sync cron: ' . get_option('gc_sync_interval'));
+      wp_clear_scheduled_hook('graphcomment_cron_task_sync_comments_action');
+      wp_schedule_event(time(), get_option('gc_sync_interval'), 'graphcomment_cron_task_sync_comments_action');
+      //do_action('graphcomment_cron_task_sync_comments_action');
 
-        //do_action('graphcomment_cron_task_sync_comments_action');
-      }
       update_option('gc-msg', json_encode(array('type' => 'success', 'content' => __('Sync Activated', 'graphcomment-comment-system'), 'active_tab' => 'synchronization')));
 
       return wp_redirect(admin_url('admin.php?page=graphcomment-settings'));

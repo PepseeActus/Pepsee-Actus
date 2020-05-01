@@ -26,9 +26,10 @@ $ssoActivated = get_option('gc_sso_activated');
 $user = wp_get_current_user();
 
 if ($ssoActivated && $user->ID) {
+  $nickname = get_user_meta($user->data->ID, 'nickname', true);
   $data = array(
       'id' => $user->data->ID, // required unique
-      'username' => $user->data->user_nicename, // required unique
+      'username' => $nickname ? $nickname : $user->data->user_nicename, // required unique
       'email' => $user->data->user_email, // required unique
       'language' => substr(get_user_locale($user->data->ID), 0, 2), //(optionnal) default value : en (codes ISO 639-1)
       'picture' => get_avatar_url($user->data->ID) // (optionnal) full url only

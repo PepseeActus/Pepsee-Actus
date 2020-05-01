@@ -2,8 +2,8 @@
 Contributors: Iulia Cazan
 Tags: optimize images, image crop, image regenerate, image sizes details, image quality, default crop, wp-cli, media, image, image sizes, missing images, image placeholder, image debug, command line
 Requires at least: not tested
-Tested up to: 5.3.2
-Stable tag: 5.3.5
+Tested up to: 5.4
+Stable tag: 5.4.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JJA37EHZXWUTJ
@@ -42,6 +42,18 @@ https://youtu.be/3hRSXMx3dcU
 None
 
 == Changelog ==
+= 5.4.2 =
+* Added the raw cleanup button in the media listing screen (this is available only when using the option to display the summary too).
+* Added the option to display the summary of images generated for each attachment in the media listing screen that gets updated when other actions are performed in the image details lightbox, on regenerate and raw cleanup.
+* Style updates for the small resolutions.
+
+= 5.4.1 =
+* Fixed the upscale for square image.
+
+= 5.4 =
+* Tested up to 5.4
+* Added the upscale option that allows to upscale images (with close original sizes to the expected crop) before applying a crop, when the perfect fit option is on.
+
 = 5.3.5 =
 * Added more details about the missing files in the image details lightbox, so that the files that are removed (from FTP or otherwise by third-party plugins, manual removal, etc.) to be marked as missing files, even if these are still recorded in the database. Updated the alternative text over the delete icon to read "Cleanup the metadata" for clarity.
 * Added the option to keep the plugin settings after the plugin is deactivated.
@@ -214,6 +226,9 @@ None
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 == Version history ==
+5.4.2 - Added raw cleanup button and  the option to display the summary in the media listing screen, style updates for small resolutions.
+5.4.1 - Fixed the upscale for square image
+5.4 - Tested up to 5.4, upscale option for perfect fit crop.
 5.3.5 - Added more details about the removed files in the image details lightbox, keep plugin settings after deactivation, fix error when also using WP Offload Media plugin.
 5.3.4 - Fix warnings for previously missing setting.
 5.3.3 - Forced expose the image sizes for the attachment display settings in the media dialog.

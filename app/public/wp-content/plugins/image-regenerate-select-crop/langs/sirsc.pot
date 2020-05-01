@@ -937,6 +937,14 @@ msgstr ""
 msgid "generate only perfect fit sizes"
 msgstr ""
 
+#: image-regenerate-select-crop.php:1546
+msgid "attempt to upscale when generating only perfect fit sizes"
+msgstr ""
+
+#: image-regenerate-select-crop.php:1541
+msgid "This option allows you to upscale the images when using the perfect fit option. This allows that images that have at least the original width close to the expected width or the original height close to the expected height (for example, the original image has 800x600 and the crop size 700x700) to be generated from a upscaled image."
+msgstr ""
+
 #: image-regenerate-select-crop.php:1547
 msgid "regenerate only missing files"
 msgstr ""
@@ -1003,6 +1011,18 @@ msgstr ""
 
 #: image-regenerate-select-crop.php:1538
 msgid "Cleanup Raw"
+msgstr ""
+
+#: image-regenerate-select-crop.php:1538
+msgid "Raw Cleanup"
+msgstr ""
+
+#: image-regenerate-select-crop.php:1538
+msgid "show attachment image sizes summary in the media screen"
+msgstr ""
+
+#: image-regenerate-select-crop.php:1538
+msgid "This action will remove all images generated for this attachment, except for the original file. Are you sure you want proceed?"
 msgstr ""
 
 #: image-regenerate-select-crop.php:1538

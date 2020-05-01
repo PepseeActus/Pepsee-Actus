@@ -5,7 +5,7 @@
  * Description: Regenerate and crop images, details and actions for image sizes registered and image sizes generated, clean up, placeholders, custom rules, register new image sizes, crop medium settings, WP-CLI commands, optimize images.
  * Text Domain: sirsc
  * Domain Path: /langs
- * Version: 5.3.5
+ * Version: 5.4.2
  * Author: Iulia Cazan
  * Author URI: https://profiles.wordpress.org/iulia-cazan
  * Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JJA37EHZXWUTJ
@@ -38,8 +38,8 @@ if ( ! file_exists( $dest_path ) ) {
 define( 'SIRSC_PLUGIN_FOLDER', dirname( __FILE__ ) );
 define( 'SIRSC_PLACEHOLDER_FOLDER', realpath( $dest_path ) );
 define( 'SIRSC_PLACEHOLDER_URL', esc_url( $dest_url ) );
-define( 'SIRSC_ASSETS_VER', '20200215.1000' );
-define( 'SIRSC_PLUGIN_VER', 5.35 );
+define( 'SIRSC_ASSETS_VER', '20200426.1400' );
+define( 'SIRSC_PLUGIN_VER', 5.42 );
 define( 'SIRSC_ADONS_FOLDER', dirname( __FILE__ ) . '/adons/' );
 
 /**
@@ -133,6 +133,18 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 * @var array
 	 */
 	public static $menu_items;
+	/**
+	 * Upscale width value.
+	 *
+	 * @var integer
+	 */
+	public static $upscale_new_w;
+	/**
+	 * Upscale height value.
+	 *
+	 * @var array
+	 */
+	public static $upscale_new_h;
 	/**
 	 * Core version.
 	 *
@@ -469,21 +481,26 @@ class SIRSC_Image_Regenerate_Select_Crop {
 		wp_register_script( 'sirsc-custom-js', plugins_url( '/assets/js/custom.js', __FILE__ ), array(), SIRSC_ASSETS_VER, false );
 
 		$upls = wp_upload_dir();
-		wp_localize_script( 'sirsc-custom-js', 'SIRSC_settings', array(
-			'confirm_cleanup'        => __( 'Cleanup all?', 'sirsc' ),
-			'confirm_regenerate'     => __( 'Regenerate all?', 'sirsc' ),
-			'time_warning'           => __( 'This operation might take a while, depending on how many images you have.', 'sirsc' ),
-			'irreversible_operation' => __( 'The operation is irreversible!', 'sirsc' ),
-			'resolution'             => __( 'Resolution', 'sirsc' ),
-			'button_options'         => __( 'Details/Options', 'sirsc' ),
-			'button_details'         => __( 'Image Details', 'sirsc' ),
-			'button_regenerate'      => __( 'Regenerate', 'sirsc' ),
-			'regenerate_log_title'   => __( 'Regenerate Log', 'sirsc' ),
-			'cleanup_log_title'      => __( 'Cleanup Log', 'sirsc' ),
-			'upload_root_path'       => trailingslashit( $upls['basedir'] ),
-			'display_small_buttons'  => ( ! empty( self::$settings['listing_tiny_buttons'] ) ) ? ' tiny' : '',
-			'admin_featured_size'    => get_option( 'sirsc_admin_featured_size' ),
-		) );
+		wp_localize_script(
+			'sirsc-custom-js',
+			'SIRSC_settings',
+			array(
+				'confirm_cleanup'        => __( 'Cleanup all?', 'sirsc' ),
+				'confirm_regenerate'     => __( 'Regenerate all?', 'sirsc' ),
+				'time_warning'           => __( 'This operation might take a while, depending on how many images you have.', 'sirsc' ),
+				'irreversible_operation' => __( 'The operation is irreversible!', 'sirsc' ),
+				'resolution'             => __( 'Resolution', 'sirsc' ),
+				'button_options'         => __( 'Details/Options', 'sirsc' ),
+				'button_details'         => __( 'Image Details', 'sirsc' ),
+				'button_regenerate'      => __( 'Regenerate', 'sirsc' ),
+				'regenerate_log_title'   => __( 'Regenerate Log', 'sirsc' ),
+				'cleanup_log_title'      => __( 'Cleanup Log', 'sirsc' ),
+				'upload_root_path'       => trailingslashit( $upls['basedir'] ),
+				'display_small_buttons'  => ( ! empty( self::$settings['listing_tiny_buttons'] ) ) ? ' tiny' : '',
+				'admin_featured_size'    => get_option( 'sirsc_admin_featured_size' ),
+				'confirm_raw_cleanup'    => __( 'This action will remove all images generated for this attachment, except for the original file. Are you sure you want proceed?', 'sirsc' ),
+			)
+		);
 		wp_enqueue_script( 'sirsc-custom-js' );
 	}
 
@@ -979,12 +996,14 @@ class SIRSC_Image_Regenerate_Select_Crop {
 				'default_crop'           => array(),
 				'default_quality'        => array(),
 				'enable_perfect'         => false,
+				'enable_upscale'         => false,
 				'regenerate_missing'     => false,
 				'disable_woo_thregen'    => false,
 				'sync_settings_ewww'     => false,
 				'listing_tiny_buttons'   => false,
 				'force_size_choose'      => false,
 				'leave_settings_behind'  => false,
+				'listing_show_summary'   => false,
 			);
 
 			$post_types   = filter_input( INPUT_POST, '_sirsc_post_types', FILTER_DEFAULT );
@@ -1031,6 +1050,10 @@ class SIRSC_Image_Regenerate_Select_Crop {
 			if ( ! empty( $use_perfect ) ) {
 				$settings['enable_perfect'] = true;
 			}
+			$use_upscale = filter_input( INPUT_POST, '_sirsrc_enable_upscale', FILTER_DEFAULT );
+			if ( ! empty( $use_upscale ) ) {
+				$settings['enable_upscale'] = true;
+			}
 			$regenerate_missing = filter_input( INPUT_POST, '_sirsrc_regenerate_missing', FILTER_DEFAULT );
 			if ( ! empty( $regenerate_missing ) ) {
 				$settings['regenerate_missing'] = true;
@@ -1046,6 +1069,10 @@ class SIRSC_Image_Regenerate_Select_Crop {
 			$tiny_buttons = filter_input( INPUT_POST, '_sirsrc_listing_tiny_buttons', FILTER_DEFAULT );
 			if ( ! empty( $tiny_buttons ) ) {
 				$settings['listing_tiny_buttons'] = true;
+			}
+			$show_summary = filter_input( INPUT_POST, '_sirsrc_listing_show_summary', FILTER_DEFAULT );
+			if ( ! empty( $show_summary ) ) {
+				$settings['listing_show_summary'] = true;
 			}
 			$size_choose = filter_input( INPUT_POST, '_sirsrc_force_size_choose', FILTER_DEFAULT );
 			if ( ! empty( $size_choose ) ) {
@@ -1612,9 +1639,25 @@ class SIRSC_Image_Regenerate_Select_Crop {
 									?>
 									<label><input type="checkbox" name="_sirsrc_enable_perfect" id="_sirsrc_enable_perfect" <?php checked( true, $settings['enable_perfect'] ); ?> onchange="sirsc_autosubmit()" /> <?php esc_html_e( 'generate only perfect fit sizes', 'sirsc' ); ?></label>
 									<a class="dashicons dashicons-info" title="<?php esc_attr_e( 'Details', 'sirsc' ); ?>" onclick="sirsc_toggle_info('#info_perfect_fit')"></a>
+
+									<?php
+									if ( empty( $settings['enable_upscale'] ) ) {
+										$settings['enable_upscale'] = false;
+									}
+									?>
+									&nbsp;&nbsp;&nbsp; <label><input type="checkbox" name="_sirsrc_enable_upscale" id="_sirsrc_enable_upscale" <?php checked( true, $settings['enable_upscale'] ); ?> onchange="sirsc_autosubmit()" /> <?php esc_html_e( 'attempt to upscale when generating only perfect fit sizes', 'sirsc' ); ?></label>
+									<a class="dashicons dashicons-info" title="<?php esc_attr_e( 'Details', 'sirsc' ); ?>" onclick="sirsc_toggle_info('#info_perfect_fit_upscale')"></a>
+
+
 									<div class="sirsc_info_box_wrap">
 										<div id="info_perfect_fit" class="sirsc_info_box" onclick="sirsc_toggle_info('#info_regenerate')">
 											<?php esc_html_e( 'This option allows you to generate only images that match exactly the width and height of the crop/resize requirements, when the option is enabled. Otherwise, the script will generate anything possible for smaller images.', 'sirsc' ); ?>
+										</div>
+									</div>
+
+									<div class="sirsc_info_box_wrap">
+										<div id="info_perfect_fit_upscale" class="sirsc_info_box" onclick="sirsc_toggle_info('#info_regenerate')">
+											<?php esc_html_e( 'This option allows you to upscale the images when using the perfect fit option. This allows that images that have at least the original width close to the expected width or the original height close to the expected height (for example, the original image has 800x600 and the crop size 700x700) to be generated from a upscaled image.', 'sirsc' ); ?>
 										</div>
 									</div>
 
@@ -1639,6 +1682,13 @@ class SIRSC_Image_Regenerate_Select_Crop {
 									}
 									?>
 									<label><input type="checkbox" name="_sirsrc_listing_tiny_buttons" id="_sirsrc_listing_tiny_buttons" <?php checked( true, $settings['listing_tiny_buttons'] ); ?> onchange="sirsc_autosubmit()" /> <?php esc_html_e( 'show small buttons in the media screen', 'sirsc' ); ?></label>
+
+									<?php
+									if ( empty( $settings['listing_show_summary'] ) ) {
+										$settings['listing_show_summary'] = false;
+									}
+									?>
+									&nbsp;&nbsp;&nbsp; <label><input type="checkbox" name="_sirsrc_listing_show_summary" id="_sirsrc_listing_show_summary" <?php checked( true, $settings['listing_show_summary'] ); ?> onchange="sirsc_autosubmit()" /> <?php esc_html_e( 'show attachment image sizes summary in the media screen', 'sirsc' ); ?></label>
 
 									<hr>
 									<?php
@@ -1929,11 +1979,19 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 * @param integer $attachment_id The attachment ID.
 	 */
 	public static function make_generate_images_button( $attachment_id = 0 ) {
+		global $sirsc_column_summary;
 		$button_regenerate = '
 		<div class="sirsc_button-regenerate">
 			<div id="sirsc_inline_regenerate_sizes' . (int) $attachment_id . '">
 				<div class="button-primary button-large" onclick="sirsc_open_details(\'' . (int) $attachment_id . '\')"><div class="dashicons dashicons-format-gallery" title="' . esc_attr__( 'Details/Options', 'sirsc' ) . '"></div> ' . esc_html__( 'Image Details', 'sirsc' ) . '</div>
-				<div class="button-primary button-large" onclick="sirsc_start_regenerate(\'' . (int) $attachment_id . '\')"><div class="dashicons dashicons-update" title="' . esc_attr__( 'Regenerate', 'sirsc' ) . '"></div> ' . esc_html__( 'Regenerate', 'sirsc' ) . '</div>
+				<div class="button-primary button-large" onclick="sirsc_start_regenerate(\'' . (int) $attachment_id . '\')"><div class="dashicons dashicons-update" title="' . esc_attr__( 'Regenerate', 'sirsc' ) . '"></div> ' . esc_html__( 'Regenerate', 'sirsc' ) . '</div>';
+
+		if ( ! empty( $sirsc_column_summary ) ) {
+			$button_regenerate .= '
+				<div class="button-primary button-large" onclick="sirsc_start_raw_cleanup_single(\'' . (int) $attachment_id . '\')"><div class="dashicons dashicons-editor-removeformatting" title="' . esc_attr__( 'Raw Cleanup', 'sirsc' ) . '"></div> ' . esc_html__( 'Raw Cleanup', 'sirsc' ) . '</div>';
+		}
+
+		$button_regenerate .= '
 				<div id="sirsc_recordsArray_' . intval( $attachment_id ) . '_result" class="result"><span class="spinner inline off"></span></div>
 			</div>
 		</div>
@@ -2170,6 +2228,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 			'url'                  => '',
 			'can_be_cropped'       => 0,
 			'can_be_generated'     => 0,
+			'must_scale_up'        => 0,
 			'native_crop_type'     => ( ! empty( $size[ $selected_size ]['crop'] ) ? true : false ),
 		);
 		$original_w = ( ! empty( $image['width'] ) ) ? $image['width'] : 0;
@@ -2178,11 +2237,19 @@ class SIRSC_Image_Regenerate_Select_Crop {
 		$w = ( ! empty( $size[ $selected_size ]['width'] ) ) ? intval( $size[ $selected_size ]['width'] ) : 0;
 		$h = ( ! empty( $size[ $selected_size ]['height'] ) ) ? intval( $size[ $selected_size ]['height'] ) : 0;
 		$c = ( ! empty( $size[ $selected_size ]['crop'] ) ) ? $size[ $selected_size ]['crop'] : false;
+
 		if ( empty( $image['sizes'][ $selected_size ]['file'] ) ) {
 			// Not generated probably.
 			if ( ! empty( $c ) ) {
 				if ( $original_w >= $w && $original_h >= $h ) {
 					$result['can_be_generated'] = 1;
+				} else {
+					if ( $original_w >= $w || $original_h >= $h ) {
+						// At least one size seems big enough to scale up.
+						$result['can_be_generated'] = 1;
+						$result['can_be_cropped']   = 1;
+						$result['must_scale_up']    = 1;
+					}
 				}
 			} else {
 				if ( ( 0 === $w && $original_h >= $h ) || ( 0 === $h && $original_w >= $w )
@@ -2210,6 +2277,11 @@ class SIRSC_Image_Regenerate_Select_Crop {
 					if ( $original_w >= $w && $original_h >= $h ) {
 						$result['can_be_cropped']   = 1;
 						$result['can_be_generated'] = 1;
+					} elseif ( $original_w >= $w || $original_h >= $h ) {
+						// At least one size seems big enough to scale up.
+						$result['can_be_generated'] = 1;
+						$result['can_be_cropped']   = 1;
+						$result['must_scale_up']    = 1;
 					}
 				} else {
 					$result['is_resize'] = 1;
@@ -2229,6 +2301,11 @@ class SIRSC_Image_Regenerate_Select_Crop {
 				if ( ! empty( $c ) ) {
 					if ( $original_w >= $w && $original_h >= $h ) {
 						$result['can_be_generated'] = 1;
+					} elseif ( $original_w >= $w || $original_h >= $h ) {
+						// At least one size seems big enough to scale up.
+						$result['can_be_generated'] = 1;
+						$result['can_be_cropped']   = 1;
+						$result['must_scale_up']    = 1;
 					}
 				} else {
 					if ( ( 0 === $w && $original_h >= $h ) || ( 0 === $h && $original_w >= $w )
@@ -2238,6 +2315,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 				}
 			}
 		}
+
 		return $result;
 	}
 
@@ -2743,6 +2821,99 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	}
 
 	/**
+	 * Compute the images generated summary for a specified attachment.
+	 *
+	 * @param  integer $id    The attachment ID.
+	 * @param  array   $image Maybe an attachment metadata array.
+	 * @return void
+	 */
+	public static function attachment_files_summary( $id, $image = array() ) {
+		if ( empty( $id ) ) {
+			return;
+		}
+
+		$reuse_wrapper = false;
+		if ( is_array( $id ) && ! empty( $_REQUEST['sirsc_data'] ) ) {
+			$post_data = self::parse_ajax_data( $_REQUEST['sirsc_data'] );
+			if ( ! empty( $post_data['post_id'] ) ) {
+				$id = (int) $post_data['post_id'];
+				$reuse_wrapper = true;
+			}
+		}
+		if ( empty( $id ) ) {
+			return;
+		}
+
+		$upload_dir = wp_upload_dir();
+		$compute    = self::compute_image_paths( $id, '', $upload_dir );
+		if ( empty( $image ) && ! empty( $compute['metadata'] ) ) {
+			$image = $compute['metadata'];
+		}
+		if ( empty( $image ) ) {
+			$image = wp_get_attachment_metadata( $id );
+			if ( empty( $image ) ) {
+				$filename = get_attached_file( $id );
+				$image    = self::attempt_to_create_metadata( $id, $filename );
+			}
+		}
+
+		if ( empty( $image ) ) {
+			return;
+		}
+
+		$summary = self::general_sizes_and_files_match( $id, $image, $compute );
+		$count   = 0;
+
+		if ( ! $reuse_wrapper ) :
+			?>
+			<div id="sirsc-column-summary-<?php echo (int) $id; ?>">
+			<?php
+		endif;
+		?>
+
+		<input type="hidden" name="post_id" value="<?php echo (int) $id; ?>">
+		<div class="sirsc-image-generate-functionality">
+			<div class="inside">
+				<table class="widefat sirsc-small-info-table sirsc-column-summary">
+					<?php foreach ( $summary as $k => $v ) : ?>
+						<?php
+						$fsize     = ( empty( $v['fsize'] ) || 'N/A' == $v['filesize'] ) ? '<span class="missing-file">' . __( 'The file is missing!', 'sirsc' ) . '</span>' : '';
+						$hint      = ( ! empty( $fsize ) ) ? ' missing-file' : '';
+						$v['size'] = str_replace( ',', ', ', $v['size'] );
+						?>
+						<tr class="vtop bordertop<?php echo esc_attr( $hint ); ?>">
+							<td width="32" align="center" title="<?php echo esc_attr( $v['hint'] ); ?>">
+								<?php echo intval( ++ $count ); ?>.
+							</td>
+							<td width="32" align="center" title="<?php echo esc_attr( $v['hint'] ); ?>">
+								<span class="dashicons <?php echo esc_attr( $v['icon'] ); ?>"></span>
+							</td>
+							<td>
+								<?php if ( empty( $fsize ) ) : ?>
+									<a href="<?php echo esc_url( trailingslashit( $upload_dir['baseurl'] ) . $k ); ?>" target="_blank"><?php echo esc_attr( $v['size'] ); ?></a>
+								<?php else : ?>
+									<?php echo esc_attr( $v['size'] ); ?>
+									<?php echo ( $fsize ); ?>
+								<?php endif; ?>
+								| <?php echo esc_attr( $v['width'] ); ?> x <?php echo esc_attr( $v['height'] ); ?>
+							</td>
+							<td width="72" align="right" nowrap="nowrap">
+								<?php echo esc_attr( $v['filesize'] ); ?>
+							</td>
+						</tr>
+					<?php endforeach; ?>
+				</table>
+			</div>
+		</div>
+		<?php
+		if ( ! $reuse_wrapper ) :
+			?>
+			</div>
+			<?php
+		endif;
+	}
+
+	/**
 	 * Match all the files and the images sizes registered.
 	 *
 	 * @param  integer $id      Attachment ID.
@@ -2991,7 +3162,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 		}
 		$sz = 'BKMGTP';
 		$factor = floor( ( strlen( $bytes ) - 1 ) / 3 );
-		return sprintf( "%.{$decimals}f", $bytes / pow( 1024, $factor ) ) . @$sz[ $factor ];
+		return sprintf( "%.{$decimals}f&nbsp;", $bytes / pow( 1024, $factor ) ) . @$sz[ $factor ];
 	}
 
 	/**
@@ -3007,6 +3178,44 @@ class SIRSC_Image_Regenerate_Select_Crop {
 				self::execute_specified_attachment_file_delete( $post_data['post_id'], $size, '', $image );
 				do_action( 'sirsc_action_after_image_delete', $post_data['post_id'] );
 				self::expose_image_after_processing( $post_data['post_id'], $size, false, false, $qual );
+			}
+		}
+	}
+
+	/**
+	 * Raw cleanup the image sizes for a specified image.
+	 */
+	public static function sirsc_ajax_raw_cleanup_single_on_request() {
+		if ( ! empty( $_REQUEST['sirsc_data'] ) ) {
+			$post_data = self::parse_ajax_data( $_REQUEST['sirsc_data'] );
+			if ( ! empty( $post_data['post_id'] ) ) {
+				$id   = (int) $post_data['post_id'];
+				$meta = wp_get_attachment_metadata( $id );
+				$list = self::assess_files_for_attachment_original( $id, $meta );
+				if ( ! empty( $list['paths']['generated'] ) ) {
+					foreach ( $list['paths']['generated'] as $c => $removable ) {
+						if ( file_exists( $removable ) ) {
+							@unlink( $removable );
+							do_action( 'sirsc_image_file_deleted', $id, $removable );
+						}
+					}
+					// Update the cleaned meta.
+					$meta['sizes'] = array();
+					wp_update_attachment_metadata( $id, $meta );
+
+					// Re-fetch the meta.
+					$image = wp_get_attachment_metadata( $id );
+					do_action( 'sirsc_attachment_images_ready', $image, $id );
+				}
+
+				echo '<span class="sirsc_successfullysaved">' . esc_html__( 'Done!', 'sirsc' ) . '</span>';
+				echo '<script>
+				jQuery(document).ready(function () {
+					sirsc_maybe_refresh_sirsc_column_summary(\'' . $id . '\');
+				});
+				</script>'; // WPCS: XSS OK.
+			} else {
+				echo '<span class="sirsc_successfullysaved">' . esc_html__( 'Something went wrong!', 'sirsc' ) . '</span>';
 			}
 		}
 	}
@@ -3091,7 +3300,11 @@ class SIRSC_Image_Regenerate_Select_Crop {
 			do_action( 'sirsc_attachment_images_ready', $image, $post_id );
 		}
 		echo '<span class="sirsc_successfullysaved">' . esc_html__( 'Done!', 'sirsc' ) . '</span>';
-
+		echo '<script>
+			jQuery(document).ready(function () {
+				sirsc_maybe_refresh_sirsc_column_summary(\'' . intval( $post_id ) . '\');
+			});
+			</script>'; // WPCS: XSS OK.
 		clean_post_cache( $post_id );
 	}
 	/**
@@ -3270,6 +3483,123 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	}
 
 	/**
+	 * Attempt to scale the width and height to cover the expected size.
+	 *
+	 * @param  integer $initial_w  Initial image width.
+	 * @param  integer $initial_h  Initial image height.
+	 * @param  integer $expected_w Expected image width.
+	 * @param  integer $expected_h Expected image height.
+	 * @return array
+	 */
+	public static function upscale_match_sizes( $initial_w, $initial_h, $expected_w, $expected_h ) {
+		$new_w  = $initial_w;
+		$new_h  = $initial_h;
+		$result = array(
+			'width'  => $new_w,
+			'height' => $new_h,
+			'scale'  => false,
+		);
+		if ( $initial_w >= $expected_w && $initial_h >= $expected_h ) {
+			// The original is bigger than the expected, no need to scale, no need to continue either.
+			return array(
+				'width'  => $initial_w,
+				'height' => $initial_h,
+				'scale'  => false,
+			);
+		}
+
+		if ( $initial_w >= $expected_w ) {
+			// This means that the initial width is good, but the initial height is smaller than the expected height.
+			$new_h  = $expected_h;
+			$new_w  = ceil( $initial_w * $expected_h / $initial_h );
+			return array(
+				'width'  => $new_w,
+				'height' => $new_h,
+				'scale'  => true,
+			);
+		}
+
+		if ( $initial_w < $expected_w ) {
+			// This means that the initial width is smaller than the expected width.
+			$new_w = $expected_w;
+			$new_h = ceil( $expected_w * $initial_h / $initial_w );
+			if ( ! ( $new_h >= $expected_h ) ) {
+				$new_h = $expected_h;
+				$new_w = ceil( $initial_w * $expected_h / $initial_h );
+			}
+
+			return array(
+				'width'  => $new_w,
+				'height' => $new_h,
+				'scale'  => true,
+			);
+		}
+	}
+
+	/**
+	 * Recompute the image size components that are used to override the private editor properties.
+	 *
+	 * @param  null|mixed $default Whether to preempt output of the resize dimensions.
+	 * @param  integer    $orig_w  Original width in pixels.
+	 * @param  integer    $orig_h  Original height in pixels.
+	 * @param  integer    $new_w   New width in pixels.
+	 * @param  integer    $new_h   New height in pixels.
+	 * @param  bool|array $crop    Whether to crop image to specified width and height or resize.
+	 * @return array               An array can specify positioning of the crop area. Default false.
+	 */
+	public static function sirsc_image_crop_dimensions_up( $default, $orig_w, $orig_h, $new_w, $new_h, $crop ) {
+		$new_w        = self::$upscale_new_w;
+		$new_h        = self::$upscale_new_h;
+		$aspect_ratio = $orig_w / $orig_h;
+		$size_ratio   = max( $new_w / $orig_w, $new_h / $orig_h );
+		$crop_w       = round( $new_w / $size_ratio );
+		$crop_h       = round( $new_h / $size_ratio );
+		$s_x          = floor( ( $orig_w - $crop_w ) / 2 );
+		$s_y          = floor( ( $orig_h - $crop_h ) / 2 );
+		return array( 0, 0, (int) $s_x, (int) $s_y, (int) $new_w, (int) $new_h, (int) $crop_w, (int) $crop_h );
+	}
+
+	/**
+	 * Force native editor to upscale the image before applying the expected crop.
+	 *
+	 * @param  string  $id            The attachment ID.
+	 * @param  string  $file          The original file.
+	 * @param  string  $size_name     The image size name.
+	 * @param  integer $original_w    The original image width.
+	 * @param  integer $original_h    The original image height.
+	 * @param  object  $editor        Editor instance.
+	 */
+	public static function force_upscale_before_crop( $id, $file, $size_name, $original_w, $original_h, $editor ) {
+		if ( ! empty( self::$settings['enable_perfect'] ) ) {
+			$all_sizes = self::get_all_image_sizes();
+			$meta      = wp_get_attachment_metadata( $id );
+			$rez_img   = self::allow_resize_from_original( $file, $meta, $all_sizes, $size_name );
+			if ( ! empty( $rez_img['must_scale_up'] ) ) {
+				$sw = $all_sizes[ $size_name ]['width'];
+				$sh = $all_sizes[ $size_name ]['height'];
+
+				$assess = self::upscale_match_sizes( $original_w, $original_h, $sw, $sh );
+				if ( ! empty( $assess['scale'] ) ) {
+					self::$upscale_new_w = $assess['width'];
+					self::$upscale_new_h = $assess['height'];
+
+					// Apply the filter here to override the private properties.
+					add_filter( 'image_resize_dimensions', array( get_called_class(), 'sirsc_image_crop_dimensions_up' ), 10, 6 );
+
+					// Make the editor resize the loaded resource.
+					$editor->resize( self::$upscale_new_w, self::$upscale_new_h );
+
+					// Remove the custom override, so that the editor to fallback to it's defaults.
+					remove_filter( 'image_resize_dimensions', array( get_called_class(), 'sirsc_image_crop_dimensions_up' ), 10 );
+				}
+
+				// Make the editor crop the upscaled resource.
+				$editor->resize( $sw, $sh, true );
+			}
+		}
+	}
+
+	/**
 	 * Access directly the image editor to generate a specific image.
 	 *
 	 * @param  string  $id            The attachment ID.
@@ -3283,14 +3613,14 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	public static function image_editor( $id, $file, $name = '', $info = array(), $small_crop = '', $force_quality = 0 ) {
 		$filetype   = wp_check_filetype( $file );
 		$mime_type  = $filetype['type'];
-
 		$image_size = getimagesize( $file );
 		$estimated  = wp_constrain_dimensions( $image_size[0], $image_size[1], $info['width'], $info['height'] );
 		if ( ! empty( $estimated ) && $estimated[0] === $image_size[0] && $estimated[1] === $image_size[1] ) {
+			$meta = wp_get_attachment_metadata( $id );
+
 			// Skip the editor, this is the same as the current file.
 			if ( self::$wp_ver < 5.3 ) {
 				// For older version, let's check the size in DB.
-				$meta = wp_get_attachment_metadata( $id );
 				if ( ! empty( $meta['sizes'][ $name ]['file'] ) ) {
 					$maybe_size = trailingslashit( dirname( $file ) ) . $meta['sizes'][ $name ]['file'];
 					if ( file_exists( $maybe_size ) ) {
@@ -3301,6 +3631,33 @@ class SIRSC_Image_Regenerate_Select_Crop {
 							'width'  => $image_size[0],
 							'height' => $image_size[1],
 							'mime'   => $mime_type,
+							'reused' => true,
+						);
+						return $saved;
+					}
+				}
+			} else {
+				if ( ! empty( $meta['width'] ) && $estimated[0] === $meta['width']
+					&& ! empty( $meta['height'] ) && $estimated[1] === $meta['height'] ) {
+					// This matches the orginal.
+					$saved = array(
+						'file'   => wp_basename( $file ),
+						'width'  => $estimated[0],
+						'height' => $estimated[1],
+						'mime'   => $mime_type,
+						'reused' => true,
+					);
+					return $saved;
+				} else if ( ! empty( $meta['sizes'][ $name ]['file'] ) ) {
+					$maybe_size = trailingslashit( dirname( $file ) ) . $meta['sizes'][ $name ]['file'];
+					if ( file_exists( $maybe_size ) ) {
+						$image_size = getimagesize( $maybe_size );
+						$saved      = array(
+							'file'   => wp_basename( $file ),
+							'width'  => $image_size[0],
+							'height' => $image_size[1],
+							'mime'   => $mime_type,
+							'reused' => true,
 						);
 						return $saved;
 					}
@@ -3330,11 +3687,22 @@ class SIRSC_Image_Regenerate_Select_Crop {
 				$crop = self::identify_crop_pos( $name, $small_crop );
 				self::debug( 'CROP ' . $info['width'] . 'x' . $info['height'] . '|' . print_r( $crop, 1 ), true, true );
 				$editor->resize( $info['width'], $info['height'], $crop );
+
+				if ( ! empty( self::$settings['enable_perfect'] ) && ! empty( self::$settings['enable_upscale'] ) ) {
+					$result = $editor->get_size();
+					if ( $result['width'] != $info['width'] || $result['height'] != $info['height'] ) {
+						self::debug( '^^^^^ CROP failed, attempt to UPSCALE', true, true );
+						if ( ! empty( self::$settings['enable_perfect'] ) ) {
+							self::force_upscale_before_crop( $id, $file, $name, $image_size[0], $image_size[1], $editor );
+						}
+					}
+				}
 			} else {
 				self::debug( 'SCALE ' . $info['width'] . 'x' . $info['height'], true, true );
 				$editor->resize( $info['width'], $info['height'] );
 			}
 
+			// Finally, let's store the image.
 			$saved = $editor->save();
 			return $saved;
 		}
@@ -3694,13 +4062,17 @@ class SIRSC_Image_Regenerate_Select_Crop {
 				$assess = self::assess_original_vs_target( $metadata, $size_info, $size_name );
 				self::debug( 'Assess ' . print_r( $assess, 1 ), true, true );
 				if ( ! $assess ) {
-					// Fail-fast, the original is too small.
-					self::debug( 'ERROR TOO SMALL', true, true );
-					return 'error-too-small';
+					if ( empty( self::$settings['enable_perfect'] ) ) {
+						// Fail-fast, the original is too small.
+						self::debug( 'ERROR TOO SMALL', true, true );
+						return 'error-too-small';
+					}
 				}
 
+				$allow_upscale = ( ! empty( self::$settings['enable_perfect'] ) && ! empty( self::$settings['enable_upscale'] ) ) ? true : false;
+
 				$execute = self::check_if_execute_size( $metadata, $size_name, $size_info, $from_file, true );
-				if ( ! empty( $execute ) ) {
+				if ( ! empty( $execute ) || $allow_upscale ) {
 					self::debug( 'ALLOW EXECUTION, CONTINUE', true, true );
 					$saved = self::image_editor( $id, $from_file, $size_name, $size_info, $small_crop, $force_quality );
 					if ( ! empty( $saved ) ) {
@@ -3708,16 +4080,20 @@ class SIRSC_Image_Regenerate_Select_Crop {
 							self::debug( 'DO NOT UPDATE METADATA', true, true );
 							return;
 						}
+						$is_reused = ( ! empty( $saved['reused'] ) ) ? true : false;
 						self::debug( 'EDITOR PROCESSED IMAGE', true, true );
 						if ( empty( $metadata['sizes'] ) ) {
 							$metadata['sizes'] = array();
 						}
 						unset( $saved['path'] );
+						unset( $saved['reused'] );
 						$metadata['sizes'][ $size_name ] = $saved;
 						wp_update_attachment_metadata( $id, $metadata );
 						$initial_m = $metadata;
 
-						do_action( 'sirsc_image_processed', $id, $size_name );
+						if ( ! $is_reused ) {
+							do_action( 'sirsc_image_processed', $id, $size_name );
+						}
 					}
 				} else {
 					self::debug( 'DO NOT EXECUTE', true, true );
@@ -5509,10 +5885,16 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 */
 	public static function media_column_value( $column, $value ) {
 		if ( 'sirsc_buttons' === $column ) {
-			global $post;
+			global $post, $sirsc_column_summary;
+			if ( ! empty( self::$settings['listing_show_summary'] ) ) {
+				$sirsc_column_summary = true;
+			}
 			if ( ! empty( $post ) && ! empty( $post->post_mime_type ) && substr_count( $post->post_mime_type, 'image/' ) ) {
 				$extra_class = ( ! empty( self::$settings['listing_tiny_buttons'] ) ) ? 'tiny' : '';
 				echo self::append_image_generate_button( '', '', $post->ID, $extra_class ); // WPCS: XSS OK.
+				if ( ! empty( self::$settings['listing_show_summary'] ) ) {
+					self::attachment_files_summary( $post->ID );
+				}
 			}
 		}
 	}

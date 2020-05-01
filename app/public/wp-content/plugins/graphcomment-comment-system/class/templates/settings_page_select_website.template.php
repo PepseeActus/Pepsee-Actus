@@ -15,17 +15,6 @@
   <div class="gc-wrap">
 
     <div class="row gc-page">
-      <?php
-        $gc_msg = get_option('gc-msg');
-        delete_option('gc-msg');
-        if ($gc_msg !== false) {
-          $gc_msg = json_decode($gc_msg, true);
-          if ($gc_msg['content']) {
-            echo '<div class="gc-alert gc-alert-' . $gc_msg['type'] . '">' . $gc_msg['content'] . '</div>';
-          }
-        }
-      ?>
-
       <h2>
         <?php _e('Choose Website Message', 'graphcomment-comment-system'); ?>
       </h2>

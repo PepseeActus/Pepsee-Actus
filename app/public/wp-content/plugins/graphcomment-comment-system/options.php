@@ -285,20 +285,6 @@ function _graphcomment_settings_page() {
     die;
   }
 
-
-  /** Check if curl is enabled */
-  if (!function_exists('curl_version')) {
-?>
-    <br>
-    <div class="gc-alert gc-alert-danger">
-      Graphcomment requires PHP curl module to be enabled. Plugin was deactivated.
-    </div>
-<?php
-    die;
-
-  }
-
-
   if (!GcParamsService::getInstance()->graphcommentHasWebsites()) {
     if (GcParamsService::getInstance()->graphcommentHasUser()) {
       return _graphcomment_settings_page_create_website();

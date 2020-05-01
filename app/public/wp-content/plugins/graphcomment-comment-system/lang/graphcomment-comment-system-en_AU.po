@@ -204,7 +204,7 @@ msgid "No Sync Yet"
 msgstr "No synchronization yet."
 
 msgid "Last Sync"
-msgstr "Last synchronization : "
+msgstr "Last synchronization :"
 
 msgid "sync_comments"
 msgstr "Synchronize comments with WordPress"
@@ -376,3 +376,6 @@ msgstr "Restricted right to comment"
 
 msgid "Popover readonly desc"
 msgstr "Allow to prevent posting comments unless you have a specific role, ex: premium users."
+
+msgid "Next Sync"
+msgstr "Next synchronization :"

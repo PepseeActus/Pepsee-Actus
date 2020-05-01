@@ -48,7 +48,7 @@ msgid "Error Import"
 msgstr "Une erreur est survenue durant l'importation. Si l'erreur persiste, concactez le support à  support@graphcomment.com."
 
 msgid "Error Getting Sync"
-msgstr "Une erreur est survenue lors de la tentative d'obtention des notifications."
+msgstr "Une erreur est survenue lors de la tentative de synchronisation des commentaires."
 
 msgid "Error Import Init No Comments"
 msgstr "Vous n'avez pas de commentaires à importer."
@@ -376,3 +376,6 @@ msgstr "Droit de commenter restreint"
 
 msgid "Popover readonly desc"
 msgstr "Permet de cacher la zone de saisie des commentaires sauf pour un rôle d'utilisateurs spécifique de WordPress, ex : utilisateurs premium."
+
+msgid "Next Sync"
+msgstr "Prochaine synchronisation :"
