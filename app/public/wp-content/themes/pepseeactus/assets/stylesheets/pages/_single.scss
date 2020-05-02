@@ -3,14 +3,10 @@
         padding-top: 1.5rem;
     }
 
-    .single-title-clip {
-        font-size: 4rem;
-        margin-bottom: 1rem;
-
-        @include media(phone-tablet) {
-            font-size: 3rem;
-            letter-spacing: 0;
-        }
+    .clip-box {
+        text-align: center;
+        position: relative;
+        margin-bottom: 5rem;
     }
 
     .post-thumbnail {
@@ -22,32 +18,40 @@
         @include media(phone) {
             width: 100%;
         }
+    }
 
-        .single-title {
-            position: absolute;
-            bottom: -3rem;
-            left: 50%;
-            transform: translateX(-50%);
-            font-weight: 700;
-            font-size: 3.2rem;
-            line-height: 4.5rem;
-            text-align: left;
-            width: 65%;
+    .post-thumbnail .single-title,
+    .clip-box .single-title {
+        position: absolute;
+        bottom: -3rem;
+        left: 50%;
+        transform: translateX(-50%);
+        font-weight: 700;
+        font-size: 3.2rem;
+        line-height: 4.5rem;
+        width: 65%;
 
-            @include media(phone) {
-                width: 90%;
-            }
-
-            @include media(phone-small) {
-                display: none;
-            }
-
-            span {
-                background: $color__yellow;
-                -webkit-box-decoration-break: clone;
-                padding: .5rem 1rem;
-            }
+        @include media(phone) {
+            width: 90%;
         }
+
+        @include media(phone-small) {
+            display: none;
+        }
+
+        span {
+            background: $color__yellow;
+            -webkit-box-decoration-break: clone;
+            padding: .5rem 1rem;
+        }
+    }
+
+    .post-thumbnail .single-title {
+        text-align: left;
+    }
+
+    .clip-box .single-title {
+        text-align: center;
     }
 
     aside {

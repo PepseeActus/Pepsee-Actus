@@ -4,6 +4,11 @@
         padding-bottom: 2rem;
     }
 
+    .background-white {
+        padding: 1.5rem;
+        border-radius: 1rem;
+    }
+
     h2 {
         font-size: 4rem;
         font-weight: 600;
@@ -78,6 +83,10 @@
     .artist-bio {
         margin-bottom: 5rem;
         text-align: justify;
+
+        p {
+            margin-bottom: 1rem;
+        }
     }
 
     .artist-album {

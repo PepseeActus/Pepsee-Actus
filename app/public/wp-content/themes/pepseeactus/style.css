@@ -45,7 +45,8 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 --------------------------------------------------------------*/
 .background-white {
   background-color: white;
-  padding-bottom: 1.5rem; }
+  padding-bottom: 1.5rem;
+  border-radius: 1rem; }
 
 .visually-hidden {
   border: 0;
@@ -821,18 +822,6 @@ html {
     bottom: 0;
     left: 0;
     right: 0; }
-  .single .hero-banner .info {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    color: transparent;
-    text-transform: uppercase;
-    font-size: 13rem;
-    font-weight: 800;
-    background: url("https://www.batleydiy.co.uk/ekmps/shops/296292/images/fine-decor-dimensions-3d-floral-grey-white-wallpaper-fd42554-9005-dv-p[ekm]950x966[ekm].jpg") repeat;
-    background-position: 40% 50%;
-    -webkit-background-clip: text; }
 
 .search-overlay {
   overflow-y: auto;
@@ -1494,13 +1483,10 @@ body.admin-bar .search-overlay {
 .single-post .background-white {
   padding-top: 1.5rem; }
 
-.single-post .single-title-clip {
-  font-size: 4rem;
-  margin-bottom: 1rem; }
-  @media (max-width: 1023.98px) {
-    .single-post .single-title-clip {
-      font-size: 3rem;
-      letter-spacing: 0; } }
+.single-post .clip-box {
+  text-align: center;
+  position: relative;
+  margin-bottom: 5rem; }
 
 .single-post .post-thumbnail {
   margin: 0 auto 5rem;
@@ -1510,26 +1496,36 @@ body.admin-bar .search-overlay {
   @media (max-width: 767.98px) {
     .single-post .post-thumbnail {
       width: 100%; } }
-  .single-post .post-thumbnail .single-title {
-    position: absolute;
-    bottom: -3rem;
-    left: 50%;
-    transform: translateX(-50%);
-    font-weight: 700;
-    font-size: 3.2rem;
-    line-height: 4.5rem;
-    text-align: left;
-    width: 65%; }
-    @media (max-width: 767.98px) {
-      .single-post .post-thumbnail .single-title {
-        width: 90%; } }
-    @media (max-width: 374.98px) {
-      .single-post .post-thumbnail .single-title {
-        display: none; } }
-    .single-post .post-thumbnail .single-title span {
-      background: #FBC003;
-      -webkit-box-decoration-break: clone;
-      padding: .5rem 1rem; }
+
+.single-post .post-thumbnail .single-title,
+.single-post .clip-box .single-title {
+  position: absolute;
+  bottom: -3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: 700;
+  font-size: 3.2rem;
+  line-height: 4.5rem;
+  width: 65%; }
+  @media (max-width: 767.98px) {
+    .single-post .post-thumbnail .single-title,
+    .single-post .clip-box .single-title {
+      width: 90%; } }
+  @media (max-width: 374.98px) {
+    .single-post .post-thumbnail .single-title,
+    .single-post .clip-box .single-title {
+      display: none; } }
+  .single-post .post-thumbnail .single-title span,
+  .single-post .clip-box .single-title span {
+    background: #FBC003;
+    -webkit-box-decoration-break: clone;
+    padding: .5rem 1rem; }
+
+.single-post .post-thumbnail .single-title {
+  text-align: left; }
+
+.single-post .clip-box .single-title {
+  text-align: center; }
 
 .single-post aside .artist__container-box {
   display: flex;
@@ -1588,6 +1584,10 @@ body.admin-bar .search-overlay {
   padding-top: 5rem;
   padding-bottom: 2rem; }
 
+.single-artist .background-white {
+  padding: 1.5rem;
+  border-radius: 1rem; }
+
 .single-artist h2 {
   font-size: 4rem;
   font-weight: 600;
@@ -1634,6 +1634,8 @@ body.admin-bar .search-overlay {
 .single-artist .artist-bio {
   margin-bottom: 5rem;
   text-align: justify; }
+  .single-artist .artist-bio p {
+    margin-bottom: 1rem; }
 
 .single-artist .artist-album {
   margin-bottom: 5rem; }
@@ -1958,17 +1960,16 @@ body.admin-bar .search-overlay {
 .post-type-archive-artist .principal {
   background: white;
   border-radius: 1rem;
-  padding: 2rem;
+  padding: 0 2rem 2rem;
   margin-bottom: 2rem; }
 
 .post-type-archive-artist .letter {
   font-size: 3rem;
-  font-weight: 700; }
+  font-weight: 700;
+  padding-top: 2rem; }
 
-.post-type-archive-artist .bloc-letter {
-  margin-bottom: 2rem; }
-  .post-type-archive-artist .bloc-letter a:hover {
-    text-decoration: underline; }
+.post-type-archive-artist .bloc-letter a:hover {
+  text-decoration: underline; }
 
 .category-actus .principal,
 .category-clips .principal,

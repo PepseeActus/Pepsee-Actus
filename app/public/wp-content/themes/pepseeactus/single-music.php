@@ -16,12 +16,11 @@ while ( have_posts() ) : the_post(); ?>
                 $artistes = get_field('artistes');
                 $titre = get_field('titre');
                 $download = get_field('download');
+                $backlink = get_field('backlink');
                 $soundcloud = get_field('soundcloud');
                 $youtube = get_field('youtube');
                 $spotify = get_field('spotify');
                 $deezer = get_field('deezer');
-                $google = get_field('google_play_music');
-                $tidal = get_field('tidal');
                 $apple = get_field('apple_music'); 
             ?>
             <div class="music-presentation">
@@ -36,12 +35,11 @@ while ( have_posts() ) : the_post(); ?>
                     <div class="music-presentation__info-reseaux">
                         <ul>
                             <?= ($download) ? '<li><a href="'.$download.'" target="_blank"><i class="fa fa-cloud-download"></i> Download</a></li>' : ''; ?>
+                            <?= ($backlink) ? '<li><a href="'.$backlink.'" target="_blank"><i class="fas fa-shopping-cart"></i> Acheter</li>' : ''; ?>
                             <?= ($soundcloud) ? '<li><a href="'.$soundcloud.'" target="_blank"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo-soundcloud.png" alt="soundcloud"></a></li>' : ''; ?>
                             <?= ($youtube) ? '<li><a href="'.$youtube.'" target="_blank"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo-youtube.png" alt="youtube music"></a></li>' : ''; ?>
                             <?= ($spotify) ? '<li><a href="'.$spotify.'" target="_blank"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo-spotify.png" alt="spotify"></a></li>' : ''; ?>
                             <?= ($deezer) ? '<li><a href="'.$deezer.'" target="_blank"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo-deezer.png" alt="deezer"></a></li>' : ''; ?>
-                            <?= ($google) ? '<li><a href="'.$google.'" target="_blank"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo-google.png" alt="google play music"></a></li>' : ''; ?>
-                            <?= ($tidal) ? '<li><a href="'.$tidal.'" target="_blank"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo-tidal.png" alt="tidal"></a></li>' : ''; ?>
                             <?= ($apple) ? '<li><a href="'.$apple.'" target="_blank"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo-apple.png" alt="apple music"></a></li>' : ''; ?>
                         </ul>
                     </div>

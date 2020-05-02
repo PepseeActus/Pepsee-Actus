@@ -59,7 +59,6 @@
 
 		<div class="hero-banner">
 			<div class="banner" style='background-image: url("<?= $pageBannerImage; ?>")'></div>
-			<div class="info"><?php the_title(); ?></div>
 		</div>
 
 	<?php elseif (is_front_page() || is_page()) :

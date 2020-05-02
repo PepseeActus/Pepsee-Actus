@@ -15,23 +15,30 @@ while ( have_posts() ) : the_post();
 			<?php the_post_thumbnail('large'); ?>
 			<?php the_title( '<h3 class="single-title"><span>', '</span></h3>' ); ?>
 		</div>
-	<?php else : ?>
-		<?php the_title( '<h2 class="single-title-clip">', '</h2>' ); ?>
 	<?php endif; ?>
 	<div class="row">
 		<article id="post-<?php the_ID(); ?>" <?php post_class('background-white col-12 col-md-9'); ?>>
 			<div class="single-content">
 				<?php
-					the_content( sprintf(
-						/* translators: %s: Name of current post. */
-						wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'pepseeactus' ), array( 'span' => array( 'class' => array() ) ) ),
-						the_title( '<span class="screen-reader-text">"', '"</span>', false )
-					) );
-		
-					wp_link_pages( array(
-						'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'pepseeactus' ),
-						'after'  => '</div>',
-					) );
+					if (has_post_format( 'video' )) { ?>
+						<div class="clip-box">
+							<?php 
+								the_title( '<h3 class="single-title"><span>', '</span></h3>' );
+								the_content();
+							?>
+						</div>
+					<?php } else {
+						the_content( sprintf(
+							/* translators: %s: Name of current post. */
+							wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'pepseeactus' ), array( 'span' => array( 'class' => array() ) ) ),
+							the_title( '<span class="screen-reader-text">"', '"</span>', false )
+						) );
+			
+						wp_link_pages( array(
+							'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'pepseeactus' ),
+							'after'  => '</div>',
+						) );
+					}
 				?>
 			</div>
 			<div class="post-meta">
