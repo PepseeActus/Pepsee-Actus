@@ -51,7 +51,7 @@ get_header(); ?>
 </section>
 
 <div class="wrapper row padding-inside">
-	<div class="principal col-12 col-lg-9">
+	<div class="principal col-12 col-lg-9 padding-inside">
 		<section class="releases">
 			<div class="releases-head">
 				<img src="<?= get_stylesheet_directory_uri(); ?>/assets/img/h2-frontpage.png">

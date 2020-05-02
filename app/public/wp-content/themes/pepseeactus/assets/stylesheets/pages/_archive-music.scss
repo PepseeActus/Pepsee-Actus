@@ -1,12 +1,17 @@
 .post-type-archive-music {
     h2 {
         font-size: 4rem;
-        letter-spacing: 0;
-        margin-bottom: 4rem;
+        font-weight: 700;
+        text-transform: uppercase;
 
         @include media(phone) {
             font-size: 3rem;
         }
+    }
+
+    .principal {
+        background: white;
+        border-radius: 1rem;
     }
 
     .post-item {

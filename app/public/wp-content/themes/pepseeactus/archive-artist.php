@@ -9,5 +9,7 @@
 
 get_header(); ?>
 <h2>Tous les artistes</h2>
-<?= do_shortcode("[list_glossary_posts]"); ?>
+<div class="principal">
+    <?= do_shortcode("[list_glossary_posts]"); ?>
+</div>
 <?php get_footer();

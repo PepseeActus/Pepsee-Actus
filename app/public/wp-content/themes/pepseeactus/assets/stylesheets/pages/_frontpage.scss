@@ -102,6 +102,7 @@
         
         .principal {
             background-color: white;
+            border-radius: 1rem;
         }
     }
 
@@ -144,6 +145,7 @@
 
                 .rotate {
                     width: 7rem;
+                    height: 7rem;
 
                     @include media(phone) {
                         width: inherit;
@@ -312,7 +314,7 @@
                 }
 
                 .wp-post-image {
-                    filter: blur(5px);
+                    filter: blur(1px);
                     transition: filter .3s ease-out;
                 }
 

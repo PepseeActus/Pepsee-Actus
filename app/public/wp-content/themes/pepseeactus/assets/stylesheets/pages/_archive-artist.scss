@@ -1,11 +1,19 @@
 .post-type-archive-artist {
     h2 {
         letter-spacing: .3rem;
-        margin-bottom: 1rem;
+        font-weight: 700;
+        text-transform: uppercase;
 
         @include media(phone) {
             letter-spacing: 0;
         }
+    }
+
+    .principal {
+        background: white;
+        border-radius: 1rem;
+        padding: 2rem;
+        margin-bottom: 2rem;
     }
 
     .letter {

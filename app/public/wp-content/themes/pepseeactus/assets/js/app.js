@@ -124,7 +124,7 @@ class Search {
     }
 }
 
-$(document).ready(function(){
+$(document).ready(function() {
 
     // SEARCH
     const search = new Search();

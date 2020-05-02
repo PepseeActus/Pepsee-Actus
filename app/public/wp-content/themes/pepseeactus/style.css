@@ -871,6 +871,9 @@ html {
       font-weight: 300;
       outline: none;
       color: #FBC003; }
+      @media (max-width: 374.98px) {
+        .search-overlay .search-overlay__top .search-term {
+          font-size: 2.5rem; } }
   .search-overlay .search-overlay__icon {
     margin-right: 1rem;
     font-size: 3rem;
@@ -1209,7 +1212,8 @@ body.admin-bar .search-overlay {
   justify-content: space-between;
   border-radius: 1rem; }
   .home .wrapper .principal {
-    background-color: white; }
+    background-color: white;
+    border-radius: 1rem; }
 
 .home .releases,
 .home .classic,
@@ -1255,7 +1259,8 @@ body.admin-bar .search-overlay {
       .home .releases-wrap article .rotate,
       .home .classic-wrap article .rotate,
       .home .album-wrap article .rotate {
-        width: 7rem; }
+        width: 7rem;
+        height: 7rem; }
         @media (max-width: 767.98px) {
           .home .releases-wrap article .rotate,
           .home .classic-wrap article .rotate,
@@ -1385,7 +1390,7 @@ body.admin-bar .search-overlay {
     .home .actus-wrap .category-clips .wp-post-image,
     .home .actus .clips-wrap .category-actus .wp-post-image,
     .home .actus .clips-wrap .category-clips .wp-post-image {
-      filter: blur(5px);
+      filter: blur(1px);
       transition: filter .3s ease-out; }
     .home .actus-wrap .category-actus .actus-info,
     .home .actus-wrap .category-actus .clips-info,
@@ -1903,11 +1908,15 @@ body.admin-bar .search-overlay {
 
 .post-type-archive-music h2 {
   font-size: 4rem;
-  letter-spacing: 0;
-  margin-bottom: 4rem; }
+  font-weight: 700;
+  text-transform: uppercase; }
   @media (max-width: 767.98px) {
     .post-type-archive-music h2 {
       font-size: 3rem; } }
+
+.post-type-archive-music .principal {
+  background: white;
+  border-radius: 1rem; }
 
 .post-type-archive-music .post-item li {
   margin-bottom: 2rem;
@@ -1940,10 +1949,17 @@ body.admin-bar .search-overlay {
 
 .post-type-archive-artist h2 {
   letter-spacing: .3rem;
-  margin-bottom: 1rem; }
+  font-weight: 700;
+  text-transform: uppercase; }
   @media (max-width: 767.98px) {
     .post-type-archive-artist h2 {
       letter-spacing: 0; } }
+
+.post-type-archive-artist .principal {
+  background: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  margin-bottom: 2rem; }
 
 .post-type-archive-artist .letter {
   font-size: 3rem;
@@ -1954,33 +1970,121 @@ body.admin-bar .search-overlay {
   .post-type-archive-artist .bloc-letter a:hover {
     text-decoration: underline; }
 
-.category-actus .post-item ul {
-  list-style: circle; }
+.category-actus .principal,
+.category-clips .principal,
+.post-type-archive-album .principal {
+  background: white;
+  border-radius: 1rem; }
 
-.category-actus h2 {
-  font-size: 4rem;
-  font-weight: 500;
-  letter-spacing: 0;
-  margin-bottom: 1rem;
-  text-transform: capitalize; }
+.category-actus .post-item:first-child li,
+.category-clips .post-item:first-child li,
+.post-type-archive-album .post-item:first-child li {
+  display: block; }
+  .category-actus .post-item:first-child li img,
+  .category-clips .post-item:first-child li img,
+  .post-type-archive-album .post-item:first-child li img {
+    max-width: 100%;
+    max-height: 30rem;
+    width: auto;
+    margin-bottom: 1rem; }
+  .category-actus .post-item:first-child li > div,
+  .category-clips .post-item:first-child li > div,
+  .post-type-archive-album .post-item:first-child li > div {
+    margin: 0; }
+
+.category-actus .post-item li,
+.category-clips .post-item li,
+.post-type-archive-album .post-item li {
+  margin-bottom: 4rem;
+  display: flex;
+  align-items: flex-start; }
   @media (max-width: 767.98px) {
-    .category-actus h2 {
+    .category-actus .post-item li,
+    .category-clips .post-item li,
+    .post-type-archive-album .post-item li {
+      display: block; } }
+  .category-actus .post-item li img,
+  .category-clips .post-item li img,
+  .post-type-archive-album .post-item li img {
+    max-width: 20rem;
+    border-radius: 1rem; }
+    @media (max-width: 767.98px) {
+      .category-actus .post-item li img,
+      .category-clips .post-item li img,
+      .post-type-archive-album .post-item li img {
+        margin-bottom: 1rem;
+        max-width: 100%; } }
+  .category-actus .post-item li .post-meta,
+  .category-clips .post-item li .post-meta,
+  .post-type-archive-album .post-item li .post-meta {
+    color: grey;
+    font-size: 1.2rem;
+    margin: .5rem 0; }
+    .category-actus .post-item li .post-meta .icon-date,
+    .category-clips .post-item li .post-meta .icon-date,
+    .post-type-archive-album .post-item li .post-meta .icon-date {
+      fill: currentColor;
+      height: 1.8rem; }
+  .category-actus .post-item li div,
+  .category-clips .post-item li div,
+  .post-type-archive-album .post-item li div {
+    margin-left: 2rem; }
+    @media (max-width: 767.98px) {
+      .category-actus .post-item li div,
+      .category-clips .post-item li div,
+      .post-type-archive-album .post-item li div {
+        margin-left: 0; } }
+    .category-actus .post-item li div a,
+    .category-clips .post-item li div a,
+    .post-type-archive-album .post-item li div a {
+      text-decoration: underline; }
+    .category-actus .post-item li div p,
+    .category-clips .post-item li div p,
+    .post-type-archive-album .post-item li div p {
+      opacity: .6; }
+
+.category-actus .archive-header h2,
+.category-clips .archive-header h2,
+.post-type-archive-album .archive-header h2 {
+  font-size: 4rem;
+  font-weight: 700;
+  text-transform: uppercase; }
+  @media (max-width: 767.98px) {
+    .category-actus .archive-header h2,
+    .category-clips .archive-header h2,
+    .post-type-archive-album .archive-header h2 {
       font-size: 1.8rem; } }
 
-.category-actus .page-numbers {
-  margin-top: 3rem; }
+.category-actus .page-numbers,
+.category-clips .page-numbers,
+.post-type-archive-album .page-numbers {
+  margin-bottom: 3rem; }
   @media (max-width: 767.98px) {
-    .category-actus .page-numbers {
+    .category-actus .page-numbers,
+    .category-clips .page-numbers,
+    .post-type-archive-album .page-numbers {
       line-height: 4.5rem; } }
-  .category-actus .page-numbers li {
+  .category-actus .page-numbers li,
+  .category-clips .page-numbers li,
+  .post-type-archive-album .page-numbers li {
     display: inline-block; }
-    .category-actus .page-numbers li a {
+    .category-actus .page-numbers li a,
+    .category-clips .page-numbers li a,
+    .post-type-archive-album .page-numbers li a {
       background: #FBC003;
       color: white;
       padding: 1rem 1.5rem; }
-    .category-actus .page-numbers li .current {
+    .category-actus .page-numbers li .current,
+    .category-clips .page-numbers li .current,
+    .post-type-archive-album .page-numbers li .current {
       padding: .6rem 1.3rem;
       border: 0.4rem solid #FBC003; }
+
+@media (max-width: 767.98px) {
+  .category-actus aside,
+  .category-clips aside,
+  .post-type-archive-album aside {
+    margin-top: 3rem; } }
 
 .error404 .page-header {
   text-align: center;
