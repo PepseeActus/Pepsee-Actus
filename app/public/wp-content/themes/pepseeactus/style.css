@@ -1604,7 +1604,8 @@ body.admin-bar .search-overlay {
   .single-artist .artist-presentation__picture {
     margin-right: 2rem; }
     .single-artist .artist-presentation__picture img {
-      border-radius: 50%; }
+      border-radius: 50%;
+      box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5); }
   .single-artist .artist-presentation__info-name {
     display: flex;
     align-items: center; }
@@ -1749,7 +1750,9 @@ body.admin-bar .search-overlay {
       .single-music .music-presentation__info-name .entry-title.name {
         font-weight: 200; }
       .single-music .music-presentation__info-name .entry-title.riddim {
-        font-weight: 800; }
+        font-weight: 800;
+        display: block;
+        margin-bottom: .5rem; }
       @media (max-width: 767.98px) {
         .single-music .music-presentation__info-name .entry-title {
           font-size: 1.8rem; } }
@@ -1865,7 +1868,7 @@ body.admin-bar .search-overlay {
         .single-album .music-presentation__info-reseaux li img:hover {
           transform: translateY(0.5rem); }
 
-.single-album .music-content p {
+.single-album .music-content p, .single-album .music-content ul {
   margin-bottom: 1rem; }
 
 .single-album aside {

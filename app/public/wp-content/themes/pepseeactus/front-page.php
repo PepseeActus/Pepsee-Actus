@@ -86,7 +86,7 @@ get_header(); ?>
 								<div class="info">
 									<div class="title"><a href="<?php the_permalink(); ?>" target="_blank"><?= $artistes; ?></a></div>
 									<p><a href="<?php the_permalink(); ?>" target="_blank"><?= $titre; ?></a></p>
-									<p class="riddim"><?= $riddim; ?></p>
+									<p class="riddim"><?= $riddim; ?> Riddim</p>
 									<?= ($download) ? '<a href="'.get_the_permalink().'" target="_blank"><i class="fa fa-cloud-download"></i> Download</a>' : ''; ?>
 								</div>
 							</article>

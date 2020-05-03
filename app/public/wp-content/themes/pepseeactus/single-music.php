@@ -32,12 +32,12 @@ while ( have_posts() ) : the_post(); ?>
                     <div class="music-presentation__info-name">
                         <span class="entry-title name"><?= $artistes ?></span><br>
                         <span class="entry-title"><?= $titre ?></span>
-                        <span class="entry-title riddim"><?= $riddim ?></span>
+                        <span class="entry-title riddim"><?= $riddim ?> Riddim</span>
                     </div>
                     <div class="music-presentation__info-reseaux">
                         <ul>
                             <?= ($download) ? '<li><a href="'.$download.'" target="_blank"><i class="fa fa-cloud-download"></i> Download</a></li>' : ''; ?>
-                            <?= ($backlink) ? '<li><a href="'.$backlink.'" target="_blank"><i class="fas fa-shopping-cart"></i> Acheter</li>' : ''; ?>
+                            <?= ($backlink) ? '<li><a href="'.$backlink.'" target="_blank"><i class="fas fa-shopping-cart"></i> Streamer</li>' : ''; ?>
                             <?= ($soundcloud) ? '<li><a href="'.$soundcloud.'" target="_blank"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo-soundcloud.png" alt="soundcloud"></a></li>' : ''; ?>
                             <?= ($youtube) ? '<li><a href="'.$youtube.'" target="_blank"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo-youtube.png" alt="youtube music"></a></li>' : ''; ?>
                             <?= ($spotify) ? '<li><a href="'.$spotify.'" target="_blank"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo-spotify.png" alt="spotify"></a></li>' : ''; ?>
@@ -71,7 +71,7 @@ while ( have_posts() ) : the_post(); ?>
                                     </a>
                                 </div>
                                 <div class="artist-info">
-                                    <a class="artist-title" href="<?= get_the_permalink($post); ?>"><?= $artistes; ?></a>
+                                    <a class="artist-title" href="<?= get_the_permalink($post); ?>"><?= get_the_title(); ?></a>
                                     <?php if ($badge) echo '<i class="fas fa-check-circle"></i>'; ?>
                                     <ul>
                                         <?= ($twitter) ? '<li><a href="'.$twitter.'" target="_blank"><i class="fab fa-twitter"></i></a></li>' : ''; ?>
