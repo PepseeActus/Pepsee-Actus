@@ -15,6 +15,7 @@ while ( have_posts() ) : the_post(); ?>
             <?php 
                 $artistes = get_field('artistes');
                 $titre = get_field('titre');
+                $riddim = get_field('riddim');
                 $download = get_field('download');
                 $backlink = get_field('backlink');
                 $soundcloud = get_field('soundcloud');
@@ -29,8 +30,9 @@ while ( have_posts() ) : the_post(); ?>
                 </div>
                 <div class="music-presentation__info">
                     <div class="music-presentation__info-name">
-                        <span class="entry-title"><?= $artistes ?></span><br>
+                        <span class="entry-title name"><?= $artistes ?></span><br>
                         <span class="entry-title"><?= $titre ?></span>
+                        <span class="entry-title riddim"><?= $riddim ?></span>
                     </div>
                     <div class="music-presentation__info-reseaux">
                         <ul>

@@ -472,12 +472,14 @@ figcaption {
 .single article p, .page .page-content p {
   margin: 1rem 0 3rem; }
 
+.single article .scriptlesssocialsharing__buttons a :hover, .page .page-content .scriptlesssocialsharing__buttons a :hover {
+  transform: inherit; }
+
 .single article a, .page .page-content a {
   position: relative;
   font-weight: 500;
   transition: transform 0.2s;
-  box-shadow: none;
-  box-shadow: rgba(251, 192, 3, 0.5) 0px -5px 0px inset; }
+  box-shadow: #FBC003 0px -5px 0px inset; }
   .single article a:hover, .single article a:focus, .page .page-content a:hover, .page .page-content a:focus {
     transform: scale(0.8333); }
   .single article a::before, .page .page-content a::before {
@@ -815,7 +817,7 @@ html {
   .single .hero-banner .banner {
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: top;
+    background-position: center;
     filter: blur(3px);
     position: absolute;
     top: 0;
@@ -1744,6 +1746,10 @@ body.admin-bar .search-overlay {
       font-weight: 600;
       font-size: 3rem;
       line-height: 2.5rem; }
+      .single-music .music-presentation__info-name .entry-title.name {
+        font-weight: 200; }
+      .single-music .music-presentation__info-name .entry-title.riddim {
+        font-weight: 800; }
       @media (max-width: 767.98px) {
         .single-music .music-presentation__info-name .entry-title {
           font-size: 1.8rem; } }
@@ -1757,6 +1763,9 @@ body.admin-bar .search-overlay {
         transition: transform .3s ease-out; }
         .single-music .music-presentation__info-reseaux li img:hover {
           transform: translateY(0.5rem); }
+
+.single-music .music-content p {
+  margin-bottom: 1rem; }
 
 .single-music aside h2 {
   font-size: 3.2rem; }
@@ -1855,6 +1864,9 @@ body.admin-bar .search-overlay {
             max-width: 1.5rem; } }
         .single-album .music-presentation__info-reseaux li img:hover {
           transform: translateY(0.5rem); }
+
+.single-album .music-content p {
+  margin-bottom: 1rem; }
 
 .single-album aside {
   margin-top: 1.5rem; }

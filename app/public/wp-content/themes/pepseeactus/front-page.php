@@ -77,6 +77,7 @@ get_header(); ?>
 							$query->the_post();
 							$artistes = get_field('artistes');
 							$titre = get_field('titre');
+							$riddim = get_field('riddim');
 							$download = get_field('download'); ?>
 							<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 								<a class="rotate" href="<?php the_permalink(); ?>">
@@ -85,6 +86,7 @@ get_header(); ?>
 								<div class="info">
 									<div class="title"><a href="<?php the_permalink(); ?>" target="_blank"><?= $artistes; ?></a></div>
 									<p><a href="<?php the_permalink(); ?>" target="_blank"><?= $titre; ?></a></p>
+									<p class="riddim"><?= $riddim; ?></p>
 									<?= ($download) ? '<a href="'.get_the_permalink().'" target="_blank"><i class="fa fa-cloud-download"></i> Download</a>' : ''; ?>
 								</div>
 							</article>

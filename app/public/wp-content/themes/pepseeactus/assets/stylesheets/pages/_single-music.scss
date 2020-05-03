@@ -36,7 +36,15 @@
                     font-weight: 600;
                     font-size: 3rem;
                     line-height: 2.5rem;
-    
+
+                    &.name {
+                        font-weight: 200;
+                    }
+
+                    &.riddim {
+                        font-weight: 800;
+                    }
+
                     @include media(phone) {
                         font-size: 1.8rem;
                     }
@@ -62,6 +70,12 @@
                     }
                 }
             }
+        }
+    }
+
+    .music-content {
+        p {
+            margin-bottom: 1rem;
         }
     }
 

@@ -106,12 +106,15 @@ figcaption {
 		margin: 1rem 0 3rem;
 	}
 
+	.scriptlesssocialsharing__buttons a :hover {
+		transform: inherit;
+	}
+
 	a {
 		position: relative;
 		font-weight: 500;
 		transition: transform 0.2s;
-		box-shadow: none;
-		box-shadow: rgba($color__yellow, .5) 0px -5px 0px inset;
+		box-shadow: $color__yellow 0px -5px 0px inset;
 
 		&:hover,
 		&:focus {
