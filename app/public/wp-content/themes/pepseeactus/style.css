@@ -453,6 +453,12 @@ h2 {
 
 h3 {
   font-size: 3rem; }
+  h3.widget-title {
+    background: #d8d7d7;
+    padding: .5rem 1.5rem;
+    color: white;
+    margin-bottom: 1rem;
+    font-size: 2.5rem; }
 
 strong {
   font-weight: 600; }

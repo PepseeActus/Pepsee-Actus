@@ -61,12 +61,11 @@ get_header(); ?>
                             $artistes = get_field('artistes');
                             $titre = get_field('titre');
                             $download = get_field('download');
+                            $backlink = get_field('backlink');
                             $soundcloud = get_field('soundcloud');
                             $youtube = get_field('youtube');
                             $spotify = get_field('spotify');
                             $deezer = get_field('deezer');
-                            $google = get_field('google_play_music');
-                            $tidal = get_field('tidal');
                             $apple = get_field('apple_music'); ?>
 
                             <div class="artist-album__container-box col-12 col-md-6">
@@ -79,7 +78,8 @@ get_header(); ?>
                                     <a href="<?= get_the_permalink($post); ?>"><?= $artistes; ?></a>
                                     <a class="album-title" href="<?= get_the_permalink($post); ?>"><?= $titre; ?></a>
                                     <ul>
-                                        <?= ($download) ? '<li><a href="'.get_the_permalink($post).'" target="_blank"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo-download.png" alt="download"></a></li>' : ''; ?>
+                                        <?= ($download) ? '<li><a href="'.get_the_permalink($post).'" target="_blank"><i class="fa fa-cloud-download"></i> Download</a></li>' : ''; ?>
+                                        <?= ($backlink) ? '<li><a href="'.get_the_permalink($post).'" target="_blank"><i class="fas fa-shopping-cart"></i> Streamer</a></li>' : ''; ?>
                                         <?= ($soundcloud) ? '<li><a href="'.get_the_permalink($post).'" target="_blank"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo-soundcloud.png" alt="soundcloud"></a></li>' : ''; ?>
                                         <?= ($youtube) ? '<li><a href="'.get_the_permalink($post).'" target="_blank"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo-youtube.png" alt="youtube music"></a></li>' : ''; ?>
                                         <?= ($spotify) ? '<li><a href="'.get_the_permalink($post).'" target="_blank"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo-spotify.png" alt="spotify"></a></li>' : ''; ?>
