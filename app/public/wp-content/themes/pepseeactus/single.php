@@ -83,7 +83,7 @@ while ( have_posts() ) : the_post();
 					</div>
 				</div>
 			<?php endif; ?>
-			<div class="instagram-feed">
+			<div class="instagram-feed mobile-visually-hidden">
 				<?= do_shortcode("[instagram-feed]"); ?>
 			</div>
 		</aside>

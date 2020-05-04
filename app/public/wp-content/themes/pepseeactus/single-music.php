@@ -32,7 +32,7 @@ while ( have_posts() ) : the_post(); ?>
                     <div class="music-presentation__info-name">
                         <span class="entry-title name"><?= $artistes ?></span><br>
                         <span class="entry-title"><?= $titre ?></span>
-                        <span class="entry-title riddim"><?= $riddim ?> Riddim</span>
+                        <?= ($riddim) ? '<span class="entry-title riddim">'.$riddim.' Riddim</span>' : ''; ?>
                     </div>
                     <div class="music-presentation__info-reseaux">
                         <ul>
@@ -86,7 +86,28 @@ while ( have_posts() ) : the_post(); ?>
                     </div>
                 <?php endif; ?>
             </div>
-            <div class="instagram-feed">
+            <div class="related-album">
+                <?php $posts = get_field('albums_associes');
+                if ($posts): ?>
+                    <h2>Ce titre est présent sur</h2>
+                    <div class="related-album__container">
+                        <?php foreach ($posts as $post) { ?>
+                            <div class="related-album__container-box">
+                                <div class="related-album__image">
+                                    <a href="<?= get_the_permalink($post); ?>">
+                                        <img src="<?= get_the_post_thumbnail_url($post, 'thumbnail'); ?>" alt="<?= get_the_title($post); ?>">
+                                    </a>
+                                </div>
+                                <div class="related-album__info">
+                                    <a class="related-album__title" href="<?= get_the_permalink($post); ?>"><?= get_the_title(); ?></a>
+                                </div>
+                            </div>
+                        <?php } ?>
+                        <?php wp_reset_postdata(); ?>
+                    </div>
+                <?php endif; ?>
+            </div>
+            <div class="instagram-feed mobile-visually-hidden">
                 <?= do_shortcode("[instagram-feed]"); ?>
             </div>
         </aside>

@@ -82,11 +82,21 @@
     }
 
     aside {
+        padding-top: 0;
+
         h2 {
             font-size: 3.2rem;
         }
 
-        .artist-album {            
+        .artist-album {    
+            margin-bottom: 3rem;
+
+            h2 {
+                margin-bottom: 1rem;
+                display: inline-block;
+                font-size: 2.1rem;
+            }
+
             &__container {
                 &-box {
                     display: flex;
@@ -163,6 +173,26 @@
                             }
                         }
                     }
+                }
+            }
+        }
+
+        .related-album {
+            margin-bottom: 3rem;
+
+            h2 {
+                margin-bottom: 1rem;
+                display: inline-block;
+                font-size: 2.1rem;
+            }
+
+            .related-album__image {
+                margin-bottom: 1rem;
+
+                img {
+                    border-radius: 1rem;
+                    max-width: 12rem;
+                    @include shadow();
                 }
             }
         }

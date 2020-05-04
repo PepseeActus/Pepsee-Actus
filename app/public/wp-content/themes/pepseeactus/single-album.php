@@ -69,7 +69,7 @@ get_header(); ?>
                                     </a>
                                 </div>
                                 <div class="artist-info">
-                                    <a class="artist-title" href="<?= get_the_permalink($post); ?>"><?= $artistes; ?></a>
+                                    <a class="artist-title" href="<?= get_the_permalink($post); ?>"><?= get_the_title($post); ?></a>
                                     <?php if ($badge) echo '<i class="fas fa-check-circle"></i>'; ?>
                                     <ul>
                                         <?= ($twitter) ? '<li><a href="'.$twitter.'" target="_blank"><i class="fab fa-twitter"></i></a></li>' : ''; ?>
@@ -84,7 +84,7 @@ get_header(); ?>
                     </div>
                 <?php endif; ?>
             </div>
-            <div class="instagram-feed">
+            <div class="instagram-feed mobile-visually-hidden">
                 <?= do_shortcode("[instagram-feed]"); ?>
             </div>
         </aside>

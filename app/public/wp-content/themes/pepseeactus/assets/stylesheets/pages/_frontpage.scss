@@ -99,7 +99,12 @@
         display: flex;
         justify-content: space-between;
         border-radius: 1rem;
-        
+
+        @include media(phone) {
+            padding-top: 0;
+            border-radius: 0;
+        }
+
         .principal {
             background-color: white;
             border-radius: 1rem;
@@ -136,8 +141,9 @@
             }
             
             article {
-                margin-bottom: 1rem;
+                margin-bottom: 2rem;
                 display: flex;
+                align-items: flex-start;
 
                 @include media(phone) {
                     width: 90%;
@@ -149,6 +155,7 @@
 
                     @include media(phone) {
                         width: inherit;
+                        height: inherit;
                     }
                 }
 
@@ -170,7 +177,6 @@
 
                     .title {
                         display: block;
-                        margin-top: 1rem;
                     }
 
                     p {

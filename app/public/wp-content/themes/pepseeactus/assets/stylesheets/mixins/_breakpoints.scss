@@ -122,7 +122,7 @@
     }
   }
   
-  .mobile-visually-hidden  {
+  .mobile-visually-hidden {
       @include media(phone-tablet) {
           border: 0;
           clip: rect(0 0 0 0);
@@ -132,5 +132,6 @@
           padding: 0;
           position: absolute;
           width: 1px;
+          display: none;
       }
   }
