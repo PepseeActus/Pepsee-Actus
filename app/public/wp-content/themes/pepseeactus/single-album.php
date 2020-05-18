@@ -53,7 +53,7 @@ get_header(); ?>
             <div class="artist-album">
                 <?php $posts = get_field('artistes_associes');
                 if ($posts): ?>
-                    <h2>Artiste<?= (count($posts) > 1) ? 's' : ''; ?></h2>
+                    <h3 class="widget-title">Artiste<?= (count($posts) > 1) ? 's' : ''; ?></h3>
                     <div class="artist-album__container">
                         <?php foreach ($posts as $post) {
                             $badge = get_field('compte_verifie');

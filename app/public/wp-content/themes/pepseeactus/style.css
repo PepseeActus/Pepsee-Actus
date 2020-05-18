@@ -1786,14 +1786,8 @@ body.admin-bar .search-overlay {
 
 .single-music aside {
   padding-top: 0; }
-  .single-music aside h2 {
-    font-size: 3.2rem; }
   .single-music aside .artist-album {
     margin-bottom: 3rem; }
-    .single-music aside .artist-album h2 {
-      margin-bottom: 1rem;
-      display: inline-block;
-      font-size: 2.1rem; }
     .single-music aside .artist-album__container-box {
       display: flex;
       align-items: center;
@@ -1841,10 +1835,6 @@ body.admin-bar .search-overlay {
               color: #F50E02; }
   .single-music aside .related-album {
     margin-bottom: 3rem; }
-    .single-music aside .related-album h2 {
-      margin-bottom: 1rem;
-      display: inline-block;
-      font-size: 2.1rem; }
     .single-music aside .related-album .related-album__image {
       margin-bottom: 1rem; }
       .single-music aside .related-album .related-album__image img {
@@ -1906,8 +1896,6 @@ body.admin-bar .search-overlay {
 
 .single-album aside {
   margin-top: 1.5rem; }
-  .single-album aside h2 {
-    font-size: 3.2rem; }
   .single-album aside .artist-album {
     margin-bottom: 5rem; }
     .single-album aside .artist-album__container-box {

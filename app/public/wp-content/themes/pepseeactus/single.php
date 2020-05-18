@@ -53,6 +53,7 @@ while ( have_posts() ) : the_post();
 			<?php $posts = get_field('artistes_associes');
 			if ($posts): ?>
 				<div class="artist">
+					<h3 class="widget-title">Artiste<?= (count($posts) > 1) ? 's' : ''; ?></h3>
 					<div class="artist__container">
 						<?php foreach ($posts as $post) {
 							$badge = get_field('compte_verifie');

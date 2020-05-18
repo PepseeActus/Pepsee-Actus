@@ -55,7 +55,7 @@ while ( have_posts() ) : the_post(); ?>
             <div class="artist-album">
                 <?php $posts = get_field('artistes_associes');
                 if ($posts): ?>
-                    <h2>Artiste<?= (count($posts) > 1) ? 's' : ''; ?></h2>
+                    <h3 class="widget-title">Artiste<?= (count($posts) > 1) ? 's' : ''; ?></h3>
                     <div class="artist-album__container">
                         <?php foreach ($posts as $post) {
                             $badge = get_field('compte_verifie');
@@ -89,7 +89,7 @@ while ( have_posts() ) : the_post(); ?>
             <div class="related-album">
                 <?php $posts = get_field('albums_associes');
                 if ($posts): ?>
-                    <h2>Ce titre est présent sur</h2>
+                    <h3 class="widget-title">Ce titre est présent sur</h3>
                     <div class="related-album__container">
                         <?php foreach ($posts as $post) { ?>
                             <div class="related-album__container-box">
