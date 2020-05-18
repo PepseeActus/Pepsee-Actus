@@ -1049,8 +1049,8 @@ body.admin-bar .search-overlay {
 .about {
   position: fixed;
   z-index: 10;
-  bottom: 10px;
-  right: 10px;
+  bottom: 1rem;
+  right: 1rem;
   width: 4rem;
   height: 4rem;
   display: flex;
@@ -1255,12 +1255,23 @@ body.admin-bar .search-overlay {
     .home .album-wrap article {
       margin-bottom: 2rem;
       display: flex;
-      align-items: flex-start; }
+      align-items: flex-start;
+      position: relative; }
       @media (max-width: 767.98px) {
         .home .releases-wrap article,
         .home .classic-wrap article,
         .home .album-wrap article {
           width: 90%; } }
+      .home .releases-wrap article .new,
+      .home .classic-wrap article .new,
+      .home .album-wrap article .new {
+        position: absolute;
+        transform: rotate(-17deg);
+        z-index: 1;
+        color: red;
+        text-transform: uppercase;
+        font-weight: 600;
+        top: -9px; }
       .home .releases-wrap article .rotate,
       .home .classic-wrap article .rotate,
       .home .album-wrap article .rotate {

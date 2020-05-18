@@ -144,9 +144,20 @@
                 margin-bottom: 2rem;
                 display: flex;
                 align-items: flex-start;
+                position: relative;
 
                 @include media(phone) {
                     width: 90%;
+                }
+
+                .new {
+                    position: absolute;
+                    transform: rotate(-17deg);
+                    z-index: 1;
+                    color: red;
+                    text-transform: uppercase;
+                    font-weight: 600;
+                    top: -9px;
                 }
 
                 .rotate {

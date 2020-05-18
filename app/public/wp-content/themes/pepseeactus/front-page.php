@@ -80,6 +80,11 @@ get_header(); ?>
 							$riddim = get_field('riddim');
 							$download = get_field('download'); ?>
 							<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+								<?php 
+								$weekAgo = strtotime('-1 week');
+								if ( intval(strtotime($post->post_modified)) > intval($weekAgo) ) : ?>
+									<span class="new">new</span>
+								<?php endif; ?>
 								<a class="rotate" href="<?php the_permalink(); ?>">
 									<?php the_post_thumbnail('thumbnail'); ?>
 								</a>
@@ -118,6 +123,11 @@ get_header(); ?>
 							$artistes = get_field('artistes');
 							$titre = get_field('titre'); ?>
 							<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+								<?php 
+								$weekAgo = strtotime('-1 week');
+								if ( intval(strtotime($post->post_modified)) > intval($weekAgo) ) : ?>
+									<span class="new">new</span>
+								<?php endif; ?>
 								<a class="rotate" href="<?php the_permalink(); ?>">
 									<?php the_post_thumbnail('thumbnail'); ?>
 								</a>
@@ -153,6 +163,11 @@ get_header(); ?>
 							$artistes = get_field('artistes');
 							$titre = get_field('titre'); ?>
 							<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+								<?php 
+								$weekAgo = strtotime('-1 week');
+								if ( intval(strtotime($post->post_modified)) > intval($weekAgo) ) : ?>
+									<span class="new">new</span>
+								<?php endif; ?>
 								<a href="<?php the_permalink(); ?>">
 									<?php the_post_thumbnail('thumbnail'); ?>
 								</a>
