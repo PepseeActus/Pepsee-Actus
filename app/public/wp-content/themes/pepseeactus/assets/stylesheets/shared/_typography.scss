@@ -10,6 +10,7 @@ textarea {
 	font-family: $font__main;
 	font-size: 1.6rem;
 	line-height: $font__line-height-body;
+	color: rgba(#000, 0.8);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -71,9 +72,10 @@ h1 {
 
 h2 {
 	font-size: 5rem;
-	
+	color: rgba(#000, 0.5);
+
 	@include media(phone) {
-		font-size: 3rem;
+		font-size: 20px;
 	}
 }
 

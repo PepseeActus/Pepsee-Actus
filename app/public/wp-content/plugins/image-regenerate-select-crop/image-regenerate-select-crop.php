@@ -5,7 +5,7 @@
  * Description: Regenerate and crop images, details and actions for image sizes registered and image sizes generated, clean up, placeholders, custom rules, register new image sizes, crop medium settings, WP-CLI commands, optimize images.
  * Text Domain: sirsc
  * Domain Path: /langs
- * Version: 5.4.2
+ * Version: 5.4.4
  * Author: Iulia Cazan
  * Author URI: https://profiles.wordpress.org/iulia-cazan
  * Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JJA37EHZXWUTJ
@@ -38,8 +38,8 @@ if ( ! file_exists( $dest_path ) ) {
 define( 'SIRSC_PLUGIN_FOLDER', dirname( __FILE__ ) );
 define( 'SIRSC_PLACEHOLDER_FOLDER', realpath( $dest_path ) );
 define( 'SIRSC_PLACEHOLDER_URL', esc_url( $dest_url ) );
-define( 'SIRSC_ASSETS_VER', '20200426.1400' );
-define( 'SIRSC_PLUGIN_VER', 5.42 );
+define( 'SIRSC_ASSETS_VER', '20200830.1145' );
+define( 'SIRSC_PLUGIN_VER', 5.44 );
 define( 'SIRSC_ADONS_FOLDER', dirname( __FILE__ ) . '/adons/' );
 
 /**
@@ -328,12 +328,15 @@ class SIRSC_Image_Regenerate_Select_Crop {
 		delete_option( 'large_crop' );
 		delete_option( 'sirsc_use_custom_image_sizes' );
 		delete_option( 'sirsc_monitor_errors' );
-		$rows = $wpdb->get_results( $wpdb->prepare(
-			'SELECT option_name FROM ' . $wpdb->options . ' WHERE option_name like %s OR option_name like %s OR option_name like %s ',
-			$wpdb->esc_like( 'sirsc_settings' ) . '%',
-			$wpdb->esc_like( 'sirsc_types' ) . '%',
-			$wpdb->esc_like( 'sirsc_user_custom_rules' ) . '%'
-		), ARRAY_A );
+		$rows = $wpdb->get_results(
+			$wpdb->prepare(
+				'SELECT option_name FROM ' . $wpdb->options . ' WHERE option_name like %s OR option_name like %s OR option_name like %s ',
+				$wpdb->esc_like( 'sirsc_settings' ) . '%',
+				$wpdb->esc_like( 'sirsc_types' ) . '%',
+				$wpdb->esc_like( 'sirsc_user_custom_rules' ) . '%'
+			),
+			ARRAY_A
+		);
 		if ( ! empty( $rows ) && is_array( $rows ) ) {
 			foreach ( $rows as $v ) {
 				delete_option( $v['option_name'] );
@@ -382,19 +385,21 @@ class SIRSC_Image_Regenerate_Select_Crop {
 						$maybe_pro
 					);
 
-					echo wp_kses_post( sprintf(
-						// Translators: %1$s - image URL, %2$s - icon URL, %3$s - donate URL, %4$s - link style, %5$s - icon style, %6$s - rating.
-						__( '<a href="%3$s" target="_blank"%4$s><img src="%1$s"></a><a href="%9$s"><img src="%2$s"%5$s></a> <h3>%8$s plugin was activated!</h3> This plugin is free to use, but not to operate. Please consider supporting my services by making a <a href="%3$s" target="_blank">donation</a>. It would make me very happy if you would leave a %6$s rating. %7$s', 'sirsc' ),
-						esc_url( plugin_dir_url( __FILE__ ) . '/assets/images/buy-me-a-coffee.png' ),
-						esc_url( plugin_dir_url( __FILE__ ) . '/assets/images/icon-128x128.png' ),
-						'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JJA37EHZXWUTJ&item_name=Support for development and maintenance (' . urlencode( self::PLUGIN_NAME ) . ')',
-						' style="float:right; margin:20px"',
-						' style="float:left; margin-right:20px; margin-top:10px; width:86px"',
-						'<a href="' . self::PLUGIN_SUPPORT_URL . 'reviews/?rate=5#new-post" class="rating" target="_blank" title="' . esc_attr( 'A huge thanks in advance!', 'sirsc' ) . '">★★★★★</a>',
-						__( 'A huge thanks in advance!', 'sirsc' ),
-						'<b>' . __( 'Image Regenerate & Select Crop', 'sirsc' ) . '</b>',
-						''
-					) );
+					echo wp_kses_post(
+						sprintf(
+							// Translators: %1$s - image URL, %2$s - icon URL, %3$s - donate URL, %4$s - link style, %5$s - icon style, %6$s - rating.
+							__( '<a href="%3$s" target="_blank"%4$s><img src="%1$s"></a><a href="%9$s"><img src="%2$s"%5$s></a> <h3>%8$s plugin was activated!</h3> This plugin is free to use, but not to operate. Please consider supporting my services by making a <a href="%3$s" target="_blank">donation</a>. It would make me very happy if you would leave a %6$s rating. %7$s', 'sirsc' ),
+							esc_url( plugin_dir_url( __FILE__ ) . '/assets/images/buy-me-a-coffee.png' ),
+							esc_url( plugin_dir_url( __FILE__ ) . '/assets/images/icon-128x128.gif' ),
+							'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JJA37EHZXWUTJ&item_name=Support for development and maintenance (' . urlencode( self::PLUGIN_NAME ) . ')',
+							' style="float:right; margin:20px"',
+							' style="float:left; margin-right:20px; margin-top:10px; width:86px"',
+							'<a href="' . self::PLUGIN_SUPPORT_URL . 'reviews/?rate=5#new-post" class="rating" target="_blank" title="' . esc_attr( 'A huge thanks in advance!', 'sirsc' ) . '">★★★★★</a>',
+							__( 'A huge thanks in advance!', 'sirsc' ),
+							'<b>' . __( 'Image Regenerate & Select Crop', 'sirsc' ) . '</b>',
+							admin_url( 'admin.php?page=image-regenerate-select-crop-settings' )
+						)
+					);
 					?>
 					<div class="clear"></div>
 				</p>
@@ -422,12 +427,14 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 * @return void
 	 */
 	public static function show_donate_text() {
-		echo wp_kses_post( sprintf(
-			// Translators: %1$s - donate URL, %2$s - rating.
-			__( 'If you find the plugin useful and would like to support my work, please consider making a <a href="%1$s" target="_blank">donation</a>.<br>It would make me very happy if you would leave a %2$s rating.', 'sirsc' ) . ' ' . __( 'A huge thanks in advance!', 'sirsc' ),
-			'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JJA37EHZXWUTJ&item_name=Support for development and maintenance (' . urlencode( self::PLUGIN_NAME ) . ')',
-			'<a href="' . self::PLUGIN_SUPPORT_URL . 'reviews/?rate=5#new-post" class="rating" target="_blank" title="' . esc_attr( 'A huge thanks in advance!', 'sirsc' ) . '">★★★★★</a>'
-		) );
+		echo wp_kses_post(
+			sprintf(
+				// Translators: %1$s - donate URL, %2$s - rating.
+				__( 'If you find the plugin useful and would like to support my work, please consider making a <a href="%1$s" target="_blank">donation</a>.<br>It would make me very happy if you would leave a %2$s rating.', 'sirsc' ) . ' ' . __( 'A huge thanks in advance!', 'sirsc' ),
+				'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JJA37EHZXWUTJ&item_name=Support for development and maintenance (' . urlencode( self::PLUGIN_NAME ) . ')',
+				'<a href="' . self::PLUGIN_SUPPORT_URL . 'reviews/?rate=5#new-post" class="rating" target="_blank" title="' . esc_attr( 'A huge thanks in advance!', 'sirsc' ) . '">★★★★★</a>'
+			)
+		);
 	}
 
 	/**
@@ -897,7 +904,11 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	public static function big_image_size_threshold_forced( $initial_value, $imagesize, $file, $attachment_id ) {
 		if ( ! empty( self::$settings['force_original_to'] ) ) {
 			self::load_settings_for_post_id( $attachment_id );
-			$size      = self::get_all_image_sizes( self::$settings['force_original_to'] );
+			$size = self::get_all_image_sizes( self::$settings['force_original_to'] );
+			if ( empty( $size ) ) {
+				return $initial_value;
+			}
+
 			$estimated = wp_constrain_dimensions( $imagesize[0], $imagesize[1], $size['width'], $size['height'] );
 			self::debug( 'Estimated before applying threshold ' . print_r( $estimated, 1 ), true, true );
 
@@ -908,17 +919,25 @@ class SIRSC_Image_Regenerate_Select_Crop {
 
 			if ( $relative < $initial_value ) {
 				self::debug( 'Force the image threshold to ' . $relative, true, true );
-				add_filter('wp_editor_set_quality', function( $def, $mime = '' ) {
-					return 100;
-				}, 10 );
+				add_filter(
+					'wp_editor_set_quality',
+					function( $def, $mime = '' ) {
+						return self::DEFAULT_QUALITY;
+					},
+					10
+				);
 				return (int) $relative;
 			}
 
 			if ( ! empty( $size['width'] ) && $size['width'] < $initial_value ) {
 				self::debug( 'Force the image threshold to ' . $size['width'], true, true );
-				add_filter('wp_editor_set_quality', function( $def, $mime = '' ) {
-					return 100;
-				}, 10 );
+				add_filter(
+					'wp_editor_set_quality',
+					function( $def, $mime = '' ) {
+						return self::DEFAULT_QUALITY;
+					},
+					10
+				);
 				return (int) $size['width'];
 			}
 		}
@@ -926,7 +945,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	}
 
 	/**
-	 * Identify a crop position by the image size and retrun the crop array.
+	 * Identify a crop position by the image size and return the crop array.
 	 *
 	 * @param string $size_name Image size slug.
 	 * @param string $selcrop   Perhaps a selected crop string.
@@ -940,14 +959,16 @@ class SIRSC_Image_Regenerate_Select_Crop {
 		if ( ! empty( $selcrop ) ) {
 			$sc = $selcrop;
 		} else {
-			$sc  = ( ! empty( self::$settings['default_crop'][ $size_name ] ) )
+			$sc = ( ! empty( self::$settings['default_crop'][ $size_name ] ) )
 				? self::$settings['default_crop'][ $size_name ] : 'cc';
 		}
-		$c_v = $sc{0};
+
+		$c_v = $sc[0];
+		$c_h = $sc[1];
+
 		$c_v = ( 'l' === $c_v ) ? 'left' : $c_v;
 		$c_v = ( 'c' === $c_v ) ? 'center' : $c_v;
 		$c_v = ( 'r' === $c_v ) ? 'right' : $c_v;
-		$c_h = $sc{1};
 		$c_h = ( 't' === $c_h ) ? 'top' : $c_h;
 		$c_h = ( 'c' === $c_h ) ? 'center' : $c_h;
 		$c_h = ( 'b' === $c_h ) ? 'bottom' : $c_h;
@@ -988,22 +1009,23 @@ class SIRSC_Image_Regenerate_Select_Crop {
 		$to_update = filter_input( INPUT_POST, 'sirsc-settings-submit', FILTER_DEFAULT );
 		if ( ! empty( $to_update ) ) {
 			$settings = array(
-				'exclude'                => array(),
-				'unavailable'            => array(),
-				'force_original_to'      => '',
-				'complete_global_ignore' => array(),
-				'placeholders'           => array(),
-				'default_crop'           => array(),
-				'default_quality'        => array(),
-				'enable_perfect'         => false,
-				'enable_upscale'         => false,
-				'regenerate_missing'     => false,
-				'disable_woo_thregen'    => false,
-				'sync_settings_ewww'     => false,
-				'listing_tiny_buttons'   => false,
-				'force_size_choose'      => false,
-				'leave_settings_behind'  => false,
-				'listing_show_summary'   => false,
+				'exclude'                  => array(),
+				'unavailable'              => array(),
+				'force_original_to'        => '',
+				'complete_global_ignore'   => array(),
+				'placeholders'             => array(),
+				'default_crop'             => array(),
+				'default_quality'          => array(),
+				'enable_perfect'           => false,
+				'enable_upscale'           => false,
+				'regenerate_missing'       => false,
+				'disable_woo_thregen'      => false,
+				'sync_settings_ewww'       => false,
+				'listing_tiny_buttons'     => false,
+				'force_size_choose'        => false,
+				'leave_settings_behind'    => false,
+				'listing_show_summary'     => false,
+				'regenerate_only_featured' => false,
 			);
 
 			$post_types   = filter_input( INPUT_POST, '_sirsc_post_types', FILTER_DEFAULT );
@@ -1057,6 +1079,10 @@ class SIRSC_Image_Regenerate_Select_Crop {
 			$regenerate_missing = filter_input( INPUT_POST, '_sirsrc_regenerate_missing', FILTER_DEFAULT );
 			if ( ! empty( $regenerate_missing ) ) {
 				$settings['regenerate_missing'] = true;
+			}
+			$regenerate_only_featured = filter_input( INPUT_POST, '_sirsrc_regenerate_only_featured', FILTER_DEFAULT );
+			if ( ! empty( $regenerate_only_featured ) ) {
+				$settings['regenerate_only_featured'] = true;
 			}
 			$disable_woo = filter_input( INPUT_POST, '_disable_woo_thregen', FILTER_DEFAULT );
 			if ( ! empty( $disable_woo ) ) {
@@ -1648,7 +1674,6 @@ class SIRSC_Image_Regenerate_Select_Crop {
 									&nbsp;&nbsp;&nbsp; <label><input type="checkbox" name="_sirsrc_enable_upscale" id="_sirsrc_enable_upscale" <?php checked( true, $settings['enable_upscale'] ); ?> onchange="sirsc_autosubmit()" /> <?php esc_html_e( 'attempt to upscale when generating only perfect fit sizes', 'sirsc' ); ?></label>
 									<a class="dashicons dashicons-info" title="<?php esc_attr_e( 'Details', 'sirsc' ); ?>" onclick="sirsc_toggle_info('#info_perfect_fit_upscale')"></a>
 
-
 									<div class="sirsc_info_box_wrap">
 										<div id="info_perfect_fit" class="sirsc_info_box" onclick="sirsc_toggle_info('#info_regenerate')">
 											<?php esc_html_e( 'This option allows you to generate only images that match exactly the width and height of the crop/resize requirements, when the option is enabled. Otherwise, the script will generate anything possible for smaller images.', 'sirsc' ); ?>
@@ -1666,12 +1691,24 @@ class SIRSC_Image_Regenerate_Select_Crop {
 									if ( empty( $settings['regenerate_missing'] ) ) {
 										$settings['regenerate_missing'] = false;
 									}
+									if ( empty( $settings['regenerate_only_featured'] ) ) {
+										$settings['regenerate_only_featured'] = false;
+									}
 									?>
 									<label><input type="checkbox" name="_sirsrc_regenerate_missing" id="_sirsrc_regenerate_missing" <?php checked( true, $settings['regenerate_missing'] ); ?> onchange="sirsc_autosubmit()" /> <?php esc_html_e( 'regenerate only missing files', 'sirsc' ); ?></label>
 									<a class="dashicons dashicons-info" title="<?php esc_attr_e( 'Details', 'sirsc' ); ?>" onclick="sirsc_toggle_info('#info_regenerate_missing')"></a>
+
+									&nbsp;&nbsp;&nbsp; <label><input type="checkbox" name="_sirsrc_regenerate_only_featured" id="_sirsrc_regenerate_only_featured" <?php checked( true, $settings['regenerate_only_featured'] ); ?> onchange="sirsc_autosubmit()" /> <?php esc_html_e( 'regenerate/cleanup only featured images', 'sirsc' ); ?></label>
+									<a class="dashicons dashicons-info" title="<?php esc_attr_e( 'Details', 'sirsc' ); ?>" onclick="sirsc_toggle_info('#info_regenerate_only_featured')"></a>
+
 									<div class="sirsc_info_box_wrap">
 										<div id="info_regenerate_missing" class="sirsc_info_box" onclick="sirsc_toggle_info('#info_regenerate_missing')">
 											<?php esc_html_e( 'This option allows you to regenerate only the images that do not exist, without overriding the existing ones.', 'sirsc' ); ?>
+										</div>
+									</div>
+									<div class="sirsc_info_box_wrap">
+										<div id="info_regenerate_only_featured" class="sirsc_info_box" onclick="sirsc_toggle_info('#info_regenerate_only_featured')">
+											<?php esc_html_e( 'This option allows you to regenerate/cleanup only the images that are set as featured image for any of the posts.', 'sirsc' ); ?>
 										</div>
 									</div>
 
@@ -2012,17 +2049,14 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	}
 
 	/**
-	 * Return the array of keys=>values from the ajax post.
+	 * Return the array of keys => values from the ajax post.
 	 *
-	 * @param array $sirsc_data The data.
+	 * @param array $data The data.
 	 */
-	public static function parse_ajax_data( $sirsc_data ) {
+	public static function parse_ajax_data( $data ) {
 		$result = false;
-		if ( ! empty( $sirsc_data ) ) {
-			$result = array();
-			foreach ( $sirsc_data as $v ) {
-				$result[ $v['name'] ] = $v['value'];
-			}
+		if ( ! empty( $data ) && is_array( $data ) ) {
+			$result = wp_list_pluck( $data, 'value', 'name' );
 		}
 		return $result;
 	}
@@ -2041,11 +2075,29 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	}
 
 	/**
+	 * Assess and return SIRSC data.
+	 *
+	 * @return mixed
+	 */
+	public static function has_sirsc_data() {
+		$data = filter_input( INPUT_GET, 'sirsc_data', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
+		if ( empty( $data ) ) {
+			$data = filter_input( INPUT_POST, 'sirsc_data', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
+		}
+		if ( empty( $data ) ) {
+			return false;
+		}
+
+		return $data;
+	}
+
+	/**
 	 * Execute and return the response of the callback, if the specified method exists.
 	 */
 	public static function show_actions_result() {
-		if ( ! empty( $_REQUEST['sirsc_data'] ) ) {
-			$post_data = self::parse_ajax_data( $_REQUEST['sirsc_data'] );
+		$data = self::has_sirsc_data();
+		if ( ! empty( $data ) ) {
+			$post_data = self::parse_ajax_data( $data );
 			if ( ! empty( $post_data['callback'] ) ) {
 				if ( method_exists( get_called_class(), $post_data['callback'] ) ) {
 					self::notify_doing_sirsc( $post_data['callback'] );
@@ -2352,7 +2404,6 @@ class SIRSC_Image_Regenerate_Select_Crop {
 		$filename = get_attached_file( $id );
 		$source   = str_replace( trailingslashit( $uplinfo['basedir'] ), '', $filename );
 
-
 		// Compute the expected if the size does not exist.
 		$all_size = self::get_all_image_sizes_plugin();
 		if ( ! empty( $size ) && ! empty( $all_size[ $size ] ) ) {
@@ -2363,9 +2414,9 @@ class SIRSC_Image_Regenerate_Select_Crop {
 				$all_size[ $size ]['height'],
 				$all_size[ $size ]['crop']
 			);
-			$suffix   = $maybe[4] . 'x' . $maybe[5];
+			$suffix   = ( ! empty( $maybe ) ) ? '-' . $maybe[4] . 'x' . $maybe[5] : '';
 			$ext      = '.' . strtolower( pathinfo( $filename, PATHINFO_EXTENSION ) );
-			$expected = str_replace( $ext, '-' . $suffix . $ext, $source );
+			$expected = str_replace( $ext, $suffix . $ext, $source );
 
 			$result = array(
 				'file'   => $expected,
@@ -2381,8 +2432,8 @@ class SIRSC_Image_Regenerate_Select_Crop {
 				$filetype = wp_check_filetype( $result['path'] );
 				$result['meta'] = array(
 					'file'      => basename( $result['path'] ),
-					'width'     => (int) $maybe[4],
-					'height'    => (int) $maybe[5],
+					'width'     => ( ! empty( $maybe[4] ) ) ? (int) $maybe[4] : (int) $image['width'],
+					'height'    => ( ! empty( $maybe[5] ) ) ? (int) $maybe[5] : (int) $image['height'],
 					'mime-type' => $filetype['type'],
 				);
 			}
@@ -2446,8 +2497,9 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 * Return the html code that contains the description of the images sizes defined in the application and provides details about the image sizes of an uploaded image.
 	 */
 	public static function ajax_show_available_sizes() {
-		if ( ! empty( $_REQUEST['sirsc_data'] ) ) {
-			$post_data = self::parse_ajax_data( $_REQUEST['sirsc_data'] );
+		$sirsc_data = self::has_sirsc_data();
+		if ( ! empty( $sirsc_data ) ) {
+			$post_data = self::parse_ajax_data( $sirsc_data );
 			if ( ! empty( $post_data['post_id'] ) ) {
 				$post = get_post( $post_data['post_id'] );
 				if ( ! empty( $post ) ) {
@@ -2615,13 +2667,14 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	public static function refresh_extra_info_footer() {
 		if ( empty( $_REQUEST['sirsc_data'] ) ) {
 			// Fail-fast.
-			retrun;
+			return;
 		}
-		$data = self::parse_ajax_data( $_REQUEST['sirsc_data'] );
-		$id = ( ! empty( $data['post_id'] ) ) ? (int) $data['post_id'] : 0;
+
+		$data = self::has_sirsc_data();
+		$id   = ( ! empty( $data['post_id'] ) ) ? (int) $data['post_id'] : 0;
 		if ( empty( $id ) ) {
 			// Fail-fast.
-			retrun;
+			return;
 		}
 		?>
 		<script>
@@ -2833,8 +2886,9 @@ class SIRSC_Image_Regenerate_Select_Crop {
 		}
 
 		$reuse_wrapper = false;
-		if ( is_array( $id ) && ! empty( $_REQUEST['sirsc_data'] ) ) {
-			$post_data = self::parse_ajax_data( $_REQUEST['sirsc_data'] );
+		$sirsc_data    = self::has_sirsc_data();
+		if ( is_array( $id ) && ! empty( $sirsc_data ) ) {
+			$post_data = self::parse_ajax_data( $sirsc_data );
 			if ( ! empty( $post_data['post_id'] ) ) {
 				$id = (int) $post_data['post_id'];
 				$reuse_wrapper = true;
@@ -2893,7 +2947,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 									<a href="<?php echo esc_url( trailingslashit( $upload_dir['baseurl'] ) . $k ); ?>" target="_blank"><?php echo esc_attr( $v['size'] ); ?></a>
 								<?php else : ?>
 									<?php echo esc_attr( $v['size'] ); ?>
-									<?php echo ( $fsize ); ?>
+									<?php echo ( $fsize ); //phpcs:ignore ?>
 								<?php endif; ?>
 								| <?php echo esc_attr( $v['width'] ); ?> x <?php echo esc_attr( $v['height'] ); ?>
 							</td>
@@ -3169,8 +3223,9 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 * Regenerate the image sizes for a specified image.
 	 */
 	public static function sirsc_ajax_delete_image_sizes_on_request() {
-		if ( ! empty( $_REQUEST['sirsc_data'] ) ) {
-			$post_data = self::parse_ajax_data( $_REQUEST['sirsc_data'] );
+		$sirsc_data = self::has_sirsc_data();
+		if ( ! empty( $sirsc_data ) ) {
+			$post_data = self::parse_ajax_data( $sirsc_data );
 			if ( ! empty( $post_data['post_id'] ) && ! empty( $post_data['selected_size'] ) ) {
 				$size  = $post_data['selected_size'];
 				$qual  = ( ! empty( $post_data['selected_quality'] ) ) ? (int) $post_data['selected_quality'] : self::DEFAULT_QUALITY;
@@ -3186,8 +3241,9 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 * Raw cleanup the image sizes for a specified image.
 	 */
 	public static function sirsc_ajax_raw_cleanup_single_on_request() {
-		if ( ! empty( $_REQUEST['sirsc_data'] ) ) {
-			$post_data = self::parse_ajax_data( $_REQUEST['sirsc_data'] );
+		$sirsc_data = self::has_sirsc_data();
+		if ( ! empty( $sirsc_data ) ) {
+			$post_data = self::parse_ajax_data( $sirsc_data );
 			if ( ! empty( $post_data['post_id'] ) ) {
 				$id   = (int) $post_data['post_id'];
 				$meta = wp_get_attachment_metadata( $id );
@@ -3311,8 +3367,9 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 * Regenerate the image sizes for a specified image.
 	 */
 	public static function sirsc_ajax_process_image_sizes_on_request() {
-		if ( ! empty( $_REQUEST['sirsc_data'] ) ) {
-			$data = self::parse_ajax_data( $_REQUEST['sirsc_data'] );
+		$sirsc_data = self::has_sirsc_data();
+		if ( ! empty( $sirsc_data ) ) {
+			$data = self::parse_ajax_data( $sirsc_data );
 			if ( ! empty( $data['post_id'] ) ) {
 				$post = get_post( $data['post_id'] );
 				if ( ! empty( $post ) ) {
@@ -3453,9 +3510,13 @@ class SIRSC_Image_Regenerate_Select_Crop {
 		}
 
 		if ( ! empty( $quality ) ) {
-			add_filter( 'wp_editor_set_quality', function( $m ) use ( $mime, $quality ) {
-				return $quality;
-			}, 90 );
+			add_filter(
+				'wp_editor_set_quality',
+				function( $m ) use ( $mime, $quality ) {
+					return $quality;
+				},
+				90
+			);
 		}
 
 		return $quality;
@@ -4316,12 +4377,15 @@ class SIRSC_Image_Regenerate_Select_Crop {
 				$cond_join = ' LEFT JOIN ' . $wpdb->posts . ' as parent ON( parent.ID = p.post_parent )';
 				$cond_where = $wpdb->prepare( ' AND parent.post_type = %s ', $post_type );
 			}
-			$tmp_query = $wpdb->prepare( ' SELECT count( p.ID ) as total_to_delete FROM ' . $wpdb->posts . ' as p LEFT JOIN ' . $wpdb->postmeta . ' as pm ON(pm.post_id = p.ID) ' . $cond_join . ' WHERE pm.meta_key like %s AND pm.meta_value like %s AND p.ID > %d ' . $cond_where,
+			if ( ! empty( self::$settings['regenerate_only_featured'] ) ) {
+				$cond_join .= ' INNER JOIN ' . $wpdb->postmeta . ' as pm2 ON (pm2.meta_value = p.ID and pm2.meta_key = \'_thumbnail_id\' ) ';
+			}
+			$tmp_query = $wpdb->prepare( ' SELECT count( distinct p.ID ) as total_to_delete FROM ' . $wpdb->posts . ' as p LEFT JOIN ' . $wpdb->postmeta . ' as pm ON(pm.post_id = p.ID) ' . $cond_join . ' WHERE pm.meta_key like %s AND pm.meta_value like %s AND p.ID > %d ' . $cond_where, // phpcs:ignore
 				'_wp_attachment_metadata',
 				'%' . $image_size_name . '%',
 				intval( $next_post_id )
 			); // WPCS: Unprepared SQL OK.
-			$rows = $wpdb->get_results( $tmp_query, ARRAY_A ); // PHPCS:ignore WordPress.WP.PreparedSQL.NotPrepared
+			$rows = $wpdb->get_results( $tmp_query, ARRAY_A ); // phpcs:ignore
 			if ( ! empty( $rows ) && is_array( $rows ) ) {
 				$total_to_delete = $rows[0]['total_to_delete'];
 			}
@@ -4333,9 +4397,10 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 * Remove the images from the folders and database records for the specified image size name.
 	 */
 	public static function sirsc_ajax_raw_cleanup_image_sizes_on_request() {
-		if ( ! empty( $_REQUEST['sirsc_data'] ) ) {
+		$sirsc_data = self::has_sirsc_data();
+		if ( ! empty( $sirsc_data ) ) {
 			self::notify_doing_sirsc();
-			$post_data = self::parse_ajax_data( $_REQUEST['sirsc_data'] );
+			$post_data = self::parse_ajax_data( $sirsc_data );
 
 			$_sisrsc_image_size_name = ( ! empty( $post_data['_sisrsc_image_size_name'] ) ) ? $post_data['_sisrsc_image_size_name'] : 'sirscregsizes';
 			$_sisrsc_post_type       = ( ! empty( $post_data['_sisrsc_post_type'] ) ) ? $post_data['_sisrsc_post_type'] : '';
@@ -4353,6 +4418,9 @@ class SIRSC_Image_Regenerate_Select_Crop {
 					$cond_join  = ' LEFT JOIN ' . $wpdb->posts . ' as parent ON( parent.ID = p.post_parent ) ';
 					$cond_where = $wpdb->prepare( ' AND parent.post_type = %s ', $_sisrsc_post_type );
 				}
+				if ( ! empty( self::$settings['regenerate_only_featured'] ) ) {
+					$cond_join .= ' INNER JOIN ' . $wpdb->postmeta . ' as pm2 ON (pm2.meta_value = p.ID and pm2.meta_key = \'_thumbnail_id\' ) ';
+				}
 				echo '
 				<div class="sirsc_under-image-options"></div>
 				<div class="sirsc_image-size-selection-box">
@@ -4361,12 +4429,12 @@ class SIRSC_Image_Regenerate_Select_Crop {
 						<h2>' . esc_html__( 'REMAINING TO RAW CLEAN UP', 'sirsc' ) . ': ' . $total_to_delete . '</h2>
 					</div>
 					<div class="inside"><div class="custom-execution-wrap">'; // WPCS: XSS OK.
-				$rows = $wpdb->get_results( $wpdb->prepare( ' SELECT p.ID FROM ' . $wpdb->posts . ' as p LEFT JOIN ' . $wpdb->postmeta . ' as pm ON(pm.post_id = p.ID) ' . $cond_join . ' WHERE pm.meta_key like %s AND pm.meta_value like %s AND p.ID > %d ' . $cond_where . ' ORDER BY p.ID ASC, pm.meta_id ASC LIMIT 0, %d ',
+				$rows = $wpdb->get_results( $wpdb->prepare( ' SELECT distinct p.ID FROM ' . $wpdb->posts . ' as p LEFT JOIN ' . $wpdb->postmeta . ' as pm ON(pm.post_id = p.ID) ' . $cond_join . ' WHERE pm.meta_key like %s AND pm.meta_value like %s AND p.ID > %d ' . $cond_where . ' ORDER BY p.ID ASC, pm.meta_id ASC LIMIT 0, %d ', // phpcs:ignore
 					'_wp_attachment_metadata',
 					'%sizes%',
 					(int) $next_post_id,
 					(int) $max_in_one_go
-				), ARRAY_A ); // WPCS: Unprepared SQL OK.
+				), ARRAY_A ); // phpcs:ignore
 				if ( ! empty( $rows ) && is_array( $rows ) ) {
 					$upls = wp_upload_dir();
 					echo '<b class="spinner inline"></b><div>';
@@ -4487,9 +4555,10 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 * Remove the images from the folders and database records for the specified image size name.
 	 */
 	public static function sirsc_ajax_cleanup_image_sizes_on_request() {
-		if ( ! empty( $_REQUEST['sirsc_data'] ) ) {
+		$sirsc_data = self::has_sirsc_data();
+		if ( ! empty( $sirsc_data ) ) {
 			self::notify_doing_sirsc();
-			$post_data = self::parse_ajax_data( $_REQUEST['sirsc_data'] );
+			$post_data = self::parse_ajax_data( $sirsc_data );
 			if ( ! empty( $post_data['_sisrsc_image_size_name'] ) ) {
 				global $wpdb;
 				$_sisrsc_image_size_name = ( ! empty( $post_data['_sisrsc_image_size_name'] ) ) ? $post_data['_sisrsc_image_size_name'] : '';
@@ -4513,12 +4582,16 @@ class SIRSC_Image_Regenerate_Select_Crop {
 							<h2>' . esc_html__( 'REMAINING TO CLEAN UP', 'sirsc' ) . ': ' . $total_to_delete . '</h2>
 						</div>
 						<div class="inside"><div class="custom-execution-wrap">'; // WPCS: XSS OK.
-					$rows = $wpdb->get_results( $wpdb->prepare( ' SELECT p.ID FROM ' . $wpdb->posts . ' as p LEFT JOIN ' . $wpdb->postmeta . ' as pm ON(pm.post_id = p.ID) ' . $cond_join . ' WHERE pm.meta_key like %s AND pm.meta_value like %s AND p.ID > %d ' . $cond_where . ' ORDER BY p.ID ASC, pm.meta_id ASC LIMIT 0, %d ',
-						'_wp_attachment_metadata',
-						'%' . $post_data['_sisrsc_image_size_name'] . '%',
-						(int) $next_post_id,
-						(int) $max_in_one_go
-					), ARRAY_A ); // WPCS: Unprepared SQL OK.
+					$rows = $wpdb->get_results(
+						$wpdb->prepare(
+							' SELECT p.ID FROM ' . $wpdb->posts . ' as p LEFT JOIN ' . $wpdb->postmeta . ' as pm ON(pm.post_id = p.ID) ' . $cond_join . ' WHERE pm.meta_key like %s AND pm.meta_value like %s AND p.ID > %d ' . $cond_where . ' ORDER BY p.ID ASC, pm.meta_id ASC LIMIT 0, %d ',
+							'_wp_attachment_metadata',
+							'%' . $post_data['_sisrsc_image_size_name'] . '%',
+							(int) $next_post_id,
+							(int) $max_in_one_go
+						),
+						ARRAY_A
+					); // WPCS: Unprepared SQL OK.
 					if ( ! empty( $rows ) && is_array( $rows ) ) {
 						$upls = wp_upload_dir();
 						echo '<b class="spinner inline"></b><div>';
@@ -4624,9 +4697,10 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 * Regenerate all the images for the specified image size name.
 	 */
 	public static function sirsc_ajax_regenerate_image_sizes_on_request() {
-		if ( ! empty( $_REQUEST['sirsc_data'] ) ) {
+		$sirsc_data = self::has_sirsc_data();
+		if ( ! empty( $sirsc_data ) ) {
 			self::notify_doing_sirsc();
-			$post_data = self::parse_ajax_data( $_REQUEST['sirsc_data'] );
+			$post_data = self::parse_ajax_data( $sirsc_data );
 			if ( ! empty( $post_data['_sisrsc_regenerate_image_size_name'] ) ) {
 				global $wpdb;
 				$_sisrsc_post_type = ( ! empty( $post_data['_sisrsc_post_type'] ) ) ? $post_data['_sisrsc_post_type'] : '';
@@ -4636,15 +4710,20 @@ class SIRSC_Image_Regenerate_Select_Crop {
 					$cond_join  = ' LEFT JOIN ' . $wpdb->posts . ' as parent ON( parent.ID = p.post_parent ) ';
 					$cond_where = $wpdb->prepare( ' AND parent.post_type = %s ', $_sisrsc_post_type );
 				}
-				$next_post_id    = ( ! empty( $post_data['_sisrsc_regenerate_image_size_name_page'] ) ) ? $post_data['_sisrsc_regenerate_image_size_name_page'] : 0;
+				if ( ! empty( self::$settings['regenerate_only_featured'] ) ) {
+					$cond_join .= ' INNER JOIN ' . $wpdb->postmeta . ' as pm ON (pm.meta_value = p.ID and pm.meta_key = \'_thumbnail_id\' ) ';
+				}
+
+				$next_post_id = ( ! empty( $post_data['_sisrsc_regenerate_image_size_name_page'] ) ) ? $post_data['_sisrsc_regenerate_image_size_name_page'] : 0;
 				if ( ! empty( $post_data['resume_from'] ) ) {
 					$next_post_id = (int) $post_data['resume_from'] - 1;
 				}
+
 				$total_to_update = 0;
 				$image_size_name = $post_data['_sisrsc_regenerate_image_size_name'];
 				$use_condition   = ! empty( $post_data['_sisrsc_regenerate_image_size_name_page'] ) ? true : false;
 
-				$rows = $wpdb->get_results( $wpdb->prepare( ' SELECT count(p.ID) as total_to_update FROM ' . $wpdb->posts . ' as p ' . $cond_join . ' WHERE p.ID > %d AND ( p.post_mime_type like %s OR p.post_mime_type like %s OR p.post_mime_type like %s )' . $cond_where . ' ORDER BY p.ID ASC ', (int) $next_post_id, 'image/gif', 'image/jpeg', 'image/png' ), ARRAY_A ); // WPCS: Unprepared SQL OK.
+				$rows = $wpdb->get_results( $wpdb->prepare( ' SELECT count(distinct p.ID) as total_to_update FROM ' . $wpdb->posts . ' as p ' . $cond_join . ' WHERE p.ID > %d AND ( p.post_mime_type like %s OR p.post_mime_type like %s OR p.post_mime_type like %s )' . $cond_where . ' ORDER BY p.ID ASC ', (int) $next_post_id, 'image/gif', 'image/jpeg', 'image/png' ), ARRAY_A ); // WPCS: Unprepared SQL OK.
 				if ( ! empty( $rows ) && is_array( $rows ) ) {
 					$total_to_update = $rows[0]['total_to_update'];
 				}
@@ -4663,7 +4742,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 							<center>';
 
 					$upls = wp_upload_dir();
-					$rows = $wpdb->get_results( $wpdb->prepare( ' SELECT p.ID FROM ' . $wpdb->posts . ' as p ' . $cond_join . ' WHERE p.ID > %d AND ( p.post_mime_type like %s OR p.post_mime_type like %s OR p.post_mime_type like %s )' . $cond_where . ' ORDER BY p.ID ASC LIMIT 0, 1', (int) $next_post_id, 'image/gif', 'image/jpeg', 'image/png' ), ARRAY_A ); // WPCS: Unprepared SQL OK.
+					$rows = $wpdb->get_results( $wpdb->prepare( ' SELECT distinct p.ID FROM ' . $wpdb->posts . ' as p ' . $cond_join . ' WHERE p.ID > %d AND ( p.post_mime_type like %s OR p.post_mime_type like %s OR p.post_mime_type like %s )' . $cond_where . ' ORDER BY p.ID ASC LIMIT 0, 1', (int) $next_post_id, 'image/gif', 'image/jpeg', 'image/png' ), ARRAY_A ); // WPCS: Unprepared SQL OK.
 					if ( ! empty( $rows ) && is_array( $rows ) ) {
 						foreach ( $rows as $v ) {
 							$filename = get_attached_file( $v['ID'] );
@@ -4731,7 +4810,6 @@ class SIRSC_Image_Regenerate_Select_Crop {
 								self::collect_regenerate_results( $v['ID'], '<em>' . $outputfn . '</em> - ' . esc_html__( 'Could not generate, the original is missing.', 'sirsc' ), 'error' );
 								self::output_bulk_message_regenerate_original_missing( $expected_name, $upls );
 							}
-
 
 							$next_post_id = $v['ID'];
 							self::set_regenerate_last_processed_id( $image_size_name, $v['ID'] );
@@ -4835,19 +4913,22 @@ class SIRSC_Image_Regenerate_Select_Crop {
 		}
 		if ( ! empty( $maybe_errors['error'] ) ) {
 			if ( ! empty( $maybe_errors['initiator'] ) && 'cleanup' == $maybe_errors['initiator'] ) {
-				$message = wp_kses_post( sprintf(
-					// Translators: %1$s - server side error.
-					__( '<b>Unfortunately, there was an error</b>. Some of the execution might not have been successful. This can happen when: <br>&bull; the image you were trying to delete is <b>the original</b> file,<br>&bull; the image size was pointing to the <b>the original</b> and it should not be removed,<br>&bull; the <b>file is missing</b>. <br><br>See the details: %1$s', 'sirsc' ),
-					'<div class="sirsc-errors"><div class="file-reswrap error-msg"><b class="dashicons dashicons-dismiss"></b> ' . implode( '</div><div class="file-reswrap error-msg"><b class="dashicons dashicons-dismiss"></b> ', $maybe_errors['error'] ) . '</div></div>'
-				) );
+				$message = wp_kses_post(
+					sprintf(
+						// Translators: %1$s - server side error.
+						__( '<b>Unfortunately, there was an error</b>. Some of the execution might not have been successful. This can happen when: <br>&bull; the image you were trying to delete is <b>the original</b> file,<br>&bull; the image size was pointing to the <b>the original</b> and it should not be removed,<br>&bull; the <b>file is missing</b>. <br><br>See the details: %1$s', 'sirsc' ),
+						'<div class="sirsc-errors"><div class="file-reswrap error-msg"><b class="dashicons dashicons-dismiss"></b> ' . implode( '</div><div class="file-reswrap error-msg"><b class="dashicons dashicons-dismiss"></b> ', $maybe_errors['error'] ) . '</div></div>'
+					)
+				);
 			} else {
-				$message = wp_kses_post( sprintf(
-					// Translators: %1$s - server side error.
-					__( '<b>Unfortunately, there was an error</b>. Some of the execution might not have been successful. This can happen in when: <br>&bull; the image from which the script is generating the specified image size does not have the <b>proper size</b> for resize/crop to a specific width and height,<br>&bull; the attachment <b>metadata is broken</b>,<br>&bull; the original <b>file is missing</b>,<br>&bull; the image that is processed is <b>very big</b> (rezolution or size) and the <b>allocated memory</b> on the server is not enough to handle the request,<br>&bull; the overall processing on your site is <b>too intensive</b>. <br><br>See the details: %1$s', 'sirsc' ),
-					'<div class="sirsc-errors"><div class="file-reswrap error-msg"><b class="dashicons dashicons-dismiss"></b> ' . implode( '</div><div class="file-reswrap error-msg"><b class="dashicons dashicons-dismiss"></b> ', $maybe_errors['error'] ) . '</div></div>'
-				) );
+				$message = wp_kses_post(
+					sprintf(
+						// Translators: %1$s - server side error.
+						__( '<b>Unfortunately, there was an error</b>. Some of the execution might not have been successful. This can happen in when: <br>&bull; the image from which the script is generating the specified image size does not have the <b>proper size</b> for resize/crop to a specific width and height,<br>&bull; the attachment <b>metadata is broken</b>,<br>&bull; the original <b>file is missing</b>,<br>&bull; the image that is processed is <b>very big</b> (rezolution or size) and the <b>allocated memory</b> on the server is not enough to handle the request,<br>&bull; the overall processing on your site is <b>too intensive</b>. <br><br>See the details: %1$s', 'sirsc' ),
+						'<div class="sirsc-errors"><div class="file-reswrap error-msg"><b class="dashicons dashicons-dismiss"></b> ' . implode( '</div><div class="file-reswrap error-msg"><b class="dashicons dashicons-dismiss"></b> ', $maybe_errors['error'] ) . '</div></div>'
+					)
+				);
 			}
-
 
 			$upls    = wp_upload_dir();
 			$message = str_replace( trailingslashit( $upls['basedir'] ), '', $message );
@@ -5245,9 +5326,12 @@ class SIRSC_Image_Regenerate_Select_Crop {
 			filemtime( $dir . '/' . $block_js )
 		);
 
-		register_block_type( 'image-regenerate-select-crop/sirsc-block', array(
-			'editor_script' => 'sirsc-block-editor',
-		) );
+		register_block_type(
+			'image-regenerate-select-crop/sirsc-block',
+			array(
+				'editor_script' => 'sirsc-block-editor',
+			)
+		);
 	}
 
 	/**
@@ -5554,6 +5638,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 							$value['name'] = str_replace( '-', '_', sanitize_title( $value['name'] ) );
 							$value['name'] = strtolower( $value['name'] );
 							$value['name'] = str_replace( ' ', '_', $value['name'] );
+							$value['name'] = str_replace( '-', '_', $value['name'] );
 
 							if ( in_array( $value['name'], $existing ) || in_array( $value['name'], $native ) ) {
 								unset( $all['sizes'][ $i ] );
@@ -5963,7 +6048,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	public static function plugin_action_links( $links ) {
 		$all   = array();
 		$all[] = '<a href="' . esc_url( self::$plugin_url ) . '">' . esc_html__( 'Settings', 'sirsc' ) . '</a>';
-		$all[] = '<a href="http://iuliacazan.ro/image-regenerate-select-crop">' . esc_html__( 'Plugin URL', 'sirsc' ) . '</a>';
+		$all[] = '<a href="https://iuliacazan.ro/image-regenerate-select-crop">' . esc_html__( 'Plugin URL', 'sirsc' ) . '</a>';
 		$all   = array_merge( $all, $links );
 		return $all;
 	}

@@ -22,15 +22,6 @@ class WPSEO_Utils {
 	public static $has_filters;
 
 	/**
-	 * Notifications to be shown in the JavaScript console.
-	 *
-	 * @since 3.3.2
-	 *
-	 * @var array
-	 */
-	protected static $console_notifications = [];
-
-	/**
 	 * Check whether the current user is allowed to access the configuration.
 	 *
 	 * @since 1.8.0
@@ -110,49 +101,6 @@ class WPSEO_Utils {
 		$software = sanitize_text_field( wp_unslash( $_SERVER['SERVER_SOFTWARE'] ) );
 
 		return stripos( $software, 'nginx' ) !== false;
-	}
-
-	/**
-	 * Register a notification to be shown in the JavaScript console.
-	 *
-	 * @since 3.3.2
-	 *
-	 * @param string $identifier    Notification identifier.
-	 * @param string $message       Message to be shown.
-	 * @param bool   $one_time_only Only show once (if added multiple times).
-	 */
-	public static function javascript_console_notification( $identifier, $message, $one_time_only = false ) {
-		static $registered_hook;
-
-		if ( is_null( $registered_hook ) ) {
-			add_action( 'admin_footer', [ __CLASS__, 'localize_console_notices' ], 999 );
-			$registered_hook = true;
-		}
-
-		$prefix = 'Yoast SEO: ';
-		if ( substr( $message, 0, strlen( $prefix ) ) !== $prefix ) {
-			$message = $prefix . $message;
-		}
-
-		if ( $one_time_only ) {
-			self::$console_notifications[ $identifier ] = $message;
-		}
-		else {
-			self::$console_notifications[] = $message;
-		}
-	}
-
-	/**
-	 * Localize the console notifications to JavaScript.
-	 *
-	 * @since 3.3.2
-	 */
-	public static function localize_console_notices() {
-		if ( empty( self::$console_notifications ) ) {
-			return;
-		}
-
-		wp_localize_script( WPSEO_Admin_Asset_Manager::PREFIX . 'admin-global-script', 'wpseoConsoleNotifications', array_values( self::$console_notifications ) );
 	}
 
 	/**
@@ -308,7 +256,6 @@ class WPSEO_Utils {
 		 * @param string $filtered The sanitized string.
 		 * @param string $str      The string prior to being sanitized.
 		 */
-
 		return apply_filters( 'sanitize_text_field', $filtered, $value );
 	}
 
@@ -690,7 +637,7 @@ class WPSEO_Utils {
 					$result = bccomp( $number1, $number2, $precision ); // Returns int 0, 1 or -1.
 				}
 				else {
-					$result = ( $number1 == $number2 ) ? 0 : ( ( $number1 > $number2 ) ? 1 : - 1 );
+					$result = ( $number1 == $number2 ) ? 0 : ( ( $number1 > $number2 ) ? 1 : -1 );
 				}
 				break;
 		}
@@ -982,7 +929,7 @@ class WPSEO_Utils {
 	 * @return string
 	 */
 	public static function traffic_light_svg() {
-		return <<<SVG
+		return <<<'SVG'
 <svg class="yst-traffic-light init" version="1.1" xmlns="http://www.w3.org/2000/svg"
 	 role="img" aria-hidden="true" focusable="false"
 	 x="0px" y="0px" viewBox="0 0 30 47" enable-background="new 0 0 30 47" xml:space="preserve">
@@ -1137,12 +1084,71 @@ SVG;
 	}
 
 	/**
+	 * Gets the type of the current post.
+	 *
+	 * @return string The post type, or an empty string.
+	 */
+	public static function get_post_type() {
+		global $post;
+
+		if ( isset( $post->post_type ) ) {
+			return $post->post_type;
+		}
+		elseif ( isset( $_GET['post_type'] ) ) {
+			return sanitize_text_field( $_GET['post_type'] );
+		}
+
+		return '';
+	}
+
+	/**
+	 * Gets the type of the current page.
+	 *
+	 * @return string Returns 'post' if the current page is a post edit page. Taxonomy in other cases.
+	 */
+	public static function get_page_type() {
+		global $pagenow;
+		if ( WPSEO_Metabox::is_post_edit( $pagenow ) ) {
+			return 'post';
+		}
+
+		return 'taxonomy';
+	}
+
+	/**
 	 * Getter for the Adminl10n array. Applies the wpseo_admin_l10n filter.
 	 *
 	 * @return array The Adminl10n array.
 	 */
 	public static function get_admin_l10n() {
-		$wpseo_admin_l10n = [];
+		$post_type = self::get_post_type();
+		$page_type = self::get_page_type();
+
+		$label_object = false;
+		$no_index     = false;
+
+		if ( $page_type === 'post' ) {
+			$label_object = get_post_type_object( $post_type );
+			$no_index     = WPSEO_Options::get( 'noindex-' . $post_type, false );
+		}
+		else {
+			$label_object = WPSEO_Taxonomy::get_labels();
+
+			$taxonomy_slug = filter_input( INPUT_GET, 'taxonomy', FILTER_DEFAULT, [ 'options' => [ 'default' => '' ] ] );
+			$no_index      = WPSEO_Options::get( 'noindex-tax-' . $taxonomy_slug, false );
+		}
+
+		$wpseo_admin_l10n = [
+			'displayAdvancedTab'   => WPSEO_Capability_Utils::current_user_can( 'wpseo_edit_advanced_metadata' ) || ! WPSEO_Options::get( 'disableadvanced_meta' ),
+			'noIndex'              => (bool) $no_index,
+			'isPremium'            => self::is_yoast_seo_premium(),
+			'isPostType'           => (bool) get_post_type(),
+			'postType'             => get_post_type(),
+			'postTypeNamePlural'   => ( $page_type === 'post' ) ? $label_object->label : $label_object->name,
+			'postTypeNameSingular' => ( $page_type === 'post' ) ? $label_object->labels->singular_name : $label_object->singular_name,
+			'breadcrumbsDisabled'  => WPSEO_Options::get( 'breadcrumbs-enable', false ) !== true && ! current_theme_supports( 'yoast-seo-breadcrumbs' ),
+			'privateBlog'          => ( (string) get_option( 'blog_public' ) ) === '0',
+		];
 
 		$additional_entries = apply_filters( 'wpseo_admin_l10n', [] );
 		if ( is_array( $additional_entries ) ) {
@@ -1197,7 +1203,7 @@ SVG;
 		do_action( 'wpseo_home_url' );
 
 		// If the plugin is network-activated, use the network home URL.
-		if ( WPSEO_Utils::is_plugin_network_active() ) {
+		if ( self::is_plugin_network_active() ) {
 			return network_home_url();
 		}
 
@@ -1441,46 +1447,5 @@ SVG;
 		$enabled_features = apply_filters( 'wpseo_enable_feature', $enabled_features );
 
 		return $enabled_features;
-	}
-
-	/* ********************* DEPRECATED METHODS ********************* */
-
-	/**
-	 * Returns the language part of a given locale, defaults to english when the $locale is empty.
-	 *
-	 * @see WPSEO_Language_Utils::get_language()
-	 *
-	 * @deprecated 9.5
-	 * @codeCoverageIgnore
-	 *
-	 * @param string $locale The locale to get the language of.
-	 *
-	 * @return string The language part of the locale.
-	 */
-	public static function get_language( $locale ) {
-		_deprecated_function( __METHOD__, 'WPSEO 9.5', 'WPSEO_Language_Utils::get_language' );
-		return WPSEO_Language_Utils::get_language( $locale );
-	}
-
-	/**
-	 * Returns the user locale for the language to be used in the admin.
-	 *
-	 * WordPress 4.7 introduced the ability for users to specify an Admin language
-	 * different from the language used on the front end. This checks if the feature
-	 * is available and returns the user's language, with a fallback to the site's language.
-	 * Can be removed when support for WordPress 4.6 will be dropped, in favor
-	 * of WordPress get_user_locale() that already fallbacks to the site's locale.
-	 *
-	 * @see WPSEO_Language_Utils::get_user_locale()
-	 *
-	 * @deprecated 9.5
-	 * @codeCoverageIgnore
-	 *
-	 * @return string The locale.
-	 */
-	public static function get_user_locale() {
-		_deprecated_function( __METHOD__, 'WPSEO 9.5', 'WPSEO_Language_Utils::get_user_locale' );
-
-		return WPSEO_Language_Utils::get_user_locale();
 	}
 }

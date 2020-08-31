@@ -65,6 +65,10 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 .margin-outside {
   margin-top: 5rem;
   margin-bottom: 5rem; }
+  @media screen and (max-width: 768px) {
+    .margin-outside {
+      margin-top: 2rem;
+      margin-bottom: 2rem; } }
 
 .post-meta {
   color: grey;
@@ -121,6 +125,18 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
     width: 1px;
     display: none; } }
 
+@media (min-width: 1024px) {
+  .desktop-visually-hidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    display: none; } }
+
 /*--------------------------------------------------------------
 # Normalize
 --------------------------------------------------------------*/
@@ -128,10 +144,6 @@ html {
   font-family: Montserrat;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%; }
-
-body {
-  margin: 0;
-  background: #F4F4F4; }
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -149,6 +161,12 @@ time, mark, audio, video {
   margin: 0;
   padding: 0;
   border: 0; }
+
+body {
+  background: #F4F4F4; }
+  @media (max-width: 1023.98px) {
+    body {
+      margin-bottom: 3.125rem; } }
 
 ol, ul {
   list-style: none; }
@@ -398,7 +416,8 @@ select,
 textarea {
   font-family: "Montserrat", sans-serif;
   font-size: 1.6rem;
-  line-height: 1.5; }
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.8); }
 
 h1, h2, h3, h4, h5, h6 {
   clear: both; }
@@ -446,10 +465,11 @@ h1 {
   font-size: 6rem; }
 
 h2 {
-  font-size: 5rem; }
+  font-size: 5rem;
+  color: rgba(0, 0, 0, 0.5); }
   @media (max-width: 767.98px) {
     h2 {
-      font-size: 3rem; } }
+      font-size: 20px; } }
 
 h3 {
   font-size: 3rem; }
@@ -510,11 +530,11 @@ figcaption {
 # Links
 --------------------------------------------------------------*/
 a {
-  color: black; }
+  color: rgba(0, 0, 0, 0.8); }
   a:visited {
-    color: black; }
+    color: rgba(0, 0, 0, 0.8); }
   a:hover, a:focus, a:active {
-    color: black; }
+    color: rgba(0, 0, 0, 0.8); }
   a:focus {
     outline: none; }
   a:hover, a:active {
@@ -672,36 +692,39 @@ html {
   margin: 0 0 1.5em; }
 
 .site-header {
-  background: white;
+  background: #fff;
   width: 100%;
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5);
   top: 0;
   position: fixed;
   z-index: 2; }
+  @media (max-width: 1023.98px) {
+    .site-header {
+      position: relative;
+      background: #FBC003; } }
   .site-header nav {
     display: flex;
     justify-content: space-between; }
   .site-header .logo {
-    display: inline-block;
-    margin: 1rem 0; }
-    @media (max-width: 767.98px) {
-      .site-header .logo {
-        display: none; } }
+    display: flex;
+    align-items: center; }
     .site-header .logo a {
-      color: black;
-      text-transform: uppercase;
+      color: #000;
       font-weight: 100;
       font-size: 2.2rem; }
+      @media (max-width: 1023.98px) {
+        .site-header .logo a {
+          color: #fff; } }
       .site-header .logo a span {
         font-weight: 700; }
-  @media (max-width: 767.98px) {
+  @media (max-width: 1023.98px) {
     .site-header .nav-wrapper {
-      width: 100%; } }
+      color: #fff; } }
   .site-header .nav-wrapper ul {
     display: flex;
     align-items: center;
     height: 100%; }
-    @media (max-width: 767.98px) {
+    @media (max-width: 1023.98px) {
       .site-header .nav-wrapper ul {
         padding: 2rem 0;
         justify-content: space-between; } }
@@ -725,7 +748,7 @@ html {
   overflow: hidden; }
   @media (max-width: 767.98px) {
     .hero-banner {
-      min-height: 30rem; } }
+      display: none; } }
   .hero-banner .video-background {
     background: #000;
     position: absolute;
@@ -755,7 +778,7 @@ html {
     position: absolute;
     bottom: 6rem;
     left: 23rem;
-    color: white;
+    color: #fff;
     max-width: 30rem;
     top: 50%;
     transform: translateY(-50%); }
@@ -915,9 +938,10 @@ html {
       .search-overlay #search-overlay__results .artist-card .artist-image:hover img {
         transform: scale(1.1); }
 
-body.admin-bar .site-header,
-body.admin-bar .search-overlay {
-  top: 32px; }
+@media (min-width: 1024px) {
+  body.admin-bar .site-header,
+  body.admin-bar .search-overlay {
+    top: 32px; } }
 
 .body-no-scroll {
   overflow: hidden; }
@@ -939,6 +963,25 @@ body.admin-bar .search-overlay {
 
 .search-trigger {
   cursor: pointer; }
+
+.mobile-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  z-index: 9;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5); }
+  .mobile-nav ul {
+    display: flex;
+    justify-content: space-around; }
+    .mobile-nav ul li {
+      margin: 1rem 0; }
+      .mobile-nav ul li.current-menu-item i {
+        color: #FBC003; }
+      .mobile-nav ul li i {
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 25px; }
 
 .playlist-nav {
   display: flex;
@@ -1045,6 +1088,9 @@ body.admin-bar .search-overlay {
   #button.show {
     opacity: 1;
     visibility: visible; }
+    @media (max-width: 767.98px) {
+      #button.show {
+        display: none; } }
 
 .about {
   position: fixed;
@@ -1142,9 +1188,6 @@ body.admin-bar .search-overlay {
   text-transform: uppercase;
   font-weight: 700;
   margin-bottom: 2rem; }
-  @media (max-width: 767.98px) {
-    .home h2 {
-      text-align: center; } }
 
 .home i.fa-eye {
   margin-left: 5px; }
@@ -1218,11 +1261,19 @@ body.admin-bar .search-overlay {
   .home .wrapper .principal {
     background-color: white;
     border-radius: 1rem; }
+    @media (max-width: 767.98px) {
+      .home .wrapper .principal {
+        border-radius: 0; } }
 
 .home .releases,
 .home .classic,
 .home .album {
   position: relative; }
+  @media (max-width: 767.98px) {
+    .home .releases,
+    .home .classic,
+    .home .album {
+      font-size: 14px; } }
   .home .releases .releases-head,
   .home .classic .releases-head,
   .home .album .releases-head {
@@ -1261,7 +1312,9 @@ body.admin-bar .search-overlay {
         .home .releases-wrap article,
         .home .classic-wrap article,
         .home .album-wrap article {
-          width: 90%; } }
+          width: 50%;
+          flex-direction: column;
+          align-items: center; } }
       .home .releases-wrap article .new,
       .home .classic-wrap article .new,
       .home .album-wrap article .new {
@@ -1271,7 +1324,7 @@ body.admin-bar .search-overlay {
         color: red;
         text-transform: uppercase;
         font-weight: 600;
-        top: -9px; }
+        top: -0.5625rem; }
       .home .releases-wrap article .rotate,
       .home .classic-wrap article .rotate,
       .home .album-wrap article .rotate {
@@ -1281,8 +1334,8 @@ body.admin-bar .search-overlay {
           .home .releases-wrap article .rotate,
           .home .classic-wrap article .rotate,
           .home .album-wrap article .rotate {
-            width: inherit;
-            height: inherit; } }
+            width: 10rem;
+            height: 10rem; } }
       .home .releases-wrap article img,
       .home .classic-wrap article img,
       .home .album-wrap article img {
@@ -1300,6 +1353,14 @@ body.admin-bar .search-overlay {
         flex-direction: column;
         justify-content: center;
         margin-left: 1rem; }
+        @media (max-width: 767.98px) {
+          .home .releases-wrap article .info,
+          .home .classic-wrap article .info,
+          .home .album-wrap article .info {
+            width: 100%;
+            margin-left: 0;
+            margin-top: 1rem;
+            text-align: center; } }
         .home .releases-wrap article .info .title,
         .home .classic-wrap article .info .title,
         .home .album-wrap article .info .title {

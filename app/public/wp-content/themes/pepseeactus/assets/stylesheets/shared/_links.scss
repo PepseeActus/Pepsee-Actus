@@ -1,13 +1,13 @@
 a {
-	color: black;
+	color: $color__text-main;
 
 	&:visited {
-		color: black;
+		color: $color__text-main;
 	}
 	&:hover,
 	&:focus,
 	&:active {
-		color: black;
+		color: $color__text-main;
 	}
 	&:focus {
 		outline: none;

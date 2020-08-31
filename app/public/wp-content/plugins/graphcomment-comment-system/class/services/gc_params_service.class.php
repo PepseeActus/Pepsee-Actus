@@ -362,7 +362,15 @@ class GcParamsService
   public function graphcommentGetNbrWebsites()
   {
     $this->graphcommentInitWebsites();
-    return count($this->gc_websites);
+
+    /*
+     * try fix : https://stackoverflow.com/questions/48343557/count-parameter-must-be-an-array-or-an-object-that-implements-countable
+     */
+    if(version_compare(PHP_VERSION, '7.2.0', '>=')) {
+        return count((array) $this->gc_websites);
+    } else {
+        return count($this->gc_websites);
+    }
   }
 
   public function graphcommentSelectOnlyWebsite() {

@@ -62,14 +62,14 @@
 		<div class="container">
 			<nav>
 				<div class="logo">
-					<a href="<?= site_url(); ?>" class="brand"><span>PEPSEE</span>ACTUS</a>
+					<a href="<?= site_url(); ?>" class="brand"><span>Pepsee</span>Actus</a>
 				</div>
 				<div class="nav-wrapper">
 					<ul>
 						<li class="search-trigger js-search-trigger"><i class="fa fa-search" aria-hidden="true"></i></li>
-						<li <?php if (is_front_page()) echo 'class="current-menu-item"'; ?>><a href="<?= site_url(); ?>">Home</a></li>
-						<li <?php if (get_post_type() == 'music') echo 'class="current-menu-item"'; ?>><a href="<?= get_post_type_archive_link('music'); ?>">Musique</a></li>
-						<li <?php if (get_post_type() == 'artist') echo 'class="current-menu-item"'; ?>><a href="<?= get_post_type_archive_link('artist'); ?>">Artistes</a></li>
+						<li class="mobile-visually-hidden <?php if (is_front_page()) echo 'current-menu-item'; ?>"><a href="<?= site_url(); ?>">Home</a></li>
+						<li class="mobile-visually-hidden <?php if (get_post_type() == 'music') echo 'current-menu-item'; ?>"><a href="<?= get_post_type_archive_link('music'); ?>">Musique</a></li>
+						<li class="mobile-visually-hidden <?php if (get_post_type() == 'artist') echo 'current-menu-item'; ?>"><a href="<?= get_post_type_archive_link('artist'); ?>">Artistes</a></li>
 						<li class="mobile-visually-hidden <?php if (is_page('/a-propos')) echo 'current-menu-item'; ?>"><a href="<?= site_url('/a-propos'); ?>">A propos</a></li>
 					</ul>
 				</div>

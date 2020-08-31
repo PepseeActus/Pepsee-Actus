@@ -5,13 +5,13 @@
  * Description: Allow the support of GraphComment into your WordPress blog.
  * Author: GraphComment <contact@graphcomment.com>
  * Author URI: https://graphcomment.com/
- * Version: 3.0.6
+ * Version: 3.1.0
  * License: GPL
  * Text Domain: graphcomment-comment-system
  * Domain Path: /lang
  */
 
-define('GRAPHCOMMENT_VERSION', '3.0.6');
+define('GRAPHCOMMENT_VERSION', '3.1.0');
 
 defined('ABSPATH') or die("No script kiddies please!");
 
@@ -21,11 +21,11 @@ require_once(dirname(__FILE__) . '/config.php');
 // increase max_execution_time for import
 if (!ini_get('max_execution_time') || ini_get ('max_execution_time') < 5000) {
 
-    ini_set ('max_execution_time', 0);
+    ini_set ('max_execution_time', 5000);
     $disabled = explode(',', ini_get ('disable_functions'));
 
     if (!in_array('set_time_limit', $disabled)) {
-        set_time_limit (0);
+        set_time_limit (5000);
     }
 }
 

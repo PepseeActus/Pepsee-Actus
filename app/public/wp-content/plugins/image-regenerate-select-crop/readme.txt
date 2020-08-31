@@ -2,8 +2,9 @@
 Contributors: Iulia Cazan
 Tags: optimize images, image crop, image regenerate, image sizes details, image quality, default crop, wp-cli, media, image, image sizes, missing images, image placeholder, image debug, command line
 Requires at least: not tested
-Tested up to: 5.4
-Stable tag: 5.4.2
+Tested up to: 5.5
+Stable tag: 5.4.4
+Requires PHP: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JJA37EHZXWUTJ
@@ -42,6 +43,17 @@ https://youtu.be/3hRSXMx3dcU
 None
 
 == Changelog ==
+= 5.4.4 =
+* Tested up to 5.5
+* Fix warnings, placeholder path and font, summary update on subsize change in the info lightbox
+* Change the threshold default quality on forced original
+* Assets update
+
+= 5.4.3 =
+* Tested up to 5.4.2
+* Added the option to bulk regenerate/cleanup only featured images
+* Fix the deprecated array and string offset access syntax with curly braces for PHP >= 7.4
+
 = 5.4.2 =
 * Added the raw cleanup button in the media listing screen (this is available only when using the option to display the summary too).
 * Added the option to display the summary of images generated for each attachment in the media listing screen that gets updated when other actions are performed in the image details lightbox, on regenerate and raw cleanup.
@@ -226,6 +238,8 @@ None
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 == Version history ==
+5.4.4 - Tested up to 5.5, fix warnings, placeholder path and font, summary update on subsize change, change the threshold default quality on forced original, assets update
+5.4.3 - Tested up to 5.4.2, regenerate/cleanup only featured images, fix the deprecated array and string offset for PHP >= 7.4
 5.4.2 - Added raw cleanup button and  the option to display the summary in the media listing screen, style updates for small resolutions.
 5.4.1 - Fixed the upscale for square image
 5.4 - Tested up to 5.4, upscale option for perfect fit crop.

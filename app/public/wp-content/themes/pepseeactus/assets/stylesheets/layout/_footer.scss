@@ -1,3 +1,31 @@
+.mobile-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    z-index: 9;
+    @include shadow;
+
+    ul {
+        display: flex;
+        justify-content: space-around;
+
+        li {
+            margin: 1rem 0;
+
+            &.current-menu-item i {
+                color: $color__yellow;
+            }
+
+            i {
+                color: rgba(#000, 0.5);
+                font-size: 25px;
+            }
+        }
+    }
+}
+
 .playlist-nav {
     display: flex;
     flex-direction: column;
@@ -143,6 +171,9 @@
     &.show {
         opacity: 1;
         visibility: visible;
+        @include media(phone) {
+            display: none;
+        }
     }
 }
 

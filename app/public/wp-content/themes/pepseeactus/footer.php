@@ -11,13 +11,21 @@
 
 ?>
 			</main>
-			<div class="playlist-nav">
+			<div class="mobile-nav desktop-visually-hidden">
+				<ul>
+					<li class="<?php if (is_front_page()) echo 'current-menu-item'; ?>"><a href="<?= site_url(); ?>"><i class="fas fa-home"></i></a></li>
+					<li class="<?php if (get_post_type() == 'music') echo 'current-menu-item'; ?>"><a href="<?= get_post_type_archive_link('music'); ?>"><i class="fas fa-music"></i></a></li>
+					<li class="<?php if (get_post_type() == 'artist') echo 'current-menu-item'; ?>"><a href="<?= get_post_type_archive_link('artist'); ?>"><i class="fas fa-microphone"></i></a></li>
+					<li class="<?php if (is_page('/a-propos')) echo 'current-menu-item'; ?>"><a href="<?= site_url('/a-propos'); ?>"><i class="fas fa-info-circle"></i></a></li>
+				</ul>
+			</div>
+			<div class="playlist-nav mobile-visually-hidden">
 				<a href="https://open.spotify.com/user/21b27shenyft7hkmfguizsl5q" target="_blank" rel="noopener noreferrer"><i class="fab fa-spotify"></i></a>
 				<a href="https://soundcloud.com/pepsee/sets" target="_blank" rel="noopener noreferrer"><i class="fab fa-soundcloud"></i></a>
 				<a href="https://www.youtube.com/channel/UCrgv-BXDaZ39gdWUl_c7qHQ" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
 				<a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-apple"></i></a>
 			</div>
-			<footer class="site-footer">
+			<footer class="site-footer mobile-visually-hidden">
 				<div class="footer-wrap">
 					<div class="footer-section-1 col-4">
 						<p>L'univers Reggae Dancehall des Antilles françaises.</p>
@@ -46,7 +54,7 @@
 
 				<?php if (!is_page('/a-propos/contact/')) : ?>
 					<!-- about -->
-					<div class="about">
+					<div class="about mobile-visually-hidden">
 						<a class="bg_links social facebook" href="https://www.facebook.com/PepseeActus/" target="_blank">
 							<span class="icon"><i class="fab fa-facebook"></i></span>
 						</a>

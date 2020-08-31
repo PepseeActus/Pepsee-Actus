@@ -2,8 +2,8 @@
 Contributors: GraphComment
 Tags: comments system, social interactions, discussion plugin, threaded comments, community, comment widget, comment plugin, moderation tool, conversation, engagement, profile, social sharing, seo, wordpress comments, wordpress comments plugin, wordpress comment plugin, wordpress plugin, ajax comments, live comments, chat, realtime commenting, Lazy load comments, mobile commenting, disable comments, post comments, advanced comment, comments block, discuss, disqus, discuz, buddypress alternative, Disqus alternative, Facebook comments alternative, Livefyre alternative, Jetpack comments alternative, commenting, reply comments, better comments, best comments, comment notifications, comment template, comment author, comment system, first commenter, social login, boost comments, native comments, media embed, comment text formatting, discussion sharing, spam protection, import comments, comment themes, guest commenting, notifications, badges, word blacklist
 Requires at least: 3.4
-Tested up to: 5.4.0
-Stable tag: 3.0.6
+Tested up to: 5.5.0
+Stable tag: 3.1.0
 Donate link: https://graphcomment.com
 License: GPL
 
@@ -55,7 +55,7 @@ Conversational & Social Engagement suite for discussions without Trolls & easy r
 * Wordpress full integration
 * Light/dark theme appearance
 * Graphical themes
-* Multilingual (EN, FR, ES, PT, IT, DE, CZ, FA, CN, HE)
+* Multilingual (EN, FR, ES, PT, IT, FA, DE, CZ, RU, VI, UK, TR, CN, HE, ID )
 * Multi-moderators
 * SEO Friendly
 * Structured Data
@@ -157,6 +157,12 @@ Users own their content and provide a permanent license to GraphComment having a
 8. Collaborative voting tool
 
 == Changelog ==
+
+= 3.1.O =
+
+* fix selector jQuery
+* fix array type php >= 7.2.0
+* tested with WordPress 5.5.0
 
 = 3.0.6 =
 

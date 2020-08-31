@@ -953,6 +953,14 @@ msgstr ""
 msgid "This option allows you to regenerate only the images that do not exist, without overriding the existing ones."
 msgstr ""
 
+#: image-regenerate-select-crop.php:1547
+msgid "regenerate/cleanup only featured images"
+msgstr ""
+
+#: image-regenerate-select-crop.php:1548
+msgid "This option allows you to regenerate/cleanup only the images that are set as featured image for any of the posts."
+msgstr ""
+
 #: image-regenerate-select-crop.php:1549
 msgid "no restriction, generate anything that can be generated"
 msgstr ""

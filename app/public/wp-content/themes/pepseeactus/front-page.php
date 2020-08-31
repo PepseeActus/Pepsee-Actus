@@ -92,7 +92,7 @@ get_header(); ?>
 									<div class="title"><a href="<?php the_permalink(); ?>" target="_blank"><?= $artistes; ?></a></div>
 									<p><a href="<?php the_permalink(); ?>" target="_blank"><?= $titre; ?></a></p>
 									<?= ($riddim) ? '<p class="riddim">'.$riddim.' Riddim</p>' : ''; ?>
-									<?= ($download) ? '<a href="'.get_the_permalink().'" target="_blank"><i class="fa fa-cloud-download"></i> Download</a>' : ''; ?>
+									<?= ($download) ? '<a href="'.get_the_permalink().'" target="_blank"><i class="fa fa-cloud-download"></i> Free</a>' : ''; ?>
 								</div>
 							</article>
 						<?php }
@@ -226,7 +226,7 @@ get_header(); ?>
 		}
 		wp_reset_postdata(); ?>
 	</div>
-	<div class="clips-wrap">
+	<div class="clips-wrap mobile-visually-hidden">
 		<?php
 		$args = array(
 			'posts_per_page' => 9,

@@ -118,6 +118,11 @@ $small-gutter-width:          10px !default;
 .margin-outside {
 	margin-top: 5rem;
 	margin-bottom: 5rem;
+
+	@media screen and (max-width: 768px) {
+		margin-top: 2rem;
+		margin-bottom: 2rem;
+	}
 }
 
 .post-meta {

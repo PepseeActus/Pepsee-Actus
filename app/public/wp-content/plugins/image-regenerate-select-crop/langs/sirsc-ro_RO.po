@@ -8,9 +8,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2020-04-26 13:30+0300\n"
+"PO-Revision-Date: 2020-06-29 09:53+0300\n"
 "Language-Team: \n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 2.3.1\n"
 "Last-Translator: \n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n==0 || (n!=1 && n%100>=1 && n%100<=19) ? 1 : 2);\n"
 "Language: ro\n"
@@ -800,11 +800,19 @@ msgstr "Această opțiune vă permite să măriți imaginile când se folosește
 
 #: image-regenerate-select-crop.php:1547
 msgid "regenerate only missing files"
-msgstr "se generează doar fișierele lipsă"
+msgstr "se regenerează doar fișierele lipsă"
 
 #: image-regenerate-select-crop.php:1548
 msgid "This option allows you to regenerate only the images that do not exist, without overriding the existing ones."
 msgstr "Această opțiune vă permite să regenerați doar imaginile care nu există, fără a le suprascrie pe cele existente."
+
+#: image-regenerate-select-crop.php:1547
+msgid "regenerate/cleanup only featured images"
+msgstr "se regenerează/curăță doar imaginile reprezentative"
+
+#: image-regenerate-select-crop.php:1548
+msgid "This option allows you to regenerate/cleanup only the images that are set as featured image for any of the posts."
+msgstr "Această opțiune vă permite să regenerați/curățați doar imaginile care sunt setate ca imagine reprezentativă pentru oricare dintre articole."
 
 #: image-regenerate-select-crop.php:1549
 msgid "no restriction, generate anything that can be generated"

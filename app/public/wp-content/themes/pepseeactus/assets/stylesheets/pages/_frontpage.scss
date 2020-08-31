@@ -3,10 +3,6 @@
         text-transform: uppercase;
         font-weight: 700;
         margin-bottom: 2rem;
-
-        @include media(phone) {
-            text-align: center;
-        }
     }
 
     i.fa-eye {
@@ -108,6 +104,10 @@
         .principal {
             background-color: white;
             border-radius: 1rem;
+
+            @include media(phone) {
+                border-radius: 0;
+            }
         }
     }
 
@@ -115,6 +115,10 @@
     .classic,
     .album {
         position: relative;
+
+        @include media(phone) {
+            font-size: 14px;
+        }
 
         .releases-head {
             position: absolute;
@@ -147,7 +151,9 @@
                 position: relative;
 
                 @include media(phone) {
-                    width: 90%;
+                    width: 50%;
+                    flex-direction: column;
+                    align-items: center;
                 }
 
                 .new {
@@ -157,7 +163,7 @@
                     color: red;
                     text-transform: uppercase;
                     font-weight: 600;
-                    top: -9px;
+                    top: -0.5625rem;
                 }
 
                 .rotate {
@@ -165,8 +171,8 @@
                     height: 7rem;
 
                     @include media(phone) {
-                        width: inherit;
-                        height: inherit;
+                        width: 10rem;
+                        height: 10rem;
                     }
                 }
 
@@ -185,6 +191,13 @@
                     flex-direction: column;
                     justify-content: center;
                     margin-left: 1rem;
+
+                    @include media(phone) {
+                        width: 100%;
+                        margin-left: 0;
+                        margin-top: 1rem;
+                        text-align: center;
+                    }
 
                     .title {
                         display: block;

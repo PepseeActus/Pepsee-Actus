@@ -15,7 +15,7 @@ if ( ! function_exists( 'add_filter' ) ) {
  * {@internal Nobody should be able to overrule the real version number as this can cause
  *            serious issues with the options, so no if ( ! defined() ).}}
  */
-define( 'WPSEO_VERSION', '14.0.4' );
+define( 'WPSEO_VERSION', '14.8.1' );
 
 
 if ( ! defined( 'WPSEO_PATH' ) ) {
@@ -182,6 +182,11 @@ function _wpseo_activate() {
 		$wpseo_rewrite->schedule_flush();
 	}
 
+	// Reset tracking to be disabled by default.
+	if ( ! WPSEO_Utils::is_yoast_seo_premium() ) {
+		WPSEO_Options::set( 'tracking', false );
+	}
+
 	do_action( 'wpseo_register_roles' );
 	WPSEO_Role_Manager_Factory::get()->add();
 
@@ -323,7 +328,6 @@ function wpseo_init() {
 
 	$integrations   = [];
 	$integrations[] = new WPSEO_Slug_Change_Watcher();
-	$integrations[] = new WPSEO_Structured_Data_Blocks();
 
 	foreach ( $integrations as $integration ) {
 		$integration->register_hooks();
@@ -357,7 +361,7 @@ function wpseo_init_rest_api() {
 	$configuration_service = new WPSEO_Configuration_Service();
 	$configuration_service->initialize();
 
-	$statistics_service    = new WPSEO_Statistics_Service( new WPSEO_Statistics() );
+	$statistics_service = new WPSEO_Statistics_Service( new WPSEO_Statistics() );
 
 	$endpoints   = [];
 	$endpoints[] = new WPSEO_Link_Reindex_Post_Endpoint( new WPSEO_Link_Reindex_Post_Service() );
@@ -456,7 +460,7 @@ if ( ! wp_installing() && ( $spl_autoload_exists && $filter_exists ) ) {
 
 	if ( is_admin() ) {
 
-		new Yoast_Alerts();
+		new Yoast_Notifications();
 
 		$yoast_addon_manager = new WPSEO_Addon_Manager();
 		$yoast_addon_manager->register_hooks();
@@ -481,8 +485,6 @@ if ( ! wp_installing() && ( $spl_autoload_exists && $filter_exists ) ) {
 	if ( defined( 'WP_CLI' ) && WP_CLI ) {
 		add_action( 'plugins_loaded', 'wpseo_cli_init', 20 );
 	}
-
-	add_filter( 'phpcompat_whitelist', 'yoast_free_phpcompat_whitelist' );
 
 	add_action( 'init', [ 'WPSEO_Replace_Vars', 'setup_statics_once' ] );
 }
@@ -610,32 +612,6 @@ function yoast_wpseo_self_deactivate() {
 			unset( $_GET['activate'] );
 		}
 	}
-}
-
-/**
- * Excludes specific files from php-compatibility-checker.
- *
- * @since 9.4
- *
- * @param array $ignored Array of ignored directories/files.
- *
- * @return array Array of ignored directories/files.
- */
-function yoast_free_phpcompat_whitelist( $ignored ) {
-	$path = '*/' . basename( WPSEO_PATH ) . '/';
-
-	// To prevent: (warning) File has mixed line endings; this may cause incorrect results.
-	$ignored[] = $path . 'vendor/ruckusing/lib/Ruckusing/FrameworkRunner.php';
-	$ignored[] = $path . 'vendor_prefixed/ruckusing/lib/Ruckusing/FrameworkRunner.php';
-
-	/*
-	 * To prevent: (error) Extension 'sqlite' is removed since PHP 5.4.
-	 * Ignoring because we are not using the sqlite functionality.
-	 */
-	$ignored[] = $path . 'vendor/ruckusing/lib/Ruckusing/Adapter/Sqlite3/Base.php';
-	$ignored[] = $path . 'vendor_prefixed/ruckusing/lib/Ruckusing/Adapter/Sqlite3/Base.php';
-
-	return $ignored;
 }
 
 /* ********************* DEPRECATED METHODS ********************* */

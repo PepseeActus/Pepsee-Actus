@@ -97,16 +97,20 @@ jQuery(function ($) {
 
   }
 
+  function getTabID(hash) {
+    return '#graphcomment-options-' + hash + '-tab';
+  }
+
   // Init the action for the tabs clicks
   tabs.forEach(function (t) {
-    $('a[href=#' + t.data_toggle + ']').click(handleTabClick);
+    $(getTabID(t.data_toggle) + ' a').click(handleTabClick);
   });
 
   if (window.location.hash || !$('.gc-tabs > .active').length) {
     var hash = window.location.hash.replace(/^#/, '') || 'general';
     tabs.forEach(function(t) {
       if (t.data_toggle === hash) {
-        $('.gc-tabs a[href=#' + hash + ']').parent().addClass('active');
+        $(getTabID(t.data_toggle)).addClass('active');
         selectTab(t.data_toggle);
       }
     });
