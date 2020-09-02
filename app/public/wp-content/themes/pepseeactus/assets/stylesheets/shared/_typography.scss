@@ -72,7 +72,6 @@ h1 {
 
 h2 {
 	font-size: 5rem;
-	color: rgba(#000, 0.5);
 
 	@include media(phone) {
 		font-size: 20px;

@@ -26,10 +26,11 @@
         bottom: -3rem;
         left: 50%;
         transform: translateX(-50%);
-        font-weight: 700;
+        font-weight: 600;
         font-size: 3.2rem;
         line-height: 4.5rem;
         width: 65%;
+        z-index: 9;
 
         @include media(phone) {
             width: 90%;
@@ -43,6 +44,7 @@
             background: $color__yellow;
             -webkit-box-decoration-break: clone;
             padding: .5rem 1rem;
+            color: #fff;
         }
     }
 
