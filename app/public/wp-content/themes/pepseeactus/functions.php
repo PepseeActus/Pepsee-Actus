@@ -255,7 +255,7 @@ function load_posts_by_ajax_callback() {
     $args = array(
         'post_type' => 'music',
         'post_status' => 'publish',
-		'posts_per_page' => '4',
+		'posts_per_page' => '8',
 		'year' => $year,
         'paged' => $paged,
     );
@@ -275,6 +275,7 @@ function load_posts_by_ajax_callback() {
 						<div>
 							<a href="<?php the_permalink(); ?>"><?= $artistes; ?></a>
 							<a href="<?php the_permalink(); ?>"><?= $titre; ?></a>
+							<?php the_date('M Y') ?>
 						</div>
 					</li>
 				</ul>

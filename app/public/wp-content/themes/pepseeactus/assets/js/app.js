@@ -197,22 +197,24 @@ $(document).ready(function() {
         });
     });
 
-    $('.loadmore').click(function() {
-        var year = $("#sort").val();
-        var data = {
-            'action': 'load_posts_by_ajax',
-            'year': year,
-            'page': page,
-            'security': blog.security
-        };
+    $(window).scroll(function() {
+        if ($(window).scrollTop() + $(window).height() > $(document).height() - 200) {
+            var year = $("#sort").val();
+            var data = {
+                'action': 'load_posts_by_ajax',
+                'year': year,
+                'page': page,
+                'security': blog.security
+            };
 
-        $.post(blog.ajaxurl, data, function(response) {
-            if($.trim(response) != '') {
-                $('.blog-posts').append(response);
-                page++;
-            } else {
-                $('.loadmore').hide();
-            }
-        });
+            $.post(blog.ajaxurl, data, function(response) {
+                if($.trim(response) != '') {
+                    $('.blog-posts').append(response);
+                    page++;
+                } else {
+                    $('.loadmore').hide();
+                }
+            });
+        }
     });
 });

@@ -59,6 +59,7 @@ if ( have_posts() ) : ?>
                                 <div>
                                     <a href="<?php the_permalink(); ?>"><?= $artistes; ?></a>
                                     <a href="<?php the_permalink(); ?>"><?= $titre; ?></a>
+                                    <?php the_date('M Y') ?>
                                 </div>
                             </li>
                         </ul>
