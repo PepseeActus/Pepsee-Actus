@@ -14,6 +14,10 @@
         border-radius: 1rem;
     }
 
+    .select-year {
+        margin-bottom: 1.25rem;
+    }
+
     .post-item {
         li {
             margin-bottom: 2rem;
@@ -41,27 +45,26 @@
         }
     }
 
-    .page-numbers {
-        margin: 4rem 0;
+    .loadmore {
+        text-align: center;
 
-        @include media(phone) {
-            line-height: 4.5rem;
-            margin: 0;
-        }
+        button {
+            border: none;
+            color: #fff;
+            background: $color__yellow;
+            @include shadow();
+            padding: 0.625rem 1.875rem;
+            margin-top: 1.875rem;
+            transition: all ease-out;
 
-        li {
-            display: inline-block;
-
-            a {
-                background: $color__yellow;
-                color: white;
-                padding: 1rem 1.5rem;
+            &:focus {
+                outline: none;
             }
 
-            .current {
-                padding: .6rem 1.3rem;
-                border: .4rem solid $color__yellow;
-            }
+            &:active { 
+                transform: scale(0.98); 
+                box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24); 
+            } 
         }
     }
 }

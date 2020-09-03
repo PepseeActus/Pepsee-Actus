@@ -16,10 +16,38 @@ if ( have_posts() ) : ?>
     </div>
     <div class="wrapper row padding-inside">
         <div class="principal col-12 col-lg-9 padding-inside">
-            <div class="row">
+            <div class="select-year">
+                <span>Son de quelle année ?</span>
+                <select name="year" id="sort">
+                    <?php
+                        $previous_letter = null; 
+                        /* Start the Loop */
+                        while ( have_posts() ) : the_post();
+                            $glossary_letter = get_the_date('Y');
+
+                            if ( $glossary_letter !== $previous_letter ): ?>
+                                <option value="<?= get_the_date('Y'); ?>"><?= get_the_date('Y'); ?></option>
+                            <?php endif;
+                                
+                            $previous_letter = $glossary_letter;
+                        endwhile; ?>
+                </select>
+            </div>
+
+            <div class="blog-posts row">
                 <?php
                 /* Start the Loop */
-                while ( have_posts() ) : the_post(); ?>
+                $args = [
+                    'posts_per_page' => 4,
+                    'orderby' => 'date',
+                    'post_type' => 'music',
+                    'year' => date("Y"),
+                    'paged' => 1
+                ];
+                $blog_posts = new WP_Query( $args );
+                ?>
+
+                <?php while ( $blog_posts->have_posts() ) : $blog_posts->the_post(); ?>
                     <div class="post-item col-12 col-md-6">
                         <ul>
                             <li>
@@ -37,12 +65,13 @@ if ( have_posts() ) : ?>
                     </div>
                 <?php endwhile; ?>
             </div>
+
+            <div class="loadmore col-12">
+                <button>Voir plus</button>
+            </div>
         </div>
 		<?php get_sidebar(); ?>
     </div>
-    <?php
-    paginate_links();
-    theme_pagination();
-endif;
+<?php endif;?>
 
-get_footer();
+<?php get_footer();

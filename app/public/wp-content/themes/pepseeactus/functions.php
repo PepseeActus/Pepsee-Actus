@@ -104,6 +104,13 @@ function pepseeactus_scripts() {
 	wp_enqueue_script('bootstrap');
 	wp_enqueue_script('font-awesome');
 	wp_enqueue_script('pepseeactus-app', get_template_directory_uri() . '/assets/js/app.js', [], '', true);
+
+	// Localize the script with new data
+    $script_data_array = array(
+        'ajaxurl' => admin_url( 'admin-ajax.php' ),
+        'security' => wp_create_nonce( 'load_more_posts' ),
+    );
+    wp_localize_script('pepseeactus-app', 'blog', $script_data_array );
 	wp_localize_script('pepseeactus-app', 'pepseeData', array(
 		'root_url' => get_site_url()
 	));
@@ -239,3 +246,44 @@ add_filter( 'get_the_archive_title', function ($title) {
 		}
 	return $title;    
 });
+
+// Load posts en AJAX
+function load_posts_by_ajax_callback() {
+    check_ajax_referer('load_more_posts', 'security');
+	$paged = $_POST['page'];
+	$year = $_POST['year'];
+    $args = array(
+        'post_type' => 'music',
+        'post_status' => 'publish',
+		'posts_per_page' => '4',
+		'year' => $year,
+        'paged' => $paged,
+    );
+    $blog_posts = new WP_Query( $args );
+    ?>
+
+    <?php if ( $blog_posts->have_posts() ) : ?>
+		<?php while ( $blog_posts->have_posts() ) : $blog_posts->the_post(); ?>
+			<div class="post-item col-12 col-md-6">
+				<ul>
+					<li>
+						<?php
+						$artistes = get_field('artistes');
+						$titre = get_field('titre');
+						?>
+						<a class="rotate" href="<?php the_permalink(); ?>"><?php the_post_thumbnail('thumbnail'); ?></a>
+						<div>
+							<a href="<?php the_permalink(); ?>"><?= $artistes; ?></a>
+							<a href="<?php the_permalink(); ?>"><?= $titre; ?></a>
+						</div>
+					</li>
+				</ul>
+			</div>
+        <?php endwhile; ?>
+        <?php
+    endif;
+
+    wp_die();
+}
+add_action('wp_ajax_load_posts_by_ajax', 'load_posts_by_ajax_callback');
+add_action('wp_ajax_nopriv_load_posts_by_ajax', 'load_posts_by_ajax_callback');

@@ -170,7 +170,49 @@ $(document).ready(function() {
         mouseY = e.pageY;
         traX = ((4 * mouseX) / 570) + 40;
         traY = ((4 * mouseY) / 570) + 50;
-        console.log(traX);
         $(".hero-banner .info").css({"background-position": traX + "%" + traY + "%"});
+    });
+
+    //AJAX MUSIQUE
+    var page = 2;
+
+    $("#sort").change( function() {
+        $(".blog-posts").empty();
+        var year = $(this).val();
+        page = 1;
+        var data = {
+            'action': 'load_posts_by_ajax',
+            'year': year,
+            'page': page,
+            'security': blog.security
+        };
+
+        $.post(blog.ajaxurl, data, function(response) {
+            if($.trim(response) != '') {
+                $('.blog-posts').append(response);
+                page++;
+            } else {
+                $('.loadmore').hide();
+            }
+        });
+    });
+
+    $('.loadmore').click(function() {
+        var year = $("#sort").val();
+        var data = {
+            'action': 'load_posts_by_ajax',
+            'year': year,
+            'page': page,
+            'security': blog.security
+        };
+
+        $.post(blog.ajaxurl, data, function(response) {
+            if($.trim(response) != '') {
+                $('.blog-posts').append(response);
+                page++;
+            } else {
+                $('.loadmore').hide();
+            }
+        });
     });
 });
