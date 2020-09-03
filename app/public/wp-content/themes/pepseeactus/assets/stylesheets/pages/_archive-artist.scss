@@ -14,12 +14,32 @@
         border-radius: 1rem;
         padding: 0 2rem 2rem;
         margin-bottom: 2rem;
+        column-count: 4;
+        column-gap: 2em;
+
+        @include media(phone) {
+            column-count: 1;
+        }
+
+        @include media(tablet) {
+            column-count: 3;
+        }
+    }
+
+    .group {
+        display: inline-block;
+        margin: 0 0 2em;
+        width: 100%;
+        transition: 1s ease all;
     }
 
     .letter {
         font-size: 3rem;
-        font-weight: 700;
         padding-top: 2rem;
+        margin-top: 0;
+        margin-bottom: 0.5em;
+        padding-bottom: 0.2em;
+        border-bottom: 2px solid $color__text-main;
     }
 
     .bloc-letter {

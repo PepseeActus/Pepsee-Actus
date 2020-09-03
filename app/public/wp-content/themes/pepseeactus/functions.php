@@ -182,13 +182,19 @@ function list_glossary_posts() {
 		$glossary_letter = substr($glossary_title[0], 0, 1);
 
 		if ( $glossary_letter !== $previous_letter ): ?>
+			<div class="group">
 			<h3 class="letter"><span><?php echo $glossary_letter; ?></span></h3>
 		<?php endif; ?>
+
 		<div class="bloc-letter">
 			<a href="<?php the_permalink(); ?>"><?php echo $glossary_title; ?></a>
 		</div>
 
+		<?php if ( $glossary_letter !== $previous_letter ): ?>
+			</div>
+		<?php endif; ?>
 		<?php $previous_letter = $glossary_letter;
+
 
 	endforeach;
 
