@@ -190,13 +190,14 @@ function list_glossary_posts() {
 			<a href="<?php the_permalink(); ?>"><?php echo $glossary_title; ?></a>
 		</div>
 
-		<?php if ( $glossary_letter !== $previous_letter ): ?>
+		<?php $previous_letter = $glossary_letter; ?>
+
+		<?php if ( $glossary_letter !== $previous_letter || $previous_letter !== null ): ?>
 			</div>
 		<?php endif; ?>
-		<?php $previous_letter = $glossary_letter;
 
 
-	endforeach;
+	<?php endforeach;
 
 	wp_reset_postdata();
 
