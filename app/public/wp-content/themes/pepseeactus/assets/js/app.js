@@ -198,7 +198,7 @@ $(document).ready(function() {
     });
 
     $(window).scroll(function() {
-        if ($(window).scrollTop() + $(window).height() > $(document).height() - 200) {
+        if ($(window).scrollTop() == $(document).height() - $(window).height()) {
             var year = $("#sort").val();
             var data = {
                 'action': 'load_posts_by_ajax',
