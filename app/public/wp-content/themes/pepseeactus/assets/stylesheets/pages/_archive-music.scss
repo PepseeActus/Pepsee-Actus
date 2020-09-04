@@ -19,28 +19,26 @@
     }
 
     .post-item {
-        li {
-            margin-bottom: 2rem;
-            display: flex;
-            align-items: center;
+        margin-bottom: 2rem;
+        display: flex;
+        align-items: center;
 
-            .rotate {
-                margin-right: 2rem;
+        .rotate {
+            margin-right: 2rem;
+        }
+
+        img {
+            width: 7rem;
+            min-width: 7rem;
+        }
+
+        div {
+            a {
+                display: block;
             }
 
-            img {
-                width: 7rem;
-                min-width: 7rem;
-            }
-
-            div {
-                a {
-                    display: block;
-                }
-
-                a:hover {
-                    text-decoration: underline;
-                }
+            a:hover {
+                text-decoration: underline;
             }
         }
     }

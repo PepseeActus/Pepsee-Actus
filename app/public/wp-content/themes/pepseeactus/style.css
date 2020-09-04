@@ -2030,18 +2030,18 @@ html {
 .post-type-archive-music .select-year {
   margin-bottom: 1.25rem; }
 
-.post-type-archive-music .post-item li {
+.post-type-archive-music .post-item {
   margin-bottom: 2rem;
   display: flex;
   align-items: center; }
-  .post-type-archive-music .post-item li .rotate {
+  .post-type-archive-music .post-item .rotate {
     margin-right: 2rem; }
-  .post-type-archive-music .post-item li img {
+  .post-type-archive-music .post-item img {
     width: 7rem;
     min-width: 7rem; }
-  .post-type-archive-music .post-item li div a {
+  .post-type-archive-music .post-item div a {
     display: block; }
-  .post-type-archive-music .post-item li div a:hover {
+  .post-type-archive-music .post-item div a:hover {
     text-decoration: underline; }
 
 .post-type-archive-music .loadmore {

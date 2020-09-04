@@ -252,10 +252,11 @@ function load_posts_by_ajax_callback() {
     check_ajax_referer('load_more_posts', 'security');
 	$paged = $_POST['page'];
 	$year = $_POST['year'];
+	$postPerPage = 8;
     $args = array(
         'post_type' => 'music',
         'post_status' => 'publish',
-		'posts_per_page' => '8',
+		'posts_per_page' => $postPerPage,
 		'year' => $year,
         'paged' => $paged,
     );
@@ -264,21 +265,18 @@ function load_posts_by_ajax_callback() {
 
     <?php if ( $blog_posts->have_posts() ) : ?>
 		<?php while ( $blog_posts->have_posts() ) : $blog_posts->the_post(); ?>
+
 			<div class="post-item col-12 col-md-6">
-				<ul>
-					<li>
-						<?php
-						$artistes = get_field('artistes');
-						$titre = get_field('titre');
-						?>
-						<a class="rotate" href="<?php the_permalink(); ?>"><?php the_post_thumbnail('thumbnail'); ?></a>
-						<div>
-							<a href="<?php the_permalink(); ?>"><?= $artistes; ?></a>
-							<a href="<?php the_permalink(); ?>"><?= $titre; ?></a>
-							<?php the_date('M Y') ?>
-						</div>
-					</li>
-				</ul>
+				<?php
+				$artistes = get_field('artistes');
+				$titre = get_field('titre');
+				?>
+				<a class="rotate" href="<?php the_permalink(); ?>"><?php the_post_thumbnail('thumbnail'); ?></a>
+				<div>
+					<a href="<?php the_permalink(); ?>"><?= $artistes; ?></a>
+					<a href="<?php the_permalink(); ?>"><?= $titre; ?></a>
+					<?php the_date('M Y') ?>
+				</div>
 			</div>
         <?php endwhile; ?>
         <?php

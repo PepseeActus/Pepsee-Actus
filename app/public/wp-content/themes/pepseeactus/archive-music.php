@@ -37,8 +37,9 @@ if ( have_posts() ) : ?>
             <div class="blog-posts row">
                 <?php
                 /* Start the Loop */
+                $postPerPage = 8;
                 $args = [
-                    'posts_per_page' => 4,
+                    'posts_per_page' => $postPerPage,
                     'orderby' => 'date',
                     'post_type' => 'music',
                     'year' => date("Y"),
@@ -49,27 +50,25 @@ if ( have_posts() ) : ?>
 
                 <?php while ( $blog_posts->have_posts() ) : $blog_posts->the_post(); ?>
                     <div class="post-item col-12 col-md-6">
-                        <ul>
-                            <li>
-                                <?php
-                                $artistes = get_field('artistes');
-                                $titre = get_field('titre');
-                                ?>
-                                <a class="rotate" href="<?php the_permalink(); ?>"><?php the_post_thumbnail('thumbnail'); ?></a>
-                                <div>
-                                    <a href="<?php the_permalink(); ?>"><?= $artistes; ?></a>
-                                    <a href="<?php the_permalink(); ?>"><?= $titre; ?></a>
-                                    <?php the_date('M Y') ?>
-                                </div>
-                            </li>
-                        </ul>
+                        <?php
+                        $artistes = get_field('artistes');
+                        $titre = get_field('titre');
+                        ?>
+                        <a class="rotate" href="<?php the_permalink(); ?>"><?php the_post_thumbnail('thumbnail'); ?></a>
+                        <div>
+                            <a href="<?php the_permalink(); ?>"><?= $artistes; ?></a>
+                            <a href="<?php the_permalink(); ?>"><?= $titre; ?></a>
+                            <?php the_date('M Y') ?>
+                        </div>
                     </div>
                 <?php endwhile; ?>
             </div>
 
-            <div class="loadmore col-12">
-                <button>Voir plus</button>
-            </div>
+            <?php if ($postPerPage < $blog_posts->post_count) : ?>
+                <div class="loadmore col-12">
+                    <button>Voir plus</button>
+                </div>
+            <?php endif; ?>
         </div>
 		<?php get_sidebar(); ?>
     </div>
