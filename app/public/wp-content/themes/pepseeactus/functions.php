@@ -257,9 +257,8 @@ function pepsee_loadmore_ajax_handler(){
 	// prepare our arguments for the query
 	$params = json_decode( stripslashes( $_POST['query'] ), true ); // query_posts() takes care of the necessary sanitization 
 	$params['paged'] = $_POST['page'] + 1; // we need next page to be loaded
-	$params['year'] = $_POST['pepsee_year'];
 	$params['post_status'] = 'publish';
-	$params['post_type'] = 'music';
+	$params['post_type'] = array('music', 'album');
 
 	// it is always better to use WP_Query but not here
 	query_posts( $params );
@@ -302,7 +301,7 @@ function pepsee_filter_function(){
 	$params = array(
 		'posts_per_page' => $_POST['pepsee_number_of_results'], // when set to -1, it shows all posts
 		'year' => $year,
-		'post_type' => 'music',
+		'post_type' => array('music', 'album'),
 		'orderby' => $order[0], // example: date
 		'order'	=> $order[1] // example: ASC
 	);
