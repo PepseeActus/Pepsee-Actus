@@ -16,9 +16,17 @@ if ( have_posts() ) : ?>
     </div>
     <div class="wrapper row padding-inside">
         <div class="principal col-12 col-lg-9 padding-inside">
-            <div class="select-year">
-                <span>Son de quelle année ?</span>
-                <select name="year" id="sort">
+            <form id="pepsee_filters" action="#">
+                <label for="pepsee_number_of_results">Per page</label>
+                <select name="pepsee_number_of_results" id="pepsee_number_of_results">
+                    <option><?php echo get_option( 'posts_per_page' ) ?></option><!-- it is from Settings > Reading -->
+                    <option>5</option>
+                    <option>10</option>
+                    <option value="-1">All</option>
+                </select>
+
+                <label for="pepsee_year">Son de quelle année ?</label>
+                <select name="pepsee_year" id="pepsee_year">
                     <?php
                         $previous_letter = null; 
                         /* Start the Loop */
@@ -32,45 +40,30 @@ if ( have_posts() ) : ?>
                             $previous_letter = $glossary_letter;
                         endwhile; ?>
                 </select>
-            </div>
 
-            <div class="blog-posts row">
-                <?php
-                /* Start the Loop */
-                $postPerPage = 8;
-                $args = [
-                    'posts_per_page' => $postPerPage,
-                    'orderby' => 'date',
-                    'post_type' => 'music',
-                    'year' => date("Y"),
-                    'paged' => 1
-                ];
-                $blog_posts = new WP_Query( $args );
-                ?>
+                <label for="pepsee_order_by">Order</label>
+                <select name="pepsee_order_by" id="pepsee_order_by">
+                    <option value="date-DESC">Date ↓</option><!-- I will explode these values by "-" symbol later -->
+                    <option value="date-ASC">Date ↑</option>
+                    <option value="comment_count-DESC">Comments ↓</option>
+                    <option value="comment_count-ASC">Comments ↑</option>
+                </select>
 
-                <?php while ( $blog_posts->have_posts() ) : $blog_posts->the_post(); ?>
-                    <div class="post-item col-12 col-md-6">
-                        <?php
-                        $artistes = get_field('artistes');
-                        $titre = get_field('titre');
-                        ?>
-                        <a class="rotate" href="<?php the_permalink(); ?>"><?php the_post_thumbnail('thumbnail'); ?></a>
-                        <div>
-                            <a href="<?php the_permalink(); ?>"><?= $artistes; ?></a>
-                            <a href="<?php the_permalink(); ?>"><?= $titre; ?></a>
-                            <?php the_date('M Y') ?>
-                        </div>
-                    </div>
-                <?php endwhile; ?>
-                <?php if ($postPerPage < $blog_posts->post_count) : ?>
-                    <div class="loadmore col-12">
-                        <button>Voir plus</button>
-                    </div>
-                <?php endif; ?>
-            </div>
+                <input type="hidden" name="action" value="pepseefilter" />
+
+                <button>Apply Filters</button>
+            </form>
+
+            <div id="pepsee_posts_wrap" class="row"></div>
+
+            <?php 
+            if (  $wp_query->max_num_pages > 1 ) : ?>
+                <div id="pepsee_loadmore">More posts</div>
+            <?php endif; ?>
         </div>
 		<?php get_sidebar(); ?>
     </div>
+
 <?php endif;?>
 
 <?php get_footer();

@@ -174,45 +174,79 @@ $(document).ready(function() {
     });
 
     //AJAX MUSIQUE
-    var page = 2;
+    $('#pepsee_loadmore').click(function(){
 
-    $("#sort").change( function() {
-        $(".blog-posts").empty();
-        var year = $(this).val();
-        page = 1;
-        var data = {
-            'action': 'load_posts_by_ajax',
-            'year': year,
-            'page': page,
-            'security': blog.security
-        };
+        $.ajax({
+            url : pepsee_loadmore_params.ajaxurl, // AJAX handler
+            data : {
+                'action': 'loadmorebutton', // the parameter for admin-ajax.php
+                'query': pepsee_loadmore_params.posts, // loop parameters passed by wp_localize_script()
+                'page' : pepsee_loadmore_params.current_page // current page
+            },
+            type : 'POST',
+            beforeSend : function ( xhr ) {
+                $('#pepsee_loadmore').text('Loading...'); // some type of preloader
+            },
+            success : function( posts ){
+                if( posts ) {
 
-        $.post(blog.ajaxurl, data, function(response) {
-            if($.trim(response) != '') {
-                $('.blog-posts').append(response);
-                page++;
-            } else {
-                $('.loadmore').hide();
+                    $('#pepsee_loadmore').text( 'Plus de sons' );
+                    $('#pepsee_posts_wrap').append( posts ); // insert new posts
+                    pepsee_loadmore_params.current_page++;
+
+                    if ( pepsee_loadmore_params.current_page == pepsee_loadmore_params.max_page ) 
+                        $('#pepsee_loadmore').hide(); // if last page, HIDE the button
+
+                } else {
+                    $('#pepsee_loadmore').hide(); // if no data, HIDE the button as well
+                }
             }
         });
+        return false;
     });
 
-    $('.loadmore').click(function() {
-        var year = $("#sort").val();
-        var data = {
-            'action': 'load_posts_by_ajax',
-            'year': year,
-            'page': page,
-            'security': blog.security
-        };
+    /*
+    * Filter
+    */
+    $('#pepsee_filters').submit(function(){
 
-        $.post(blog.ajaxurl, data, function(response) {
-            if($.trim(response) != '') {
-                $('.blog-posts').append(response);
-                page++;
-            } else {
-                $('.loadmore').hide();
+        $.ajax({
+            url : pepsee_loadmore_params.ajaxurl,
+            data : $('#pepsee_filters').serialize(), // form data
+            dataType : 'json', // this data type allows us to receive objects from the server
+            type : 'POST',
+            beforeSend : function(xhr){
+                $('#pepsee_filters').find('button').text('Ça filtre...');
+            },
+            success : function( data ){
+
+                // when filter applied:
+                // set the current page to 1
+                pepsee_loadmore_params.current_page = 1;
+
+                // set the new query parameters
+                pepsee_loadmore_params.posts = data.posts;
+
+                // set the new max page parameter
+                pepsee_loadmore_params.max_page = data.max_page;
+
+                // change the button label back
+                $('#pepsee_filters').find('button').text('Appique le filtre');
+
+                // insert the posts to the container
+                $('#pepsee_posts_wrap').html(data.content);
+
+                // hide load more button, if there are not enough posts for the second page
+                if ( data.max_page < 2 ) {
+                    $('#pepsee_loadmore').hide();
+                } else {
+                    $('#pepsee_loadmore').show();
+                }
             }
         });
+
+        // do not submit the form
+        return false;
+
     });
 });

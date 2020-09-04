@@ -105,12 +105,13 @@ function pepseeactus_scripts() {
 	wp_enqueue_script('font-awesome');
 	wp_enqueue_script('pepseeactus-app', get_template_directory_uri() . '/assets/js/app.js', [], '', true);
 
-	// Localize the script with new data
-    $script_data_array = array(
-        'ajaxurl' => admin_url( 'admin-ajax.php' ),
-        'security' => wp_create_nonce( 'load_more_posts' ),
-    );
-    wp_localize_script('pepseeactus-app', 'blog', $script_data_array );
+	wp_localize_script( 'pepseeactus-app', 'pepsee_loadmore_params', array(
+		'ajaxurl' => site_url() . '/wp-admin/admin-ajax.php', // WordPress AJAX
+		'posts' => json_encode( $wp_query->query_vars ), // everything about your loop is here
+		'current_page' => $wp_query->query_vars['paged'] ? $wp_query->query_vars['paged'] : 1,
+		'max_page' => $wp_query->max_num_pages
+	) );
+
 	wp_localize_script('pepseeactus-app', 'pepseeData', array(
 		'root_url' => get_site_url()
 	));
@@ -248,46 +249,104 @@ add_filter( 'get_the_archive_title', function ($title) {
 });
 
 // Load posts en AJAX
-function load_posts_by_ajax_callback() {
-    check_ajax_referer('load_more_posts', 'security');
-	$paged = $_POST['page'];
-	$year = $_POST['year'];
-	$postPerPage = 8;
-    $args = array(
-        'post_type' => 'music',
-        'post_status' => 'publish',
-		'posts_per_page' => $postPerPage,
-		'year' => $year,
-        'paged' => $paged,
-    );
-    $blog_posts = new WP_Query( $args );
-    ?>
+add_action('wp_ajax_loadmorebutton', 'pepsee_loadmore_ajax_handler');
+add_action('wp_ajax_nopriv_loadmorebutton', 'pepsee_loadmore_ajax_handler');
 
-    <?php if ( $blog_posts->have_posts() ) : ?>
-		<?php while ( $blog_posts->have_posts() ) : $blog_posts->the_post(); ?>
+function pepsee_loadmore_ajax_handler(){
 
-			<div class="post-item col-12 col-md-6">
-				<?php
+	// prepare our arguments for the query
+	$params = json_decode( stripslashes( $_POST['query'] ), true ); // query_posts() takes care of the necessary sanitization 
+	$params['paged'] = $_POST['page'] + 1; // we need next page to be loaded
+	$params['year'] = $_POST['pepsee_year'];
+	$params['post_status'] = 'publish';
+	$params['post_type'] = 'music';
+
+	// it is always better to use WP_Query but not here
+	query_posts( $params );
+
+	if( have_posts() ) :
+
+		// run the loop
+		while( have_posts() ): the_post(); ?>
+
+		<div class="post-item col-12 col-md-6">
+			<?php
 				$artistes = get_field('artistes');
 				$titre = get_field('titre');
-				?>
-				<a class="rotate" href="<?php the_permalink(); ?>"><?php the_post_thumbnail('thumbnail'); ?></a>
-				<div>
-					<a href="<?php the_permalink(); ?>"><?= $artistes; ?></a>
-					<a href="<?php the_permalink(); ?>"><?= $titre; ?></a>
-					<?php the_date('M Y') ?>
-				</div>
+			?>
+			<a class="rotate" href="<?php the_permalink(); ?>"><?php the_post_thumbnail('thumbnail'); ?></a>
+			<div>
+				<a href="<?php the_permalink(); ?>"><?= $artistes; ?></a>
+				<a href="<?php the_permalink(); ?>"><?= $titre; ?></a>
+				<?php the_date('M Y') ?>
 			</div>
-			<?php if ($postPerPage < $blog_posts->post_count) : ?>
-                <div class="loadmore col-12">
-                    <button>Voir plus</button>
-                </div>
-            <?php endif; ?>
-        <?php endwhile; ?>
-        <?php
-    endif;
+		</div>
 
-    wp_die();
+		<?php endwhile;
+	endif;
+	die; // here we exit the script and even no wp_reset_query() required!
 }
-add_action('wp_ajax_load_posts_by_ajax', 'load_posts_by_ajax_callback');
-add_action('wp_ajax_nopriv_load_posts_by_ajax', 'load_posts_by_ajax_callback');
+
+
+
+add_action('wp_ajax_pepseefilter', 'pepsee_filter_function'); 
+add_action('wp_ajax_nopriv_pepseefilter', 'pepsee_filter_function');
+
+function pepsee_filter_function(){
+
+	// example: date-ASC 
+	$order = explode( '-', $_POST['pepsee_order_by'] );
+	$year = $_POST['pepsee_year'];
+	
+	
+	$params = array(
+		'posts_per_page' => $_POST['pepsee_number_of_results'], // when set to -1, it shows all posts
+		'year' => $year,
+		'post_type' => 'music',
+		'orderby' => $order[0], // example: date
+		'order'	=> $order[1] // example: ASC
+	);
+
+
+	query_posts( $params );
+
+	global $wp_query;
+
+	if( have_posts() ) :
+
+		ob_start(); // start buffering because we do not need to print the posts now
+
+		while( have_posts() ): the_post(); ?>
+
+		<div class="post-item col-12 col-md-6">
+			<?php
+				$artistes = get_field('artistes');
+				$titre = get_field('titre');
+			?>
+			<a class="rotate" href="<?php the_permalink(); ?>"><?php the_post_thumbnail('thumbnail'); ?></a>
+			<div>
+				<a href="<?php the_permalink(); ?>"><?= $artistes; ?></a>
+				<a href="<?php the_permalink(); ?>"><?= $titre; ?></a>
+				<?php the_date('M Y') ?>
+			</div>
+		</div>
+
+		<?php endwhile;
+
+		$posts_html = ob_get_contents(); // we pass the posts to variable
+		ob_end_clean(); // clear the buffer
+	else:
+		$posts_html = '<p>Nothing found for your criteria.</p>';
+	endif;
+
+	// no wp_reset_query() required
+
+	echo json_encode( array(
+		'posts' => json_encode( $wp_query->query_vars ),
+		'max_page' => $wp_query->max_num_pages,
+		'found_posts' => $wp_query->found_posts,
+		'content' => $posts_html
+	) );
+
+	die();
+}
