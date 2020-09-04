@@ -62,13 +62,12 @@ if ( have_posts() ) : ?>
                         </div>
                     </div>
                 <?php endwhile; ?>
+                <?php if ($postPerPage < $blog_posts->post_count) : ?>
+                    <div class="loadmore col-12">
+                        <button>Voir plus</button>
+                    </div>
+                <?php endif; ?>
             </div>
-
-            <?php if ($postPerPage < $blog_posts->post_count) : ?>
-                <div class="loadmore col-12">
-                    <button>Voir plus</button>
-                </div>
-            <?php endif; ?>
         </div>
 		<?php get_sidebar(); ?>
     </div>

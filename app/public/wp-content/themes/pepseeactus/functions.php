@@ -278,6 +278,11 @@ function load_posts_by_ajax_callback() {
 					<?php the_date('M Y') ?>
 				</div>
 			</div>
+			<?php if ($postPerPage < $blog_posts->post_count) : ?>
+                <div class="loadmore col-12">
+                    <button>Voir plus</button>
+                </div>
+            <?php endif; ?>
         <?php endwhile; ?>
         <?php
     endif;
