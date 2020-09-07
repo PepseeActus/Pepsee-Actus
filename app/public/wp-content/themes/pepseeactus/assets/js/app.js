@@ -208,7 +208,7 @@ $(document).ready(function() {
     /*
     * Filter
     */
-    $('#pepsee_filters').submit(function(){
+    $('#pepsee_number_of_results, #pepsee_year, #pepsee_order_by').change(function(){
 
         $.ajax({
             url : pepsee_loadmore_params.ajaxurl,

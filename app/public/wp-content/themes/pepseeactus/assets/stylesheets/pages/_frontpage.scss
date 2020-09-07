@@ -1,4 +1,11 @@
 .home {
+    > .container {
+        @include media(phone) {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
     h2 {
         text-transform: uppercase;
         font-weight: 700;
@@ -310,6 +317,11 @@
     }
 
     .actus {
+
+        @include media(phone) {
+            order: -1;
+        }
+
         &-wrap,
         .clips-wrap {
             display: flex;

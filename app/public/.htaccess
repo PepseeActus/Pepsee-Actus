@@ -1,4 +1,57 @@
-<files wp-config.php>
+#Par défaut sous WordPress
+
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+ RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+ RewriteRule . /index.php [L]
+</IfModule>
+# END WordPress
+
+#Sécurisons d'abord notre site :
+
+#Blocage de la visibilité du fichier wp-config.php
+<Files wp-config.php>
 order allow,deny
 deny from all
-</files>
+</Files>
+#Fin du blocage
+
+#Interdiction de visualisation des repertoires du site :
+Options All -Indexes
+
+# Masquer les informations relatives au serveur :
+ServerSignature Off
+
+# Protéger .htaccess et .htpasswds
+<Files ~ "^.*\.([Hh][Tt][AaPp])">
+order allow,deny
+deny from all
+satisfy all
+</Files>
+
+# Masquer l'identification d'un auteur
+<IfModule mod_rewrite.c>
+RewriteCond %{QUERY_STRING} ^author=([0-9]*)
+RewriteRule .* - [F]
+</IfModule>
+
+# Éviter le spam de commentaires
+<IfModule mod_rewrite.c>
+RewriteCond %{REQUEST_METHOD} POST
+RewriteCond %{REQUEST_URI} .wp-comments-post\.php*
+RewriteCond %{HTTP_REFERER} !.monsite.com.* [OR]
+RewriteCond %{HTTP_USER_AGENT} ^$
+RewriteRule (.*) ^http://%{REMOTE_ADDR}/$ [R=301,L]
+</IfModule>
+
+#Optimisons les éléments favorables au référencement naturel
+
+#Autoriser l'utilisation du cache
+<Ifmodule mod_expires.c>  
+<filesmatch "\.(jpg|gif|png|css|js)$">
+ExpiresActive on
+ExpiresDefault "access plus 1 year"
+</filesmatch> </ifmodule>

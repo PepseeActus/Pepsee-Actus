@@ -5,13 +5,26 @@
         text-transform: uppercase;
 
         @include media(phone) {
-            font-size: 20px;
+            font-size: 30px;
         }
     }
 
     .principal {
         background: white;
         border-radius: 1rem;
+    }
+
+    #pepsee_filters {
+        margin-bottom: 2.1875rem;
+
+        @include media(phone) {
+            text-align: center;
+        }
+
+        button {
+            @include shadow();
+            border: 0;
+        }
     }
 
     .post-item {
@@ -21,6 +34,7 @@
 
         .rotate {
             margin-right: 2rem;
+            min-width: 4.625rem;
         }
 
         img {
@@ -39,26 +53,24 @@
         }
     }
 
-    .loadmore {
+    #pepsee_loadmore {
         text-align: center;
+        color: #fff;
+        background: $color__yellow;
+        @include shadow();
+        padding: 0.625rem 1.875rem;
+        margin: 1.875rem auto 0;
+        transition: all ease-out;
+        width: 140px;
+        cursor: pointer;
 
-        button {
-            border: none;
-            color: #fff;
-            background: $color__yellow;
-            @include shadow();
-            padding: 0.625rem 1.875rem;
-            margin-top: 1.875rem;
-            transition: all ease-out;
-
-            &:focus {
-                outline: none;
-            }
-
-            &:active { 
-                transform: scale(0.98); 
-                box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24); 
-            } 
+        &:focus {
+            outline: none;
         }
+
+        &:active { 
+            transform: scale(0.98); 
+            box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24); 
+        } 
     }
 }

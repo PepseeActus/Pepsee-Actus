@@ -97,30 +97,43 @@ function pepseeactus_scripts() {
 	wp_deregister_script('jquery');
 	wp_register_script('jquery', 'https://code.jquery.com/jquery-3.4.1.js', [], false, true);	
 	wp_register_script('font-awesome', 'https://kit.fontawesome.com/628ddd9372.js', [], false, true);	
-	
+
 	wp_enqueue_style('bootstrap');
 	wp_enqueue_style('pepseeactus-style', get_stylesheet_uri());
 
 	wp_enqueue_script('bootstrap');
 	wp_enqueue_script('font-awesome');
-	wp_enqueue_script('pepseeactus-app', get_template_directory_uri() . '/assets/js/app.js', [], '', true);
 
-	wp_localize_script( 'pepseeactus-app', 'pepsee_loadmore_params', array(
+	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+		wp_enqueue_script( 'comment-reply' );
+	}
+}
+add_action( 'wp_enqueue_scripts', 'pepseeactus_scripts' );
+
+
+function pepsee_script_and_styles() {
+	// absolutely need it, because we will get $wp_query->query_vars and $wp_query->max_num_pages from it.
+	global $wp_query;
+
+	// when you use wp_localize_script(), do not enqueue the target script immediately
+	wp_register_script( 'pepsee_scripts', get_template_directory_uri() . '/assets/js/app.js', array('jquery') );
+
+	wp_localize_script('pepsee_scripts', 'pepseeData', array(
+		'root_url' => get_site_url()
+	));
+
+	// passing parameters here
+	// actually the <script> tag will be created and the object "pepsee_loadmore_params" will be inside it 
+	wp_localize_script( 'pepsee_scripts', 'pepsee_loadmore_params', array(
 		'ajaxurl' => site_url() . '/wp-admin/admin-ajax.php', // WordPress AJAX
 		'posts' => json_encode( $wp_query->query_vars ), // everything about your loop is here
 		'current_page' => $wp_query->query_vars['paged'] ? $wp_query->query_vars['paged'] : 1,
 		'max_page' => $wp_query->max_num_pages
 	) );
 
-	wp_localize_script('pepseeactus-app', 'pepseeData', array(
-		'root_url' => get_site_url()
-	));
-	
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
+	wp_enqueue_script( 'pepsee_scripts' );
 }
-add_action( 'wp_enqueue_scripts', 'pepseeactus_scripts' );
+add_action( 'wp_enqueue_scripts', 'pepsee_script_and_styles');
 
 // Longueur du résumé
 add_filter( 'excerpt_length', function($length) {

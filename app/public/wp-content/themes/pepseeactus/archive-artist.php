@@ -8,7 +8,7 @@
  */
 
 get_header(); ?>
-<h2>Tous les artistes</h2>
+<h2>Artistes</h2>
 <div class="padding-inside">
     <div class="principal">
         <?= do_shortcode("[list_glossary_posts]"); ?>

@@ -7,7 +7,6 @@
     z-index: 2;
 
     @include media(phone-tablet) {
-        position: relative;
         background: $color__yellow;
     }
 
@@ -46,7 +45,7 @@
             height: 100%;
 
             @include media(phone-tablet) {
-                padding: 2rem 0;
+                padding: 1rem 0;
                 justify-content: space-between;
             }
 

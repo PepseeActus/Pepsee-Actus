@@ -12,21 +12,21 @@ get_header();
 if ( have_posts() ) : ?>
 
     <div class="archive-header">
-        <h2>Les derniers ajouts</h2>
+        <h2>Musique</h2>
     </div>
     <div class="wrapper row padding-inside">
         <div class="principal col-12 col-lg-9 padding-inside">
             <form id="pepsee_filters" action="#">
-                <label for="pepsee_number_of_results">Nombre de sons</label>
                 <select name="pepsee_number_of_results" id="pepsee_number_of_results">
-                    <option><?php echo get_option( 'posts_per_page' ) ?></option><!-- it is from Settings > Reading -->
+                    <option value="<?= get_option( 'posts_per_page' ) ?>" disabled selected>Nombre de sons</option>
                     <option>5</option>
                     <option>10</option>
+                    <option>20</option>
                     <option value="-1">All</option>
                 </select>
 
-                <label for="pepsee_year">Son de quelle année ?</label>
                 <select name="pepsee_year" id="pepsee_year">
+                    <option value="<?= date('Y') ?>" disabled selected>Année</option>
                     <?php
                     // Sets the top option to be the current year. (IE. the option that is chosen by default).
                     $currently_selected = date('Y'); 
@@ -43,7 +43,6 @@ if ( have_posts() ) : ?>
                     ?>
                 </select>
 
-                <label for="pepsee_order_by">Quel ordre</label>
                 <select name="pepsee_order_by" id="pepsee_order_by">
                     <option value="date-DESC">Date ↓</option><!-- I will explode these values by "-" symbol later -->
                     <option value="date-ASC">Date ↑</option>
@@ -51,10 +50,36 @@ if ( have_posts() ) : ?>
 
                 <input type="hidden" name="action" value="pepseefilter" />
 
-                <button>Apply Filters</button>
             </form>
 
-            <div id="pepsee_posts_wrap" class="row"></div>
+            <div id="pepsee_posts_wrap" class="row">
+                <?php
+                /* Start the Loop */
+                $args = [
+                    'posts_per_page' => 4,
+                    'orderby' => 'date',
+                    'post_type' => array('music', 'album'),
+                    'year' => date("Y"),
+                    'paged' => 1
+                ];
+                $blog_posts = new WP_Query( $args );
+                ?>
+
+                <?php while ( $blog_posts->have_posts() ) : $blog_posts->the_post(); ?>
+                    <div class="post-item col-12 col-md-6">
+                        <?php
+                            $artistes = get_field('artistes');
+                            $titre = get_field('titre');
+                        ?>
+                        <a class="rotate" href="<?php the_permalink(); ?>"><?php the_post_thumbnail('thumbnail'); ?></a>
+                        <div>
+                            <a href="<?php the_permalink(); ?>"><?= $artistes; ?></a>
+                            <a href="<?php the_permalink(); ?>"><?= $titre; ?></a>
+                            <?php the_date('M Y') ?>
+                        </div>
+                    </div>
+                <?php endwhile; ?>
+            </div>
 
             <?php if (  $wp_query->max_num_pages > 1 ) : ?>
                 <div id="pepsee_loadmore">Plus de sons</div>
