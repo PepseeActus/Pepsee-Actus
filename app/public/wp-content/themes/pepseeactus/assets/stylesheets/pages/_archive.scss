@@ -2,8 +2,8 @@
 .category-clips,
 .post-type-archive-album {
     .principal {
-        background: white;
-        border-radius: 1rem;
+        border-radius: 5px;
+        background-color: rgba(255,255,255,.06);
     }
 
     .post-item {
@@ -27,7 +27,6 @@
             }
 
             .post-meta {
-                color: grey;
                 font-size: 1.2rem;
                 margin: .5rem 0;
 
@@ -60,6 +59,17 @@
             font-size: 4rem;
             font-weight: 700;
             text-transform: uppercase;
+            position: relative;
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: -5px;
+                left: 0;
+                height: 5px;
+                width: 77px;
+                background: $color__orange;
+            }
         }
     }
 
@@ -74,14 +84,13 @@
             display: inline-block;
 
             a {
-                background: $color__yellow;
-                color: white;
+                background: $color__orange;
                 padding: 1rem 1.5rem;
             }
 
             .current {
                 padding: .6rem 1.3rem;
-                border: .4rem solid $color__yellow;
+                border: .4rem solid $color__orange;
             }
         }
     }

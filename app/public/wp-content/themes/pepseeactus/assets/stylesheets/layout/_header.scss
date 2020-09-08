@@ -1,5 +1,5 @@
 .site-header {
-    background: #fff;
+    background: $color__background-color;
     width: 100%;
     @include shadow();
     top: 0;
@@ -7,7 +7,7 @@
     z-index: 2;
 
     @include media(phone-tablet) {
-        background: $color__yellow;
+        background: $color__orange;
     }
 
     nav {
@@ -20,13 +20,9 @@
         align-items: center;
 
         a {
-            color: #000;
+            color: #fff;
             font-weight: 100;
             font-size: 2.2rem;
-
-            @include media(phone-tablet) {
-                color: #fff;
-            }
 
             span {
                 font-weight: 700;
@@ -50,19 +46,34 @@
             }
 
             li {
-                margin: 0 1rem;
+                margin: 15px 1rem;
+
+                @include media(phone-tablet) {
+                    margin: 0 1rem;
+                }
 
                 &.current-menu-item a {
-                    color: $color__yellow;
-                    border-bottom: 1px solid $color__yellow;
+                    position: relative;
+
+                    &::after {
+                        content: '';
+                        height: 6px;
+                        width: 6px;
+                        background-color: $color__orange;
+                        border-radius: 50%;
+                        display: inline-block;
+                        position: absolute;
+                        bottom: -7px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                    }
                 }
 
                 a {
                     transition: all 0.2s ease;
 
                     &:hover {
-                        color: $color__yellow;
-                        border-bottom: 1px solid $color__yellow;
+                        color: $color__orange;
                     }
                 }
             }
@@ -74,7 +85,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 65rem;
+    min-height: 52rem;
     position: relative;
     overflow: hidden;
 
@@ -119,7 +130,6 @@
         position: absolute;
         bottom: 6rem;
         left: 23rem;
-        color: #fff;
         max-width: 30rem;
         top: 50%;
         transform: translateY(-50%);
@@ -137,7 +147,7 @@
         .name,
         .album {
             background-color: transparent;
-            background-image: linear-gradient(270deg,#abb2c4 0%,$color__yellow 100%);
+            background-image: linear-gradient(270deg,#abb2c4 0%,$color__orange 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             font-size: 6rem;
@@ -161,17 +171,13 @@
 
         button {
             margin-top: 2.3rem;
-            background-color: $color__yellow;
+            background-color: $color__orange;
             border-radius: 2.5rem;
             padding: 1.3rem 3.2rem;
             border: 2px solid white;
 
             @include media(phone) {
                 margin-top: .5rem;
-            }
-
-            a {
-                color: white;
             }
         }
     }
@@ -236,7 +242,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(255, 255, 255, .96);
+    background-color: rgba(64,59,59,.88);
     visibility: hidden;
     opacity: 0;
     transform: scale(1.09);
@@ -253,7 +259,7 @@
     }
 
     .search-overlay__top {
-        background-color: rgba(0, 0, 0, .3);
+        background-color: rgba(0, 0, 0, .6);
 
         > .container {
             display: flex;
@@ -271,7 +277,7 @@
             font-size: 3rem;
             font-weight: 300;
             outline: none;
-            color: $color__yellow;
+            color: $color__orange;
 
             @include media(phone-small) {
                 font-size: 2.5rem;
@@ -282,7 +288,7 @@
     .search-overlay__icon {
         margin-right: 1rem;
         font-size: 3rem;
-        color: $color__yellow;
+        color: $color__orange;
     }
 
     &--active {
@@ -293,7 +299,6 @@
 
     .search-overlay__section-title {
         margin: 3rem 0 .1rem 0;
-        color: black;
         padding: 1.5rem 0;
         font-size: 3rem;
         letter-spacing: .5rem;
@@ -304,7 +309,7 @@
         cursor: pointer;
         transition: all .3s;
         background-color: #FFF;
-        color: $color__yellow;
+        color: $color__orange;
         line-height: .7;
         letter-spacing: -.1rem;
     }

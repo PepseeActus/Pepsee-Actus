@@ -3,6 +3,17 @@
         font-size: 4rem;
         font-weight: 700;
         text-transform: uppercase;
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            height: 5px;
+            width: 77px;
+            background: $color__orange;
+        }
 
         @include media(phone) {
             font-size: 30px;
@@ -10,12 +21,13 @@
     }
 
     .principal {
-        background: white;
-        border-radius: 1rem;
+        border-radius: 5px;
+        background: rgba(255,255,255,.06);
     }
 
     #pepsee_filters {
         margin-bottom: 2.1875rem;
+        border-bottom: 1px solid $color__orange;
 
         @include media(phone) {
             text-align: center;
@@ -53,15 +65,19 @@
         }
     }
 
+    .music-info {
+        max-width: 235px;
+    }
+
     #pepsee_loadmore {
         text-align: center;
         color: #fff;
-        background: $color__yellow;
-        @include shadow();
         padding: 0.625rem 1.875rem;
         margin: 1.875rem auto 0;
         transition: all ease-out;
         width: 140px;
+        border: 1px solid $color__orange;
+        border-radius: 5px;
         cursor: pointer;
 
         &:focus {

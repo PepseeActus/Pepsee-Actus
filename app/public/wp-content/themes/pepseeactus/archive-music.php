@@ -72,7 +72,7 @@ if ( have_posts() ) : ?>
                             $titre = get_field('titre');
                         ?>
                         <a class="rotate" href="<?php the_permalink(); ?>"><?php the_post_thumbnail('thumbnail'); ?></a>
-                        <div>
+                        <div class="music-infos">
                             <a href="<?php the_permalink(); ?>"><?= $artistes; ?></a>
                             <a href="<?php the_permalink(); ?>"><?= $titre; ?></a>
                             <?php the_date('M Y') ?>

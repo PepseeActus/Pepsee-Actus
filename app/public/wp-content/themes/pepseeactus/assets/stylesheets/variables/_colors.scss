@@ -1,4 +1,5 @@
 $color__background-screen: #f1f1f1;
+$color__background-color: #22272C;
 $color__background-hr: #ccc;
 $color__background-button: #e6e6e6;
 $color__background-pre: #eee;
@@ -19,6 +20,7 @@ $color__border-abbr: #666;
 $color__red: #FF0067; 
 $color__dark-red: #D00D1C; 
 $color__yellow: #FBC003;
+$color__orange: #F66D38;
 $color__black: #1C1C1C;
 $color__grey: #F4F4F4;
 
@@ -31,7 +33,7 @@ $color__youtube: #F50E02;
 $color__apple: linear-gradient(345deg,#d253b1,#fb6f4a);
 
 .background-white {
-    background-color: white;
+    background-color: #fff;
     padding-bottom: 1.5rem;
     border-radius: 1rem;
 }

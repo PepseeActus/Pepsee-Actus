@@ -68,6 +68,7 @@
 					<ul>
 						<li class="search-trigger js-search-trigger"><i class="fa fa-search" aria-hidden="true"></i></li>
 						<li class="mobile-visually-hidden <?php if (is_front_page()) echo 'current-menu-item'; ?>"><a href="<?= site_url(); ?>">Home</a></li>
+						<li class="mobile-visually-hidden <?php if (is_page('/actus')) echo 'current-menu-item'; ?>"><a href="<?= site_url('/actus'); ?>">Actus</a></li>
 						<li class="mobile-visually-hidden <?php if (get_post_type() == 'music') echo 'current-menu-item'; ?>"><a href="<?= get_post_type_archive_link('music'); ?>">Musique</a></li>
 						<li class="mobile-visually-hidden <?php if (get_post_type() == 'artist') echo 'current-menu-item'; ?>"><a href="<?= get_post_type_archive_link('artist'); ?>">Artistes</a></li>
 						<li class="mobile-visually-hidden <?php if (is_page('/a-propos')) echo 'current-menu-item'; ?>"><a href="<?= site_url('/a-propos'); ?>">A propos</a></li>
@@ -80,13 +81,16 @@
 	$pageBanner = get_field('image_arriere_plan');
 	$pageBannerImage = $pageBanner['url'];
 
+	//PAGE ARTISTE
 	if (!(is_front_page()) && $pageBannerImage) : ?>
 
 		<div class="hero-banner">
 			<div class="banner" style='background-image: url("<?= $pageBannerImage; ?>")'></div>
 		</div>
 
-	<?php elseif (is_front_page() || is_page()) :
+	<?php 
+	//HOME
+	elseif (is_front_page() || is_page()) :
 
 		$args = [
 			'posts_per_page' => 1,
@@ -128,10 +132,15 @@
 				</div>
 
 			<?php }
-		}
+		} else { ?>
+
+			<div class="hero-banner" style='background-image: url("<?= get_stylesheet_directory_uri(); ?>/assets/img/88891.jpg")'></div>
+
+		<?php }
 
 		wp_reset_postdata();
 
+	// SI IL N'Y A NI 
 	else : ?>
 
 		<div class="hero-banner" style='background-image: url("<?= get_stylesheet_directory_uri(); ?>/assets/img/88891.jpg")'></div>

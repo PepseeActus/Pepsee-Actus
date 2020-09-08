@@ -3,6 +3,17 @@
         letter-spacing: .3rem;
         font-weight: 700;
         text-transform: uppercase;
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            height: 5px;
+            width: 77px;
+            background: $color__orange;
+        }
 
         @include media(phone) {
             letter-spacing: 0;
@@ -10,12 +21,13 @@
     }
 
     .principal {
-        background: white;
         border-radius: 1rem;
         padding: 0 2rem 2rem;
         margin-bottom: 2rem;
         column-count: 4;
         column-gap: 2em;
+        border-radius: 5px;
+        background: rgba(255,255,255,.06);
 
         @include media(phone) {
             column-count: 1;
@@ -39,7 +51,7 @@
         margin-top: 0;
         margin-bottom: 0.25rem;
         padding-bottom: 0.2em;
-        border-bottom: 0.125rem solid $color__text-main;
+        border-bottom: 0.125rem solid #fff;
     }
 
     .bloc-letter {

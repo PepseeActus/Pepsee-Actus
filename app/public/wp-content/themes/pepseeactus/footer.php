@@ -14,6 +14,7 @@
 			<div class="mobile-nav desktop-visually-hidden">
 				<ul>
 					<li class="<?php if (is_front_page()) echo 'current-menu-item'; ?>"><a href="<?= site_url(); ?>"><i class="fas fa-home"></i></a></li>
+					<li class="<?php if (is_page('/actus')) echo 'current-menu-item'; ?>"><a href="<?= site_url('/actus'); ?>"><i class="far fa-newspaper"></i></a></li>
 					<li class="<?php if (get_post_type() == 'music') echo 'current-menu-item'; ?>"><a href="<?= get_post_type_archive_link('music'); ?>"><i class="fas fa-music"></i></a></li>
 					<li class="<?php if (get_post_type() == 'artist') echo 'current-menu-item'; ?>"><a href="<?= get_post_type_archive_link('artist'); ?>"><i class="fas fa-microphone"></i></a></li>
 					<li class="<?php if (is_page('/a-propos')) echo 'current-menu-item'; ?>"><a href="<?= site_url('/a-propos'); ?>"><i class="fas fa-info-circle"></i></a></li>

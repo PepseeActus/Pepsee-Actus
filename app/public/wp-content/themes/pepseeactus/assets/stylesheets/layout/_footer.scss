@@ -15,7 +15,7 @@
             margin: 1rem 0;
 
             &.current-menu-item i {
-                color: $color__yellow;
+                color: $color__orange;
             }
 
             i {
@@ -33,7 +33,7 @@
     right: 0;
     top: 50%;
     transform: translateY(-50%);
-    background-color: $color__yellow;
+    background-color: $color__orange;
     text-align: center;
     font-size: 2rem;
     z-index: 3;
@@ -72,12 +72,10 @@
 }
 
 .site-footer {
-    color: white;
     background: $color__black;
     padding: 3rem 0;
 
     a {
-        color: white;
         &:hover {
             text-decoration: underline;
         }
@@ -134,7 +132,7 @@
 // BACK TO TOP
 #button {
     display: inline-block;
-    background-color: $color__yellow;
+    background-color: $color__orange;
     width: 4rem;
     height: 4rem;
     text-align: center;
