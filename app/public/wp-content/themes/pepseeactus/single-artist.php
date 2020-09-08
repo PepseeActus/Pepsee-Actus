@@ -11,7 +11,7 @@ get_header(); ?>
 
 <?php while ( have_posts() ) : the_post(); ?>
     <div class="row">
-        <div id="post-<?php the_ID(); ?>" <?php post_class('background-white col-12 col-md-9'); ?>>
+        <div id="post-<?php the_ID(); ?>" <?php post_class('col-12 col-md-9'); ?>>
             <?php 
                 $badge = get_field('compte_verifie');
                 $twitter = get_field('twitter');

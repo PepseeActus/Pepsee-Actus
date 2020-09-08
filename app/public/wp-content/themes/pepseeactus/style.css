@@ -43,11 +43,6 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 # Media
 	## Galleries
 --------------------------------------------------------------*/
-.background-white {
-  background-color: #fff;
-  padding-bottom: 1.5rem;
-  border-radius: 1rem; }
-
 .visually-hidden {
   border: 0;
   clip: rect(0 0 0 0);
@@ -1358,8 +1353,8 @@ html {
       .home .releases-wrap article .rotate,
       .home .classic-wrap article .rotate,
       .home .album-wrap article .rotate {
-        width: 7rem;
-        height: 7rem; }
+        width: 8rem;
+        height: 8rem; }
         @media (max-width: 767.98px) {
           .home .releases-wrap article .rotate,
           .home .classic-wrap article .rotate,
@@ -1693,15 +1688,25 @@ html {
   padding-top: 5rem;
   padding-bottom: 2rem; }
 
-.single-artist .background-white {
+.single-artist .artist {
+  background: rgba(255, 255, 255, 0.06);
   padding: 1.5rem;
-  border-radius: 1rem; }
+  border-radius: 5px; }
 
 .single-artist h2 {
   font-size: 4rem;
   font-weight: 600;
   letter-spacing: inherit;
-  margin-bottom: 2rem; }
+  margin-bottom: 3rem;
+  position: relative; }
+  .single-artist h2::after {
+    content: '';
+    position: absolute;
+    bottom: -9px;
+    left: 0;
+    height: 5px;
+    width: 60px;
+    background: #F66D38; }
 
 .single-artist .artist-presentation {
   display: flex;
@@ -1784,6 +1789,8 @@ html {
       margin-bottom: 2rem; }
       .single-artist .artist-music__container-box .music-image {
         margin-right: 1rem; }
+        .single-artist .artist-music__container-box .music-image img {
+          max-width: 90px; }
       .single-artist .artist-music__container-box .music-info .music-title {
         font-weight: 600; }
       .single-artist .artist-music__container-box .music-info a {
