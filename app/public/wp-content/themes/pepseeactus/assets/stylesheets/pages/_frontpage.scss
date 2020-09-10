@@ -328,6 +328,10 @@
 
         @include media(phone) {
             order: -1;
+
+            h2 {
+                display: none;
+            }
         }
 
         &-wrap,
@@ -366,6 +370,10 @@
                 .wp-post-image {
                     filter: blur(1px);
                     transition: filter .3s ease-out;
+
+                    @include media(phone) {
+                        filter: none;
+                    }
                 }
 
                 .actus-info,

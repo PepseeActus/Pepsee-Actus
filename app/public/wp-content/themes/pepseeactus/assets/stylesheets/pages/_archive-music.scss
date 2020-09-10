@@ -47,11 +47,14 @@
         .rotate {
             margin-right: 2rem;
             min-width: 4.625rem;
+
+            @include media(phone) {
+                min-width: 7rem;
+            }
         }
 
         img {
             width: 7rem;
-            min-width: 7rem;
         }
 
         div {

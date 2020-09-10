@@ -160,7 +160,7 @@ body {
   background: #22272C; }
   @media (max-width: 1023.98px) {
     body {
-      margin-bottom: 4.0625rem; } }
+      padding: 44px 0; } }
 
 ol, ul {
   list-style: none; }
@@ -474,7 +474,7 @@ h2 {
 h3 {
   font-size: 3rem; }
   h3.widget-title {
-    padding: 10px 10px;
+    padding: 10px 0 0 15px;
     margin-bottom: 1rem;
     font-size: 2.5rem;
     border-radius: 5px;
@@ -1453,7 +1453,9 @@ html {
 
 @media (max-width: 767.98px) {
   .home .actus {
-    order: -1; } }
+    order: -1; }
+    .home .actus h2 {
+      display: none; } }
 
 .home .actus-wrap,
 .home .actus .clips-wrap {
@@ -1496,6 +1498,12 @@ html {
     .home .actus .clips-wrap .category-clips .wp-post-image {
       filter: blur(1px);
       transition: filter .3s ease-out; }
+      @media (max-width: 767.98px) {
+        .home .actus-wrap .category-actus .wp-post-image,
+        .home .actus-wrap .category-clips .wp-post-image,
+        .home .actus .clips-wrap .category-actus .wp-post-image,
+        .home .actus .clips-wrap .category-clips .wp-post-image {
+          filter: none; } }
     .home .actus-wrap .category-actus .actus-info,
     .home .actus-wrap .category-actus .clips-info,
     .home .actus-wrap .category-clips .actus-info,
@@ -2082,9 +2090,11 @@ html {
   .post-type-archive-music .post-item .rotate {
     margin-right: 2rem;
     min-width: 4.625rem; }
+    @media (max-width: 767.98px) {
+      .post-type-archive-music .post-item .rotate {
+        min-width: 7rem; } }
   .post-type-archive-music .post-item img {
-    width: 7rem;
-    min-width: 7rem; }
+    width: 7rem; }
   .post-type-archive-music .post-item div a {
     display: block; }
   .post-type-archive-music .post-item div a:hover {
@@ -2191,11 +2201,10 @@ html {
   .post-type-archive-album .post-item li .post-meta {
     font-size: 1.2rem;
     margin: .5rem 0; }
-    .category-actus .post-item li .post-meta .icon-date,
-    .category-clips .post-item li .post-meta .icon-date,
-    .post-type-archive-album .post-item li .post-meta .icon-date {
-      fill: currentColor;
-      height: 1.8rem; }
+    .category-actus .post-item li .post-meta .fa.fa-eye,
+    .category-clips .post-item li .post-meta .fa.fa-eye,
+    .post-type-archive-album .post-item li .post-meta .fa.fa-eye {
+      margin-left: 7px; }
   .category-actus .post-item li div,
   .category-clips .post-item li div,
   .post-type-archive-album .post-item li div {
@@ -2208,7 +2217,7 @@ html {
     .category-actus .post-item li div a,
     .category-clips .post-item li div a,
     .post-type-archive-album .post-item li div a {
-      text-decoration: underline; }
+      font-size: 20px; }
     .category-actus .post-item li div p,
     .category-clips .post-item li div p,
     .post-type-archive-album .post-item li div p {

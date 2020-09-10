@@ -2,7 +2,8 @@
 function pepsee_post_types() {
     // Artistes Post Type
     register_post_type('artist', [
-        'supports'     => ['title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields'],
+        'supports'     => ['title', 'editor', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields'],
+        'taxonomies'   => ['post_tag'],
         'rewrite'      => ['slug' => 'artist'],
         'has_archive'  => true,
         'public'       => true,
@@ -20,13 +21,14 @@ function pepsee_post_types() {
 
     // Music Post Type
     register_post_type('music', [
-        'supports'     => ['title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields'],
+        'supports'     => ['title', 'editor', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields'],
+        'taxonomies'   => ['post_tag'],
         'rewrite'      => ['slug' => 'music'],
         'has_archive'  => true,
         'public'       => true,
         'show_in_rest' => true,
         'menu_position'=> 5,
-        'menu_icon' => 'dashicons-format-audio',
+        'menu_icon'    => 'dashicons-format-audio',
         'labels'    => [
             'name'          => 'Musique',
             'add_new_item'  => 'Ajouter une nouveau son',
@@ -38,7 +40,7 @@ function pepsee_post_types() {
 
     // Album Post Type
     register_post_type('album', [
-        'supports'     => ['title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields'],
+        'supports'     => ['title', 'editor', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields'],
         'rewrite'      => ['slug' => 'album'],
         'has_archive'  => true,
         'public'       => true,
