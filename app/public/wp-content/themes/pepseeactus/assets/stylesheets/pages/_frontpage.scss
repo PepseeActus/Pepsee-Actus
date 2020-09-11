@@ -325,7 +325,6 @@
     }
 
     .actus {
-
         @include media(phone) {
             order: -1;
 
@@ -350,6 +349,7 @@
             }
 
             .category-actus,
+            .category-videos,
             .category-clips {
                 top: inherit;
                 overflow: hidden;

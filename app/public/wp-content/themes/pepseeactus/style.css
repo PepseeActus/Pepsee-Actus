@@ -1477,8 +1477,10 @@ html {
   .home .actus .clips-wrap .post {
     box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5); }
   .home .actus-wrap .category-actus,
+  .home .actus-wrap .category-videos,
   .home .actus-wrap .category-clips,
   .home .actus .clips-wrap .category-actus,
+  .home .actus .clips-wrap .category-videos,
   .home .actus .clips-wrap .category-clips {
     top: inherit;
     overflow: hidden;
@@ -1489,33 +1491,45 @@ html {
     max-height: 20rem; }
     @media (max-width: 767.98px) {
       .home .actus-wrap .category-actus,
+      .home .actus-wrap .category-videos,
       .home .actus-wrap .category-clips,
       .home .actus .clips-wrap .category-actus,
+      .home .actus .clips-wrap .category-videos,
       .home .actus .clips-wrap .category-clips {
         width: 100%; } }
     .home .actus-wrap .category-actus:hover .wp-post-image,
+    .home .actus-wrap .category-videos:hover .wp-post-image,
     .home .actus-wrap .category-clips:hover .wp-post-image,
     .home .actus .clips-wrap .category-actus:hover .wp-post-image,
+    .home .actus .clips-wrap .category-videos:hover .wp-post-image,
     .home .actus .clips-wrap .category-clips:hover .wp-post-image {
       filter: none; }
     .home .actus-wrap .category-actus .wp-post-image,
+    .home .actus-wrap .category-videos .wp-post-image,
     .home .actus-wrap .category-clips .wp-post-image,
     .home .actus .clips-wrap .category-actus .wp-post-image,
+    .home .actus .clips-wrap .category-videos .wp-post-image,
     .home .actus .clips-wrap .category-clips .wp-post-image {
       filter: blur(1px);
       transition: filter .3s ease-out; }
       @media (max-width: 767.98px) {
         .home .actus-wrap .category-actus .wp-post-image,
+        .home .actus-wrap .category-videos .wp-post-image,
         .home .actus-wrap .category-clips .wp-post-image,
         .home .actus .clips-wrap .category-actus .wp-post-image,
+        .home .actus .clips-wrap .category-videos .wp-post-image,
         .home .actus .clips-wrap .category-clips .wp-post-image {
           filter: none; } }
     .home .actus-wrap .category-actus .actus-info,
     .home .actus-wrap .category-actus .clips-info,
+    .home .actus-wrap .category-videos .actus-info,
+    .home .actus-wrap .category-videos .clips-info,
     .home .actus-wrap .category-clips .actus-info,
     .home .actus-wrap .category-clips .clips-info,
     .home .actus .clips-wrap .category-actus .actus-info,
     .home .actus .clips-wrap .category-actus .clips-info,
+    .home .actus .clips-wrap .category-videos .actus-info,
+    .home .actus .clips-wrap .category-videos .clips-info,
     .home .actus .clips-wrap .category-clips .actus-info,
     .home .actus .clips-wrap .category-clips .clips-info {
       text-align: center;
@@ -1529,10 +1543,14 @@ html {
       padding: 0 2rem; }
       .home .actus-wrap .category-actus .actus-info .category a,
       .home .actus-wrap .category-actus .clips-info .category a,
+      .home .actus-wrap .category-videos .actus-info .category a,
+      .home .actus-wrap .category-videos .clips-info .category a,
       .home .actus-wrap .category-clips .actus-info .category a,
       .home .actus-wrap .category-clips .clips-info .category a,
       .home .actus .clips-wrap .category-actus .actus-info .category a,
       .home .actus .clips-wrap .category-actus .clips-info .category a,
+      .home .actus .clips-wrap .category-videos .actus-info .category a,
+      .home .actus .clips-wrap .category-videos .clips-info .category a,
       .home .actus .clips-wrap .category-clips .actus-info .category a,
       .home .actus .clips-wrap .category-clips .clips-info .category a {
         padding: .5rem;
@@ -1540,10 +1558,14 @@ html {
         text-transform: uppercase; }
       .home .actus-wrap .category-actus .actus-info .entry-title,
       .home .actus-wrap .category-actus .clips-info .entry-title,
+      .home .actus-wrap .category-videos .actus-info .entry-title,
+      .home .actus-wrap .category-videos .clips-info .entry-title,
       .home .actus-wrap .category-clips .actus-info .entry-title,
       .home .actus-wrap .category-clips .clips-info .entry-title,
       .home .actus .clips-wrap .category-actus .actus-info .entry-title,
       .home .actus .clips-wrap .category-actus .clips-info .entry-title,
+      .home .actus .clips-wrap .category-videos .actus-info .entry-title,
+      .home .actus .clips-wrap .category-videos .clips-info .entry-title,
       .home .actus .clips-wrap .category-clips .actus-info .entry-title,
       .home .actus .clips-wrap .category-clips .clips-info .entry-title {
         text-transform: uppercase;
@@ -1552,10 +1574,14 @@ html {
         padding: 5px 0 4px; }
       .home .actus-wrap .category-actus .actus-info .post-meta,
       .home .actus-wrap .category-actus .clips-info .post-meta,
+      .home .actus-wrap .category-videos .actus-info .post-meta,
+      .home .actus-wrap .category-videos .clips-info .post-meta,
       .home .actus-wrap .category-clips .actus-info .post-meta,
       .home .actus-wrap .category-clips .clips-info .post-meta,
       .home .actus .clips-wrap .category-actus .actus-info .post-meta,
       .home .actus .clips-wrap .category-actus .clips-info .post-meta,
+      .home .actus .clips-wrap .category-videos .actus-info .post-meta,
+      .home .actus .clips-wrap .category-videos .clips-info .post-meta,
       .home .actus .clips-wrap .category-clips .actus-info .post-meta,
       .home .actus .clips-wrap .category-clips .clips-info .post-meta {
         color: grey;
@@ -1564,20 +1590,28 @@ html {
         margin-top: 0; }
         .home .actus-wrap .category-actus .actus-info .post-meta .icon-date,
         .home .actus-wrap .category-actus .clips-info .post-meta .icon-date,
+        .home .actus-wrap .category-videos .actus-info .post-meta .icon-date,
+        .home .actus-wrap .category-videos .clips-info .post-meta .icon-date,
         .home .actus-wrap .category-clips .actus-info .post-meta .icon-date,
         .home .actus-wrap .category-clips .clips-info .post-meta .icon-date,
         .home .actus .clips-wrap .category-actus .actus-info .post-meta .icon-date,
         .home .actus .clips-wrap .category-actus .clips-info .post-meta .icon-date,
+        .home .actus .clips-wrap .category-videos .actus-info .post-meta .icon-date,
+        .home .actus .clips-wrap .category-videos .clips-info .post-meta .icon-date,
         .home .actus .clips-wrap .category-clips .actus-info .post-meta .icon-date,
         .home .actus .clips-wrap .category-clips .clips-info .post-meta .icon-date {
           fill: currentColor;
           height: 1.8rem; }
         .home .actus-wrap .category-actus .actus-info .post-meta div,
         .home .actus-wrap .category-actus .clips-info .post-meta div,
+        .home .actus-wrap .category-videos .actus-info .post-meta div,
+        .home .actus-wrap .category-videos .clips-info .post-meta div,
         .home .actus-wrap .category-clips .actus-info .post-meta div,
         .home .actus-wrap .category-clips .clips-info .post-meta div,
         .home .actus .clips-wrap .category-actus .actus-info .post-meta div,
         .home .actus .clips-wrap .category-actus .clips-info .post-meta div,
+        .home .actus .clips-wrap .category-videos .actus-info .post-meta div,
+        .home .actus .clips-wrap .category-videos .clips-info .post-meta div,
         .home .actus .clips-wrap .category-clips .actus-info .post-meta div,
         .home .actus .clips-wrap .category-clips .clips-info .post-meta div {
           display: inline-block;
@@ -1585,13 +1619,17 @@ html {
           padding: .4rem 1rem;
           border-radius: .3rem; }
     .home .actus-wrap .category-actus .actus-info .category a,
+    .home .actus-wrap .category-videos .actus-info .category a,
     .home .actus-wrap .category-clips .actus-info .category a,
     .home .actus .clips-wrap .category-actus .actus-info .category a,
+    .home .actus .clips-wrap .category-videos .actus-info .category a,
     .home .actus .clips-wrap .category-clips .actus-info .category a {
       background: #F66D38; }
     .home .actus-wrap .category-actus .clips-info .category a,
+    .home .actus-wrap .category-videos .clips-info .category a,
     .home .actus-wrap .category-clips .clips-info .category a,
     .home .actus .clips-wrap .category-actus .clips-info .category a,
+    .home .actus .clips-wrap .category-videos .clips-info .category a,
     .home .actus .clips-wrap .category-clips .clips-info .category a {
       background: #FF0067; }
 
