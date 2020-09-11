@@ -41,6 +41,7 @@ function pepsee_post_types() {
     // Album Post Type
     register_post_type('album', [
         'supports'     => ['title', 'editor', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields'],
+        'taxonomies'   => ['post_tag'],
         'rewrite'      => ['slug' => 'album'],
         'has_archive'  => true,
         'public'       => true,

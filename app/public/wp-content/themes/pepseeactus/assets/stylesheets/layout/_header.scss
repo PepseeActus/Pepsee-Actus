@@ -214,6 +214,10 @@
         min-height: 35rem;
         position: relative;
 
+        &.single-format-standard {
+            display: none;
+        }
+
         @include media(phone) {
             display: none;
         }

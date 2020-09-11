@@ -17,7 +17,7 @@ get_header(); ?>
 <section class="d-flex justify-content-between mobile-visually-hidden">
 	<?php
 		$args = [
-			'cat' => '5',
+			'cat' => [5, 126],
 			'posts_per_page' => 3
 		];
 		
@@ -37,7 +37,6 @@ get_header(); ?>
 								<?php the_title( '<div class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></div>' ); ?>
 							</div>
 							<div class="post-meta">
-								<svg class="icon icon-date" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true" role="img" focusable="false"><rect x="0" fill="none" width="16" height="16"></rect><g><path d="M12 3h-1V2H9v1H7V2H5v1H4c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-3 8H8V6.2l-.8.3-.4-1L9 4.8V11z"></path></g></svg>
 								<?php echo meks_time_ago(); ?>
 								<i class="fa fa-eye"></i> <?php if (function_exists('the_views')) {the_views();} ?>
 							</div>
@@ -197,7 +196,7 @@ get_header(); ?>
 		$args = array(
 			'posts_per_page' => 9,
 			'orderby' => 'date',
-			'cat' => 5
+			'cat' => [5, 126]
 		);
 		
 		$query = new WP_Query( $args );

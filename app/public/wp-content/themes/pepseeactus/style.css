@@ -599,6 +599,10 @@ a {
   .artist-bio iframe,
   .single-content iframe {
     width: 80%; }
+    .music-content iframe.instagram-media,
+    .artist-bio iframe.instagram-media,
+    .single-content iframe.instagram-media {
+      margin: 0 auto 25px !important; }
 
 /*--------------------------------------------------------------
 # Widgets
@@ -859,6 +863,8 @@ html {
 .single .hero-banner {
   min-height: 35rem;
   position: relative; }
+  .single .hero-banner.single-format-standard {
+    display: none; }
   @media (max-width: 767.98px) {
     .single .hero-banner {
       display: none; } }
@@ -1254,7 +1260,7 @@ html {
           font-weight: 700;
           font-size: 20px; }
           .home .post .head-thumbnail .post-infos .post-title .entry-title a {
-            background: rgba(34, 39, 44, 0.6);
+            background: rgba(34, 39, 44, 0.8);
             -webkit-box-decoration-break: clone;
             padding: 3px 0.375rem; }
       .home .post .head-thumbnail .post-infos .post-meta {
@@ -2217,7 +2223,8 @@ html {
     .category-actus .post-item li div a,
     .category-clips .post-item li div a,
     .post-type-archive-album .post-item li div a {
-      font-size: 20px; }
+      font-size: 20px;
+      text-transform: uppercase; }
     .category-actus .post-item li div p,
     .category-clips .post-item li div p,
     .post-type-archive-album .post-item li div p {
