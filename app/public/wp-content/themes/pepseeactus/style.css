@@ -1632,6 +1632,13 @@ html {
     .home .actus .clips-wrap .category-videos .clips-info .category a,
     .home .actus .clips-wrap .category-clips .clips-info .category a {
       background: #FF0067; }
+    .home .actus-wrap .category-actus .videos-info .category a,
+    .home .actus-wrap .category-videos .videos-info .category a,
+    .home .actus-wrap .category-clips .videos-info .category a,
+    .home .actus .clips-wrap .category-actus .videos-info .category a,
+    .home .actus .clips-wrap .category-videos .videos-info .category a,
+    .home .actus .clips-wrap .category-clips .videos-info .category a {
+      background: #FBC003; }
 
 .single-post .category-actus {
   border-radius: 5px;

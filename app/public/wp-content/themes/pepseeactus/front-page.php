@@ -202,13 +202,15 @@ get_header(); ?>
 		$query = new WP_Query( $args );
 		if ( $query->have_posts() ) {
 			while ( $query->have_posts() ) {
-				$query->the_post(); ?>
+				$query->the_post(); 
+				$categories = get_the_category();
+				?>
 
 				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 				<a href="<?php the_permalink(); ?>">
 					<?php the_post_thumbnail('large'); ?>
 				</a>
-				<div class="actus-info">
+				<div class="<?= $categories[0]->slug; ?>-info">
 						<div class="category"><?php the_category(', '); ?></div>
 						<?php the_title( '<div class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></div>' ); ?>
 						<div class="post-meta mobile-visually-hidden">
