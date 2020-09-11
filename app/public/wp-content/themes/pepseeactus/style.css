@@ -1521,16 +1521,22 @@ html {
         .home .actus .clips-wrap .category-clips .wp-post-image {
           filter: none; } }
     .home .actus-wrap .category-actus .actus-info,
+    .home .actus-wrap .category-actus .videos-info,
     .home .actus-wrap .category-actus .clips-info,
     .home .actus-wrap .category-videos .actus-info,
+    .home .actus-wrap .category-videos .videos-info,
     .home .actus-wrap .category-videos .clips-info,
     .home .actus-wrap .category-clips .actus-info,
+    .home .actus-wrap .category-clips .videos-info,
     .home .actus-wrap .category-clips .clips-info,
     .home .actus .clips-wrap .category-actus .actus-info,
+    .home .actus .clips-wrap .category-actus .videos-info,
     .home .actus .clips-wrap .category-actus .clips-info,
     .home .actus .clips-wrap .category-videos .actus-info,
+    .home .actus .clips-wrap .category-videos .videos-info,
     .home .actus .clips-wrap .category-videos .clips-info,
     .home .actus .clips-wrap .category-clips .actus-info,
+    .home .actus .clips-wrap .category-clips .videos-info,
     .home .actus .clips-wrap .category-clips .clips-info {
       text-align: center;
       position: absolute;
@@ -1542,77 +1548,107 @@ html {
       flex-direction: column;
       padding: 0 2rem; }
       .home .actus-wrap .category-actus .actus-info .category a,
+      .home .actus-wrap .category-actus .videos-info .category a,
       .home .actus-wrap .category-actus .clips-info .category a,
       .home .actus-wrap .category-videos .actus-info .category a,
+      .home .actus-wrap .category-videos .videos-info .category a,
       .home .actus-wrap .category-videos .clips-info .category a,
       .home .actus-wrap .category-clips .actus-info .category a,
+      .home .actus-wrap .category-clips .videos-info .category a,
       .home .actus-wrap .category-clips .clips-info .category a,
       .home .actus .clips-wrap .category-actus .actus-info .category a,
+      .home .actus .clips-wrap .category-actus .videos-info .category a,
       .home .actus .clips-wrap .category-actus .clips-info .category a,
       .home .actus .clips-wrap .category-videos .actus-info .category a,
+      .home .actus .clips-wrap .category-videos .videos-info .category a,
       .home .actus .clips-wrap .category-videos .clips-info .category a,
       .home .actus .clips-wrap .category-clips .actus-info .category a,
+      .home .actus .clips-wrap .category-clips .videos-info .category a,
       .home .actus .clips-wrap .category-clips .clips-info .category a {
         padding: .5rem;
         font-weight: 600;
         text-transform: uppercase; }
       .home .actus-wrap .category-actus .actus-info .entry-title,
+      .home .actus-wrap .category-actus .videos-info .entry-title,
       .home .actus-wrap .category-actus .clips-info .entry-title,
       .home .actus-wrap .category-videos .actus-info .entry-title,
+      .home .actus-wrap .category-videos .videos-info .entry-title,
       .home .actus-wrap .category-videos .clips-info .entry-title,
       .home .actus-wrap .category-clips .actus-info .entry-title,
+      .home .actus-wrap .category-clips .videos-info .entry-title,
       .home .actus-wrap .category-clips .clips-info .entry-title,
       .home .actus .clips-wrap .category-actus .actus-info .entry-title,
+      .home .actus .clips-wrap .category-actus .videos-info .entry-title,
       .home .actus .clips-wrap .category-actus .clips-info .entry-title,
       .home .actus .clips-wrap .category-videos .actus-info .entry-title,
+      .home .actus .clips-wrap .category-videos .videos-info .entry-title,
       .home .actus .clips-wrap .category-videos .clips-info .entry-title,
       .home .actus .clips-wrap .category-clips .actus-info .entry-title,
+      .home .actus .clips-wrap .category-clips .videos-info .entry-title,
       .home .actus .clips-wrap .category-clips .clips-info .entry-title {
         text-transform: uppercase;
         font-weight: 600;
         font-size: 18px;
         padding: 5px 0 4px; }
       .home .actus-wrap .category-actus .actus-info .post-meta,
+      .home .actus-wrap .category-actus .videos-info .post-meta,
       .home .actus-wrap .category-actus .clips-info .post-meta,
       .home .actus-wrap .category-videos .actus-info .post-meta,
+      .home .actus-wrap .category-videos .videos-info .post-meta,
       .home .actus-wrap .category-videos .clips-info .post-meta,
       .home .actus-wrap .category-clips .actus-info .post-meta,
+      .home .actus-wrap .category-clips .videos-info .post-meta,
       .home .actus-wrap .category-clips .clips-info .post-meta,
       .home .actus .clips-wrap .category-actus .actus-info .post-meta,
+      .home .actus .clips-wrap .category-actus .videos-info .post-meta,
       .home .actus .clips-wrap .category-actus .clips-info .post-meta,
       .home .actus .clips-wrap .category-videos .actus-info .post-meta,
+      .home .actus .clips-wrap .category-videos .videos-info .post-meta,
       .home .actus .clips-wrap .category-videos .clips-info .post-meta,
       .home .actus .clips-wrap .category-clips .actus-info .post-meta,
+      .home .actus .clips-wrap .category-clips .videos-info .post-meta,
       .home .actus .clips-wrap .category-clips .clips-info .post-meta {
         color: grey;
         font-size: 1.2rem;
         margin-bottom: 1rem;
         margin-top: 0; }
         .home .actus-wrap .category-actus .actus-info .post-meta .icon-date,
+        .home .actus-wrap .category-actus .videos-info .post-meta .icon-date,
         .home .actus-wrap .category-actus .clips-info .post-meta .icon-date,
         .home .actus-wrap .category-videos .actus-info .post-meta .icon-date,
+        .home .actus-wrap .category-videos .videos-info .post-meta .icon-date,
         .home .actus-wrap .category-videos .clips-info .post-meta .icon-date,
         .home .actus-wrap .category-clips .actus-info .post-meta .icon-date,
+        .home .actus-wrap .category-clips .videos-info .post-meta .icon-date,
         .home .actus-wrap .category-clips .clips-info .post-meta .icon-date,
         .home .actus .clips-wrap .category-actus .actus-info .post-meta .icon-date,
+        .home .actus .clips-wrap .category-actus .videos-info .post-meta .icon-date,
         .home .actus .clips-wrap .category-actus .clips-info .post-meta .icon-date,
         .home .actus .clips-wrap .category-videos .actus-info .post-meta .icon-date,
+        .home .actus .clips-wrap .category-videos .videos-info .post-meta .icon-date,
         .home .actus .clips-wrap .category-videos .clips-info .post-meta .icon-date,
         .home .actus .clips-wrap .category-clips .actus-info .post-meta .icon-date,
+        .home .actus .clips-wrap .category-clips .videos-info .post-meta .icon-date,
         .home .actus .clips-wrap .category-clips .clips-info .post-meta .icon-date {
           fill: currentColor;
           height: 1.8rem; }
         .home .actus-wrap .category-actus .actus-info .post-meta div,
+        .home .actus-wrap .category-actus .videos-info .post-meta div,
         .home .actus-wrap .category-actus .clips-info .post-meta div,
         .home .actus-wrap .category-videos .actus-info .post-meta div,
+        .home .actus-wrap .category-videos .videos-info .post-meta div,
         .home .actus-wrap .category-videos .clips-info .post-meta div,
         .home .actus-wrap .category-clips .actus-info .post-meta div,
+        .home .actus-wrap .category-clips .videos-info .post-meta div,
         .home .actus-wrap .category-clips .clips-info .post-meta div,
         .home .actus .clips-wrap .category-actus .actus-info .post-meta div,
+        .home .actus .clips-wrap .category-actus .videos-info .post-meta div,
         .home .actus .clips-wrap .category-actus .clips-info .post-meta div,
         .home .actus .clips-wrap .category-videos .actus-info .post-meta div,
+        .home .actus .clips-wrap .category-videos .videos-info .post-meta div,
         .home .actus .clips-wrap .category-videos .clips-info .post-meta div,
         .home .actus .clips-wrap .category-clips .actus-info .post-meta div,
+        .home .actus .clips-wrap .category-clips .videos-info .post-meta div,
         .home .actus .clips-wrap .category-clips .clips-info .post-meta div {
           display: inline-block;
           background: white;
