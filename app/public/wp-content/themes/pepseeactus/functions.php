@@ -110,8 +110,7 @@ function pepseeactus_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'pepseeactus_scripts' );
 
-
-function pepsee_script_and_styles() {
+function pepsee_script() {
 	// absolutely need it, because we will get $wp_query->query_vars and $wp_query->max_num_pages from it.
 	global $wp_query;
 
@@ -133,7 +132,19 @@ function pepsee_script_and_styles() {
 
 	wp_enqueue_script( 'pepsee_scripts' );
 }
-add_action( 'wp_enqueue_scripts', 'pepsee_script_and_styles');
+add_action( 'wp_enqueue_scripts', 'pepsee_script');
+
+//Rajoute le type module au javascript
+add_filter('script_loader_tag', 'add_type_attribute' , 10, 3);
+function add_type_attribute($tag, $handle, $src) {
+    // if not your script, do nothing and return original $tag
+    if ( 'pepsee_scripts' !== $handle ) {
+        return $tag;
+    }
+    // change the script tag by adding type="module" and return it.
+    $tag = '<script type="module" src="' . esc_url( $src ) . '"></script>';
+    return $tag;
+}
 
 // Longueur du résumé
 add_filter( 'excerpt_length', function($length) {

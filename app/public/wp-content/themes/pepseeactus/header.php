@@ -33,6 +33,9 @@
 </head>
 
 <body <?php body_class('js'); ?>>
+	<!-- Scrollbar -->
+	<div id="progressbar"></div>
+	<div id="scrollPath"></div>
 	<?php if (is_page('/a-propos/contact/')) : ?>
 		<!-- Load Facebook SDK for JavaScript -->
 		<div id="fb-root"></div>

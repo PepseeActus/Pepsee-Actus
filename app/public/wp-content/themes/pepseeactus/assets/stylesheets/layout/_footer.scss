@@ -30,7 +30,7 @@
     display: flex;
     flex-direction: column;
     position: fixed;
-    right: 0;
+    right: -35px;
     top: 50%;
     transform: translateY(-50%);
     background-color: $color__orange;
@@ -39,6 +39,12 @@
     z-index: 3;
     @include shadow();
 
+    &:hover {
+        right: 0;
+        transition: all .3s linear;
+        border-top-left-radius: 15px;
+        border-bottom-left-radius: 15px;
+    }
 
     a {
         padding: 1rem;
