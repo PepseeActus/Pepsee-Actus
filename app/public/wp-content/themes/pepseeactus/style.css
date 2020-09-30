@@ -1934,7 +1934,10 @@ html {
       display: flex;
       margin-bottom: 2rem; }
       .single-artist .artist-music__container-box .music-image {
-        margin-right: 1rem; }
+        margin-right: 1rem;
+        width: 90px;
+        min-width: 90px;
+        height: 90px; }
         .single-artist .artist-music__container-box .music-image img {
           max-width: 90px; }
       .single-artist .artist-music__container-box .music-info .music-title {
