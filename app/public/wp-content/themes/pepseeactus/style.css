@@ -1774,6 +1774,9 @@ html {
 .single-post .clip-box .single-title {
   text-align: center; }
 
+.single-post .twitter-tweet {
+  margin: 10px auto; }
+
 .single-post aside .artist__container-box {
   display: flex;
   align-items: center;
@@ -2024,7 +2027,7 @@ html {
         .single-music .music-presentation__info-reseaux li img:hover {
           transform: translateY(0.5rem); }
 
-.single-music .music-content p {
+.single-music .music-content p, .single-music .music-content ul {
   margin-bottom: 1rem; }
 
 .single-music aside {
