@@ -372,8 +372,6 @@ function pepsee_filter_function(){
 	die();
 }
 
-<?php 
-	
 	/* 
 		this function shows how to create a simple two way relationship field
 		the example assumes that you are using either a single relationship field
