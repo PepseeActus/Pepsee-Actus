@@ -137,7 +137,7 @@
 			<?php }
 		} else { ?>
 
-			<div class="hero-banner" style='background-image: url("<?= get_stylesheet_directory_uri(); ?>/assets/img/88891.jpg")'></div>
+			<div class="hero-banner" style='background-image: url("<?= get_stylesheet_directory_uri(); ?>/assets/img/pepseenewcoversiteV1.jpg")'></div>
 
 		<?php }
 
@@ -146,7 +146,7 @@
 	// SI IL N'Y A NI 
 	else : ?>
 
-		<div class="hero-banner" style='background-image: url("<?= get_stylesheet_directory_uri(); ?>/assets/img/88891.jpg")'></div>
+		<div class="hero-banner" style='background-image: url("<?= get_stylesheet_directory_uri(); ?>/assets/img/pepseenewcoversiteV1.jpg")'></div>
 
 	<?php endif; ?>
 

@@ -75,7 +75,7 @@
                         font-size: 20px;
 
                         a {
-                            background: rgba($color__background-color, .8);
+                            background: $color__background-color;
                             -webkit-box-decoration-break: clone;
                             padding: 3px 0.375rem;
                         }
@@ -400,6 +400,12 @@
                         font-weight: 600;
                         font-size: 18px;
                         padding: 5px 0 4px;
+
+                        a {
+                            background: $color__background-color;
+                            -webkit-box-decoration-break: clone;
+                            padding: 3px 0.375rem;
+                        }
                     }  
                     
                     .post-meta {
