@@ -103,7 +103,7 @@ h3 {
 			left: 0;
 			height: 42px;
 			width: 5px;
-			background: #F66D38;
+			background: $color__orange;
 			transform: translateY(-50%);
 		}
 	}
@@ -111,6 +111,7 @@ h3 {
 
 strong {
 	font-weight: 600;
+	color: $color__orange;
 }
 
 em {
