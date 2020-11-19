@@ -359,7 +359,8 @@
         margin: 3rem 0 .1rem 0;
         padding: 1.5rem 0;
         font-size: 3rem;
-        letter-spacing: .5rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
     }
 
     .search-overlay__close {
@@ -377,10 +378,6 @@
     }
 
     #search-overlay__results {
-        a {
-            text-decoration: underline;
-        }
-
         .artist-card {
             display: flex;
             align-items: center;

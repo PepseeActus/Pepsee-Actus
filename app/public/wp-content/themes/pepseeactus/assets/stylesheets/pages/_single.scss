@@ -1,7 +1,33 @@
 .single-post {
     .category-actus {
         border-radius: 5px;
-        background: rgba(255,255,255,.06);
+        background: white;
+        color: black;
+    }
+
+    .single-content {
+        .scriptlesssocialsharing {
+            position: relative;
+
+            .scriptlesssocialsharing__buttons {
+                @include media(desktop) {
+                    position: absolute;
+                    flex-direction: column;
+                    display: inline-flex;
+                    left: -65px;
+                }
+            }
+
+            a.button {
+                border-radius: 50%;
+                margin: 5px 0;
+                border: none;
+
+                &::before {
+                    border: none;
+                }
+            }
+        }
     }
 
     .clip-box {
@@ -19,7 +45,7 @@
         @include media(phone) {
             width: 100%;
         }
-    }
+}
 
     .post-thumbnail .single-title,
     .clip-box .single-title {

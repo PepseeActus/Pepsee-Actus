@@ -73,6 +73,7 @@
                         text-transform: uppercase;
                         font-weight: $bold;
                         font-size: 20px;
+                        line-height: 35px;
 
                         a {
                             background: $color__background-color;
@@ -407,7 +408,7 @@
                             padding: 3px 0.375rem;
                         }
                     }  
-                    
+
                     .post-meta {
                         color: grey;
                         font-size: 1.2rem;

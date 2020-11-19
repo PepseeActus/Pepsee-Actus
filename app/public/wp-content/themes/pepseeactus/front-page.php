@@ -32,7 +32,7 @@ get_header(); ?>
 							<?php the_post_thumbnail( 'pepseeactus-ArtistsFront' ); ?>
 						</a>
 						<div class="post-infos">
-							<div class="category"><?php the_category(', '); ?></div>
+							<div class="category"><?php the_category(' '); ?></div>
 							<div class="post-title">
 								<?php the_title( '<div class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></div>' ); ?>
 							</div>
@@ -244,7 +244,7 @@ get_header(); ?>
 					<?php the_post_thumbnail('large'); ?>
 				</a>
 				<div class="clips-info">
-						<div class="category"><?php the_category(', '); ?></div>
+						<div class="category"><?php the_category(' '); ?></div>
 						<?php the_title( '<div class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></div>' ); ?>
 						<div class="post-meta mobile-visually-hidden">
 							<div>

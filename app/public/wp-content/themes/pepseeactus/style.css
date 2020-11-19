@@ -494,7 +494,8 @@ h3 {
       transform: translateY(-50%); }
 
 strong {
-  font-weight: 600; }
+  font-weight: 600;
+  color: #F66D38; }
 
 em {
   font-weight: 300; }
@@ -594,7 +595,8 @@ a {
   .music-content img,
   .artist-bio img,
   .single-content img {
-    width: 50%; }
+    width: auto;
+    max-height: 400px; }
   .music-content iframe,
   .artist-bio iframe,
   .single-content iframe {
@@ -974,7 +976,8 @@ html {
     margin: 3rem 0 .1rem 0;
     padding: 1.5rem 0;
     font-size: 3rem;
-    letter-spacing: .5rem; }
+    letter-spacing: 1px;
+    text-transform: uppercase; }
   .search-overlay .search-overlay__close {
     font-size: 3rem;
     cursor: pointer;
@@ -985,8 +988,6 @@ html {
     letter-spacing: -.1rem; }
   .search-overlay .one-half {
     padding-bottom: 0; }
-  .search-overlay #search-overlay__results a {
-    text-decoration: underline; }
   .search-overlay #search-overlay__results .artist-card {
     display: flex;
     align-items: center;
@@ -1306,9 +1307,10 @@ html {
         .home .post .head-thumbnail .post-infos .post-title .entry-title {
           text-transform: uppercase;
           font-weight: 700;
-          font-size: 20px; }
+          font-size: 20px;
+          line-height: 35px; }
           .home .post .head-thumbnail .post-infos .post-title .entry-title a {
-            background: rgba(34, 39, 44, 0.8);
+            background: #22272C;
             -webkit-box-decoration-break: clone;
             padding: 3px 0.375rem; }
       .home .post .head-thumbnail .post-infos .post-meta {
@@ -1638,6 +1640,27 @@ html {
         font-weight: 600;
         font-size: 18px;
         padding: 5px 0 4px; }
+        .home .actus-wrap .category-actus .actus-info .entry-title a,
+        .home .actus-wrap .category-actus .videos-info .entry-title a,
+        .home .actus-wrap .category-actus .clips-info .entry-title a,
+        .home .actus-wrap .category-videos .actus-info .entry-title a,
+        .home .actus-wrap .category-videos .videos-info .entry-title a,
+        .home .actus-wrap .category-videos .clips-info .entry-title a,
+        .home .actus-wrap .category-clips .actus-info .entry-title a,
+        .home .actus-wrap .category-clips .videos-info .entry-title a,
+        .home .actus-wrap .category-clips .clips-info .entry-title a,
+        .home .actus .clips-wrap .category-actus .actus-info .entry-title a,
+        .home .actus .clips-wrap .category-actus .videos-info .entry-title a,
+        .home .actus .clips-wrap .category-actus .clips-info .entry-title a,
+        .home .actus .clips-wrap .category-videos .actus-info .entry-title a,
+        .home .actus .clips-wrap .category-videos .videos-info .entry-title a,
+        .home .actus .clips-wrap .category-videos .clips-info .entry-title a,
+        .home .actus .clips-wrap .category-clips .actus-info .entry-title a,
+        .home .actus .clips-wrap .category-clips .videos-info .entry-title a,
+        .home .actus .clips-wrap .category-clips .clips-info .entry-title a {
+          background: #22272C;
+          -webkit-box-decoration-break: clone;
+          padding: 3px 0.375rem; }
       .home .actus-wrap .category-actus .actus-info .post-meta,
       .home .actus-wrap .category-actus .videos-info .post-meta,
       .home .actus-wrap .category-actus .clips-info .post-meta,
@@ -1726,7 +1749,23 @@ html {
 
 .single-post .category-actus {
   border-radius: 5px;
-  background: rgba(255, 255, 255, 0.06); }
+  background: white;
+  color: black; }
+
+.single-post .single-content .scriptlesssocialsharing {
+  position: relative; }
+  @media (min-width: 1024px) {
+    .single-post .single-content .scriptlesssocialsharing .scriptlesssocialsharing__buttons {
+      position: absolute;
+      flex-direction: column;
+      display: inline-flex;
+      left: -65px; } }
+  .single-post .single-content .scriptlesssocialsharing a.button {
+    border-radius: 50%;
+    margin: 5px 0;
+    border: none; }
+    .single-post .single-content .scriptlesssocialsharing a.button::before {
+      border: none; }
 
 .single-post .clip-box {
   text-align: center;
@@ -1750,7 +1789,7 @@ html {
   transform: translateX(-50%);
   font-weight: 600;
   font-size: 3.2rem;
-  line-height: 4.5rem;
+  line-height: 60px;
   width: 65%;
   z-index: 9; }
   @media (max-width: 767.98px) {
@@ -1835,7 +1874,7 @@ html {
   padding-bottom: 2rem; }
 
 .single-artist .artist {
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.01);
   padding: 1.5rem;
   border-radius: 5px; }
 
@@ -1990,6 +2029,10 @@ html {
   font-weight: 600;
   letter-spacing: inherit;
   margin-bottom: 2rem; }
+
+.single-music .music {
+  background: rgba(255, 255, 255, 0.01);
+  border-radius: 15px; }
 
 .single-music .music-presentation {
   display: flex;
