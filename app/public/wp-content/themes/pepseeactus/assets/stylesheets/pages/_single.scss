@@ -1,8 +1,12 @@
 .single-post {
     .category-actus {
         border-radius: 5px;
-        background: white;
-        color: black;
+
+        .single-content {
+            border-radius: 5px;
+            padding: 5px 20px;
+            background: rgba(255,255,255,.1);
+        }
     }
 
     .single-content {

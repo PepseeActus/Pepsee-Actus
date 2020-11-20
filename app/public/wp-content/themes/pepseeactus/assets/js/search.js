@@ -45,7 +45,7 @@ export class Search {
         $.getJSON(pepseeData.root_url + '/wp-json/pepsee/v1/search?term=' + this.searchField.val(), (results) => {
             this.resultsDiv.html(`
                 <div class="row">
-                    <div class="col-12 col-md-2">
+                    <div class="col-12 col-md-3">
                         <h2 class="search-overlay__section-title">Artistes</h2>
                         ${results.artist.length ? '<ul>' : "<p>Aucun artiste ne correspond à cette recherche.</p>"}
                             ${results.artist.map(item => `
@@ -68,7 +68,7 @@ export class Search {
                             ${results.generalInfo.map(item => `<li><a href="${item.permalink}">- ${item.title}</a></li>`).join('')}
                         ${results.generalInfo.length ? '</ul>' : ''}
                     </div>  
-                    <div class="col-12 col-md-5">
+                    <div class="col-12 col-md-4">
                         <h2 class="search-overlay__section-title">Singles</h2>
                         ${results.music.length ? '<ul>' : '<p>Aucun single ne correspond à cette recherche.</p>'}
                             ${results.music.map(item => `<li><a href="${item.permalink}">- ${item.title}</a></li>`).join('')}
