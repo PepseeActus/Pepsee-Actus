@@ -23,6 +23,10 @@
     iframe {
         width: 80%;
 
+        @include media(phone) {
+            width: 100%;
+        }
+
         &.instagram-media {
             margin: 0 auto 25px !important;
         }
