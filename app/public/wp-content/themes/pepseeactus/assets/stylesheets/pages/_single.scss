@@ -91,87 +91,85 @@
         margin: 10px auto;
     }
 
-    aside {
-        .artist {            
-            &__container {
-                &-box {
-                    display: flex;
-                    align-items: center;
-                    margin-bottom: 2rem;
+    .artist {            
+        .artist__container {
+            .artist__container-box {
+                display: flex;
+                align-items: center;
+                margin-bottom: 2rem;
+
+                @include media(tablet) {
+                    justify-content: center;
+                    flex-direction: column;
+                }
+
+                .artist-image {
+                    margin-right: 1rem;
+                    border-radius: 50%;
+                    overflow: hidden;
+                    @include shadow;
 
                     @include media(tablet) {
-                        justify-content: center;
-                        flex-direction: column;
+                        margin-right: 0;
                     }
 
-                    .artist-image {
-                        margin-right: 1rem;
-                        border-radius: 50%;
-                        overflow: hidden;
-                        @include shadow;
-
-                        @include media(tablet) {
-                            margin-right: 0;
-                        }
-
-                        &:hover {
-                            img {
-                            transform: scale(1.1);
-                            }
-                        }
-
+                    &:hover {
                         img {
-                            max-width: 12rem;
-                            transition: all .3s ease-out;
+                        transform: scale(1.1);
                         }
                     }
 
-                    .artist-info {
-                        @include media(tablet) {
-                            margin-top: 2rem;
-                        }
+                    img {
+                        max-width: 12rem;
+                        transition: all .3s ease-out;
+                    }
+                }
 
-                        .artist-title {
-                            font-weight: 600;
-                        }
+                .artist-info {
+                    @include media(tablet) {
+                        margin-top: 2rem;
+                    }
 
-                        > i {
-                            color: $color__orange
-                        }
+                    .artist-title {
+                        font-weight: 600;
+                    }
 
-                        ul {
-                            margin-top: .5rem;
+                    > i {
+                        color: $color__orange
+                    }
 
-                            li {
-                                display: inline-block;
-                                margin-right: .5rem;
+                    ul {
+                        margin-top: .5rem;
 
-                                a {
-                                    display: block;
+                        li {
+                            display: inline-block;
+                            margin-right: .5rem;
+
+                            a {
+                                display: block;
+                            }
+
+                            i {
+                                font-size: 2rem;
+                                transition: all .3s;
+
+                                &.fa-twitter:hover {
+                                    color: $color__twitter;
                                 }
 
-                                i {
-                                    font-size: 2rem;
-                                    transition: all .3s;
+                                &.fa-instagram:hover {
+                                    background: $color__instagram;
+                                    -webkit-text-fill-color: transparent;
+                                    -webkit-background-clip: text;
+                                    box-decoration-break: clone;
+                                }
 
-                                    &.fa-twitter:hover {
-                                        color: $color__twitter;
-                                    }
+                                &.fa-facebook-f:hover {
+                                    color: $color__facebook;
+                                }
 
-                                    &.fa-instagram:hover {
-                                        background: $color__instagram;
-                                        -webkit-text-fill-color: transparent;
-                                        -webkit-background-clip: text;
-                                        box-decoration-break: clone;
-                                    }
-
-                                    &.fa-facebook-f:hover {
-                                        color: $color__facebook;
-                                    }
-
-                                    &.fa-youtube:hover {
-                                        color: $color__youtube;
-                                    }
+                                &.fa-youtube:hover {
+                                    color: $color__youtube;
                                 }
                             }
                         }

@@ -11,7 +11,7 @@ get_header();
 
 while ( have_posts() ) : the_post(); ?>
 	<div class="row">
-		<article id="post-<?php the_ID(); ?>" <?php post_class('col-12 col-md-9'); ?>>
+		<article id="post-<?php the_ID(); ?>" <?php post_class('col-12 col-lg-9'); ?>>
 			<?php if ( '' != get_the_post_thumbnail() && !has_post_format( 'video' )) : ?>
 				<div class="post-thumbnail">
 					<?php the_post_thumbnail('large'); ?>
@@ -83,7 +83,7 @@ while ( have_posts() ) : the_post(); ?>
 			</div>
 			<div id="graphcomment"></div>
 		</article>
-		<aside class="col-12 col-md-3 padding-inside mobile-visually-hidden">
+		<aside class="col-lg-3 padding-inside mobile-visually-hidden">
 			<?php $posts = get_field('artistes_associes');
 			if ($posts): ?>
 				<div class="artist">

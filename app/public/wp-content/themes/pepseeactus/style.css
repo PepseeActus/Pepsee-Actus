@@ -1825,54 +1825,54 @@ html {
 .single-post .twitter-tweet {
   margin: 10px auto; }
 
-.single-post aside .artist__container-box {
+.single-post .artist .artist__container .artist__container-box {
   display: flex;
   align-items: center;
   margin-bottom: 2rem; }
   @media (min-width: 768px) and (max-width: 1023.98px) {
-    .single-post aside .artist__container-box {
+    .single-post .artist .artist__container .artist__container-box {
       justify-content: center;
       flex-direction: column; } }
-  .single-post aside .artist__container-box .artist-image {
+  .single-post .artist .artist__container .artist__container-box .artist-image {
     margin-right: 1rem;
     border-radius: 50%;
     overflow: hidden;
     box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5); }
     @media (min-width: 768px) and (max-width: 1023.98px) {
-      .single-post aside .artist__container-box .artist-image {
+      .single-post .artist .artist__container .artist__container-box .artist-image {
         margin-right: 0; } }
-    .single-post aside .artist__container-box .artist-image:hover img {
+    .single-post .artist .artist__container .artist__container-box .artist-image:hover img {
       transform: scale(1.1); }
-    .single-post aside .artist__container-box .artist-image img {
+    .single-post .artist .artist__container .artist__container-box .artist-image img {
       max-width: 12rem;
       transition: all .3s ease-out; }
   @media (min-width: 768px) and (max-width: 1023.98px) {
-    .single-post aside .artist__container-box .artist-info {
+    .single-post .artist .artist__container .artist__container-box .artist-info {
       margin-top: 2rem; } }
-  .single-post aside .artist__container-box .artist-info .artist-title {
+  .single-post .artist .artist__container .artist__container-box .artist-info .artist-title {
     font-weight: 600; }
-  .single-post aside .artist__container-box .artist-info > i {
+  .single-post .artist .artist__container .artist__container-box .artist-info > i {
     color: #F66D38; }
-  .single-post aside .artist__container-box .artist-info ul {
+  .single-post .artist .artist__container .artist__container-box .artist-info ul {
     margin-top: .5rem; }
-    .single-post aside .artist__container-box .artist-info ul li {
+    .single-post .artist .artist__container .artist__container-box .artist-info ul li {
       display: inline-block;
       margin-right: .5rem; }
-      .single-post aside .artist__container-box .artist-info ul li a {
+      .single-post .artist .artist__container .artist__container-box .artist-info ul li a {
         display: block; }
-      .single-post aside .artist__container-box .artist-info ul li i {
+      .single-post .artist .artist__container .artist__container-box .artist-info ul li i {
         font-size: 2rem;
         transition: all .3s; }
-        .single-post aside .artist__container-box .artist-info ul li i.fa-twitter:hover {
+        .single-post .artist .artist__container .artist__container-box .artist-info ul li i.fa-twitter:hover {
           color: #55ACEE; }
-        .single-post aside .artist__container-box .artist-info ul li i.fa-instagram:hover {
+        .single-post .artist .artist__container .artist__container-box .artist-info ul li i.fa-instagram:hover {
           background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
           -webkit-text-fill-color: transparent;
           -webkit-background-clip: text;
           box-decoration-break: clone; }
-        .single-post aside .artist__container-box .artist-info ul li i.fa-facebook-f:hover {
+        .single-post .artist .artist__container .artist__container-box .artist-info ul li i.fa-facebook-f:hover {
           color: #4267B2; }
-        .single-post aside .artist__container-box .artist-info ul li i.fa-youtube:hover {
+        .single-post .artist .artist__container .artist__container-box .artist-info ul li i.fa-youtube:hover {
           color: #F50E02; }
 
 .page .page-title {
