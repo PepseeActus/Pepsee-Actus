@@ -610,7 +610,8 @@ a {
   .music-content iframe,
   .artist-bio iframe,
   .single-content iframe {
-    width: 80%; }
+    width: 80%;
+    margin: 1rem 0 3rem; }
     @media (max-width: 767.98px) {
       .music-content iframe,
       .artist-bio iframe,
