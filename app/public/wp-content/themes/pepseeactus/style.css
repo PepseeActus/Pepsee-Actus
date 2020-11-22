@@ -591,12 +591,22 @@ a {
     letter-spacing: inherit;
     margin-bottom: 1rem;
     display: block;
-    text-align: center; }
+    text-transform: uppercase;
+    font-weight: 600; }
   .music-content img,
   .artist-bio img,
   .single-content img {
     width: auto;
     max-height: 400px; }
+  .music-content .fb_iframe_widget,
+  .artist-bio .fb_iframe_widget,
+  .single-content .fb_iframe_widget {
+    display: block; }
+    .music-content .fb_iframe_widget span,
+    .artist-bio .fb_iframe_widget span,
+    .single-content .fb_iframe_widget span {
+      display: block;
+      margin: 0 auto; }
   .music-content iframe,
   .artist-bio iframe,
   .single-content iframe {
@@ -704,7 +714,10 @@ html {
 .page-content,
 .entry-content,
 .entry-summary {
-  margin: 1.5em 0 0; }
+  margin: 1.5em 0 0;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px 20px;
+  border-radius: 5px; }
 
 /*--------------------------------------------------------------
 ## Pages
@@ -816,7 +829,7 @@ html {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  min-height: 52rem;
+  min-height: 50rem;
   position: relative;
   overflow: hidden; }
   @media (max-width: 767.98px) {
@@ -1800,7 +1813,7 @@ html {
   font-size: 3.2rem;
   line-height: 60px;
   width: 65%;
-  z-index: 9; }
+  z-index: 1; }
   @media (max-width: 767.98px) {
     .single-post .post-thumbnail .single-title,
     .single-post .clip-box .single-title {
@@ -1850,7 +1863,8 @@ html {
     .single-post .artist .artist__container .artist__container-box .artist-info {
       margin-top: 2rem; } }
   .single-post .artist .artist__container .artist__container-box .artist-info .artist-title {
-    font-weight: 600; }
+    font-weight: 600;
+    box-shadow: none; }
   .single-post .artist .artist__container .artist__container-box .artist-info > i {
     color: #F66D38; }
   .single-post .artist .artist__container .artist__container-box .artist-info ul {
@@ -1859,7 +1873,8 @@ html {
       display: inline-block;
       margin-right: .5rem; }
       .single-post .artist .artist__container .artist__container-box .artist-info ul li a {
-        display: block; }
+        display: block;
+        box-shadow: none; }
       .single-post .artist .artist__container .artist__container-box .artist-info ul li i {
         font-size: 2rem;
         transition: all .3s; }
@@ -1876,7 +1891,9 @@ html {
           color: #F50E02; }
 
 .page .page-title {
-  margin-top: 3rem; }
+  margin-top: 3rem;
+  text-transform: uppercase;
+  font-weight: 600; }
 
 .single-artist main {
   padding-top: 5rem;
@@ -2311,6 +2328,9 @@ html {
   .post-type-archive-music #pepsee_loadmore:active {
     transform: scale(0.98);
     box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24); }
+
+.post-type-archive-artist .hero-banner {
+  display: none; }
 
 .post-type-archive-artist h2 {
   letter-spacing: .3rem;

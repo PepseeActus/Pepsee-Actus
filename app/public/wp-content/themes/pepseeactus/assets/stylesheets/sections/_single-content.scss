@@ -12,12 +12,22 @@
         letter-spacing: inherit;
         margin-bottom: 1rem;
         display: block;
-        text-align: center;
+        text-transform: uppercase;
+        font-weight: 600;
     }
 
     img {
         width: auto;
         max-height: 400px;
+    }
+
+    .fb_iframe_widget {
+        display: block;
+
+        span {
+            display: block;
+            margin: 0 auto;
+        }
     }
 
     iframe {
