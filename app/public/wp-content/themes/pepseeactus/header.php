@@ -134,11 +134,7 @@
 		<?php }
 
 		wp_reset_postdata();
-	else : ?>
-
-		<div class="hero-banner" style='background-image: url("<?= get_stylesheet_directory_uri(); ?>/assets/img/pepseebaniereeditee.jpg")'></div>
-
-	<?php endif; ?>
+	endif; ?>
 
 	<?php
 	if ( function_exists('yoast_breadcrumb') && !is_front_page()) {
