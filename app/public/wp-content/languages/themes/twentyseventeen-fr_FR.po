@@ -307,21 +307,21 @@ msgstr "Une réponse sur &ldquo;%s&rdquo;"
 msgid "Page"
 msgstr "Page"
 
-#: 404.php:21
-msgid "Oops! That page can&rsquo;t be found."
-msgstr "Aie&nbsp;! Cette page est introuvable."
-
-#: 404.php:24
-msgid "It looks like nothing was found at this location. Maybe try a search?"
-msgstr "Apparemment, rien n&rsquo;a été trouvé à cette adresse. Essayez avec une recherche&nbsp;?"
+#: archive.php:50 index.php:54 search.php:51
+msgid "Next page"
+msgstr "Page suivante"
 
 #: archive.php:49 index.php:53 search.php:50
 msgid "Previous page"
 msgstr "Page précédente"
 
-#: archive.php:50 index.php:54 search.php:51
-msgid "Next page"
-msgstr "Page suivante"
+#: 404.php:24
+msgid "It looks like nothing was found at this location. Maybe try a search?"
+msgstr "Apparemment, rien n&rsquo;a été trouvé à cette adresse. Essayez avec une recherche&nbsp;?"
+
+#: 404.php:21
+msgid "Oops! That page can&rsquo;t be found."
+msgstr "Aie&nbsp;! Cette page est introuvable."
 
 #. Author of the theme
 msgid "the WordPress team"

@@ -53,31 +53,31 @@ while ( have_posts() ) : the_post(); ?>
 				</div>
 			<?php endif; ?>
 			<div class="single-content">
-				<div class="post-meta">
-					<?php the_author(); ?>, le <?php the_date(); ?>
-					<div><i class="fa fa-eye"></i><?php if (function_exists('the_views')) {the_views();} ?></div>
-				</div>
-				<?php
-					if (has_post_format( 'video' )) { ?>
-						<div class="clip-box">
-							<?php 
-								the_title( '<h3 class="single-title"><span>', '</span></h3>' );
-								the_content();
-							?>
-						</div>
-					<?php } else {
-						the_content( sprintf(
-							/* translators: %s: Name of current post. */
-							wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'pepseeactus' ), array( 'span' => array( 'class' => array() ) ) ),
-							the_title( '<span class="screen-reader-text">"', '"</span>', false )
-						) );
-			
-						wp_link_pages( array(
-							'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'pepseeactus' ),
-							'after'  => '</div>',
-						) );
-					}
-				?>
+				<?php if (! has_post_format( 'video' )) { ?>
+					<div class="post-meta">
+						<?php the_author(); ?>, le <?php the_date(); ?>
+						<div><i class="fa fa-eye"></i><?php if (function_exists('the_views')) {the_views();} ?></div>
+					</div>
+				<?php } ?>
+				<?php if (has_post_format( 'video' )) { ?>
+					<div class="clip-box">
+						<?php 
+							the_title( '<h3 class="single-title"><span>', '</span></h3>' );
+							the_content();
+						?>
+					</div>
+				<?php } else {
+					the_content( sprintf(
+						/* translators: %s: Name of current post. */
+						wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'pepseeactus' ), array( 'span' => array( 'class' => array() ) ) ),
+						the_title( '<span class="screen-reader-text">"', '"</span>', false )
+					) );
+		
+					wp_link_pages( array(
+						'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'pepseeactus' ),
+						'after'  => '</div>',
+					) );
+				} ?>
 			</div>
 			<div id="graphcomment"></div>
 		</article>

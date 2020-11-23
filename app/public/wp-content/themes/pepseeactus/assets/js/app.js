@@ -11,7 +11,11 @@ $(document).ready(function() {
     };
 
     let gc_params = {
-        graphcomment_id: 'PepseeActus'
+        graphcomment_id: 'PepseeActus',
+        overlay: {
+            "width":480,
+            "button":{"background":"#f35b5b","color":"#ffffff"}
+        }
     };
 
     (function() {
