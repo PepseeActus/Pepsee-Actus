@@ -84,16 +84,8 @@
 	$pageBanner = get_field('image_arriere_plan');
 	$pageBannerImage = $pageBanner['url'];
 
-	//PAGE ARTISTE
-	if (!(is_front_page()) && $pageBannerImage) : ?>
-
-		<div class="hero-banner">
-			<div class="banner" style='background-image: url("<?= $pageBannerImage; ?>")'></div>
-		</div>
-
-	<?php 
 	//HOME
-	elseif (is_front_page() || is_page()) :
+	if (is_front_page() || is_page()) :
 
 		$args = [
 			'posts_per_page' => 1,
@@ -142,8 +134,6 @@
 		<?php }
 
 		wp_reset_postdata();
-
-	// SI IL N'Y A NI 
 	else : ?>
 
 		<div class="hero-banner" style='background-image: url("<?= get_stylesheet_directory_uri(); ?>/assets/img/pepseebaniereeditee.jpg")'></div>
