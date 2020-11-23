@@ -126,7 +126,7 @@ class GcCommentBuilder
 
     $data = array(
         'comment_post_ID' => $this->comment->post_ID,
-        'comment_author' => $this->authorMeta('username'),
+        'comment_author' => sanitize_user($this->authorMeta('username')),
         'comment_author_email' => $this->authorMeta('email') ? $this->authorMeta('email') : '',
         'comment_author_ip' => $this->authorMeta('ip') ? $this->authorMeta('ip') : '',
         'comment_content' => $this->my_own_maybe_encode_emoji($this->comment->content),
@@ -162,10 +162,10 @@ class GcCommentBuilder
   public function toString()
   {
     return '{'.
-      'comment_author : \'' . $this->authorMeta('username') . '\',' .
+      'comment_author : \'' . sanitize_user($this->authorMeta('username')) . '\',' .
       'comment_author_email \'' . ($this->authorMeta('email') ? $this->authorMeta('email') : '') . '\',' .
       'comment_author_ip \'' . ($this->authorMeta('ip') ? $this->authorMeta('ip') : '') . '\',' .
-      'comment_content \'' . $this->comment->content . '\',' .
+      'comment_content \'' . $this->my_own_maybe_encode_emoji($this->comment->content) . '\',' .
       'comment_parent \'' . (($this->comment->parent) ? $this->comment->parent : 0) . '\',' .
       'comment_date \'' . $this->getCreationDatetime() . '\',' .
       'comment_approved \'' . $this->comment->status . '\'' .

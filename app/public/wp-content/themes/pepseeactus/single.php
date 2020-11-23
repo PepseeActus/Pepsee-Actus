@@ -53,6 +53,10 @@ while ( have_posts() ) : the_post(); ?>
 				</div>
 			<?php endif; ?>
 			<div class="single-content">
+				<div class="post-meta">
+					<?php the_author(); ?>, le <?php the_date(); ?>
+					<div><i class="fa fa-eye"></i><?php if (function_exists('the_views')) {the_views();} ?></div>
+				</div>
 				<?php
 					if (has_post_format( 'video' )) { ?>
 						<div class="clip-box">
@@ -74,12 +78,6 @@ while ( have_posts() ) : the_post(); ?>
 						) );
 					}
 				?>
-			</div>
-			<div class="post-meta">
-				Posté le <?php the_date(); ?>
-				par <?php the_author(); ?>
-				<i class="fa fa-eye"></i>
-				<?php if (function_exists('the_views')) {the_views();} ?>
 			</div>
 			<div id="graphcomment"></div>
 		</article>
