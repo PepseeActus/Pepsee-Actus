@@ -192,4 +192,33 @@
             }
         }
     }
+
+    .graphcomment-button,
+    .about {
+        @include media(desktop) {
+            display: none;
+        }
+    }
+
+    .graphcomment-button {
+        a, span {
+            display: inline !important;
+            background: none !important;
+            padding: 0 2px !important;
+            font-weight: 100 !important;
+            text-transform: unset !important;
+        }
+
+        a {
+            box-shadow: none;
+
+            &::before {
+                border: none;
+            }
+        }
+    }
+
+    #graphcomment-bubble {
+        background: #989494 !important;
+    }
 }

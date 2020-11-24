@@ -1184,8 +1184,8 @@ html {
 .about {
   position: fixed;
   z-index: 10;
-  bottom: 1rem;
-  right: 1rem;
+  bottom: 20px;
+  right: 20px;
   width: 4rem;
   height: 4rem;
   display: flex;
@@ -1900,6 +1900,26 @@ html {
           color: #4267B2; }
         .single-post .artist .artist__container .artist__container-box .artist-info ul li i.fa-youtube:hover {
           color: #F50E02; }
+
+@media (min-width: 1024px) {
+  .single-post .graphcomment-button,
+  .single-post .about {
+    display: none; } }
+
+.single-post .graphcomment-button a, .single-post .graphcomment-button span {
+  display: inline !important;
+  background: none !important;
+  padding: 0 2px !important;
+  font-weight: 100 !important;
+  text-transform: unset !important; }
+
+.single-post .graphcomment-button a {
+  box-shadow: none; }
+  .single-post .graphcomment-button a::before {
+    border: none; }
+
+.single-post #graphcomment-bubble {
+  background: #989494 !important; }
 
 .page .page-title {
   margin-top: 3rem;

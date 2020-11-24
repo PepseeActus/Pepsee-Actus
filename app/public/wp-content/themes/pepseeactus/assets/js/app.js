@@ -7,15 +7,20 @@ $(document).ready(function() {
 
     window.gc_params = {
         graphcomment_id: 'PepseeActus',
-        fixed_header_height: 0,
+        overlay: {
+            "width": 480,
+            "button": {
+                "background": "#F66D38",
+                "color": "#ffffff",
+                "label": "Commentez"
+            },
+            "bubble": true,
+            "visible": false
+        }
     };
 
     let gc_params = {
-        graphcomment_id: 'PepseeActus',
-        overlay: {
-            "width":480,
-            "button":{"background":"#f35b5b","color":"#ffffff"}
-        }
+        graphcomment_id: 'PepseeActus'
     };
 
     (function() {
