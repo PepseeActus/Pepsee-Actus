@@ -56,7 +56,7 @@ if ( have_posts() ) : ?>
                 <?php
                 /* Start the Loop */
                 $args = [
-                    'posts_per_page' => 4,
+                    'posts_per_page' => 10,
                     'orderby' => 'date',
                     'post_type' => array('music', 'album'),
                     'year' => date("Y"),
