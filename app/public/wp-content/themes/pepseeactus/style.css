@@ -966,7 +966,7 @@ html {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(64, 59, 59, 0.88);
+  background-color: rgba(64, 59, 59, 0.95);
   visibility: hidden;
   opacity: 0;
   transform: scale(1.09);
