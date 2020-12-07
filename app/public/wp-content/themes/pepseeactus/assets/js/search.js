@@ -95,6 +95,7 @@ export class Search {
     openOverlay() {
         this.searchOverlay.addClass("search-overlay--active");
         $("body").addClass("body-no-scroll");
+        $(".mobile-nav").hide();
         this.searchField.val('');
         setTimeout(() => this.searchField.focus(), 301);
         this.isOverlayOpen = true;
@@ -103,6 +104,7 @@ export class Search {
     closeOverlay() {
         this.searchOverlay.removeClass("search-overlay--active");
         $("body").removeClass("body-no-scroll");
+        $(".mobile-nav").show();
         this.isOverlayOpen = false;
     }
 

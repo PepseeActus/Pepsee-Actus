@@ -1011,6 +1011,10 @@ html {
     font-size: 3rem;
     letter-spacing: 1px;
     text-transform: uppercase; }
+    @media (max-width: 767.98px) {
+      .search-overlay .search-overlay__section-title {
+        padding: 1.5rem 0 0;
+        margin-bottom: 20px; } }
   .search-overlay .search-overlay__close {
     font-size: 3rem;
     cursor: pointer;

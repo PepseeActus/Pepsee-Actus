@@ -361,6 +361,11 @@
         font-size: 3rem;
         letter-spacing: 1px;
         text-transform: uppercase;
+        
+        @include media(phone) {
+            padding: 1.5rem 0 0;
+            margin-bottom: 20px;
+        }
     }
 
     .search-overlay__close {
