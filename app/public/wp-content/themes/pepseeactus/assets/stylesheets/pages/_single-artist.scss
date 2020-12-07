@@ -34,6 +34,10 @@
         position: relative;
         top: -6.5rem;
 
+        @include media(phone) {
+            align-items: center;
+        }
+
         &__picture {
             margin-right: 2rem;
 
@@ -52,6 +56,10 @@
                     margin: 0 .5rem 0 0;
                     text-transform: uppercase;
                     font-weight: 600;
+
+                    @include media(phone) {
+                        font-size: 30px;
+                    }
                 }
 
                 i {

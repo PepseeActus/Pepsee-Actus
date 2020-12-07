@@ -1972,6 +1972,9 @@ html {
   align-items: flex-end;
   position: relative;
   top: -6.5rem; }
+  @media (max-width: 767.98px) {
+    .single-artist .artist-presentation {
+      align-items: center; } }
   .single-artist .artist-presentation__picture {
     margin-right: 2rem; }
     .single-artist .artist-presentation__picture img {
@@ -1984,6 +1987,9 @@ html {
       margin: 0 .5rem 0 0;
       text-transform: uppercase;
       font-weight: 600; }
+      @media (max-width: 767.98px) {
+        .single-artist .artist-presentation__info-name .entry-title {
+          font-size: 30px; } }
     .single-artist .artist-presentation__info-name i {
       font-size: 2rem;
       color: #F66D38; }
