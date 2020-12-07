@@ -81,8 +81,6 @@
 		</div>
 	</header>
 	<?php 
-	$pageBanner = get_field('image_arriere_plan');
-	$pageBannerImage = $pageBanner['url'];
 
 	//HOME
 	if (is_front_page() || is_page()) :

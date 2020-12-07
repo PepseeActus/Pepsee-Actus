@@ -25,7 +25,7 @@ get_header(); ?>
                 </div>
                 <div class="artist-presentation__info">
                     <div class="artist-presentation__info-name">
-                        <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+                        <?php the_title( '<h1 class="entry-title title-angle">', '</h1>' ); ?>
                         <?php if ($badge) echo '<i class="fas fa-check-circle"></i>'; ?>
                     </div>
                     <div class="artist-presentation__info-reseaux">
