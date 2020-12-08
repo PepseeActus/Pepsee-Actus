@@ -61,7 +61,7 @@
     z-index: 2;
 
     @include media(phone-tablet) {
-        background: $color__orange;
+        background: #fff;
     }
 
     nav {
@@ -78,6 +78,10 @@
             font-weight: 100;
             font-size: 2.2rem;
 
+            @include media(phone) {
+                color: $color__background-color;
+            }
+
             span {
                 font-weight: 700;
             }
@@ -86,7 +90,7 @@
 
     .nav-wrapper {
         @include media(phone-tablet) {
-            color: #fff;
+            color: $color__background-color;
         }
 
         ul {
@@ -335,10 +339,9 @@
             font-size: 3rem;
             font-weight: 300;
             outline: none;
-            color: $color__orange;
 
             @include media(phone-small) {
-                font-size: 2.5rem;
+                font-size: 20px;
             }
         }
     }
@@ -346,7 +349,11 @@
     .search-overlay__icon {
         margin-right: 1rem;
         font-size: 3rem;
-        color: $color__orange;
+        color: #fff;
+
+        @include media(phone) {
+            font-size: 20px;
+        }
     }
 
     &--active {
@@ -369,13 +376,12 @@
     }
 
     .search-overlay__close {
-        font-size: 3rem;
+        fill: currentColor;
         cursor: pointer;
         transition: all .3s;
-        background-color: #FFF;
-        color: $color__orange;
-        line-height: .7;
-        letter-spacing: -.1rem;
+        color: #fff;
+        width: 25px;
+        height: 25px;
     }
 
     .one-half {

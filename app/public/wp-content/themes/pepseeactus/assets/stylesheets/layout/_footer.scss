@@ -1,27 +1,62 @@
 .mobile-nav {
     position: fixed;
-    bottom: 0;
+    bottom: 15px;
     left: 0;
     right: 0;
     background: #fff;
     z-index: 9;
-    @include shadow;
+    width: 95%;
+    margin: 0 auto;
+    border-radius: 22px;
+    @include shadow();
 
     ul {
         display: flex;
         justify-content: space-around;
 
         li {
-            margin: 1rem 0;
+            margin: 7px 0;
 
-            &.current-menu-item i {
+            svg {
+                fill: currentColor;
+                color: $color__background-color;
+                width: 27px;
+                height: 27px;
+            }
+
+            &.current-menu-item svg {
                 color: $color__orange;
             }
+        }
+    }
 
-            i {
-                color: rgba(#000, 0.5);
-                font-size: 20px;
-            }
+    .home {
+        position: relative;
+        width: 60px;
+        text-align: center;
+
+        &::after {
+            content: "";
+            position: absolute;
+            padding: 30px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            border-radius: 50%;
+            border: 5px solid $color__background-color;
+        }
+
+        a {
+            position: relative;
+            z-index: 1;
+        }
+
+        svg {
+            position: absolute;
+            top: -3px;
+            left: 50%;
+            transform: translateX(-50%);
         }
     }
 }

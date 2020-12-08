@@ -107,18 +107,19 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
   to {
     transform: rotate(360deg); } }
 
-.title-angle {
-  cursor: pointer;
-  -webkit-text-stroke-color: #fff;
-  -webkit-text-stroke-width: 0.02em;
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
-  background-repeat: no-repeat;
-  transition: background-size 0.5s cubic-bezier(0.67, 0.01, 0.15, 0.98);
-  background-image: linear-gradient(135deg, #fff 0%, #fff 50%, transparent 50.1%);
-  background-size: 0% 100%; }
-  .title-angle:hover {
-    background-size: 220% 100%; }
+@media screen and (min-width: 768px) {
+  .title-angle {
+    cursor: pointer;
+    -webkit-text-stroke-color: #fff;
+    -webkit-text-stroke-width: 0.02em;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-repeat: no-repeat;
+    transition: background-size 0.5s cubic-bezier(0.67, 0.01, 0.15, 0.98);
+    background-image: linear-gradient(135deg, #fff 0%, #fff 50%, transparent 50.1%);
+    background-size: 0% 100%; }
+    .title-angle:hover {
+      background-size: 220% 100%; } }
 
 @media (max-width: 1023.98px) {
   .mobile-visually-hidden {
@@ -793,7 +794,7 @@ html {
   z-index: 2; }
   @media (max-width: 1023.98px) {
     .site-header {
-      background: #F66D38; } }
+      background: #fff; } }
   .site-header nav {
     display: flex;
     justify-content: space-between; }
@@ -804,11 +805,14 @@ html {
       color: #fff;
       font-weight: 100;
       font-size: 2.2rem; }
+      @media (max-width: 767.98px) {
+        .site-header .logo a {
+          color: #22272C; } }
       .site-header .logo a span {
         font-weight: 700; }
   @media (max-width: 1023.98px) {
     .site-header .nav-wrapper {
-      color: #fff; } }
+      color: #22272C; } }
   .site-header .nav-wrapper ul {
     display: flex;
     align-items: center;
@@ -992,15 +996,17 @@ html {
       background-color: transparent;
       font-size: 3rem;
       font-weight: 300;
-      outline: none;
-      color: #F66D38; }
+      outline: none; }
       @media (max-width: 374.98px) {
         .search-overlay .search-overlay__top .search-term {
-          font-size: 2.5rem; } }
+          font-size: 20px; } }
   .search-overlay .search-overlay__icon {
     margin-right: 1rem;
     font-size: 3rem;
-    color: #F66D38; }
+    color: #fff; }
+    @media (max-width: 767.98px) {
+      .search-overlay .search-overlay__icon {
+        font-size: 20px; } }
   .search-overlay--active {
     visibility: visible;
     opacity: 1;
@@ -1016,13 +1022,12 @@ html {
         padding: 1.5rem 0 0;
         margin-bottom: 20px; } }
   .search-overlay .search-overlay__close {
-    font-size: 3rem;
+    fill: currentColor;
     cursor: pointer;
     transition: all .3s;
-    background-color: #FFF;
-    color: #F66D38;
-    line-height: .7;
-    letter-spacing: -.1rem; }
+    color: #fff;
+    width: 25px;
+    height: 25px; }
   .search-overlay .one-half {
     padding-bottom: 0; }
   .search-overlay #search-overlay__results .artist-card {
@@ -1070,22 +1075,49 @@ html {
 
 .mobile-nav {
   position: fixed;
-  bottom: 0;
+  bottom: 15px;
   left: 0;
   right: 0;
   background: #fff;
   z-index: 9;
+  width: 95%;
+  margin: 0 auto;
+  border-radius: 22px;
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5); }
   .mobile-nav ul {
     display: flex;
     justify-content: space-around; }
     .mobile-nav ul li {
-      margin: 1rem 0; }
-      .mobile-nav ul li.current-menu-item i {
+      margin: 7px 0; }
+      .mobile-nav ul li svg {
+        fill: currentColor;
+        color: #22272C;
+        width: 27px;
+        height: 27px; }
+      .mobile-nav ul li.current-menu-item svg {
         color: #F66D38; }
-      .mobile-nav ul li i {
-        color: rgba(0, 0, 0, 0.5);
-        font-size: 20px; }
+  .mobile-nav .home {
+    position: relative;
+    width: 60px;
+    text-align: center; }
+    .mobile-nav .home::after {
+      content: "";
+      position: absolute;
+      padding: 30px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff;
+      border-radius: 50%;
+      border: 5px solid #22272C; }
+    .mobile-nav .home a {
+      position: relative;
+      z-index: 1; }
+    .mobile-nav .home svg {
+      position: absolute;
+      top: -3px;
+      left: 50%;
+      transform: translateX(-50%); }
 
 .playlist-nav {
   display: flex;

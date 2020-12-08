@@ -115,7 +115,13 @@ export class Search {
                     <div class="container">
                         <i class="fa fa-search search-overlay__icon" aria-hidden="true"></i>
                         <input type="text" class="search-term" placeholder="Sa ou ka chèché?" id="search-term">
-                        <i class="fa fa-window-close search-overlay__close" aria-hidden="true"></i>
+                        <svg class="search-overlay__close" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                            viewBox="0 0 393.765 393.765" xml:space="preserve">
+                            <path d="M288.805,196.399L392.668,91.44L300.263,0L196.4,104.959L91.44,1.097L0,93.502l104.959,103.863L1.097,302.324l92.405,91.44
+                                l103.863-104.959l104.959,103.863l91.44-92.405L288.805,196.399z M302.102,350.242L197.142,246.379L93.279,351.339l-49.757-49.237
+                                l103.863-104.959L42.426,93.279l49.237-49.757l104.959,103.863L300.485,42.426l49.757,49.237L246.379,196.622l104.959,103.863
+                                L302.102,350.242z"/>
+                        </svg>
                     </div>
                 </div>
                 <div class="container">
