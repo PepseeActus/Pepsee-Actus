@@ -26,16 +26,18 @@
             min-width: 150px;
         }
 
-        &__info {
+        .music-presentation__info {
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
 
-            @include media(phone) {
-                justify-content: space-between;
+            svg {
+                fill: currentColor;
+                width: 30px;
+                height: 30px;
             }
 
-            &-name {
+            .music-presentation__info-name {
                 .entry-title {
                     margin: 0 .5rem 0 0;
                     text-transform: uppercase;
@@ -64,18 +66,10 @@
                 }
             }
 
-            &-reseaux {
+            .music-presentation__info-reseaux {
                 li {
                     display: inline-block;
                     margin-right: 1rem;
-
-                    img {
-                        transition: transform .3s ease-out;
-
-                        &:hover {
-                            transform: translateY(.5rem);
-                        }
-                    }
                 }
             }
         }

@@ -2,6 +2,10 @@
     main {
         padding-top: 5rem;
         padding-bottom: 2rem;
+
+        @include media(phone) {
+            padding-top: 2rem;
+        }
     }
 
     .artist {
@@ -35,7 +39,9 @@
         top: -6.5rem;
 
         @include media(phone) {
-            align-items: center;
+            display: block;
+            text-align: center;
+            top: -20px;
         }
 
         &__picture {
@@ -47,10 +53,14 @@
             }
         }
 
-        &__info {
-            &-name {
+        .artist-presentation__info {
+            .artist-presentation__info-name {
                 display: flex;
                 align-items: center;
+
+                @include media(phone) {
+                    display: block;
+                }
 
                 .entry-title {
                     margin: 0 .5rem 0 0;
@@ -59,12 +69,18 @@
 
                     @include media(phone) {
                         font-size: 30px;
+                        display: inline-block;
                     }
                 }
 
                 i {
                     font-size: 2rem;
                     color: $color__orange;
+
+                    @include media(phone) {
+                        font-size: 15px;
+                        vertical-align: super;
+                    }
                 }
             }
 
@@ -134,6 +150,12 @@
                         font-weight: 600;
                     }
 
+                    svg {
+                        fill: currentColor;
+                        width: 30px;
+                        height: 30px;
+                    }
+
                     a {
                         display: block;
                     }
@@ -185,6 +207,12 @@
                 .music-info {
                     .music-title {
                         font-weight: 600;
+                    }
+
+                    svg {
+                        fill: currentColor;
+                        width: 30px;
+                        height: 30px;
                     }
 
                     a {

@@ -20,7 +20,7 @@
         position: relative;
         top: -5rem;
 
-        &__picture {
+        .music-presentation__picture {
             margin-right: 2rem;
 
             img {
@@ -29,14 +29,10 @@
             }
         }
 
-        &__info {
+        .music-presentation__info {
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-
-            @include media(phone) {
-                justify-content: space-between;
-            }
 
             .entry-title {
                 margin: 0 .5rem 0 0;
@@ -50,22 +46,16 @@
                 }
             }
 
-            &-reseaux {
+            .music-presentation__info-reseaux {
+                svg {
+                    fill: currentColor;
+                    width: 30px;
+                    height: 30px;
+                }
+
                 li {
                     display: inline-block;
                     margin-right: 1rem;
-
-                    img {
-                        transition: transform .3s ease-out;
-
-                        @include media(phone) {
-                            max-width: 1.5rem;
-                        }
-
-                        &:hover {
-                            transform: translateY(.5rem);
-                        }
-                    }
                 }
             }
         }
