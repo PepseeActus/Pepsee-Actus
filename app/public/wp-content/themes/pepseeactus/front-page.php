@@ -57,7 +57,7 @@ get_header(); ?>
 			<div class="releases-wrap">
 				<?php
 					$args = [
-						'posts_per_page' => 12,
+						'posts_per_page' => 14,
 						'orderby' => 'date',
 						'post_type' => 'music',
 						'date_query' => [[
