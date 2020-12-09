@@ -10,9 +10,9 @@
 get_header(); ?>
 
 <?php while ( have_posts() ) : the_post(); ?>
-    <div class="row">
-        <div id="post-<?php the_ID(); ?>" <?php post_class('col-12 col-md-9'); ?>>
-            <?php 
+<div class="row">
+    <div id="post-<?php the_ID(); ?>" <?php post_class('col-12 col-md-9'); ?>>
+        <?php 
                 $artistes = get_field('artistes');
                 $titre = get_field('titre');
                 $download = get_field('download');
@@ -23,25 +23,25 @@ get_header(); ?>
                 $deezer = get_field('deezer');
                 $apple = get_field('apple_music'); 
             ?>
-            <div class="music-presentation">
-                <div class="music-presentation__picture">
-                    <?php the_post_thumbnail('thumbnail'); ?>
+        <div class="music-presentation">
+            <div class="music-presentation__picture">
+                <?php the_post_thumbnail('thumbnail'); ?>
+            </div>
+            <div class="music-presentation__info">
+                <div class="music-presentation__info-name">
+                    <span class="entry-title"><?= $artistes ?></span><br>
+                    <span class="entry-title"><?= $titre ?></span>
                 </div>
-                <div class="music-presentation__info">
-                    <div class="music-presentation__info-name">
-                        <span class="entry-title"><?= $artistes ?></span><br>
-                        <span class="entry-title"><?= $titre ?></span>
-                    </div>
-                    <div class="music-presentation__info-reseaux">
-                        <ul>
-                            <?= ($download) ? '<li><a href="'.$download.'" target="_blank">
+                <div class="music-presentation__info-reseaux">
+                    <ul>
+                        <?= ($download) ? '<li><a href="'.$download.'" target="_blank">
                                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 512 512">
                                     <path d="m363,373.1h-60.2v-140.1c0-5.8-4.7-10.4-10.4-10.4h-72.8c-5.8,0-10.4,4.7-10.4,10.4v140.1h-60.2c-12.6,0.8-12,14.5-7.4,17.8l107,107c2.1,2.2 8.6,5.7 14.7,0l107-107c5-4.6 4.8-16.9-7.3-17.8zm-107,102.7l-81.8-81.8h45.4c5.8,0 10.4-4.7 10.4-10.4v-140.2h51.9v140.1c0,5.8 4.7,10.4 10.4,10.4h45.5l-81.8,81.9z"/>
                                     <path d="m384.2,129.1c-5.4-66-60.8-118.1-128.2-118.1s-122.8,52.1-128.2,118.1c-1.42109e-14,0-105.6-4.2-105.6,99.8 0,53.6 44.8,99.8 99.8,99.8h67.7c5.8,0 10.4-4.7 10.4-10.4s-4.7-10.4-10.4-10.4h-67.7c-43.5,0-78.9-35.4-78.9-79 0-43.5 34.4-78.5 78.9-79 7.1-0.1 26.2,4.3 26.2-10.4 0-59.4 48.3-107.7 107.7-107.7 59.4,0 107.7,48.3 107.7,107.7 0,14.3 19.2,10.4 26.2,10.4 43.1,0.3 79,35.4 79,79 0,43.5-35.4,79-79,79h-67.7c-5.8,0-10.4,4.7-10.4,10.4s4.7,10.4 10.4,10.4h67.7c55,0 99.8-45.7 99.8-99.8 0.1-102.7-105.4-99.8-105.4-99.8z"/>
                                 </svg>
                                 Télécharger
                             </a></li>' : ''; ?>
-                            <?= ($backlink) ? '<li><a href="'.$backlink.'" target="_blank">
+                        <?= ($backlink) ? '<li><a href="'.$backlink.'" target="_blank">
                                 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                 viewBox="0 0 314 314" xml:space="preserve">
                                     <path d="M7,138.428c-3.866,0-7,3.134-7,7v23.145c0,3.866,3.134,7,7,7s7-3.134,7-7v-23.145C14,141.561,10.866,138.428,7,138.428z"/>
@@ -70,7 +70,7 @@ get_header(); ?>
                                     </svg>
                                 Streamer
                             </a></li>' : ''; ?>
-                            <?= ($soundcloud) ? '<li><a href="'.$soundcloud.'" target="_blank">
+                        <?= ($soundcloud) ? '<li><a href="'.$soundcloud.'" target="_blank">
                                 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                 viewBox="0 0 317.531 317.531" xml:space="preserve">
                                     <path d="M270.275,141.93c-3.134,0-6.223,0.302-9.246,0.903c-3.289-15.779-11.423-30.182-23.436-41.249
@@ -90,7 +90,7 @@ get_header(); ?>
                                         C133.051,114.839,129.693,111.481,125.551,111.481z"/>
                                 </svg>
                             </a></li>' : ''; ?>
-                            <?= ($youtube) ? '<li><a href="'.$youtube.'" target="_blank">
+                        <?= ($youtube) ? '<li><a href="'.$youtube.'" target="_blank">
                                 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                 viewBox="0 0 209.673 209.673" xml:space="preserve">
                                     <path d="M173.075,29.203H36.599C16.418,29.203,0,45.626,0,65.812v78.05c0,20.186,16.418,36.608,36.599,36.608h136.477
@@ -103,7 +103,7 @@ get_header(); ?>
                                         L92.871,127.562z"/>
                                 </svg>
                             </a></li>' : ''; ?>
-                            <?= ($spotify) ? '<li><a href="'.$spotify.'" target="_blank">
+                        <?= ($spotify) ? '<li><a href="'.$spotify.'" target="_blank">
                                 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                 viewBox="0 0 186.845 186.845" xml:space="preserve">
                                     <path d="M128.875,120.962c-31.094-14.37-74.616-8.014-76.453-7.737c-4.096,0.619-6.915,4.44-6.296,8.536
@@ -120,7 +120,7 @@ get_header(); ?>
                                         c0-43.241,35.18-78.42,78.423-78.42c43.242,0,78.422,35.179,78.422,78.42C171.845,136.664,136.665,171.844,93.423,171.844z"/>
                                 </svg>
                             </a></li>' : ''; ?>
-                            <?= ($deezer) ? '<li><a href="'.$deezer.'" target="_blank">
+                        <?= ($deezer) ? '<li><a href="'.$deezer.'" target="_blank">
                                 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                 width="97.75px" height="97.75px" viewBox="0 0 97.75 97.75" xml:space="preserve">
                                     <path d="M48.875,0C21.883,0,0,21.882,0,48.875S21.883,97.75,48.875,97.75S97.75,75.868,97.75,48.875S75.867,0,48.875,0z
@@ -139,7 +139,7 @@ get_header(); ?>
                                         h13.312v4.034H72.072z"/>
                                 </svg>
                             </a></li>' : ''; ?>
-                            <?= ($apple) ? '<li><a href="'.$apple.'" target="_blank">
+                        <?= ($apple) ? '<li><a href="'.$apple.'" target="_blank">
                                 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                 viewBox="0 0 203.499 203.499" xml:space="preserve">
                                     <path d="M101.019,42.436c0.505,0.104,1.009,0.153,1.505,0.153c3.491,0,6.617-2.451,7.341-6.005
@@ -159,71 +159,75 @@ get_header(); ?>
                                         C157.049,171.568,142.684,188.499,131.63,188.499z"/>
                                 </svg>
                             </a></li>' : ''; ?>
-                        </ul>
-                    </div>
+                    </ul>
                 </div>
-            </div>
-            <div class="music-content">
-                <?php the_content(); ?>
             </div>
         </div>
-        <aside class="col-12 col-md-3">
-            <section class="widget follow-us">
-                <h3 class="widget-title">suivez-nous</h3>
-                <div class="follow-us__box">
-                    <a class="facebook" href="https://www.facebook.com/PepseeActus/" target="_blank">
-                        <p class="icon"><i class="fab fa-facebook"></i><span>100K</span></p>
-                    </a>
-                    <a class="youtube" href="https://www.youtube.com/channel/UCrgv-BXDaZ39gdWUl_c7qHQ" target="_blank">
-                        <p class="icon"><i class="fab fa-youtube"></i><span>25K</span></p>
-                    </a>
-                    <a class="instagram" href="https://www.instagram.com/pepseeactus/" target="_blank">
-                        <p class="icon"><i class="fab fa-instagram"></i><span>5K</span></p>
-                    </a>
-                    <a class="soundcloud" href="https://soundcloud.com/pepsee" target="_blank">
-                        <p class="icon"><i class="fab fa-soundcloud"></i><span>2K</span></p>
-                    </a>
-                </div>
-            </section>
-            <section class="artist-album">
-                <?php $posts = get_field('artistes_associes');
+        <div class="music-content">
+            <?php the_content(); ?>
+        </div>
+    </div>
+    <aside class="col-12 col-md-3">
+        <section class="widget follow-us">
+            <h3 class="widget-title">suivez-nous</h3>
+            <div class="follow-us__box">
+                <a class="facebook" href="https://www.facebook.com/PepseeActus/" target="_blank">
+                    <p class="icon"><i class="fab fa-facebook"></i><span>100K</span></p>
+                </a>
+                <a class="youtube" href="https://www.youtube.com/channel/UCrgv-BXDaZ39gdWUl_c7qHQ" target="_blank">
+                    <p class="icon"><i class="fab fa-youtube"></i><span>25K</span></p>
+                </a>
+                <a class="instagram" href="https://www.instagram.com/pepseeactus/" target="_blank">
+                    <p class="icon"><i class="fab fa-instagram"></i><span>5K</span></p>
+                </a>
+                <a class="soundcloud" href="https://soundcloud.com/pepsee" target="_blank">
+                    <p class="icon"><i class="fab fa-soundcloud"></i><span>2K</span></p>
+                </a>
+            </div>
+        </section>
+        <section class="widget instagram-feed">
+            <?= do_shortcode("[instagram-feed]"); ?>
+        </section>
+        <section class="artist-album">
+            <?php $posts = get_field('artistes_associes');
                 if ($posts): ?>
-                    <h3 class="widget-title">Artiste<?= (count($posts) > 1) ? 's' : ''; ?> sur cet album</h3>
-                    <div class="artist-album__container">
-                        <?php foreach ($posts as $post) {
+            <h3 class="widget-title">Artiste<?= (count($posts) > 1) ? 's' : ''; ?> sur cet album</h3>
+            <div class="artist-album__container">
+                <?php foreach ($posts as $post) {
                             $badge = get_field('compte_verifie');
                             $twitter = get_field('twitter');
                             $facebook = get_field('facebook');
                             $instagram = get_field('instagram');
                             $youtube = get_field('youtube'); ?>
-                            
-                            <div class="artist-album__container-box">
-                                <div class="artist-image">
-                                    <a href="<?= get_the_permalink($post); ?>">
-                                        <img src="<?= get_the_post_thumbnail_url($post, 'thumbnail'); ?>" alt="<?= get_the_title($post); ?>">
-                                    </a>
-                                </div>
-                                <div class="artist-info">
-                                    <a class="artist-title" href="<?= get_the_permalink($post); ?>"><?= get_the_title($post); ?></a>
-                                    <?php if ($badge) echo '<i class="fas fa-check-circle"></i>'; ?>
-                                    <ul>
-                                        <?= ($twitter) ? '<li><a href="'.$twitter.'" target="_blank"><i class="fab fa-twitter"></i></a></li>' : ''; ?>
-                                        <?= ($instagram) ? '<li><a href="'.$instagram.'" target="_blank"><i class="fab fa-instagram"></i></a></li>' : ''; ?>
-                                        <?= ($facebook) ? '<li><a href="'.$facebook.'" target="_blank"><i class="fab fa-facebook-f"></i></a></li>' : ''; ?>
-                                        <?= ($youtube) ? '<li><a href="'.$youtube.'" target="_blank"><i class="fab fa-youtube"></i></a></li>' : ''; ?>
-                                    </ul>
-                                </div>
-                            </div>
-                        <?php } ?>
-                        <?php wp_reset_postdata(); ?>
+
+                <div class="artist-album__container-box">
+                    <div class="artist-image">
+                        <a href="<?= get_the_permalink($post); ?>">
+                            <img src="<?= get_the_post_thumbnail_url($post, 'thumbnail'); ?>"
+                                alt="<?= get_the_title($post); ?>">
+                        </a>
                     </div>
-                <?php endif; ?>
-            </section>
-            <div class="instagram-feed mobile-visually-hidden">
-                <?= do_shortcode("[instagram-feed]"); ?>
+                    <div class="artist-info">
+                        <a class="artist-title" href="<?= get_the_permalink($post); ?>"><?= get_the_title($post); ?></a>
+                        <?php if ($badge) echo '<i class="fas fa-check-circle"></i>'; ?>
+                        <ul>
+                            <?= ($twitter) ? '<li><a href="'.$twitter.'" target="_blank"><i class="fab fa-twitter"></i></a></li>' : ''; ?>
+                            <?= ($instagram) ? '<li><a href="'.$instagram.'" target="_blank"><i class="fab fa-instagram"></i></a></li>' : ''; ?>
+                            <?= ($facebook) ? '<li><a href="'.$facebook.'" target="_blank"><i class="fab fa-facebook-f"></i></a></li>' : ''; ?>
+                            <?= ($youtube) ? '<li><a href="'.$youtube.'" target="_blank"><i class="fab fa-youtube"></i></a></li>' : ''; ?>
+                        </ul>
+                    </div>
+                </div>
+                <?php } ?>
+                <?php wp_reset_postdata(); ?>
             </div>
-        </aside>
-    </div>
+            <?php endif; ?>
+        </section>
+        <div class="instagram-feed mobile-visually-hidden">
+            <?= do_shortcode("[instagram-feed]"); ?>
+        </div>
+    </aside>
+</div>
 <?php endwhile; ?>
 
 <?php

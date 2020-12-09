@@ -9,7 +9,7 @@
     }
 
     .artist {
-        background: rgba(255,255,255,.01);
+        background: rgba(255, 255, 255, .01);
         padding: 1.5rem;
         border-radius: 5px;
     }
@@ -128,7 +128,7 @@
 
     .artist-album {
         margin-bottom: 5rem;
-        
+
         &__container {
             display: flex;
             flex-flow: wrap;
@@ -184,7 +184,7 @@
     .artist-music {
         position: relative;
         margin-bottom: 5rem;
-        
+
         &__container {
             display: flex;
             flex-flow: wrap;
@@ -243,14 +243,16 @@
     .artist-clip {
         position: relative;
 
-        &__container {
+        .artist-clip__container {
             display: flex;
             flex-wrap: wrap;
 
-            &-box {
+            .artist-clip__container-box {
                 margin-bottom: 2rem;
 
-                > div {
+                >div {
+                    height: 165px;
+                    overflow: hidden;
                     position: relative;
                     @include shadow();
 
@@ -270,6 +272,9 @@
 
                     img {
                         transition: all .3s ease-out;
+                        position: absolute;
+                        top: 50%;
+                        transform: translateY(-50%);
                     }
 
                     svg {
@@ -281,6 +286,10 @@
                         transition: all .3s ease-out;
                         height: 3.5rem;
                     }
+                }
+
+                p {
+                    margin-top: 10px;
                 }
             }
         }

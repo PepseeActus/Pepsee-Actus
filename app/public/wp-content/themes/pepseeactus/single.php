@@ -82,9 +82,29 @@ while ( have_posts() ) : the_post(); ?>
 			<div id="graphcomment"></div>
 		</article>
 		<aside class="col-lg-3 padding-inside mobile-visually-hidden">
+			<section class="widget follow-us">
+				<h3 class="widget-title">suivez-nous</h3>
+				<div class="follow-us__box">
+					<a class="facebook" href="https://www.facebook.com/PepseeActus/" target="_blank">
+						<p class="icon"><i class="fab fa-facebook"></i><span>100K</span></p>
+					</a>
+					<a class="youtube" href="https://www.youtube.com/channel/UCrgv-BXDaZ39gdWUl_c7qHQ" target="_blank">
+						<p class="icon"><i class="fab fa-youtube"></i><span>25K</span></p>
+					</a>
+					<a class="instagram" href="https://www.instagram.com/pepseeactus/" target="_blank">
+						<p class="icon"><i class="fab fa-instagram"></i><span>5K</span></p>
+					</a>
+					<a class="soundcloud" href="https://soundcloud.com/pepsee" target="_blank">
+						<p class="icon"><i class="fab fa-soundcloud"></i><span>2K</span></p>
+					</a>
+				</div>
+			</section>
+			<section class="widget instagram-feed">
+				<?= do_shortcode("[instagram-feed]"); ?>
+			</section>
 			<?php $posts = get_field('artistes_associes');
 			if ($posts): ?>
-				<div class="artist">
+				<section class="artist">
 					<h3 class="widget-title">Artiste<?= (count($posts) > 1) ? 's' : ''; ?></h3>
 					<div class="artist__container">
 						<?php foreach ($posts as $post) {
@@ -114,11 +134,8 @@ while ( have_posts() ) : the_post(); ?>
 						<?php } ?>
 						<?php wp_reset_postdata(); ?>
 					</div>
-				</div>
+				</section>
 			<?php endif; ?>
-			<div class="instagram-feed">
-				<?= do_shortcode("[instagram-feed]"); ?>
-			</div>
 		</aside>
 	</div>
 <?php endwhile; ?>

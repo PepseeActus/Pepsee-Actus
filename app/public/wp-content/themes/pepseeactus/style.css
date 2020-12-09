@@ -2151,23 +2151,28 @@ html {
 
 .single-artist .artist-clip {
   position: relative; }
-  .single-artist .artist-clip__container {
+  .single-artist .artist-clip .artist-clip__container {
     display: flex;
     flex-wrap: wrap; }
-    .single-artist .artist-clip__container-box {
+    .single-artist .artist-clip .artist-clip__container .artist-clip__container-box {
       margin-bottom: 2rem; }
-      .single-artist .artist-clip__container-box > div {
+      .single-artist .artist-clip .artist-clip__container .artist-clip__container-box > div {
+        height: 165px;
+        overflow: hidden;
         position: relative;
         box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5); }
-        .single-artist .artist-clip__container-box > div:hover img {
+        .single-artist .artist-clip .artist-clip__container .artist-clip__container-box > div:hover img {
           opacity: .7; }
-        .single-artist .artist-clip__container-box > div:hover svg {
+        .single-artist .artist-clip .artist-clip__container .artist-clip__container-box > div:hover svg {
           transform: translate(-50%, -50%) scale(1.1); }
-          .single-artist .artist-clip__container-box > div:hover svg .ytp-large-play-button-bg {
+          .single-artist .artist-clip .artist-clip__container .artist-clip__container-box > div:hover svg .ytp-large-play-button-bg {
             fill: #F50E02; }
-        .single-artist .artist-clip__container-box > div img {
-          transition: all .3s ease-out; }
-        .single-artist .artist-clip__container-box > div svg {
+        .single-artist .artist-clip .artist-clip__container .artist-clip__container-box > div img {
+          transition: all .3s ease-out;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%); }
+        .single-artist .artist-clip .artist-clip__container .artist-clip__container-box > div svg {
           position: absolute;
           left: 50%;
           top: 50%;
@@ -2175,6 +2180,8 @@ html {
           cursor: pointer;
           transition: all .3s ease-out;
           height: 3.5rem; }
+      .single-artist .artist-clip .artist-clip__container .artist-clip__container-box p {
+        margin-top: 10px; }
 
 .single-music main {
   padding-top: 5rem;
