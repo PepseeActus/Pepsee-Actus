@@ -509,11 +509,11 @@ h3 {
       transform: translateY(-50%); }
 
 strong {
-  font-weight: 600;
-  color: #F66D38; }
+  font-weight: 600; }
 
 em {
-  font-weight: 300; }
+  font-weight: 300;
+  color: #F66D38; }
 
 figure {
   margin-right: 0;
