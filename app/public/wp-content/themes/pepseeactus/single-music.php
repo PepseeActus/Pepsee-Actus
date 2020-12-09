@@ -170,10 +170,27 @@ while ( have_posts() ) : the_post(); ?>
             </div>
         </div>
         <aside class="col-12 col-md-3 padding-inside">
-            <div class="artist-album">
+            <section class="widget follow-us">
+                <h3 class="widget-title">suivez-nous</h3>
+                <div class="follow-us__box">
+                    <a class="facebook" href="https://www.facebook.com/PepseeActus/" target="_blank">
+                        <p class="icon"><i class="fab fa-facebook"></i><span>100K</span></p>
+                    </a>
+                    <a class="youtube" href="https://www.youtube.com/channel/UCrgv-BXDaZ39gdWUl_c7qHQ" target="_blank">
+                        <p class="icon"><i class="fab fa-youtube"></i><span>25K</span></p>
+                    </a>
+                    <a class="instagram" href="https://www.instagram.com/pepseeactus/" target="_blank">
+                        <p class="icon"><i class="fab fa-instagram"></i><span>5K</span></p>
+                    </a>
+                    <a class="soundcloud" href="https://soundcloud.com/pepsee" target="_blank">
+                        <p class="icon"><i class="fab fa-soundcloud"></i><span>2K</span></p>
+                    </a>
+                </div>
+            </section>
+            <section class="artist-album">
                 <?php $posts = get_field('artistes_associes');
                 if ($posts): ?>
-                    <h3 class="widget-title">Artiste<?= (count($posts) > 1) ? 's' : ''; ?></h3>
+                    <h3 class="widget-title">Artiste<?= (count($posts) > 1) ? 's' : ''; ?> sur ce titre</h3>
                     <div class="artist-album__container">
                         <?php foreach ($posts as $post) {
                             $badge = get_field('compte_verifie');
@@ -203,8 +220,8 @@ while ( have_posts() ) : the_post(); ?>
                         <?php wp_reset_postdata(); ?>
                     </div>
                 <?php endif; ?>
-            </div>
-            <div class="related-album">
+            </section>
+            <section class="related-album">
                 <?php $posts = get_field('albums_associes');
                 if ($posts): ?>
                     <h3 class="widget-title">Ce titre est présent sur</h3>
@@ -224,7 +241,7 @@ while ( have_posts() ) : the_post(); ?>
                         <?php wp_reset_postdata(); ?>
                     </div>
                 <?php endif; ?>
-            </div>
+            </section>
             <div class="instagram-feed mobile-visually-hidden">
                 <?= do_shortcode("[instagram-feed]"); ?>
             </div>
