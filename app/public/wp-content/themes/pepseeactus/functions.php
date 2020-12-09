@@ -239,11 +239,7 @@ function list_glossary_posts() {
 }
 add_shortcode('list_glossary_posts', 'list_glossary_posts');
 
-// Sidebar & Widgets
-require_once 'widgets/YoutubeWidget.php';
-
 function pepseeactus_widgets_init() {
-	register_widget(YoutubeWidget::class);
     register_sidebar([
         'name'          => __( 'Blog Sidebar', 'pepseeactus' ),
         'id'            => 'sidebar-1',

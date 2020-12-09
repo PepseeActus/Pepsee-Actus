@@ -142,7 +142,7 @@
 						</ul>
 					</div>
 				</div>
-				<div class="site-info">PepseeActus since 2010 ©Copyright 2010-<?= date("Y"); ?></div>
+				<div class="site-info">PepseeActus ©Copyright 2010-<?= date("Y"); ?></div>
 
 				<!-- back to top -->
 				<a id="button"></a>

@@ -6,3 +6,36 @@
 		max-width: 100%;
 	}
 }
+
+.follow-us {
+	.follow-us__box {
+		display: flex;
+		justify-content: space-around;
+	}
+
+	.icon {
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+		width: 50px;
+		padding: 7px 0 5px;
+		border-radius: 50%;
+		transition: all 0.8s ease;
+	}
+
+	.facebook:hover .icon {
+		background: $color__facebook;
+	}
+
+	.youtube:hover .icon {
+		background: $color__youtube;
+	}
+
+	.instagram:hover .icon {
+		background: $color__instagram;
+	}
+
+	.soundcloud:hover .icon {
+		background: $color__soundcloud;
+	}
+}

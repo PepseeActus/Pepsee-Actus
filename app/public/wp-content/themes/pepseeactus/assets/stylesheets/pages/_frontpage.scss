@@ -127,6 +127,7 @@
 
         .principal {
             border-radius: 1rem;
+            padding-top: 0;
 
             @include media(phone) {
                 border-radius: 0;
@@ -141,21 +142,6 @@
 
         @include media(phone) {
             font-size: 14px;
-        }
-
-        .releases-head {
-            position: absolute;
-            top: -6rem;
-            left: 20%;
-            transform: rotate(-5deg);
-
-            @include media(phone) {
-                display: none;
-            }
-
-            img {
-                width: 25rem;
-            }
         }
 
         &-wrap {
@@ -183,13 +169,20 @@
                 }
 
                 .new {
-                    position: absolute;
-                    transform: rotate(-17deg);
-                    z-index: 1;
-                    color: red;
+                    display: inline-block;
                     text-transform: uppercase;
                     font-weight: 600;
-                    top: -0.5625rem;
+                    background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    font-size: 10px;
+
+                    svg {
+                        width: 13px;
+                        height: 13px;
+                        color: red;
+                        vertical-align: baseline;
+                    }
                 }
 
                 .rotate {

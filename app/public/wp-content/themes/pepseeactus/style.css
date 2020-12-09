@@ -429,7 +429,8 @@ textarea {
   font-family: "Montserrat", sans-serif;
   font-size: 1.6rem;
   line-height: 1.5;
-  color: #fff; }
+  color: #fff;
+  font-weight: 200; }
 
 h1, h2, h3, h4, h5, h6 {
   clear: both; }
@@ -645,6 +646,31 @@ a {
   /* Make sure select elements fit in widgets. */ }
   .widget select {
     max-width: 100%; }
+
+.follow-us .follow-us__box {
+  display: flex;
+  justify-content: space-around; }
+
+.follow-us .icon {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 50px;
+  padding: 7px 0 5px;
+  border-radius: 50%;
+  transition: all 0.8s ease; }
+
+.follow-us .facebook:hover .icon {
+  background: #4267B2; }
+
+.follow-us .youtube:hover .icon {
+  background: #F50E02; }
+
+.follow-us .instagram:hover .icon {
+  background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d); }
+
+.follow-us .soundcloud:hover .icon {
+  background: #F53202; }
 
 /*--------------------------------------------------------------
 # Infinite scroll
@@ -1414,7 +1440,8 @@ html {
       padding-top: 0;
       border-radius: 0; } }
   .home .wrapper .principal {
-    border-radius: 1rem; }
+    border-radius: 1rem;
+    padding-top: 0; }
     @media (max-width: 767.98px) {
       .home .wrapper .principal {
         border-radius: 0; } }
@@ -1428,22 +1455,6 @@ html {
     .home .classic,
     .home .album {
       font-size: 14px; } }
-  .home .releases .releases-head,
-  .home .classic .releases-head,
-  .home .album .releases-head {
-    position: absolute;
-    top: -6rem;
-    left: 20%;
-    transform: rotate(-5deg); }
-    @media (max-width: 767.98px) {
-      .home .releases .releases-head,
-      .home .classic .releases-head,
-      .home .album .releases-head {
-        display: none; } }
-    .home .releases .releases-head img,
-    .home .classic .releases-head img,
-    .home .album .releases-head img {
-      width: 25rem; }
   .home .releases-wrap,
   .home .classic-wrap,
   .home .album-wrap {
@@ -1475,13 +1486,20 @@ html {
       .home .releases-wrap article .new,
       .home .classic-wrap article .new,
       .home .album-wrap article .new {
-        position: absolute;
-        transform: rotate(-17deg);
-        z-index: 1;
-        color: red;
+        display: inline-block;
         text-transform: uppercase;
         font-weight: 600;
-        top: -0.5625rem; }
+        background: linear-gradient(90deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 10px; }
+        .home .releases-wrap article .new svg,
+        .home .classic-wrap article .new svg,
+        .home .album-wrap article .new svg {
+          width: 13px;
+          height: 13px;
+          color: red;
+          vertical-align: baseline; }
       .home .releases-wrap article .rotate,
       .home .classic-wrap article .rotate,
       .home .album-wrap article .rotate {
