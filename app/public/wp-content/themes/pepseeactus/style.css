@@ -1999,7 +1999,7 @@ html {
     content: "\f106"; }
 
 .single-artist .artist-album {
-  margin-bottom: 5rem; }
+  margin-bottom: 2rem; }
   .single-artist .artist-album__container {
     display: flex;
     flex-flow: wrap; }
@@ -2030,7 +2030,7 @@ html {
 
 .single-artist .artist-music {
   position: relative;
-  margin-bottom: 5rem; }
+  margin-bottom: 2rem; }
   .single-artist .artist-music__container {
     display: flex;
     flex-flow: wrap; }
