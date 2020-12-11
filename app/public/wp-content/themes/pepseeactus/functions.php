@@ -92,16 +92,19 @@ function pepseeactus_the_custom_logo() {
 function pepseeactus_scripts() {
 	wp_register_style('bootstrap', 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css', []);
 	wp_register_script('bootstrap', 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js', ['popper', 'jquery'], false, true);
-	wp_register_style('swiperjs', 'https://unpkg.com/swiper/css/swiper.min.css', []);
+	wp_register_style('swiperjs', 'https://unpkg.com/swiper/swiper-bundle.min.css', []);
+	wp_register_script('swiperjs', 'https://unpkg.com/swiper/swiper-bundle.min.js', [], false, true);
 	wp_register_script('popper', 'https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js', [], false, true);
 	wp_deregister_script('jquery');
 	wp_register_script('jquery', 'https://code.jquery.com/jquery-3.4.1.js', [], false, true);	
 	wp_register_script('font-awesome', 'https://kit.fontawesome.com/628ddd9372.js', [], false, true);	
 
 	wp_enqueue_style('bootstrap');
+	wp_enqueue_style('swiperjs');
 	wp_enqueue_style('pepseeactus-style', get_stylesheet_uri());
 
 	wp_enqueue_script('bootstrap');
+	wp_enqueue_script('swiperjs');
 	wp_enqueue_script('font-awesome');
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -148,8 +151,13 @@ function add_type_attribute($tag, $handle, $src) {
 
 // Longueur du résumé
 add_filter( 'excerpt_length', function($length) {
-    return 20;
+    return 10;
 } );
+
+function new_excerpt_more( $more ) {
+    return '...';
+}
+add_filter('excerpt_more', 'new_excerpt_more');
 
 // Format de date sur les posts
 function meks_time_ago() {

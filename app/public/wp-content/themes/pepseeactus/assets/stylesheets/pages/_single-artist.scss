@@ -129,6 +129,29 @@
         }
     }
 
+    .card {
+        background-color: transparent;
+        border: none;
+
+        >div:first-child {
+            cursor: pointer;
+        }
+
+        .panel-title {
+            position: relative;
+        }
+
+        .panel-title::after {
+            content: "\f107";
+            font-family: "FontAwesome";
+            vertical-align: middle;
+        }
+
+        .panel-title[aria-expanded="true"]::after {
+            content: "\f106";
+        }
+    }
+
     .artist-album {
         margin-bottom: 5rem;
 

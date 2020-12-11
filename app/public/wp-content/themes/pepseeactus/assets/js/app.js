@@ -19,6 +19,38 @@ $(document).ready(function() {
         }
     };
 
+    // SWIPER
+    var mySwiper = new Swiper('.swiper-container-actus', {
+        slidesPerView: 2,
+        spaceBetween: 10,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+            992: {
+                slidesPerView: 4,
+                spaceBetween: 20
+            },
+        }
+    });
+
+    var mySwiper2 = new Swiper('.swiper-container-clips', {
+        slidesPerView: 2,
+        spaceBetween: 10,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+            992: {
+                slidesPerView: 4,
+                spaceBetween: 20
+            },
+        }
+    });
+
+    // COMMENTAIRES
     let gc_params = {
         graphcomment_id: 'PepseeActus'
     };
