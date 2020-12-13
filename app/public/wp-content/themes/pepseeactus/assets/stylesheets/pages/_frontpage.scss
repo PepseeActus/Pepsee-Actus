@@ -359,7 +359,7 @@
 
                     p {
                         @include media(phone) {
-                            font-size: 14px;
+                            display: none;
                         }
                     }
                 }

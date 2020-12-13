@@ -1,4 +1,8 @@
 .single-post {
+    @include media(phone-tablet) {
+        margin-bottom: 30px;
+    }
+
     .category-actus {
         border-radius: 5px;
 
@@ -8,11 +12,11 @@
 
             @include media(phone) {
                 position: relative;
-                top: -60px;
             }
 
             @include media(desktop) {
                 background: rgba(255, 255, 255, .1);
+                margin-bottom: 20px;
             }
         }
     }
@@ -115,7 +119,7 @@
 
         @include media(phone) {
             font-size: 25px;
-            bottom: 60px;
+            bottom: 0;
             line-height: 45px;
         }
     }
@@ -227,8 +231,13 @@
 
     .graphcomment-button {
         @include media(phone) {
-            text-align: center;
-            margin: -25px 0 30px;
+            margin-bottom: 20px;
+            font-size: 12px;
+            padding-left: 15px;
+        }
+
+        span svg {
+            display: none;
         }
 
         a,

@@ -78,7 +78,7 @@
             font-weight: 100;
             font-size: 2.2rem;
 
-            @include media(phone) {
+            @include media(phone-tablet) {
                 color: $color__background-color;
             }
 
@@ -147,6 +147,19 @@
     position: relative;
     overflow: hidden;
 
+    &::before {
+        content: '';
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        top: 20%;
+        left: 50%;
+        transform: translateX(-50%);
+        background-image: url("assets/img/pepseelogo_png.png");
+        background-position: center;
+        background-size: cover;
+    }
+
     &::after {
         content: '';
         position: absolute;
@@ -157,8 +170,12 @@
         background: linear-gradient(to top, $color__background-color 10%, rgba(255, 255, 255, 0) 90%);
     }
 
-    @include media(phone) {
+    @include media(phone-tablet) {
         min-height: 8rem;
+
+        &::before {
+            content: none;
+        }
 
         &::after {
             height: 100px;
