@@ -907,7 +907,7 @@ html {
     background: linear-gradient(to top, #22272C 10%, rgba(255, 255, 255, 0) 90%); }
   @media (max-width: 1023.98px) {
     .hero-banner {
-      min-height: 8rem; }
+      min-height: 5rem; }
       .hero-banner::before {
         content: none; }
       .hero-banner::after {
@@ -1165,7 +1165,7 @@ html {
       content: "";
       position: absolute;
       padding: 30px;
-      top: 50%;
+      top: 25%;
       left: 50%;
       transform: translate(-50%, -50%);
       background: #fff;
@@ -1176,7 +1176,7 @@ html {
       z-index: 1; }
     .mobile-nav .home svg {
       position: absolute;
-      top: 5px;
+      top: -5px;
       left: 50%;
       transform: translateX(-50%); }
 

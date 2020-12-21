@@ -44,7 +44,7 @@
             content: "";
             position: absolute;
             padding: 30px;
-            top: 50%;
+            top: 25%;
             left: 50%;
             transform: translate(-50%, -50%);
             background: #fff;
@@ -59,7 +59,7 @@
 
         svg {
             position: absolute;
-            top: 5px;
+            top: -5px;
             left: 50%;
             transform: translateX(-50%);
         }
