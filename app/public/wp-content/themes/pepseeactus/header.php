@@ -127,7 +127,9 @@
 			<?php }
 		} else { ?>
 
-			<div class="hero-banner" style='background-image: url("<?= get_stylesheet_directory_uri(); ?>/assets/img/pepseenewbanner_gris_nologo.jpg")'></div>
+			<div class="hero-banner" style='background-image: url("<?= get_stylesheet_directory_uri(); ?>/assets/img/pepseenewbanner_gris_nologo.jpg")'>
+				<img src="<?= get_stylesheet_directory_uri(); ?>/assets/img/pepseelogo_png.png" alt="logo PepseeActus" class="headerLogo">
+			</div>
 
 		<?php }
 

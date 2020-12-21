@@ -164,12 +164,38 @@ $(document).ready(function() {
         return false;
     });
 
-    //PROGRESS BAR
+    // PROGRESS BAR & HEADER FADE
     let progress = document.getElementById('progressbar');
+    let navHeader = $('.home .site-header');
     let totalHeight = document.body.scrollHeight - window.innerHeight;
 
     window.onscroll = function() {
         let progressHeight = (window.pageYOffset / totalHeight) * 100;
         progress.style.height = progressHeight + '%';
+        if (window.scrollY > 200 && window.innerWidth > 992) {
+            navHeader.addClass('blackNav');
+        } else {
+            navHeader.removeClass('blackNav');
+        }
     }
+
+    //GREENSOCK
+    let logo = document.querySelector('.logo');
+    let navWrapper = document.querySelector('.nav-wrapper');
+    let headerLogo = document.querySelector('.headerLogo');
+    let headerThumbnail = document.querySelectorAll('.headerThumbnail .post');
+
+    window.addEventListener('load', () => {
+        const TL = gsap.timeline({paused:true});
+
+        if (window.innerWidth > 992) {
+            TL
+            .from(headerThumbnail, {duration: 2, opacity: 0, top: 20, ease: "slow"})
+            .to(headerLogo, {duration: 2, opacity: 1, ease: "power2.out"})
+            .from(logo, {duration: 1, transform: "translateX(-250px)", ease: "slow"}, "-=2")
+            .from(navWrapper, {duration: 1, transform: "translateX(500px)", ease: "slow"}, "-=2");
+
+            TL.play();
+        }
+    })
 });

@@ -95,6 +95,7 @@ function pepseeactus_scripts() {
 	wp_register_style('swiperjs', 'https://unpkg.com/swiper/swiper-bundle.min.css', []);
 	wp_register_script('swiperjs', 'https://unpkg.com/swiper/swiper-bundle.min.js', [], false, true);
 	wp_register_script('popper', 'https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js', [], false, true);
+	wp_register_script('greensock', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js', [], false, true);
 	wp_deregister_script('jquery');
 	wp_register_script('jquery', 'https://code.jquery.com/jquery-3.4.1.js', [], false, true);	
 	wp_register_script('font-awesome', 'https://kit.fontawesome.com/628ddd9372.js', [], false, true);	
@@ -106,6 +107,7 @@ function pepseeactus_scripts() {
 	wp_enqueue_script('bootstrap');
 	wp_enqueue_script('swiperjs');
 	wp_enqueue_script('font-awesome');
+	wp_enqueue_script('greensock');
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -155,7 +157,7 @@ add_filter( 'excerpt_length', function($length) {
 } );
 
 function new_excerpt_more( $more ) {
-    return '...';
+    return '';
 }
 add_filter('excerpt_more', 'new_excerpt_more');
 

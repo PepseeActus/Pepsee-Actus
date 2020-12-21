@@ -814,13 +814,21 @@ html {
 .site-header {
   background: #22272C;
   width: 100%;
-  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5);
   top: 0;
   position: fixed;
-  z-index: 2; }
+  z-index: 2;
+  transition: background 0.3s ease;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5); }
+  @media (min-width: 1024px) {
+    .home .site-header {
+      background: transparent;
+      box-shadow: none; } }
   @media (max-width: 1023.98px) {
     .site-header {
       background: #fff; } }
+  .site-header.blackNav {
+    background: #22272C;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5); }
   .site-header nav {
     display: flex;
     justify-content: space-between; }
@@ -877,17 +885,18 @@ html {
   min-height: 35rem;
   position: relative;
   overflow: hidden; }
-  .hero-banner::before {
-    content: '';
+  .hero-banner .headerLogo {
     position: absolute;
     width: 200px;
     height: 200px;
     top: 20%;
     left: 50%;
     transform: translateX(-50%);
-    background-image: url("assets/img/pepseelogo_png.png");
-    background-position: center;
-    background-size: cover; }
+    z-index: 1;
+    opacity: 0; }
+    @media (max-width: 1023.98px) {
+      .hero-banner .headerLogo {
+        display: none; } }
   .hero-banner::after {
     content: '';
     position: absolute;
@@ -1124,20 +1133,17 @@ html {
 
 .mobile-nav {
   position: fixed;
-  bottom: 15px;
+  bottom: 0;
   left: 0;
   right: 0;
   background: #fff;
   z-index: 9;
-  width: 95%;
-  margin: 0 auto;
-  border-radius: 22px;
-  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5); }
+  margin: 0 auto; }
   .mobile-nav ul {
     display: flex;
     justify-content: space-around; }
     .mobile-nav ul li {
-      margin: 7px 0; }
+      margin: 5px 0 0; }
       .mobile-nav ul li svg {
         fill: currentColor;
         color: #22272C;
@@ -1145,6 +1151,12 @@ html {
         height: 27px; }
       .mobile-nav ul li.current-menu-item svg {
         color: #F66D38; }
+    .mobile-nav ul a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: black;
+      font-size: 12px; }
   .mobile-nav .home {
     position: relative;
     width: 60px;
@@ -1164,7 +1176,7 @@ html {
       z-index: 1; }
     .mobile-nav .home svg {
       position: absolute;
-      top: -3px;
+      top: 5px;
       left: 50%;
       transform: translateX(-50%); }
 

@@ -55,13 +55,26 @@
 .site-header {
     background: $color__background-color;
     width: 100%;
-    @include shadow();
     top: 0;
     position: fixed;
     z-index: 2;
+    transition: background 0.3s ease;
+    @include shadow();
+
+    .home & {
+        @include media(desktop) {
+            background: transparent;
+            box-shadow: none;
+        }
+    }
 
     @include media(phone-tablet) {
         background: #fff;
+    }
+
+    &.blackNav {
+        background: $color__background-color;
+        @include shadow();
     }
 
     nav {
@@ -147,17 +160,19 @@
     position: relative;
     overflow: hidden;
 
-    &::before {
-        content: '';
+    .headerLogo {
         position: absolute;
         width: 200px;
         height: 200px;
         top: 20%;
         left: 50%;
         transform: translateX(-50%);
-        background-image: url("assets/img/pepseelogo_png.png");
-        background-position: center;
-        background-size: cover;
+        z-index: 1;
+        opacity: 0;
+
+        @include media(phone-tablet) {
+            display: none;
+        }
     }
 
     &::after {

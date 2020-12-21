@@ -1,21 +1,18 @@
 .mobile-nav {
     position: fixed;
-    bottom: 15px;
+    bottom: 0;
     left: 0;
     right: 0;
     background: #fff;
     z-index: 9;
-    width: 95%;
     margin: 0 auto;
-    border-radius: 22px;
-    @include shadow();
 
     ul {
         display: flex;
         justify-content: space-around;
 
         li {
-            margin: 7px 0;
+            margin: 5px 0 0;
 
             svg {
                 fill: currentColor;
@@ -28,7 +25,15 @@
                 color: $color__orange;
             }
         }
+
+    a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: black;
+        font-size: 12px;
     }
+}
 
     .home {
         position: relative;
@@ -54,7 +59,7 @@
 
         svg {
             position: absolute;
-            top: -3px;
+            top: 5px;
             left: 50%;
             transform: translateX(-50%);
         }

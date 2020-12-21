@@ -14,7 +14,7 @@
 
 get_header(); ?>
 
-<section class="d-flex justify-content-between mobile-visually-hidden">
+<section class="d-flex justify-content-between mobile-visually-hidden headerThumbnail">
 	<?php
 		$args = [
 			'cat' => [5, 126],
