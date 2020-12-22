@@ -1498,6 +1498,11 @@ html {
       display: flex;
       align-items: flex-start;
       position: relative; }
+      @media (min-width: 1024px) {
+        .home .releases-wrap article,
+        .home .classic-wrap article,
+        .home .album-wrap article {
+          min-width: 49%; } }
       @media (max-width: 767.98px) {
         .home .releases-wrap article,
         .home .classic-wrap article,
@@ -1545,11 +1550,15 @@ html {
       .home .releases-wrap article .info,
       .home .classic-wrap article .info,
       .home .album-wrap article .info {
-        width: 19rem;
         display: flex;
         flex-direction: column;
         justify-content: center;
         margin-left: 1rem; }
+        @media (min-width: 1024px) {
+          .home .releases-wrap article .info,
+          .home .classic-wrap article .info,
+          .home .album-wrap article .info {
+            min-width: 19rem; } }
         @media (max-width: 767.98px) {
           .home .releases-wrap article .info,
           .home .classic-wrap article .info,

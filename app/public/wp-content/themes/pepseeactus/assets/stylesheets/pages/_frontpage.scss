@@ -144,6 +144,10 @@
                 align-items: flex-start;
                 position: relative;
 
+                @include media(desktop) {
+                    min-width: 49%;
+                }
+
                 @include media(phone) {
                     width: 50%;
                     flex-direction: column;
@@ -187,11 +191,14 @@
                 }
 
                 .info {
-                    width: 19rem;
                     display: flex;
                     flex-direction: column;
                     justify-content: center;
                     margin-left: 1rem;
+
+                    @include media(desktop) {
+                        min-width: 19rem;
+                    }
 
                     @include media(phone) {
                         width: 100%;

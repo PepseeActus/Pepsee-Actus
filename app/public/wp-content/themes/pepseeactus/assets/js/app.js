@@ -191,9 +191,9 @@ $(document).ready(function() {
         if (window.innerWidth > 992) {
             TL
             .from(headerThumbnail, {duration: 2, opacity: 0, top: 20, ease: "slow"})
-            .to(headerLogo, {duration: 2, opacity: 1, ease: "power2.out"})
-            .from(logo, {duration: 1, transform: "translateX(-250px)", ease: "slow"}, "-=2")
-            .from(navWrapper, {duration: 1, transform: "translateX(500px)", ease: "slow"}, "-=2");
+            .to(headerLogo, {duration: 3, opacity: 1, ease: "slow"}, "-=1")
+            .from(logo, {duration: 0.5, transform: "translateY(-50px)", ease: "slow"}, "-=2")
+            .from(navWrapper, {duration: 0.5, transform: "translateY(-50px)", ease: "slow"}, "-=2");
 
             TL.play();
         }
