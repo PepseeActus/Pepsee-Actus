@@ -262,3 +262,44 @@
         background: #989494 !important;
     }
 }
+
+//BIG LINK
+.music-content .link {
+    margin: 60px 0 20px;
+    text-align: center;
+
+    .stream {
+        margin-bottom: 40px;
+    }
+
+    svg {
+        fill: currentColor;
+        width: 40px;
+        height: 40px;
+    }
+
+    .download {
+        p {
+            margin-bottom: 15px;
+        }
+
+        a {
+            border-radius: 10px;
+            border: 1px solid;
+            box-shadow: 0 0 0 0 #fff;
+            animation: pulse 1.3s infinite;
+            padding: 10px 20px;
+        }
+    }
+
+    @keyframes pulse {
+        to {
+            box-shadow: 0 0 0 5px rgba(#fff, .05);
+        }
+    }
+
+    li {
+        display: inline-block;
+        margin-right: 1rem;
+    }
+}

@@ -1468,15 +1468,18 @@ html {
       .home .wrapper .principal {
         border-radius: 0; } }
 
+.home .riddim,
 .home .releases,
 .home .classic,
 .home .album {
   position: relative; }
   @media (max-width: 767.98px) {
+    .home .riddim,
     .home .releases,
     .home .classic,
     .home .album {
       font-size: 14px; } }
+  .home .riddim-wrap,
   .home .releases-wrap,
   .home .classic-wrap,
   .home .album-wrap {
@@ -1487,10 +1490,12 @@ html {
     padding: 15px 15px 0;
     border-radius: 5px; }
     @media (max-width: 767.98px) {
+      .home .riddim-wrap,
       .home .releases-wrap,
       .home .classic-wrap,
       .home .album-wrap {
         justify-content: center; } }
+    .home .riddim-wrap article,
     .home .releases-wrap article,
     .home .classic-wrap article,
     .home .album-wrap article {
@@ -1499,17 +1504,20 @@ html {
       align-items: flex-start;
       position: relative; }
       @media (min-width: 1024px) {
+        .home .riddim-wrap article,
         .home .releases-wrap article,
         .home .classic-wrap article,
         .home .album-wrap article {
           min-width: 49%; } }
       @media (max-width: 767.98px) {
+        .home .riddim-wrap article,
         .home .releases-wrap article,
         .home .classic-wrap article,
         .home .album-wrap article {
           width: 50%;
           flex-direction: column;
           align-items: center; } }
+      .home .riddim-wrap article .new,
       .home .releases-wrap article .new,
       .home .classic-wrap article .new,
       .home .album-wrap article .new {
@@ -1520,6 +1528,7 @@ html {
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         font-size: 10px; }
+        .home .riddim-wrap article .new svg,
         .home .releases-wrap article .new svg,
         .home .classic-wrap article .new svg,
         .home .album-wrap article .new svg {
@@ -1527,26 +1536,31 @@ html {
           height: 13px;
           color: red;
           vertical-align: baseline; }
+      .home .riddim-wrap article .rotate,
       .home .releases-wrap article .rotate,
       .home .classic-wrap article .rotate,
       .home .album-wrap article .rotate {
         width: 8rem;
         height: 8rem; }
         @media (max-width: 767.98px) {
+          .home .riddim-wrap article .rotate,
           .home .releases-wrap article .rotate,
           .home .classic-wrap article .rotate,
           .home .album-wrap article .rotate {
             width: 10rem;
             height: 10rem; } }
+      .home .riddim-wrap article img,
       .home .releases-wrap article img,
       .home .classic-wrap article img,
       .home .album-wrap article img {
         box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5);
         width: 100%; }
+      .home .riddim-wrap article.album img,
       .home .releases-wrap article.album img,
       .home .classic-wrap article.album img,
       .home .album-wrap article.album img {
         min-width: 11rem; }
+      .home .riddim-wrap article .info,
       .home .releases-wrap article .info,
       .home .classic-wrap article .info,
       .home .album-wrap article .info {
@@ -1555,11 +1569,13 @@ html {
         justify-content: center;
         margin-left: 1rem; }
         @media (min-width: 1024px) {
+          .home .riddim-wrap article .info,
           .home .releases-wrap article .info,
           .home .classic-wrap article .info,
           .home .album-wrap article .info {
             min-width: 19rem; } }
         @media (max-width: 767.98px) {
+          .home .riddim-wrap article .info,
           .home .releases-wrap article .info,
           .home .classic-wrap article .info,
           .home .album-wrap article .info {
@@ -1567,10 +1583,12 @@ html {
             margin-left: 0;
             margin-top: 1rem;
             text-align: center; } }
+        .home .riddim-wrap article .info .title,
         .home .releases-wrap article .info .title,
         .home .classic-wrap article .info .title,
         .home .album-wrap article .info .title {
           display: block; }
+        .home .riddim-wrap article .info p,
         .home .releases-wrap article .info p,
         .home .classic-wrap article .info p,
         .home .album-wrap article .info p {
@@ -1646,8 +1664,15 @@ html {
 
 .home .actus .swiper-button-prev,
 .home .actus .swiper-button-next {
-  color: #fff;
-  top: 35%; }
+  top: 35%;
+  padding: 0 8px;
+  margin: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: #000;
+  background: #FFF;
+  box-shadow: 0 0 8px 3px rgba(0, 0, 0, 0.5); }
   .home .actus .swiper-button-prev::after,
   .home .actus .swiper-button-next::after {
     display: none; }
@@ -1655,28 +1680,17 @@ html {
 .home .actus .swiper-button-disabled {
   display: none; }
 
-.home .actus .actus-wrap,
-.home .actus .clips-wrap {
+.home .actus .actus-wrap {
   margin-bottom: 60px; }
 
 .home .actus .category-actus,
-.home .actus .category-videos,
-.home .actus .category-clips {
+.home .actus .category-videos {
   position: relative;
   top: inherit; }
   @media (max-width: 767.98px) {
     .home .actus .category-actus,
-    .home .actus .category-videos,
-    .home .actus .category-clips {
+    .home .actus .category-videos {
       width: 100%; } }
-
-.home .actus .category-clips {
-  height: 150px;
-  overflow: hidden; }
-  .home .actus .category-clips img {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%); }
 
 .home .actus .actus-info .entry-title,
 .home .actus .videos-info .entry-title {
@@ -1694,27 +1708,17 @@ html {
   .home .actus .videos-info p {
     display: none; } }
 
-.home .actus .clips-info {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0; }
-  .home .actus .clips-info .entry-title {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    text-transform: uppercase;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 26px;
-    text-align: center;
-    width: 100%; }
-    .home .actus .clips-info .entry-title a {
-      background: #fff;
-      color: #22272C;
-      -webkit-box-decoration-break: clone;
-      padding: 3px 0.375rem; }
+.home .artist article {
+  display: inline-block;
+  margin: 0 20px;
+  text-align: center; }
+
+.home .artist img {
+  border-radius: 50%; }
+
+.home .artist .name a {
+  text-transform: uppercase;
+  font-weight: 600; }
 
 @media (max-width: 1023.98px) {
   .single-post {
@@ -1902,6 +1906,31 @@ html {
 .single-post #graphcomment-bubble {
   background: #989494 !important; }
 
+.music-content .link {
+  margin: 60px 0 20px;
+  text-align: center; }
+  .music-content .link .stream {
+    margin-bottom: 40px; }
+  .music-content .link svg {
+    fill: currentColor;
+    width: 40px;
+    height: 40px; }
+  .music-content .link .download p {
+    margin-bottom: 15px; }
+  .music-content .link .download a {
+    border-radius: 10px;
+    border: 1px solid;
+    box-shadow: 0 0 0 0 #fff;
+    animation: pulse 1.3s infinite;
+    padding: 10px 20px; }
+
+@keyframes pulse {
+  to {
+    box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.05); } }
+  .music-content .link li {
+    display: inline-block;
+    margin-right: 1rem; }
+
 .page .page-title {
   margin-top: 3rem;
   text-transform: uppercase;
@@ -2074,40 +2103,6 @@ html {
             .single-artist .artist-music__container-box .music-info ul li a:hover {
               transform: translateY(0.5rem); }
 
-.single-artist .artist-clip {
-  position: relative; }
-  .single-artist .artist-clip .artist-clip__container {
-    display: flex;
-    flex-wrap: wrap; }
-    .single-artist .artist-clip .artist-clip__container .artist-clip__container-box {
-      margin-bottom: 2rem; }
-      .single-artist .artist-clip .artist-clip__container .artist-clip__container-box > div {
-        height: 165px;
-        overflow: hidden;
-        position: relative;
-        box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5); }
-        .single-artist .artist-clip .artist-clip__container .artist-clip__container-box > div:hover img {
-          opacity: .7; }
-        .single-artist .artist-clip .artist-clip__container .artist-clip__container-box > div:hover svg {
-          transform: translate(-50%, -50%) scale(1.1); }
-          .single-artist .artist-clip .artist-clip__container .artist-clip__container-box > div:hover svg .ytp-large-play-button-bg {
-            fill: #F50E02; }
-        .single-artist .artist-clip .artist-clip__container .artist-clip__container-box > div img {
-          transition: all .3s ease-out;
-          position: absolute;
-          top: 50%;
-          transform: translateY(-50%); }
-        .single-artist .artist-clip .artist-clip__container .artist-clip__container-box > div svg {
-          position: absolute;
-          left: 50%;
-          top: 50%;
-          transform: translate(-50%, -50%);
-          cursor: pointer;
-          transition: all .3s ease-out;
-          height: 3.5rem; }
-      .single-artist .artist-clip .artist-clip__container .artist-clip__container-box p {
-        margin-top: 10px; }
-
 .single-music main {
   padding-top: 5rem;
   padding-bottom: 2rem; }
@@ -2220,32 +2215,40 @@ html {
         max-width: 12rem;
         box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5); }
 
+.single-riddim main,
 .single-album main {
   padding-top: 5rem;
   padding-bottom: 2rem; }
 
+.single-riddim h2,
 .single-album h2 {
   font-size: 4rem;
   font-weight: 600;
   letter-spacing: inherit;
   margin-bottom: 2rem; }
 
+.single-riddim li,
 .single-album li {
   text-align: center; }
 
+.single-riddim .music-presentation,
 .single-album .music-presentation {
   display: flex;
   position: relative;
   top: -5rem; }
+  .single-riddim .music-presentation .music-presentation__picture,
   .single-album .music-presentation .music-presentation__picture {
     margin-right: 2rem; }
+    .single-riddim .music-presentation .music-presentation__picture img,
     .single-album .music-presentation .music-presentation__picture img {
       border-radius: .5rem;
       box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5); }
+  .single-riddim .music-presentation .music-presentation__info,
   .single-album .music-presentation .music-presentation__info {
     display: flex;
     flex-direction: column;
     justify-content: flex-end; }
+    .single-riddim .music-presentation .music-presentation__info .entry-title,
     .single-album .music-presentation .music-presentation__info .entry-title {
       margin: 0 .5rem 0 0;
       text-transform: uppercase;
@@ -2253,66 +2256,89 @@ html {
       font-size: 3rem;
       line-height: 2.5rem; }
       @media (max-width: 767.98px) {
+        .single-riddim .music-presentation .music-presentation__info .entry-title,
         .single-album .music-presentation .music-presentation__info .entry-title {
           font-size: 1.8rem; } }
+    .single-riddim .music-presentation .music-presentation__info .music-presentation__info-reseaux svg,
     .single-album .music-presentation .music-presentation__info .music-presentation__info-reseaux svg {
       fill: currentColor;
       width: 30px;
       height: 30px; }
+    .single-riddim .music-presentation .music-presentation__info .music-presentation__info-reseaux li,
     .single-album .music-presentation .music-presentation__info .music-presentation__info-reseaux li {
       display: inline-block;
       margin-right: 1rem; }
 
-.single-album .music-content p, .single-album .music-content ul {
+.single-riddim .music-content p, .single-riddim .music-content ul,
+.single-album .music-content p,
+.single-album .music-content ul {
   margin-bottom: 1rem; }
 
+.single-riddim aside,
 .single-album aside {
   margin-top: 1.5rem; }
+  .single-riddim aside .artist-album,
   .single-album aside .artist-album {
     margin-bottom: 5rem; }
+    .single-riddim aside .artist-album__container-box,
     .single-album aside .artist-album__container-box {
       display: flex;
       align-items: center;
       margin-bottom: 2rem; }
       @media (min-width: 768px) and (max-width: 1023.98px) {
+        .single-riddim aside .artist-album__container-box,
         .single-album aside .artist-album__container-box {
           justify-content: center;
           flex-direction: column; } }
+      .single-riddim aside .artist-album__container-box .artist-image,
       .single-album aside .artist-album__container-box .artist-image {
         margin-right: 1rem; }
         @media (min-width: 768px) and (max-width: 1023.98px) {
+          .single-riddim aside .artist-album__container-box .artist-image,
           .single-album aside .artist-album__container-box .artist-image {
             margin-right: 0; } }
+        .single-riddim aside .artist-album__container-box .artist-image img,
         .single-album aside .artist-album__container-box .artist-image img {
           border-radius: 50%;
           max-width: 12rem;
           box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5); }
       @media (min-width: 768px) and (max-width: 1023.98px) {
+        .single-riddim aside .artist-album__container-box .artist-info,
         .single-album aside .artist-album__container-box .artist-info {
           margin-top: 2rem; } }
+      .single-riddim aside .artist-album__container-box .artist-info .artist-title,
       .single-album aside .artist-album__container-box .artist-info .artist-title {
         font-weight: 600; }
+      .single-riddim aside .artist-album__container-box .artist-info > i,
       .single-album aside .artist-album__container-box .artist-info > i {
         color: #F66D38; }
+      .single-riddim aside .artist-album__container-box .artist-info ul,
       .single-album aside .artist-album__container-box .artist-info ul {
         margin-top: .5rem; }
+        .single-riddim aside .artist-album__container-box .artist-info ul li,
         .single-album aside .artist-album__container-box .artist-info ul li {
           display: inline-block;
           margin-right: .5rem; }
+          .single-riddim aside .artist-album__container-box .artist-info ul li a,
           .single-album aside .artist-album__container-box .artist-info ul li a {
             display: block; }
+          .single-riddim aside .artist-album__container-box .artist-info ul li i,
           .single-album aside .artist-album__container-box .artist-info ul li i {
             font-size: 2rem;
             transition: all .3s; }
+            .single-riddim aside .artist-album__container-box .artist-info ul li i.fa-twitter:hover,
             .single-album aside .artist-album__container-box .artist-info ul li i.fa-twitter:hover {
               color: #55ACEE; }
+            .single-riddim aside .artist-album__container-box .artist-info ul li i.fa-instagram:hover,
             .single-album aside .artist-album__container-box .artist-info ul li i.fa-instagram:hover {
               background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
               -webkit-text-fill-color: transparent;
               -webkit-background-clip: text;
               box-decoration-break: clone; }
+            .single-riddim aside .artist-album__container-box .artist-info ul li i.fa-facebook-f:hover,
             .single-album aside .artist-album__container-box .artist-info ul li i.fa-facebook-f:hover {
               color: #4267B2; }
+            .single-riddim aside .artist-album__container-box .artist-info ul li i.fa-youtube:hover,
             .single-album aside .artist-album__container-box .artist-info ul li i.fa-youtube:hover {
               color: #F50E02; }
 
@@ -2383,14 +2409,17 @@ html {
     transform: scale(0.98);
     box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24); }
 
+.post-type-archive-riddim .hero-banner,
 .post-type-archive-artist .hero-banner {
   display: none; }
 
+.post-type-archive-riddim h2,
 .post-type-archive-artist h2 {
   letter-spacing: .3rem;
   font-weight: 700;
   text-transform: uppercase;
   position: relative; }
+  .post-type-archive-riddim h2::after,
   .post-type-archive-artist h2::after {
     content: '';
     position: absolute;
@@ -2400,9 +2429,11 @@ html {
     width: 77px;
     background: #F66D38; }
   @media (max-width: 767.98px) {
+    .post-type-archive-riddim h2,
     .post-type-archive-artist h2 {
       letter-spacing: 0; } }
 
+.post-type-archive-riddim .principal,
 .post-type-archive-artist .principal {
   border-radius: 1rem;
   padding: 0 2rem 2rem;
@@ -2412,18 +2443,22 @@ html {
   border-radius: 5px;
   background: rgba(255, 255, 255, 0.06); }
   @media (max-width: 767.98px) {
+    .post-type-archive-riddim .principal,
     .post-type-archive-artist .principal {
       column-count: 1; } }
   @media (min-width: 768px) and (max-width: 1023.98px) {
+    .post-type-archive-riddim .principal,
     .post-type-archive-artist .principal {
       column-count: 3; } }
 
+.post-type-archive-riddim .group,
 .post-type-archive-artist .group {
   display: inline-block;
   margin: 0 0 2em;
   width: 100%;
   transition: 1s ease all; }
 
+.post-type-archive-riddim .letter,
 .post-type-archive-artist .letter {
   font-size: 3rem;
   padding-top: 2rem;
@@ -2432,6 +2467,7 @@ html {
   padding-bottom: 0.2em;
   border-bottom: 0.125rem solid #fff; }
 
+.post-type-archive-riddim .bloc-letter a:hover,
 .post-type-archive-artist .bloc-letter a:hover {
   text-decoration: underline; }
 

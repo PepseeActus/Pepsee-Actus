@@ -57,6 +57,25 @@ function pepsee_post_types() {
         ]
     ]);
 
+    // Riddim Post Type
+    register_post_type('riddim', [
+        'supports'     => ['title', 'editor', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields'],
+        'taxonomies'   => ['post_tag'],
+        'rewrite'      => ['slug' => 'riddim'],
+        'has_archive'  => true,
+        'public'       => true,
+        'show_in_rest' => true,
+        'menu_position'=> 5,
+        'menu_icon'    => 'dashicons-album',
+        'labels' => [
+            'name'          => 'Riddim',
+            'add_new_item'  => 'Ajouter un nouvel riddim',
+            'edit_item'     => 'Éditer un riddim',
+            'all_items'     => 'Tous les riddims',
+            'singular_name' => 'Riddim'
+        ]
+    ]);
+
     // Banner Post Type
     register_post_type('banner', [
         'supports'     => ['title', 'editor', 'thumbnail', 'revisions', 'custom-fields'],

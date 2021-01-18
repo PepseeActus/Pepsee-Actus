@@ -180,8 +180,6 @@ $(document).ready(function() {
     }
 
     //GREENSOCK
-    let logo = document.querySelector('.logo');
-    let navWrapper = document.querySelector('.nav-wrapper');
     let headerLogo = document.querySelector('.headerLogo');
     let headerThumbnail = document.querySelectorAll('.headerThumbnail .post');
 
@@ -191,9 +189,7 @@ $(document).ready(function() {
         if (window.innerWidth > 992) {
             TL
             .from(headerThumbnail, {duration: 2, opacity: 0, top: 20, ease: "slow"})
-            .to(headerLogo, {duration: 3, opacity: 1, ease: "slow"}, "-=1")
-            .from(logo, {duration: 0.5, transform: "translateY(-50px)", ease: "slow"}, "-=2")
-            .from(navWrapper, {duration: 0.5, transform: "translateY(-50px)", ease: "slow"}, "-=2");
+            .to(headerLogo, {duration: 3, opacity: 1, ease: "slow"}, "-=1");
 
             TL.play();
         }

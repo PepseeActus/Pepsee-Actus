@@ -10,23 +10,17 @@
 get_header();
 
 while ( have_posts() ) : the_post(); ?>
-    <?php 
-        $artistes = get_field('artistes');
-        $titre = get_field('titre');
-        $riddim = get_field('riddim');
-    ?>
-    
     <div class="row">
         <div id="post-<?php the_ID(); ?>" <?php post_class('col-12 col-md-9'); ?>>
+            <?php $label = get_field('label'); ?>
             <div class="music-presentation">
                 <div class="music-presentation__picture rotate">
                     <?php the_post_thumbnail('thumbnail'); ?>
                 </div>
                 <div class="music-presentation__info">
                     <div class="music-presentation__info-name">
-                        <span class="entry-title name"><?= $artistes ?></span><br>
-                        <span class="entry-title"><?= $titre ?></span>
-                        <?= ($riddim) ? '<span class="entry-title riddim">'.$riddim.' Riddim</span>' : ''; ?>
+                        <span class="entry-title"><?= get_the_title(); ?> Riddim</span>
+                        <div><span><?= get_the_date('Y'); ?> </span><span>(<?= ($label) ? $label : ''; ?>)</span></div>
                     </div>
                     <div class="music-presentation__info-reseaux">
                         <?php get_template_part( 'parts/link-template' ); ?>
