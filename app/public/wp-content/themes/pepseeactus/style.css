@@ -1710,8 +1710,10 @@ html {
 
 .home .artist {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around; }
+  flex-wrap: wrap; }
+  @media (max-width: 767.98px) {
+    .home .artist {
+      justify-content: space-around; } }
   .home .artist article {
     display: inline-block;
     margin: 0 20px;

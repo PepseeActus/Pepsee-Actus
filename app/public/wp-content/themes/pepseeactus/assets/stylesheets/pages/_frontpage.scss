@@ -389,7 +389,10 @@
     .artist {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-around;
+
+        @include media(phone) {
+            justify-content: space-around;
+        }
 
         article {
             display: inline-block;
