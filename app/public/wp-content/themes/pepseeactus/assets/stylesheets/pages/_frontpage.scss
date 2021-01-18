@@ -387,10 +387,18 @@
     }
 
     .artist {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+
         article {
             display: inline-block;
             margin: 0 20px;
             text-align: center;
+
+            @include media(phone) {
+                margin: 0 0 35px;
+            }
         }
 
         img {

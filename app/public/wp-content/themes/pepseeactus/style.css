@@ -1708,17 +1708,22 @@ html {
   .home .actus .videos-info p {
     display: none; } }
 
-.home .artist article {
-  display: inline-block;
-  margin: 0 20px;
-  text-align: center; }
-
-.home .artist img {
-  border-radius: 50%; }
-
-.home .artist .name a {
-  text-transform: uppercase;
-  font-weight: 600; }
+.home .artist {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around; }
+  .home .artist article {
+    display: inline-block;
+    margin: 0 20px;
+    text-align: center; }
+    @media (max-width: 767.98px) {
+      .home .artist article {
+        margin: 0 0 35px; } }
+  .home .artist img {
+    border-radius: 50%; }
+  .home .artist .name a {
+    text-transform: uppercase;
+    font-weight: 600; }
 
 @media (max-width: 1023.98px) {
   .single-post {
