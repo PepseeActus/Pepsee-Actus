@@ -1,5 +1,4 @@
 <?php 
-    $download = get_field('download');
     $backlink = get_field('backlink');
     $soundcloud = get_field('soundcloud');
     $youtube = get_field('youtube');
@@ -124,9 +123,3 @@
         </a></li>' : ''; ?>
     </ul>
 </div>
-<?php if ($download) : ?>
-    <div class="download">
-        <p>For promotional use only</p>
-        <a href="<?php $download ?>" target="_blank">Télécharger</a>
-    </div>
-<?php endif; ?>

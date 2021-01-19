@@ -28,9 +28,12 @@ while ( have_posts() ) : the_post(); ?>
                 </div>
             </div>
             <div class="music-content">
+                <div class="link">
+                    <?php get_template_part( 'parts/download-template' ); ?>
+                </div>
                 <?php the_content(); ?>
                 <div class="link">
-                    <?php get_template_part( 'parts/big-link-template' ); ?>
+                    <?php get_template_part( 'parts/stream-link-template' ); ?>
                 </div>
             </div>
         </div>
