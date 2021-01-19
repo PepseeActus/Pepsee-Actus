@@ -19,7 +19,7 @@ while ( have_posts() ) : the_post(); ?>
                 </div>
                 <div class="music-presentation__info">
                     <div class="music-presentation__info-name">
-                        <span class="entry-title"><?= get_the_title(); ?> Riddim</span>
+                        <span class="entry-title"><?= get_the_title(); ?></span>
                         <div><span><?= get_the_date('Y'); ?> </span><span>(<?= ($label) ? $label : ''; ?>)</span></div>
                     </div>
                     <div class="music-presentation__info-reseaux">
