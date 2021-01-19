@@ -1915,7 +1915,8 @@ html {
 
 .music-content .link {
   margin: 20px 0 20px;
-  text-align: center; }
+  text-align: center;
+  color: #F66D38; }
   .music-content .link .stream {
     margin-bottom: 20px; }
   .music-content .link svg {
@@ -1926,7 +1927,7 @@ html {
     margin-bottom: 18px; }
   .music-content .link .download a {
     border-radius: 10px;
-    border: 1px solid;
+    border: 1px solid #F66D38;
     box-shadow: 0 0 0 0 #F66D38;
     animation: pulse 1.3s infinite;
     padding: 10px 20px; }

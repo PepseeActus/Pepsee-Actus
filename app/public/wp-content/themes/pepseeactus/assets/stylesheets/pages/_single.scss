@@ -267,6 +267,7 @@
 .music-content .link {
     margin: 20px 0 20px;
     text-align: center;
+    color: $color__orange;
 
     .stream {
         margin-bottom: 20px;
@@ -285,7 +286,7 @@
 
         a {
             border-radius: 10px;
-            border: 1px solid;
+            border: 1px solid $color__orange;
             box-shadow: 0 0 0 0 $color__orange;
             animation: pulse 1.3s infinite;
             padding: 10px 20px;
