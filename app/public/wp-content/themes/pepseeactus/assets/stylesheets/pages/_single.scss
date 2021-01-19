@@ -269,7 +269,7 @@
     text-align: center;
 
     .stream {
-        margin-bottom: 40px;
+        margin-bottom: 20px;
     }
 
     svg {
@@ -280,13 +280,13 @@
 
     .download {
         p {
-            margin-bottom: 15px;
+            margin-bottom: 18px;
         }
 
         a {
             border-radius: 10px;
             border: 1px solid;
-            box-shadow: 0 0 0 0 #fff;
+            box-shadow: 0 0 0 0 $color__orange;
             animation: pulse 1.3s infinite;
             padding: 10px 20px;
         }
