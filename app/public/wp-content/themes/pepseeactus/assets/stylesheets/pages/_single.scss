@@ -1,3 +1,146 @@
+.single {
+    .scriptlesssocialsharing {
+        .scriptlesssocialsharing__buttons {
+            justify-content: space-around;
+        }
+
+        a.button {
+            margin: 5px 0;
+            border: none;
+            background-color: $color__orange !important;
+
+            &::before {
+                border: none;
+            }
+        }
+    }
+
+    .music-content {
+        p, ul {
+            margin-bottom: 1rem;
+        }
+
+        li {
+            text-align: center;
+        }
+    }
+
+    .artist-album {    
+        display: flex;
+        justify-content: center;
+        flex-flow: wrap;
+
+        @include media(phone) {
+            flex-direction: column;
+
+            .artist-info__container {
+                flex-flow: wrap;
+                justify-content: center;
+            }
+        }
+
+        .artist-image__container {
+            margin-left: 30px;
+        }
+
+        .artist-image__container,
+        .artist-info__container {
+            display: flex;
+            align-items: center;
+
+            @include media(phone) {
+                justify-content: center;
+            }
+
+            .artist-image {
+                position: relative;
+                margin-left: -30px;
+                height: 8rem;
+                width: 8rem;
+                min-width: 8rem;
+                min-height: 8rem;
+                overflow: hidden;
+                border-radius: 50%;
+                border: 4px solid $color__background-color;
+
+                img {
+                    position: absolute;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    min-height: 100%;
+                    max-width: 8rem;
+                }
+            }
+
+            .artist-info {
+                @include media(desktop) {
+                    margin-left: 5px;
+
+                    &:first-of-type {
+                        margin-left: 10px;
+                    }
+                }
+
+                @include media(tablet) {
+                    margin-top: 2rem;
+                }
+
+                @include media(phone) {
+                    &:first-of-type {
+                        margin-right: 10px;
+                    }
+                }
+
+                + .artist-info::before {
+                    content: '/';
+                    margin-right: 5px;
+                }
+
+                .artist-title {
+                    font-weight: 600;
+                }
+
+                > i {
+                    color: $color__orange
+                }
+            }
+        }
+    }
+
+    li.pis-li {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    p.pis-title {
+        order: 1;
+        font-size: 15px;
+    }
+
+    p.pis-excerpt {
+        position: relative;
+        order: 0;
+        width: 86px;
+        height: 86px;
+        min-width: 86px;
+        min-height: 86px;
+        margin-right: 10px;
+        border-radius: 50%;
+        overflow: hidden;
+
+        img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 100%;
+            width: auto;
+            max-width: initial;
+        }
+    }
+}
+
 .single-post {
     @include media(phone-tablet) {
         margin-bottom: 30px;
@@ -22,6 +165,23 @@
     }
 
     .single-content {
+        .music-related a {
+            box-shadow: none;
+        }
+
+        .music-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-flow: wrap;
+        }
+
+        .music-cover {
+            margin-right: 10px;
+            width: 8rem;
+            height: 8rem;
+        }
+
         .post-meta {
             border-top: 1px solid rgba(255, 255, 255, 0.10);
             padding-top: 10px;
@@ -30,29 +190,6 @@
 
             .fa.fa-eye {
                 margin-right: 5px;
-            }
-        }
-
-        .scriptlesssocialsharing {
-            position: relative;
-
-            .scriptlesssocialsharing__buttons {
-                @include media(desktop) {
-                    position: absolute;
-                    flex-direction: column;
-                    display: inline-flex;
-                    left: -65px;
-                }
-            }
-
-            a.button {
-                border-radius: 50%;
-                margin: 5px 0;
-                border: none;
-
-                &::before {
-                    border: none;
-                }
             }
         }
     }
@@ -67,7 +204,7 @@
         margin: 0 auto 5rem;
         text-align: center;
         position: relative;
-        max-width: 65%;
+        max-width: 75%;
 
         &::after {
             content: '';
@@ -119,7 +256,7 @@
 
         @include media(phone) {
             font-size: 25px;
-            bottom: 0;
+            bottom: -15px;
             line-height: 45px;
         }
     }
@@ -264,13 +401,18 @@
 }
 
 //BIG LINK
-.music-content .link {
+.link {
     margin: 20px 0 20px;
     text-align: center;
-    color: $color__orange;
 
     .stream {
+        color: $color__orange;
         margin-bottom: 20px;
+
+        p {
+            text-transform: uppercase;
+            font-weight: 400;
+        }
     }
 
     svg {
@@ -280,6 +422,8 @@
     }
 
     .download {
+        margin-bottom: 20px;
+
         p {
             margin-bottom: 18px;
         }

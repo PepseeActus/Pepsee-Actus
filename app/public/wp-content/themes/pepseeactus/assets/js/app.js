@@ -20,7 +20,7 @@ $(document).ready(function() {
     };
 
     // SWIPER
-    var mySwiper = new Swiper('.swiper-container-actus', {
+    const actusSwiper = new Swiper('.swiper-actus', {
         slidesPerView: 2,
         spaceBetween: 10,
         navigation: {
@@ -35,19 +35,16 @@ $(document).ready(function() {
         }
     });
 
-    var mySwiper2 = new Swiper('.swiper-container-clips', {
-        slidesPerView: 2,
-        spaceBetween: 10,
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
+    const headerSwiper = new Swiper('.swiper-header', {
+        slidesPerView: 1,
+        pagination: {
+            el: ".swiper-pagination",
         },
-        breakpoints: {
-            992: {
-                slidesPerView: 4,
-                spaceBetween: 20
-            },
-        }
+        clickable: true,
+        autoplay: {
+            delay: 5000,
+        },
+        loop: true
     });
 
     // COMMENTAIRES
@@ -179,19 +176,35 @@ $(document).ready(function() {
         }
     }
 
-    //GREENSOCK
-    let headerLogo = document.querySelector('.headerLogo');
-    let headerThumbnail = document.querySelectorAll('.headerThumbnail .post');
+    //RETIRE LE NOM DE L'ARTISTE DANS LE NOM DE L'ALBUM
+    const text = $('.related-album a').text();
+    const album = text.split("–")[1];
+    $('.related-album a').text(album);
 
-    window.addEventListener('load', () => {
-        const TL = gsap.timeline({paused:true});
+    //SEE MORE BIO DES ARTISTES
+    var readmore = document.querySelectorAll(".readmore-link a");
 
-        if (window.innerWidth > 992) {
-            TL
-            .from(headerThumbnail, {duration: 2, opacity: 0, top: 20, ease: "slow"})
-            .to(headerLogo, {duration: 3, opacity: 1, ease: "slow"}, "-=1");
+    for (var i = 0; i < readmore.length; i++) {
+        var el = readmore[i];
+        el.onclick = function() {
+            
+            let readmoreContainer = el.closest("div");
+            readmoreContainer.classList.toggle("open");
+            
+            let lable = (el.innerHTML === "Voir plus") ? "Voir moins" : "Voir plus";
+            el.innerHTML = lable;
+            
+            return false;
+        };
+    }
 
-            TL.play();
-        }
-    })
+    //CACHER LES VISUELS D'ARTISTES QUAND ILS SONT TROP NOMBREUX (PAGE MUSIQUE)
+    if ( $('.artist-image__container .artist-image').length > 6 ) {
+        $('.artist-image__container .artist-image').slice(6).hide();
+    }
+
+    if ( $('.artist-info__container .artist-info').length > 5 ) {
+        $('.artist-info__container .artist-info').slice(5).hide();
+        $('.artist-info__container').append('<div class="artist-info">and more...</div>')
+    }
 });

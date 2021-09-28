@@ -19,6 +19,25 @@ function pepsee_post_types() {
         ]
     ]);
 
+    // Beatmakers Post Type
+    register_post_type('beatmaker', [
+        'supports'     => ['title', 'editor', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields'],
+        'taxonomies'   => ['post_tag'],
+        'rewrite'      => ['slug' => 'beatmaker'],
+        'has_archive'  => true,
+        'public'       => true,
+        'show_in_rest' => true,
+        'menu_position'=> 5,
+        'menu_icon'    => 'dashicons-universal-access',
+        'labels'       => [
+            'name'          => 'Beatmakers',
+            'add_new_item'  => 'Ajouter un nouvel beatmaker',
+            'edit_item'     => 'Éditer un beatmaker',
+            'all_items'     => 'Tous les beatmakers',
+            'singular_name' => 'Beatmaker'
+        ]
+    ]);
+
     // Music Post Type
     register_post_type('music', [
         'supports'     => ['title', 'editor', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields'],
@@ -88,10 +107,27 @@ function pepsee_post_types() {
             'name'          => 'Banner',
             'add_new_item'  => 'Ajouter un nouvel banner',
             'edit_item'     => 'Éditer un banner',
-            'all_items'     => 'Tous les banners',
+            'all_items'     => 'Toutes les banners',
             'singular_name' => 'banner'
         ]
     ]);
+
+    // Banner Music Post Type
+    register_post_type('banner-music', [
+        'supports'     => ['title', 'editor', 'thumbnail', 'revisions', 'custom-fields'],
+        'rewrite'      => ['slug' => 'banner-music'],
+        'menu_position'=> 6,
+        'public'       => true,
+        'show_in_rest' => true,
+        'menu_icon'    => 'dashicons-money',
+        'labels' => [
+            'name'          => 'Banner Music',
+            'add_new_item'  => 'Ajouter un nouvel banner',
+            'edit_item'     => 'Éditer un banner',
+            'all_items'     => 'Toutes les banners',
+            'singular_name' => 'banner'
+        ]
+    ]);    
 }
 
 add_action('init', 'pepsee_post_types');

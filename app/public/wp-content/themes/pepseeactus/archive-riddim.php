@@ -31,7 +31,7 @@ get_header();
                 echo '<div class="group">';
                 echo '<h3 class="letter">' . $this_year . '</h3>';
             }
-            echo '<div class="bloc-letter"><a href=' . get_the_permalink() . '>' . get_the_title() . ' Riddim';
+            echo '<div class="bloc-letter"><a href=' . get_the_permalink() . '>' . get_the_title();
             echo '</a></div>';
             $prev_year = $this_year;
 

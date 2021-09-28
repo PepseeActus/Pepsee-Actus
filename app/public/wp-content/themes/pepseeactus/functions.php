@@ -1,5 +1,7 @@
 <?php
 require get_theme_file_path('/inc/search-route.php');
+require_once "libs/aq_resizer.php";
+require_once "libs/Mobile_Detect.php";
 
 if ( ! function_exists( 'pepseeactus_setup' ) ) :
 	/**
@@ -36,9 +38,6 @@ if ( ! function_exists( 'pepseeactus_setup' ) ) :
 		*/
 		add_theme_support( 'post-thumbnails' );
 
-		add_image_size( 'pepseeactus-ArtistsFront', 380, 500, true );
-		add_image_size( 'banner', 1280, 720, true );
-
 		// Logo du site
 		add_theme_support( 'custom-logo', array(
 			'height'      => 200,
@@ -58,12 +57,7 @@ if ( ! function_exists( 'pepseeactus_setup' ) ) :
 			'gallery',
 			'caption',
 		) );
-
-		// Post format
-		add_theme_support( 'post-formats', array(
-			'video',
-		) );
-}
+	}
 endif;
 add_action( 'after_setup_theme', 'pepseeactus_setup' );
 
@@ -79,34 +73,24 @@ function pepseeactus_content_width() {
 }
 add_action( 'after_setup_theme', 'pepseeactus_content_width', 0 );
 
-// Custom logo
-function pepseeactus_the_custom_logo() {
-	if ( ! function_exists( 'the_custom_logo' ) ) {
-		return;
-	} else {
-		the_custom_logo();
-	}
-}
-
 // CSS & JavaScript et autres scripts
 function pepseeactus_scripts() {
 	wp_register_style('bootstrap', 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css', []);
 	wp_register_script('bootstrap', 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js', ['popper', 'jquery'], false, true);
-	wp_register_style('swiperjs', 'https://unpkg.com/swiper/swiper-bundle.min.css', []);
-	wp_register_script('swiperjs', 'https://unpkg.com/swiper/swiper-bundle.min.js', [], false, true);
-	wp_register_script('greensock', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js', [], false, true);
+	wp_register_style('swiperjs', 'https://unpkg.com/swiper@7/swiper-bundle.min.css', []);
+	wp_register_script('swiperjs', 'https://unpkg.com/swiper@7/swiper-bundle.min.js', [], false, true);
+	wp_register_script('popper', 'https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js', [], false, true);
 	wp_deregister_script('jquery');
 	wp_register_script('jquery', 'https://code.jquery.com/jquery-3.4.1.js', [], false, true);	
 	wp_register_script('font-awesome', 'https://kit.fontawesome.com/628ddd9372.js', [], false, true);	
 
 	wp_enqueue_style('bootstrap');
 	wp_enqueue_style('swiperjs');
-	wp_enqueue_style('pepseeactus-style', get_stylesheet_uri());
+	wp_enqueue_style('pepseeactus-style', get_stylesheet_uri(), array(), filemtime(get_template_directory() . '/style.css'), false);
 
 	wp_enqueue_script('bootstrap');
 	wp_enqueue_script('swiperjs');
 	wp_enqueue_script('font-awesome');
-	wp_enqueue_script('greensock');
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -203,14 +187,31 @@ if ( !function_exists( 'theme_pagination' ) ) {
 }
 
 // Glossaire
+function is_post_type($type){
+    global $wp_query;
+    if ( $type == get_post_type($wp_query->post->ID) ) 
+        return true;
+    return false;
+}
+
 function list_glossary_posts() {
 	global $post;
-	$args = [
-		'posts_per_page' => -1,
-		'post_type' => 'artist',
-		'orderby'=> 'title',
-		'order' => 'ASC'
-	];
+	if (is_post_type('artist')) {
+		$args = [
+			'posts_per_page' => -1,
+			'post_type' => 'artist',
+			'orderby'=> 'title',
+			'order' => 'ASC'
+		];
+	} else {
+		$args = [
+			'posts_per_page' => -1,
+			'post_type' => 'beatmaker',
+			'orderby'=> 'title',
+			'order' => 'ASC'
+		];
+	}
+
 	$postslist = get_posts( $args );
 	ob_start();
 
@@ -376,3 +377,37 @@ function pepsee_filter_function(){
 
 	die();
 }
+
+// First, make sure Jetpack doesn't concatenate all its CSS
+add_filter( 'jetpack_implode_frontend_css', '__return_false' );
+
+// Then, remove each CSS file, one at a time
+function jeherve_remove_all_jp_css() {
+  wp_deregister_style( 'AtD_style' ); // After the Deadline
+  wp_deregister_style( 'jetpack_likes' ); // Likes
+  wp_deregister_style( 'jetpack_related-posts' ); //Related Posts
+  wp_deregister_style( 'jetpack-carousel' ); // Carousel
+  wp_deregister_style( 'grunion.css' ); // Grunion contact form
+  wp_deregister_style( 'the-neverending-homepage' ); // Infinite Scroll
+  wp_deregister_style( 'infinity-twentyten' ); // Infinite Scroll - Twentyten Theme
+  wp_deregister_style( 'infinity-twentyeleven' ); // Infinite Scroll - Twentyeleven Theme
+  wp_deregister_style( 'infinity-twentytwelve' ); // Infinite Scroll - Twentytwelve Theme
+  wp_deregister_style( 'noticons' ); // Notes
+  wp_deregister_style( 'post-by-email' ); // Post by Email
+  wp_deregister_style( 'publicize' ); // Publicize
+  wp_deregister_style( 'sharedaddy' ); // Sharedaddy
+  wp_deregister_style( 'sharing' ); // Sharedaddy Sharing
+  wp_deregister_style( 'stats_reports_css' ); // Stats
+  wp_deregister_style( 'jetpack-widgets' ); // Widgets
+  wp_deregister_style( 'jetpack-slideshow' ); // Slideshows
+  wp_deregister_style( 'presentations' ); // Presentation shortcode
+  wp_deregister_style( 'jetpack-subscriptions' ); // Subscriptions
+  wp_deregister_style( 'tiled-gallery' ); // Tiled Galleries
+  wp_deregister_style( 'widget-conditions' ); // Widget Visibility
+  wp_deregister_style( 'jetpack_display_posts_widget' ); // Display Posts Widget
+  wp_deregister_style( 'gravatar-profile-widget' ); // Gravatar Widget
+  wp_deregister_style( 'widget-grid-and-list' ); // Top Posts widget
+  wp_deregister_style( 'jetpack-widgets' ); // Widgets
+}
+
+add_action('wp_print_styles', 'jeherve_remove_all_jp_css' );

@@ -9,7 +9,7 @@ $titre = get_field('titre');
     </a>
     <div class="info">
         <div class="title">
-            <a href="<?php the_permalink(); ?>" target="_blank"><?= $artistes; ?></a>
+            <a href="<?php the_permalink(); ?>"><?= $artistes; ?></a>
             <?php if ( intval(strtotime($post->post_modified)) > intval($weekAgo) ) : ?>
             <span class="new"><svg class="widget__icon" width="39.45" height="49.68" viewBox="0 0 39.45 49.68">
                     <path
@@ -18,6 +18,27 @@ $titre = get_field('titre');
                 </svg> NEW</span>
             <?php endif; ?>
         </div>
-        <p><a href="<?php the_permalink(); ?>" target="_blank"><?= $titre; ?> - <?php the_date('Y'); ?></a></p>
+        <p>
+            <a href="<?php the_permalink(); ?>">
+            <?= $titre; ?>                                   
+            <div>
+                <?php if ( get_the_time( 'Y' ) != current_time( 'Y' ) ) {
+                    the_date('Y');
+                } else {
+                    the_date('F Y');
+                } ?>
+            </div>
+            </a>
+        </p>
+        <div class="beatmaker">
+            <?php $beatmakers = get_field('beatmaker');
+            if ($beatmakers): ?>
+                Beatmaker :
+                    <?php foreach ($beatmakers as $beatmaker) { ?>
+                        <p><a href="<?= get_the_permalink($beatmaker); ?>"><b><?= get_the_title($beatmaker); ?></b></a></p>
+                    <?php } ?>
+            <?php endif; ?>
+        </div>
+        <?php get_template_part( 'parts/link-template' ); ?>
     </div>
 </article>

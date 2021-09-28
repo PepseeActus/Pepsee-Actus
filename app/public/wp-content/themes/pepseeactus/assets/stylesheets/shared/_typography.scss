@@ -87,7 +87,7 @@ h3 {
 	font-size: 3rem;
 
 	&.widget-title {
-		padding: 10px 0 0 15px;
+		padding: 0 0 0 15px;
 		margin-bottom: 1rem;
 		font-size: 2.5rem;
 		border-radius: 5px;
@@ -102,7 +102,7 @@ h3 {
 			position: absolute;
 			bottom: 0;
 			left: 0;
-			height: 42px;
+			height: 30px;
 			width: 5px;
 			background: $color__orange;
 			transform: translateY(-50%);
@@ -133,7 +133,7 @@ figcaption {
 
 .single article, .page .page-content {
 	p {
-		margin: 1rem 0 3rem;
+		margin: 1rem 0;
 	}
 
 	.scriptlesssocialsharing__buttons a :hover {
@@ -141,35 +141,6 @@ figcaption {
 	}
 
 	a {
-		position: relative;
-		font-weight: 500;
-		transition: transform 0.2s;
 		box-shadow: $color__orange 0px -5px 0px inset;
-
-		&:hover,
-		&:focus {
-			transform: scale(0.8333);
-		}
-
-		&::before {
-			position: absolute;
-			top: -2px;
-			left: -7px;
-			box-sizing: content-box;
-			padding: 0 5px;
-			width: 100%;
-			height: 100%;
-			border: 2px solid $color__orange;
-			content: '';
-			opacity: 0;
-			transition: opacity 0.2s, transform 0.2s;
-			transform: scale(0.8333);
-		}
-
-		&:hover::before,
-		&:focus::before {
-			opacity: 1;
-			transform: scale(1.2);
-		}
 	}
 }

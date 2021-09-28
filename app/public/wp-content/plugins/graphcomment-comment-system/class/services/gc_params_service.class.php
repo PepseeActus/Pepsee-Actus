@@ -87,8 +87,9 @@ class GcParamsService
 
   private function initUser() {
     $response = wp_remote_get(constant('API_URL_ME'), array(
-      'sslverify' => constant('SSLVERIFY'),
-      'headers' => array('Authorization' => 'Bearer ' . $this->graphcommentGetClientToken())
+        'timeout' => 5,
+        'sslverify' => constant('SSLVERIFY'),
+        'headers' => array('Authorization' => 'Bearer ' . $this->graphcommentGetClientToken())
     ));
 
     // Extract the HTTP ret code
@@ -153,7 +154,8 @@ class GcParamsService
 
       // Create the client
       $response = wp_remote_get(constant('API_URL_OAUTH_CLIENT_ME'), array(
-        'sslverify' => constant('SSLVERIFY'),
+          'timeout' => 5,
+          'sslverify' => constant('SSLVERIFY'),
         'headers' => array('Authorization' => 'Basic ' . base64_encode($this->gc_params['gc_oauth_client_key'] . ':' . $this->gc_params['gc_oauth_client_secret']))
       ));
 
@@ -176,7 +178,7 @@ class GcParamsService
   public function createNewApplication() {
     // Create the client
     $response = wp_remote_post(constant('API_URL_OAUTH_CLIENT_CREATE'), array(
-      'sslverify' => constant('SSLVERIFY')
+        'sslverify' => constant('SSLVERIFY')
     ));
 
     // Extract the HTTP ret code
@@ -259,7 +261,9 @@ class GcParamsService
 
     // Ask for a token
     $response = wp_remote_post(constant('API_URL_OAUTH_CLIENT_CREATE_TOKEN'),
-      array('sslverify' => constant('SSLVERIFY'),
+      array(
+          'timeout' => 10,
+          'sslverify' => constant('SSLVERIFY'),
           'headers' => array('Authorization' => 'Basic ' . base64_encode($this->graphcommentGetClientKey() . ':' . $this->graphcommentGetClientSecret())),
           'body' => array('code' => $this->graphcommentGetClientCode(),
           'redirect_uri' => $this->graphcommentGetRedirectUri(),
@@ -315,7 +319,9 @@ class GcParamsService
       // Create the client
       $response = wp_remote_get(
           constant('API_URL_GET_WEBSITES'),
-          array('sslverify' => constant('SSLVERIFY'),
+          array(
+              'timeout' => 5,
+              'sslverify' => constant('SSLVERIFY'),
                 'headers' => array('Authorization' => 'Bearer ' . $this->graphcommentGetClientToken())
           )
       );
@@ -546,6 +552,7 @@ class GcParamsService
     $response = wp_remote_post(
       str_replace(':websiteId', $this->gc_params['gc_website_id'], constant('API_URL_TOGGLE_SSO')),
       array(
+        'timeout' => 10,
         'sslverify' => constant('SSLVERIFY'),
         'headers' => array('Authorization' => 'Bearer ' . $this->graphcommentGetClientToken()),
         'body' => array('active' => $ssoActivated, 'unidirectional' => true),
@@ -563,6 +570,7 @@ class GcParamsService
     $response = wp_remote_get(
       str_replace(':websiteId', $this->gc_params['gc_website_id'], constant('API_URL_GET_WEBSITE_API_KEYS')),
       array(
+        'timeout' => 5,
         'sslverify' => constant('SSLVERIFY'),
         'headers' => array('Authorization' => 'Bearer ' . $this->graphcommentGetClientToken())
       )

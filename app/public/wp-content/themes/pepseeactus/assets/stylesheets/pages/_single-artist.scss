@@ -1,4 +1,5 @@
-.single-artist {
+.single.single-artist,
+.single-beatmaker {
     main {
         padding-top: 5rem;
         padding-bottom: 2rem;
@@ -23,6 +24,11 @@
         letter-spacing: inherit;
         margin-bottom: 3rem;
         position: relative;
+        text-transform: initial;
+
+        @include media(phone) {
+            font-size: 30px;
+        }
 
         &::after {
             content: '';
@@ -37,22 +43,40 @@
 
     .artist-presentation {
         display: flex;
-        align-items: flex-end;
+        align-items: center;
         position: relative;
         top: -6.5rem;
 
         @include media(phone) {
             display: block;
             text-align: center;
-            top: -20px;
+            top: 0;
         }
 
-        &__picture {
+        .artist-presentation__picture {
+            position: relative;
             margin-right: 2rem;
+            max-width: 15rem;
+            min-width: 15rem;
+            max-height: 15rem;
+            width: 15rem;
+            height: 15rem;
+            border-radius: 50%;
+            overflow: hidden;
+            @include shadow();
+
+            @include media(phone) {
+                margin: 0 auto;
+            }
 
             img {
-                border-radius: 50%;
-                @include shadow();
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                min-height: 100%;
+                min-width: 100%;
+                width: auto;
+                max-width: 200px;
             }
         }
 
@@ -87,7 +111,9 @@
                 }
             }
 
-            &-reseaux {
+            .artist-presentation__info-reseaux {
+                margin-top: 1rem;
+
                 li {
                     display: inline-block;
                     margin-right: 1rem;
@@ -121,84 +147,106 @@
     }
 
     .artist-bio {
-        margin-bottom: 5rem;
+        position: relative;
+        max-height: 160px;
+        margin-bottom: 2rem;
         text-align: justify;
+        overflow-y: hidden;
+        transition: all 0.5s ease;
+
+        &.open {
+            max-height: 100%;
+            transition: all 0.5s ease;
+        }
 
         p {
             margin-bottom: 1rem;
         }
-    }
 
-    .card {
-        background-color: transparent;
-        border: none;
+        .readmore-link {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            margin: 0;
+            padding: 15px 0 5px;
+            text-align: center;
+            background-image: -moz-linear-gradient(top, transparent, white);
+            background-image: -webkit-gradient(
+                linear,
+                left top,
+                left bottom,
+                color-stop(0, transparent),
+                color-stop(1, $color__background-color)
+            );
 
-        >div:first-child {
-            cursor: pointer;
-        }
+            a {
+                text-decoration: none;
+                font-size: 12px;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                background-color: $color__orange;
+                padding: 5px 10px;
+                border-radius: 5px;
+                transition: all 0.25s ease;
 
-        .panel-title {
-            position: relative;
-        }
-
-        .panel-title::after {
-            content: "\f107";
-            font-family: "FontAwesome";
-            vertical-align: middle;
-        }
-
-        .panel-title[aria-expanded="true"]::after {
-            content: "\f106";
+                &:hover {
+                    opacity: 1;
+                }
+            }
         }
     }
 
     .artist-album {
+        flex-flow: column;
         margin-bottom: 2rem;
 
-        &__container {
+        .artist-album__container {
             display: flex;
             flex-flow: wrap;
+        }
 
-            &-box {
-                display: flex;
-                margin-bottom: 2rem;
+        .artist-album__container-box {
+            display: flex;
+            margin-bottom: 2rem;
 
-                .album-image {
-                    margin-right: 1rem;
+            .album-image {
+                margin-right: 1rem;
 
-                    img {
-                        @include shadow();
-                    }
+                img {
+                    width: 105px;
+                    height: 105px;
+                    @include shadow();
+                }
+            }
+
+            .album-info {
+                .album-title {
+                    font-weight: 600;
                 }
 
-                .album-info {
-                    .album-title {
-                        font-weight: 600;
-                    }
+                svg {
+                    fill: currentColor;
+                    width: 30px;
+                    height: 30px;
+                }
 
-                    svg {
-                        fill: currentColor;
-                        width: 30px;
-                        height: 30px;
-                    }
+                a {
+                    display: block;
+                }
 
-                    a {
-                        display: block;
-                    }
+                ul {
+                    margin-top: .5rem;
 
-                    ul {
-                        margin-top: .5rem;
+                    li {
+                        display: inline-block;
+                        margin-right: .5rem;
 
-                        li {
-                            display: inline-block;
-                            margin-right: .5rem;
+                        a {
+                            transition: transform .3s ease-out;
 
-                            a {
-                                transition: transform .3s ease-out;
-
-                                &:hover {
-                                    transform: translateY(.5rem);
-                                }
+                            &:hover {
+                                transform: translateY(.5rem);
                             }
                         }
                     }
@@ -265,4 +313,21 @@
             }
         }
     }
+
+    .actus {
+        margin-bottom: 2rem;
+
+        .swiper-actus {
+            position: relative;
+            overflow: hidden;
+        }
+    }
+
+    .jp-relatedposts {
+        display: none !important;
+    }
+}
+
+.single .actus article a::before {
+    content: none;
 }

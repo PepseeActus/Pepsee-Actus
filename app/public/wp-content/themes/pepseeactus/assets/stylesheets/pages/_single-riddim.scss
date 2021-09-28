@@ -1,0 +1,10 @@
+.single-riddim {
+    .beatmaker p {
+        display: inline-block;
+
+        + p::before {
+            content: '/';
+            margin-right: 5px;
+        }
+    }
+}

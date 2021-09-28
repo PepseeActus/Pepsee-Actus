@@ -14,35 +14,8 @@
 
 get_header(); ?>
 
-<section class="d-flex justify-content-between mobile-visually-hidden headerThumbnail">
-	<?php
-		$args = [
-			'cat' => [5, 126],
-			'posts_per_page' => 3
-		];
-		
-		$query = new WP_Query( $args );
-		if ( $query->have_posts() ) {
-			while ( $query->have_posts() ) {
-				$query->the_post(); ?>
-
-	<article id="post-<?php the_ID(); ?>" <?php post_class('col-4'); ?>>
-		<div class="head-thumbnail">
-			<a href="<?php the_permalink(); ?>">
-				<?php the_post_thumbnail( 'pepseeactus-ArtistsFront' ); ?>
-			</a>
-			<div class="post-infos">
-				<div class="category"><?php the_category(' '); ?></div>
-				<div class="post-title">
-					<?php the_title( '<div class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></div>' ); ?>
-				</div>
-			</div>
-		</div>
-	</article>
-
-	<?php }
-		}
-	wp_reset_postdata(); ?>
+<section>
+	<?php get_template_part( 'parts/add-banner-music' ); ?>
 </section>
 
 <div class="wrapper row padding-inside">
@@ -75,99 +48,10 @@ get_header(); ?>
 	<?php get_sidebar(); ?>
 </div>
 
-<section class="riddim margin-outside"></section>
-	<h2>Riddims</h2>
-	<div class="riddim-wrap">
-		<?php $args = [
-			'posts_per_page' => 12,
-			'orderby' => 'date',
-			'post_type' => 'riddim'
-		];
-		$query = new WP_Query( $args );
-		if ( $query->have_posts() ) {
-			while ( $query->have_posts() ) {
-				$query->the_post();
-				get_template_part( 'parts/front-album-template' );
-			}
-		}
-		wp_reset_postdata(); ?>
-	</div>
-</section>
-
-<section class="classic margin-outside">
-	<h2>Classiques</h2>
-	<div class="classic-wrap">
-		<?php $args = [
-			'posts_per_page' => 12,
-			'orderby' => 'date',
-			'post_type' => 'music',
-			'date_query' => [[
-				'before' => ['year' => 2015],
-				'inclusive' => true
-			]],
-		];
-		$query = new WP_Query( $args );
-		if ( $query->have_posts() ) {
-			while ( $query->have_posts() ) {
-				$query->the_post();
-				get_template_part( 'parts/front-music-template' );
-			}
-		}
-		wp_reset_postdata(); ?>
-	</div>
-</section>
-
-<section class="album margin-outside">
-	<h2>Albums & Mixtapes</h2>
-	<div class="album-wrap">
-		<?php $args = [
-			'posts_per_page' => 12,
-			'orderby' => 'date',
-			'post_type' => 'album'
-		];
-		$query = new WP_Query( $args );
-		if ( $query->have_posts() ) {
-			while ( $query->have_posts() ) {
-				$query->the_post();
-				get_template_part( 'parts/front-album-template' );
-			}
-		}
-		wp_reset_postdata(); ?>
-	</div>
-</section>
-
-<section class="artist margin-outside">
-	<h2>Nouveaux artistes</h2>
-	<div class="artist-wrap">
-		<?php $args = array(
-				'posts_per_page' => 5,
-				'orderby' => 'date',
-				'post_type' => 'artist'
-			);
-			
-			$query = new WP_Query( $args );
-			if ( $query->have_posts() ) {
-				while ( $query->have_posts() ) {
-					$query->the_post(); ?>
-					<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-						<a href="<?php the_permalink(); ?>">
-							<?php the_post_thumbnail('thumbnail'); ?>
-						</a>
-						<div class="name">
-							<a href="<?php the_permalink(); ?>" target="_blank"><?= get_the_title(); ?></a>
-						</div>
-					</article>
-
-				<?php }
-			}
-		wp_reset_postdata(); ?>
-	</div>
-</section>
-
-<section class="actus">
+<section class="actus margin-outside">
 	<div class="actus-wrap">
 		<h2>Actus</h2>
-		<div class="swiper-container swiper-container-actus">
+		<div class="swiper-container swiper-actus">
 			<div class="swiper-button-prev">
 			<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 				viewBox="0 0 386.242 386.242" xml:space="preserve">
@@ -208,7 +92,9 @@ get_header(); ?>
 							</div>
 						</a>
 						<div class="<?= $categories[0]->slug; ?>-info">
-							<?php the_title( '<div class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></div>' ); ?>
+							<div class="entry-title">
+								<a href="<?= get_the_permalink(); ?>"><?= wp_trim_words( get_the_title(), 10, '...' ); ?></a>
+							</div>
 						</div>
 					</article>
 					<?php }
@@ -216,6 +102,73 @@ get_header(); ?>
 				wp_reset_postdata(); ?>
 			</div>
 		</div>
+	</div>
+</section>
+
+<section class="riddim margin-outside"></section>
+	<h2>Riddims</h2>
+	<div class="riddim-wrap">
+		<?php $args = [
+			'posts_per_page' => 12,
+			'orderby' => 'date',
+			'post_type' => 'riddim'
+		];
+		$query = new WP_Query( $args );
+		if ( $query->have_posts() ) {
+			while ( $query->have_posts() ) {
+				$query->the_post();
+				get_template_part( 'parts/front-album-template' );
+			}
+		}
+		wp_reset_postdata(); ?>
+	</div>
+</section>
+
+<section class="album margin-outside">
+	<h2>Albums & Mixtapes</h2>
+	<div class="album-wrap">
+		<?php $args = [
+			'posts_per_page' => 12,
+			'orderby' => 'date',
+			'post_type' => 'album'
+		];
+		$query = new WP_Query( $args );
+		if ( $query->have_posts() ) {
+			while ( $query->have_posts() ) {
+				$query->the_post();
+				get_template_part( 'parts/front-album-template' );
+			}
+		}
+		wp_reset_postdata(); ?>
+	</div>
+</section>
+
+<section class="artist margin-outside">
+	<h2>Nouveaux artistes</h2>
+	<div class="artist-wrap">
+		<?php $args = array(
+				'posts_per_page' => 5,
+				'orderby' => 'date',
+				'post_type' => 'artist'
+			);
+
+			$query = new WP_Query( $args );
+			if ( $query->have_posts() ) {
+				while ( $query->have_posts() ) {
+					$query->the_post(); ?>
+					<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+						<a href="<?php the_permalink(); ?>">
+							<div class="image-wrapper">
+								<?php the_post_thumbnail('thumbnail'); ?>
+							</div>
+						</a>
+						<div class="name">
+							<a href="<?php the_permalink(); ?>" target="_blank"><?= get_the_title(); ?></a>
+						</div>
+					</article>
+				<?php }
+			}
+		wp_reset_postdata(); ?>
 	</div>
 </section>
 

@@ -175,7 +175,7 @@ if (!class_exists('GcMenu')) {
 
       // Make the request
       $url = constant('API_URL') . '/website/' . $gc_website_id . '/notif';
-      $request = wp_remote_post($url, array('sslverify' => constant('SSLVERIFY'), 'body' => $body));
+      $request = wp_remote_post($url, array('timeout' => 5, 'sslverify' => constant('SSLVERIFY'), 'body' => $body));
 
       // Extract the HTTP ret code and HTTP body
       $httpCode = wp_remote_retrieve_response_code($request);

@@ -20,19 +20,17 @@ if ( have_posts() ) : ?>
 			/* Start the Loop */
 			while ( have_posts() ) : the_post(); ?>
 				<div class="post-item">
-					<ul>
-						<li>
-							<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('large'); ?></a>
-							<div>
-								<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-								<?php the_excerpt(); ?>
-								<div class="post-meta">
-									<?php echo meks_time_ago(); ?>
-									<i class="fa fa-eye"></i> <?php if (function_exists('the_views')) {the_views();} ?>
-								</div>
-							</div>
-						</li>
-					</ul>
+					<div class="image-wrapper">
+						<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('large'); ?></a>
+					</div>
+					<div>
+						<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+						<?php the_excerpt(); ?>
+						<div class="post-meta">
+							<?php echo meks_time_ago(); ?>
+							<i class="fa fa-eye"></i> <?php echo do_shortcode( '[jp_post_view]' ); ?>
+						</div>
+					</div>
 				</div>
 			<?php endwhile; ?>
 		</div>

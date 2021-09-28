@@ -18,7 +18,7 @@
 
     img {
         width: auto;
-        max-height: 400px;
+        max-height: 500px;
     }
 
     .fb_iframe_widget {
@@ -32,15 +32,21 @@
 
     iframe {
         width: 80%;
-        margin: 0 auto 3rem;
+        margin: 25px auto;
         display: block;
+        background: white;
 
         @include media(phone) {
             width: 100%;
         }
 
         &.instagram-media {
-            margin: 0 auto 25px !important;
+            margin: 25px auto !important;
         }
+    }
+
+
+    figure {
+        margin: 25px 0;
     }
 }

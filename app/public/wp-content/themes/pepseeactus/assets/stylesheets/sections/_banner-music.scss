@@ -1,0 +1,61 @@
+.add-artist {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 1rem;
+    
+
+    .artist-image {
+        width: 6rem;
+        height: 6rem;
+        margin-right: 2rem;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+
+    p {
+        font-size: 1.3rem;
+        color: grey;
+    }
+
+    .artist-name {
+        font-weight: 600;
+        font-size: 2.5rem;
+    }
+}
+
+.add-song {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 2rem;
+    padding: 3rem 0;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position-x: right;
+    background-position-y: center;
+    overflow: hidden;
+    border-radius: 4px;
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 25rem;
+        background: linear-gradient(to right, $color__background-color 10%, rgba(255, 255, 255, 0) 90%);
+    }
+
+    .song-image {
+        width: 8rem;
+        height: 8rem;
+        margin-right: 2rem;
+        border-radius: 5px;
+        overflow: hidden;
+        z-index: 1;
+    }
+
+    .song-info {
+        z-index: 1;
+    }
+}

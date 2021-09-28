@@ -4,8 +4,15 @@
     $youtube = get_field('youtube');
     $spotify = get_field('spotify');
     $deezer = get_field('deezer');
-    $apple = get_field('apple_music'); 
+    $apple = get_field('apple_music');
+    $download = get_field('download');
 ?>
+<?php if ($download) :?>
+    <div class="download">
+        <p>For promotional use only</p>
+        <a href="<?= $download ?>" target="_blank">Télécharger</a>
+    </div>
+<?php endif; ?>
 <div class="stream">
     <p>Streamez et supportez vos artistes</p>
     <ul>

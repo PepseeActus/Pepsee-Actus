@@ -21,9 +21,11 @@
         position: relative;
         top: -5rem;
 
-        &__picture {
+        .music-presentation__picture {
             margin-right: 2rem;
-            min-width: 150px;
+            width: 95px;
+            height: 95px;
+            min-width: 95px;
         }
 
         .music-presentation__info {
@@ -81,104 +83,11 @@
         }
     }
 
-    aside {
-        padding-top: 0;
+    .related-album {
+        font-weight: 500;
 
-        .artist-album {    
-            margin-bottom: 3rem;
-
-            &__container {
-                &-box {
-                    display: flex;
-                    align-items: center;
-                    margin-bottom: 2rem;
-
-                    @include media(tablet) {
-                        justify-content: center;
-                        flex-direction: column;
-                    }
-
-
-                    .artist-image {
-                        margin-right: 1rem;
-
-                        @include media(tablet) {
-                            margin-right: 0;
-                        }
-
-                        img {
-                            border-radius: 50%;
-                            max-width: 12rem;
-                            @include shadow;
-                        }
-                    }
-
-                    .artist-info {
-                        @include media(tablet) {
-                            margin-top: 2rem;
-                        }
-
-                        .artist-title {
-                            font-weight: 600;
-                        }
-
-                        > i {
-                            color: $color__orange
-                        }
-
-                        ul {
-                            margin-top: .5rem;
-
-                            li {
-                                display: inline-block;
-                                margin-right: .5rem;
-
-                                a {
-                                    display: block;
-                                }
-
-                                i {
-                                    font-size: 2rem;
-                                    transition: all .3s;
-
-                                    &.fa-twitter:hover {
-                                        color: $color__twitter;
-                                    }
-
-                                    &.fa-instagram:hover {
-                                        background: $color__instagram;
-                                        -webkit-text-fill-color: transparent;
-                                        -webkit-background-clip: text;
-                                        box-decoration-break: clone;
-                                    }
-
-                                    &.fa-facebook-f:hover {
-                                        color: $color__facebook;
-                                    }
-
-                                    &.fa-youtube:hover {
-                                        color: $color__youtube;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        .related-album {
-            margin-bottom: 3rem;
-
-            .related-album__image {
-                margin-bottom: 1rem;
-
-                img {
-                    border-radius: 1rem;
-                    max-width: 12rem;
-                    @include shadow();
-                }
-            }
+        a {
+            font-weight: 300;
         }
     }
 }

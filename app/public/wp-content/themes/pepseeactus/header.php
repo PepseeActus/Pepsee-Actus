@@ -74,7 +74,9 @@
 						<li class="mobile-visually-hidden <?php if (is_category('actus')) echo 'current-menu-item'; ?>"><a href="<?= site_url('/actus'); ?>">Actus</a></li>
 						<li class="mobile-visually-hidden <?php if (get_post_type() == 'music') echo 'current-menu-item'; ?>"><a href="<?= get_post_type_archive_link('music'); ?>">Singles</a></li>
 						<li class="mobile-visually-hidden <?php if (get_post_type() == 'riddim') echo 'current-menu-item'; ?>"><a href="<?= get_post_type_archive_link('riddim'); ?>">Riddims</a></li>
+						<li class="mobile-visually-hidden <?php if (get_post_type() == 'album') echo 'current-menu-item'; ?>"><a href="<?= get_post_type_archive_link('album'); ?>">Albums</a></li>
 						<li class="mobile-visually-hidden <?php if (get_post_type() == 'artist') echo 'current-menu-item'; ?>"><a href="<?= get_post_type_archive_link('artist'); ?>">Artistes</a></li>
+						<li class="mobile-visually-hidden <?php if (get_post_type() == 'beatmaker') echo 'current-menu-item'; ?>"><a href="<?= get_post_type_archive_link('beatmaker'); ?>">Beatmakers</a></li>
 						<li class="mobile-visually-hidden <?php if (is_page('a-propos')) echo 'current-menu-item'; ?>"><a href="<?= site_url('/a-propos'); ?>">A propos</a></li>
 					</ul>
 				</div>
@@ -86,55 +88,110 @@
 	//HOME
 	if (is_front_page() || is_page()) :
 
-		$args = [
-			'posts_per_page' => 1,
-			'orderby' => 'date',
-			'post_type' => 'banner'
-		];
-
-		$query = new WP_Query($args);
-		if ( $query->have_posts() ) {
-			while ( $query->have_posts() ) {
-				$query->the_post();
-				$image_banner = get_field('image_banner');
-				$link = get_field('link');
-				$artiste = get_field('artiste');
-				$album = get_field('album');
-				$youtube_id = get_field('youtube_id'); ?>
-
-				<div class="hero-banner" style='background-image: url("<?= $image_banner['url']; ?>'>
-					<div class="video-background">
-						<div class="video-foreground">
-							<iframe src="https://www.youtube.com/embed/<?= $youtube_id; ?>?autoplay=1&loop=1&mute=1&playlist=<?= $youtube_id; ?>"
-									frameborder="0"
-									allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-									allowfullscreen>
-							</iframe>
-						</div>
-					</div>
-					<div class="banner-info">
-						<p class="name"><?= $artiste; ?></p>
-						<p class="album"><?= $album; ?></p>
-						<?php the_content(); ?>
-						<button><a target="_blank" href="<?= $link; ?>">Acheter l'album</a></button>
-					</div>
-					<div class="banner-more">
-						<div class="artist-image">
-							<a href="<?= $link; ?>"><?php the_post_thumbnail('thumbnail'); ?></a>
-						</div>
-					</div>
-				</div>
-
-			<?php }
-		} else { ?>
-
+		if (is_page() && !is_front_page()) : ?>
 			<div class="hero-banner" style='background-image: url("<?= get_stylesheet_directory_uri(); ?>/assets/img/pepseenewbanner_gris_nologo.jpg")'>
 				<img src="<?= get_stylesheet_directory_uri(); ?>/assets/img/pepseelogo_png.png" alt="logo PepseeActus" class="headerLogo">
 			</div>
+		<?php endif;
 
-		<?php }
+		if (is_front_page()) :
+			$args = [
+				'posts_per_page' => 1,
+				'orderby' => 'date',
+				'post_type' => 'banner'
+			];
 
-		wp_reset_postdata();
+			$query = new WP_Query($args);
+			if ( $query->have_posts() ) {
+				while ( $query->have_posts() ) :
+					$query->the_post();
+					$image_banner = get_field('image_banner');
+					$link = get_field('link');
+					$artiste = get_field('artiste');
+					$album = get_field('album');
+					$youtube_id = get_field('youtube_id'); ?>
+
+					<div class="hero-banner" style='background-image: url("<?= $image_banner['url']; ?>'>
+						<div class="video-background">
+							<div class="video-foreground">
+								<iframe src="https://www.youtube.com/embed/<?= $youtube_id; ?>?autoplay=1&loop=1&mute=1&playlist=<?= $youtube_id; ?>"
+										frameborder="0"
+										allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+										allowfullscreen>
+								</iframe>
+							</div>
+						</div>
+						<div class="banner-info">
+							<p class="name"><?= $artiste; ?></p>
+							<p class="album"><?= $album; ?></p>
+							<?php the_content(); ?>
+							<button><a target="_blank" href="<?= $link; ?>">Acheter l'album</a></button>
+						</div>
+						<div class="banner-more">
+							<div class="artist-image">
+								<a href="<?= $link; ?>"><?php the_post_thumbnail('thumbnail'); ?></a>
+							</div>
+						</div>
+					</div>
+
+				<?php endwhile;
+				wp_reset_postdata();
+			} else { ?>
+				<div class="hero-banner">
+					<!-- PROMOTION BANNER -->
+						<!--<div class="hero-banner-background">
+							<?php $detect = new Mobile_Detect();
+							if ( $detect->isMobile() ) {
+								// Featured image for mobile users
+								$featured_image = get_stylesheet_directory_uri() . "/assets/img/pa_doute_mobile.jpg";
+							} else {
+								// Featured image for all other users
+								$featured_image = get_stylesheet_directory_uri() . "/assets/img/pa_doute_pepsee.jpg";
+							} ?>
+							<img src="<?= $featured_image; ?>" alt="header banner"/>
+						</div>-->
+					<!-- CLASSIC HEADER -->
+					<section class="header-actus container">
+						<?php
+							$args = [
+								'post_type' => 'music',
+								'posts_per_page' => 10
+							];
+
+							$query = new WP_Query( $args ); ?>
+
+							<div class="header-section">
+								<div class="post-title">
+									<h2>Le meilleur de la<br>French Caribbean Music.</h2>
+								</div>
+								<div class="swiper-container swiper-header">
+									<div class="swiper-wrapper">
+
+										<?php if ( $query->have_posts() ) :
+											while ( $query->have_posts() ) :
+												$query->the_post(); ?>
+
+												<div id="post-<?php the_ID(); ?>" class="post-thumbnail swiper-slide">
+													<a href="<?php the_permalink(); ?>">
+														<div class="thumbnail-wrapper">
+															<?php the_post_thumbnail('large'); ?>
+														</div>
+													</a>
+												</div>
+
+											<? endwhile;
+										endif;
+										wp_reset_postdata(); ?>
+
+									</div>
+									<div class="swiper-pagination"></div>
+								</div>
+							</div>
+					</section>
+				</div>
+
+			<?php }
+		endif;
 	endif; ?>
 
 	<?php

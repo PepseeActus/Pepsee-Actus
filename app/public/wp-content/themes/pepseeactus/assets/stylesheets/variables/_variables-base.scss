@@ -135,7 +135,7 @@ $small-gutter-width:          10px !default;
 	box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5);
 	border-radius: 50%;
 	overflow: hidden;   
-	border: 2px solid $color__grey;
+	border: 2px solid rgba($color__grey, .7);
 	display: block;
 
 	&::before {
@@ -159,7 +159,7 @@ $small-gutter-width:          10px !default;
 		transform: translate(-50%, -50%);
 		width: 1rem;
 		height: 1rem;
-		background-color: $color__grey;
+		background-color: $color__background-color;
 		border-radius: 50%;
 		box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5);         
 	}

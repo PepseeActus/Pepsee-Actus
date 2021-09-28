@@ -9,15 +9,19 @@
         font-size: 4rem;
         font-weight: 600;
         letter-spacing: inherit;
-        margin-bottom: 2rem;
-    }
-
-    li {
+        margin-bottom: 3rem;
+        position: relative;
+        text-transform: initial;
         text-align: center;
+
+        @include media(phone) {
+            font-size: 30px;
+        }
     }
 
     .music-presentation {
         display: flex;
+        align-items: center;
         position: relative;
         top: -5rem;
 
@@ -62,96 +66,12 @@
         }
     }
 
-    .music-content {
-        p, ul {
-            margin-bottom: 1rem;
-        }
+    .artist-album {
+        flex-direction: column;
+        align-items: center;
     }
 
     aside {
         margin-top: 1.5rem;
-
-        .artist-album {
-            margin-bottom: 5rem;
-            
-            &__container {
-                &-box {
-                    display: flex;
-                    align-items: center;
-                    margin-bottom: 2rem;
-
-                    @include media(tablet) {
-                        justify-content: center;
-                        flex-direction: column;
-                    }
-
-
-                    .artist-image {
-                        margin-right: 1rem;
-
-                        @include media(tablet) {
-                            margin-right: 0;
-                        }
-
-                        img {
-                            border-radius: 50%;
-                            max-width: 12rem;
-                            @include shadow;
-                        }
-                    }
-
-                    .artist-info {
-                        @include media(tablet) {
-                            margin-top: 2rem;
-                        }
-
-                        .artist-title {
-                            font-weight: 600;
-                        }
-
-                        > i {
-                            color: $color__orange
-                        }
-
-                        ul {
-                            margin-top: .5rem;
-
-                            li {
-                                display: inline-block;
-                                margin-right: .5rem;
-
-                                a {
-                                    display: block;
-                                }
-
-                                i {
-                                    font-size: 2rem;
-                                    transition: all .3s;
-
-                                    &.fa-twitter:hover {
-                                        color: $color__twitter;
-                                    }
-
-                                    &.fa-instagram:hover {
-                                        background: $color__instagram;
-                                        -webkit-text-fill-color: transparent;
-                                        -webkit-background-clip: text;
-                                        box-decoration-break: clone;
-                                    }
-
-                                    &.fa-facebook-f:hover {
-                                        color: $color__facebook;
-                                    }
-
-                                    &.fa-youtube:hover {
-                                        color: $color__youtube;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
     }
 }

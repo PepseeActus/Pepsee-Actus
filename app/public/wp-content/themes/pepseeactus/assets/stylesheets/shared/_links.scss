@@ -17,3 +17,78 @@ a {
 		outline: 0;
 	}
 }
+
+.jp-relatedposts-headline {
+	position: relative;
+	margin-bottom: 3rem;
+	letter-spacing: .3rem;
+	text-transform: uppercase;
+
+	em {
+		color: white !important;
+		font-weight: 700 !important;
+		font-style: initial !important;
+	}
+
+	&::after {
+		content: '';
+		position: absolute;
+		bottom: -5px;
+		left: 0;
+		height: 5px;
+		width: 77px;
+		background: $color__orange;
+	}
+
+	@include media(phone) {
+		letter-spacing: 0;
+	}
+}
+
+.jp-relatedposts {
+	margin-top: 5rem;
+}
+
+.jp-relatedposts-items {
+	@include media(desktop) {
+		display: flex;
+	}
+}
+
+.jp-relatedposts-post {
+	@include media(desktop) {
+		width: 32%;
+		max-width: 32%;
+
+		&:not(:last-of-type) {
+			margin-right: 1rem;
+		}
+	}
+
+	@include media(phone) {
+		&:not(:last-of-type) {
+			margin-bottom: 3rem;
+		}
+	}
+}
+
+.jp-relatedposts-post-title {
+	text-align: initial;
+}
+
+.jp-relatedposts-post-a {
+	box-shadow: none !important;
+}
+
+.jp-relatedposts-post-img {
+    border-radius: .5rem;
+    margin-bottom: 1rem;
+}
+
+.jp-relatedposts-post-excerpt {
+	display: none;
+}
+
+.jp-relatedposts-post-date {
+    font-size: 1rem;
+}

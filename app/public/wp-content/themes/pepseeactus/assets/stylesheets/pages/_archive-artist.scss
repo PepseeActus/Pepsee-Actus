@@ -1,5 +1,7 @@
 .post-type-archive-riddim,
-.post-type-archive-artist {
+.post-type-archive-album,
+.post-type-archive-artist,
+.post-type-archive-beatmaker {
     .hero-banner {
         display: none;
     }
@@ -60,6 +62,12 @@
     }
 
     .bloc-letter {
+        padding: 5px 0;
+
+        @include media(phone) {
+            padding: 10px 0;
+        }
+
         a:hover {
             text-decoration: underline;
         }

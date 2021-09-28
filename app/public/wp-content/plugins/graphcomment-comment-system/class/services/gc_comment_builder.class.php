@@ -100,7 +100,7 @@ class GcCommentBuilder
     if ($up_res === false) {
       GcLogger::getLogger()->error('GcParamsService::updateCommentInDatabase() - Update error ( request: ' . $this->toString() . ' )');
       GcLogger::getLogger()->error('GcParamsService::updateCommentInDatabase() - Last SQL error (' . $wpdb->last_error . ' )');
-      return false;
+      return true;
     }
 
     return true;

@@ -120,7 +120,8 @@ class GcApiService
   public static function pushImportComments($batch_number, $comments) {
     // Send comments to API
     $res = wp_remote_post(constant('API_URL_IMPORT'),
-        array('sslverify' => constant('SSLVERIFY'),
+        array(
+            'sslverify' => constant('SSLVERIFY'),
             'body' => array('public_key' => get_option('gc_public_key', ''),
                 'platform' => 'wp',
                 'batch_import_number' => $batch_number,
@@ -202,7 +203,7 @@ class GcApiService
 
     // Send the request
     $url = str_replace(':pubkey', $pubkey, str_replace(':key', $key, constant('API_URL_SYNC_COMMENTS')));
-    $request = wp_remote_get($url, array('sslverify' => constant('SSLVERIFY')));
+    $request = wp_remote_get($url, array('timeout' => 50, 'sslverify' => constant('SSLVERIFY')));
 
     // Handle response and body
     $httpCode = wp_remote_retrieve_response_code($request);
@@ -236,7 +237,7 @@ class GcApiService
 
     // Send the request
     $url = str_replace(':pubkey', $pubkey, str_replace(':key', $key, constant('API_URL_SYNC_COMMENTS')));
-    $request = wp_remote_post($url, array('sslverify' => constant('SSLVERIFY')));
+    $request = wp_remote_post($url, array('timeout' => 50, 'sslverify' => constant('SSLVERIFY')));
 
     // Handle response and body
     $httpCode = wp_remote_retrieve_response_code($request);

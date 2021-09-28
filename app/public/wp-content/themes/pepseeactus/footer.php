@@ -141,7 +141,7 @@
 						<ul>
 							<li><a href="<?= site_url('/a-propos'); ?>"><span>À propos</span></a></li>
 							<li><a href="<?= site_url('/a-propos/contact'); ?>"><span>Contact</span></a></li>
-							<li><a href="<?= site_url('/publicite'); ?>"><span>Publicité</span></a></li>
+							<li><a href="<?= site_url('/publicite'); ?>"><span>Publicité et partenariat</span></a></li>
 							<li><a href="<?= site_url('/mentions-legales'); ?>"><span>Mentions légales</span></a></li>
 						</ul>
 					</div>

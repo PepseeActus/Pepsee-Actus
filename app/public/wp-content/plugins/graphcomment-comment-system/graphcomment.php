@@ -5,13 +5,13 @@
  * Description: Allow the support of GraphComment into your WordPress blog.
  * Author: GraphComment <contact@graphcomment.com>
  * Author URI: https://graphcomment.com/
- * Version: 3.1.2
+ * Version: 3.1.5
  * License: GPL
  * Text Domain: graphcomment-comment-system
  * Domain Path: /lang
  */
 
-define('GRAPHCOMMENT_VERSION', '3.1.2');
+define('GRAPHCOMMENT_VERSION', '3.1.5');
 
 defined('ABSPATH') or die("No script kiddies please!");
 
