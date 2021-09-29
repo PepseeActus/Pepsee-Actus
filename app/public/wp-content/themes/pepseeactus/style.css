@@ -535,7 +535,7 @@ figcaption {
   transform: inherit; }
 
 .single article a, .page .page-content a {
-  box-shadow: #F66D38 0px -5px 0px inset; }
+  text-decoration: underline; }
 
 /*--------------------------------------------------------------
 # Links
@@ -555,7 +555,8 @@ a {
   position: relative;
   margin-bottom: 3rem;
   letter-spacing: .3rem;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  text-align: left !important; }
   .jp-relatedposts-headline em {
     color: white !important;
     font-weight: 700 !important;
@@ -592,9 +593,6 @@ a {
 
 .jp-relatedposts-post-title {
   text-align: initial; }
-
-.jp-relatedposts-post-a {
-  box-shadow: none !important; }
 
 .jp-relatedposts-post-img {
   border-radius: .5rem;
@@ -967,7 +965,7 @@ html {
   overflow: hidden; }
   @media (min-width: 1024px) {
     .hero-banner {
-      min-height: 50rem; } }
+      min-height: 40rem; } }
   .hero-banner .hero-banner-background {
     position: absolute;
     top: 0;
@@ -1545,9 +1543,6 @@ html {
       .home .wrapper .principal {
         border-radius: 0; } }
 
-.home .releases .year {
-  display: none; }
-
 .home .riddim,
 .home .releases,
 .home .album {
@@ -1731,21 +1726,11 @@ html {
           font-size: 1.1rem; } }
 
 .actus .thumbnail-wrapper {
-  position: relative;
-  height: 170px;
+  height: 20rem;
   overflow: hidden;
-  background: #000; }
-  .actus .thumbnail-wrapper img {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    max-width: initial;
-    width: 115%; }
-    @media (max-width: 767.98px) {
-      .actus .thumbnail-wrapper img {
-        width: auto;
-        height: 100%; } }
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; }
 
 .actus .swiper-button-prev,
 .actus .swiper-button-next {
@@ -1774,15 +1759,11 @@ html {
   width: 100%;
   overflow: hidden; }
 
-.actus article,
-.actus .category-actus,
-.actus .category-videos {
-  position: relative; }
-  @media (max-width: 767.98px) {
-    .actus article,
-    .actus .category-actus,
-    .actus .category-videos {
-      width: 100%; } }
+@media (max-width: 767.98px) {
+  .actus article,
+  .actus .category-actus,
+  .actus .category-videos {
+    width: 100%; } }
 
 .actus .actus-single,
 .actus .actus-info,
@@ -1796,8 +1777,7 @@ html {
 
 .actus .actus-single a {
   font-size: 15px;
-  text-transform: initial;
-  box-shadow: none; }
+  text-transform: initial; }
 
 .single .scriptlesssocialsharing .scriptlesssocialsharing__buttons {
   justify-content: space-around; }
@@ -1907,6 +1887,12 @@ html {
     width: auto;
     max-width: initial; }
 
+.single .beatmaker p {
+  display: inline-block; }
+  .single .beatmaker p + p::before {
+    content: '/';
+    margin-right: 5px; }
+
 @media (max-width: 1023.98px) {
   .single-post {
     margin-bottom: 30px; } }
@@ -1924,27 +1910,29 @@ html {
         background: rgba(255, 255, 255, 0.1);
         margin-bottom: 20px; } }
 
-.single-post .single-content .music-related a {
-  box-shadow: none; }
-
-.single-post .single-content .music-box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-flow: wrap; }
-
-.single-post .single-content .music-cover {
-  margin-right: 10px;
-  width: 8rem;
-  height: 8rem; }
-
-.single-post .single-content .post-meta {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 10px;
-  display: flex;
-  justify-content: space-between; }
-  .single-post .single-content .post-meta .fa.fa-eye {
-    margin-right: 5px; }
+.single-post .single-content {
+  text-align: center; }
+  .single-post .single-content h3 {
+    text-align: center;
+    text-transform: uppercase; }
+  .single-post .single-content .music-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: wrap; }
+  .single-post .single-content .music-cover {
+    margin-right: 10px;
+    width: 8rem;
+    height: 8rem; }
+  .single-post .single-content .post-meta {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between; }
+    .single-post .single-content .post-meta .fa.fa-eye {
+      margin-right: 5px; }
+  .single-post .single-content .jp-relatedposts-post-date {
+    text-align: left; }
 
 .single-post .clip-box {
   text-align: center;
@@ -1979,7 +1967,7 @@ html {
   font-weight: 600;
   font-size: 3.2rem;
   line-height: 60px;
-  width: 70%;
+  width: 75%;
   z-index: 1; }
   @media (max-width: 767.98px) {
     .single-post .post-thumbnail .single-title,
@@ -2020,6 +2008,10 @@ html {
       flex-direction: column; } }
   .single-post .artist .artist__container .artist__container-box .artist-image {
     margin-right: 1rem;
+    width: 12rem;
+    height: 12rem;
+    min-width: 12rem;
+    max-width: 12rem;
     border-radius: 50%;
     overflow: hidden;
     box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5); }
@@ -2029,7 +2021,6 @@ html {
     .single-post .artist .artist__container .artist__container-box .artist-image:hover img {
       transform: scale(1.1); }
     .single-post .artist .artist__container .artist__container-box .artist-image img {
-      max-width: 12rem;
       transition: all .3s ease-out; }
   @media (min-width: 768px) and (max-width: 1023.98px) {
     .single-post .artist .artist__container .artist__container-box .artist-info {
@@ -2045,8 +2036,7 @@ html {
       display: inline-block;
       margin-right: .5rem; }
       .single-post .artist .artist__container .artist__container-box .artist-info ul li a {
-        display: block;
-        box-shadow: none; }
+        display: block; }
       .single-post .artist .artist__container .artist__container-box .artist-info ul li i {
         font-size: 2rem;
         transition: all .3s; }
@@ -2084,10 +2074,8 @@ html {
   font-weight: 100 !important;
   text-transform: unset !important; }
 
-.single-post .graphcomment-button a {
-  box-shadow: none; }
-  .single-post .graphcomment-button a::before {
-    border: none; }
+.single-post .graphcomment-button a::before {
+  border: none; }
 
 .single-post #graphcomment-bubble {
   background: #989494 !important; }

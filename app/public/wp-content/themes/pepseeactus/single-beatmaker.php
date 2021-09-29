@@ -68,7 +68,7 @@ get_header(); ?>
                                     <a href="<?= get_the_permalink($post); ?>"><?= $artistes; ?></a>
                                     <a class="music-title" href="<?= get_the_permalink($post); ?>"><?= $titre; ?></a>
                                     <span>
-                                        <?php if ( get_the_time( 'Y' ) != current_time( 'Y' ) ) {
+                                        <?php if ( get_the_time( 'Y' ) < '2015' ) {
                                             the_date('Y');
                                         } else {
                                             the_date('F Y');
@@ -109,7 +109,7 @@ get_header(); ?>
                                     <a href="<?= get_the_permalink($post); ?>"><?= $artistes; ?></a>
                                     <a class="album-title" href="<?= get_the_permalink($post); ?>"><?= $titre; ?></a>
                                     <span>
-                                        <?php if ( get_the_time( 'Y' ) != current_time( 'Y' ) ) {
+                                        <?php if ( get_the_time( 'Y' ) < '2015' ) {
                                             the_date('Y');
                                         } else {
                                             the_date('F Y');
@@ -150,7 +150,7 @@ get_header(); ?>
                                     <a href="<?= get_the_permalink($post); ?>"><?= $artistes; ?></a>
                                     <a class="album-title" href="<?= get_the_permalink($post); ?>"><?= $titre; ?></a>
                                     <span>
-                                        <?php if ( get_the_time( 'Y' ) != current_time( 'Y' ) ) {
+                                        <?php if ( get_the_time( 'Y' ) < '2015' ) {
                                             the_date('Y');
                                         } else {
                                             the_date('F Y');
@@ -191,7 +191,7 @@ get_header(); ?>
                                     <a href="<?= get_the_permalink($post); ?>"><?= $artistes; ?></a>
                                     <a class="album-title" href="<?= get_the_permalink($post); ?>"><?= $titre; ?></a>
                                     <span>
-                                        <?php if ( get_the_time( 'Y' ) != current_time( 'Y' ) ) {
+                                        <?php if ( get_the_time( 'Y' ) < '2015' ) {
                                             the_date('Y');
                                         } else {
                                             the_date('F Y');

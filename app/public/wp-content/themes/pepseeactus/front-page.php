@@ -87,9 +87,7 @@ get_header(); ?>
 					<!-- Slides -->
 					<article id="post-<?php the_ID(); ?>" <?php post_class("swiper-slide"); ?>>
 						<a href="<?php the_permalink(); ?>">
-							<div class="thumbnail-wrapper">
-								<?php the_post_thumbnail('large'); ?>
-							</div>
+							<div class="thumbnail-wrapper" style="background-image: url('<?= get_the_post_thumbnail_url(); ?>')"></div>
 						</a>
 						<div class="<?= $categories[0]->slug; ?>-info">
 							<div class="entry-title">
@@ -105,13 +103,13 @@ get_header(); ?>
 	</div>
 </section>
 
-<section class="riddim margin-outside"></section>
-	<h2>Riddims</h2>
-	<div class="riddim-wrap">
+<section class="album margin-outside">
+	<h2>Albums & Mixtapes</h2>
+	<div class="album-wrap">
 		<?php $args = [
 			'posts_per_page' => 12,
 			'orderby' => 'date',
-			'post_type' => 'riddim'
+			'post_type' => 'album'
 		];
 		$query = new WP_Query( $args );
 		if ( $query->have_posts() ) {
@@ -124,13 +122,13 @@ get_header(); ?>
 	</div>
 </section>
 
-<section class="album margin-outside">
-	<h2>Albums & Mixtapes</h2>
-	<div class="album-wrap">
+<section class="riddim margin-outside"></section>
+	<h2>Riddims</h2>
+	<div class="riddim-wrap">
 		<?php $args = [
 			'posts_per_page' => 12,
 			'orderby' => 'date',
-			'post_type' => 'album'
+			'post_type' => 'riddim'
 		];
 		$query = new WP_Query( $args );
 		if ( $query->have_posts() ) {

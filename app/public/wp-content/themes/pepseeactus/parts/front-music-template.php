@@ -12,11 +12,10 @@ $weekAgo = strtotime('-1 week');
     </a>
     <div class="info">
         <div class="title">
-            <a href="<?php the_permalink(); ?>"><?= wp_trim_words( $artistes, 8, '...' ); ?></a>
-            <span class="year"><?php the_date('- Y'); ?></span>
+            <a href="<?php the_permalink(); ?>"><?= wp_trim_words( $artistes, 6, '...' ); ?></a>
         </div>
         <p>
-            <a href="<?php the_permalink(); ?>"><?= $titre; ?></a>
+            <a href="<?php the_permalink(); ?>"><?= wp_trim_words( $titre, 4, '...' ); ?></a>
             <?php if ( intval(strtotime($post->post_modified)) > intval($weekAgo) ) : ?>
                 <span class="new"><svg class="widget__icon" width="39.45" height="49.68" viewBox="0 0 39.45 49.68">
                     <path
@@ -25,7 +24,6 @@ $weekAgo = strtotime('-1 week');
                 </svg> NEW</span>
             <?php endif; ?>
         </p>
-        <?= ($riddim) ? '<p class="riddim">'.$riddim.' Riddim</p>' : ''; ?>
         <?php get_template_part( 'parts/link-template' ); ?>
     </div>
 </article>

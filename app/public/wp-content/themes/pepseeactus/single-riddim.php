@@ -22,7 +22,7 @@ while ( have_posts() ) : the_post(); ?>
                         <span class="entry-title"><?= get_the_title(); ?></span>
                         <div><?= ($label) ? '('.$label.')' : ''; ?></div>
                         <div>
-                            <?php if ( get_the_time( 'Y' ) != current_time( 'Y' ) ) {
+                            <?php if ( get_the_time( 'Y' ) < '2015' ) {
                                 the_date('Y');
                             } else {
                                 the_date('F Y');

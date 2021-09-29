@@ -22,7 +22,7 @@ $titre = get_field('titre');
             <a href="<?php the_permalink(); ?>">
             <?= $titre; ?>                                   
             <div>
-                <?php if ( get_the_time( 'Y' ) != current_time( 'Y' ) ) {
+                <?php if ( get_the_time( 'Y' ) < '2015' ) {
                     the_date('Y');
                 } else {
                     the_date('F Y');
@@ -30,15 +30,6 @@ $titre = get_field('titre');
             </div>
             </a>
         </p>
-        <div class="beatmaker">
-            <?php $beatmakers = get_field('beatmaker');
-            if ($beatmakers): ?>
-                Beatmaker :
-                    <?php foreach ($beatmakers as $beatmaker) { ?>
-                        <p><a href="<?= get_the_permalink($beatmaker); ?>"><b><?= get_the_title($beatmaker); ?></b></a></p>
-                    <?php } ?>
-            <?php endif; ?>
-        </div>
         <?php get_template_part( 'parts/link-template' ); ?>
     </div>
 </article>

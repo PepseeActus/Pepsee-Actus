@@ -35,15 +35,14 @@ get_header(); ?>
                 <div class="music-presentation__info-reseaux">
                     <?php get_template_part( 'parts/link-template' ); ?>
                 </div>
-                <div>
+                <div class="beatmaker">
                     <?php $beatmakers = get_field('beatmaker');
                     if ($beatmakers): ?>
-                        <div>
+                        Beatmaker :
                             <?php foreach ($beatmakers as $beatmaker) { ?>
-                                <a href="<?= get_the_permalink($beatmaker); ?>">Beatmaker : <b><?= get_the_title($beatmaker); ?></b></a>
+                                <p><a href="<?= get_the_permalink($beatmaker); ?>"><b><?= get_the_title($beatmaker); ?></b></a></p>
                             <?php } ?>
                             <?php wp_reset_postdata(); ?>
-                        </div>
                     <?php endif; ?>
                 </div>
             </div>

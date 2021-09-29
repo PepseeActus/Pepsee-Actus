@@ -70,7 +70,7 @@ get_header(); ?>
                                     <a href="<?= get_the_permalink($post); ?>"><?= wp_trim_words( $artistes, 8, '...' ); ?></a>
                                     <a class="music-title" href="<?= get_the_permalink($post); ?>"><?= $titre; ?></a>
                                     <span>
-                                        <?php if ( get_the_time( 'Y' ) != current_time( 'Y' ) ) {
+                                        <?php if ( get_the_time( 'Y' ) < '2015' ) {
                                             the_date('Y');
                                         } else {
                                             the_date('F Y');
@@ -112,7 +112,7 @@ get_header(); ?>
                                     <a href="<?= get_the_permalink($post); ?>"><?= $artistes; ?></a>
                                     <a class="album-title" href="<?= get_the_permalink($post); ?>"><?= $titre; ?></a>
                                     <span>
-                                        <?php if ( get_the_time( 'Y' ) != current_time( 'Y' ) ) {
+                                        <?php if ( get_the_time( 'Y' ) < '2015' ) {
                                             the_date('Y');
                                         } else {
                                             the_date('F Y');
@@ -154,7 +154,7 @@ get_header(); ?>
                                     <a href="<?= get_the_permalink($post); ?>"><?= $artistes; ?></a>
                                     <a class="album-title" href="<?= get_the_permalink($post); ?>"><?= $titre; ?></a>
                                     <span>
-                                        <?php if ( get_the_time( 'Y' ) != current_time( 'Y' ) ) {
+                                        <?php if ( get_the_time( 'Y' ) < '2015' ) {
                                             the_date('Y');
                                         } else {
                                             the_date('F Y');
@@ -195,7 +195,7 @@ get_header(); ?>
                                     <a href="<?= get_the_permalink($post); ?>"><?= $artistes; ?></a>
                                     <a class="album-title" href="<?= get_the_permalink($post); ?>"><?= $titre; ?></a>
                                     <span>
-                                        <?php if ( is_year() ) {
+                                        <?php if ( get_the_time( 'Y' ) < '2015' ) {
                                             the_date('Y');
                                         } else {
                                             the_date('F Y');
@@ -249,9 +249,7 @@ get_header(); ?>
                                 <!-- Slides -->
                                 <article id="post-<?php the_ID(); ?>" <?php post_class("swiper-slide"); ?>>
                                     <a href="<?= get_the_permalink($post); ?>">
-                                        <div class="thumbnail-wrapper">
-                                            <img src="<?= get_the_post_thumbnail_url($post); ?>" alt="<?= get_the_title($post); ?>">
-                                        </div>
+                                        <div class="thumbnail-wrapper" style="background-image: url('<?= get_the_post_thumbnail_url(); ?>')"></div>
                                     </a>
                                     <div class="actus-single">
                                         <div class="entry-title">

@@ -139,6 +139,15 @@
             max-width: initial;
         }
     }
+
+    .beatmaker p {
+        display: inline-block;
+
+        + p::before {
+            content: '/';
+            margin-right: 5px;
+        }
+    }
 }
 
 .single-post {
@@ -165,8 +174,11 @@
     }
 
     .single-content {
-        .music-related a {
-            box-shadow: none;
+        text-align: center;
+
+        h3 {
+            text-align: center;
+            text-transform: uppercase;
         }
 
         .music-box {
@@ -191,6 +203,10 @@
             .fa.fa-eye {
                 margin-right: 5px;
             }
+        }
+
+        .jp-relatedposts-post-date {
+            text-align: left;
         }
     }
 
@@ -232,7 +248,7 @@
         font-weight: 600;
         font-size: 3.2rem;
         line-height: 60px;
-        width: 70%;
+        width: 75%;
         z-index: 1;
 
         @include media(phone) {
@@ -283,6 +299,10 @@
 
                 .artist-image {
                     margin-right: 1rem;
+                    width: 12rem;
+                    height: 12rem;
+                    min-width: 12rem;
+                    max-width: 12rem;
                     border-radius: 50%;
                     overflow: hidden;
                     @include shadow;
@@ -298,7 +318,6 @@
                     }
 
                     img {
-                        max-width: 12rem;
                         transition: all .3s ease-out;
                     }
                 }
@@ -326,7 +345,6 @@
 
                             a {
                                 display: block;
-                                box-shadow: none;
                             }
 
                             i {
@@ -386,12 +404,8 @@
             text-transform: unset !important;
         }
 
-        a {
-            box-shadow: none;
-
-            &::before {
-                border: none;
-            }
+        a::before {
+            border: none;
         }
     }
 

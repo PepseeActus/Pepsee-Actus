@@ -98,10 +98,6 @@
         }
     }
 
-    .releases .year {
-        display: none;
-    }
-
     .riddim,
     .releases,
     .album {
@@ -296,24 +292,11 @@
 
 .actus {
     .thumbnail-wrapper {
-        position: relative;
-        height: 170px;
+        height: 20rem;
         overflow: hidden;
-        background: #000;
-
-        img {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            max-width: initial;
-            width: 115%;
-
-            @include media(phone) {
-                width: auto;
-                height: 100%;
-            }
-        }
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
     }
 
     .swiper-button-prev,
@@ -352,8 +335,6 @@
     article,
     .category-actus,
     .category-videos {
-        position: relative;
-
         @include media(phone) {
             width: 100%;
         }
@@ -375,7 +356,6 @@
         a {
             font-size: 15px;
             text-transform: initial;
-            box-shadow: none;
         }
     }
 }
