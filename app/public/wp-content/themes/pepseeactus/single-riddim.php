@@ -15,7 +15,7 @@ while ( have_posts() ) : the_post();
 	$beatmakers         = get_field( 'beatmaker' );
 	$genres             = get_field( 'genres' );
 	if ( empty( $genres ) ) {
-		$genres = get_the_terms( get_the_ID(), 'genres' );
+		$genres = get_the_terms( get_the_ID(), 'genre' );
 	}
 	$mixs                = get_field( 'mix' );
 	$masterings          = get_field( 'mastering' );
@@ -23,7 +23,7 @@ while ( have_posts() ) : the_post();
 	$compositeur         = trim( (string) get_field( 'compositeur' ) );
 	$artistes_principal  = (array) get_field( 'artistes_principal' );
 	$artistes_associes   = (array) get_field( 'artistes_associes' );
-	$related_artist_ids  = array_values( array_unique( array_merge( $artistes_principal, $artistes_associes ) ) );
+	$related_artist_ids  = pepsee_normalize_related_ids( array_merge( $artistes_principal, $artistes_associes ) );
 	$associated_cards    = pepsee_prepare_people_cards( $related_artist_ids );
 	$genre_tags          = pepsee_prepare_text_tags( $genres );
 	$discovery_posts     = pepsee_get_related_posts_by_acf_relationship( 'riddim', array( 'artistes_principal', 'artistes_associes' ), $related_artist_ids, array( get_the_ID() ), 3 );

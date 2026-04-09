@@ -224,6 +224,56 @@ function pepsee_prepare_people_cards( $entities ) {
 	return $cards;
 }
 
+function pepsee_normalize_related_ids( $entities ) {
+	$ids = array();
+
+	foreach ( array_filter( (array) $entities ) as $entity ) {
+		$id = 0;
+
+		if ( $entity instanceof WP_Post ) {
+			$id = (int) $entity->ID;
+		} elseif ( is_object( $entity ) && isset( $entity->ID ) ) {
+			$id = (int) $entity->ID;
+		} elseif ( is_numeric( $entity ) ) {
+			$id = (int) $entity;
+		} elseif ( is_array( $entity ) && isset( $entity['ID'] ) ) {
+			$id = (int) $entity['ID'];
+		}
+
+		if ( $id > 0 ) {
+			$ids[ $id ] = $id;
+		}
+	}
+
+	return array_values( $ids );
+}
+
+function pepsee_format_artist_display( $artists ) {
+	if ( is_string( $artists ) ) {
+		return trim( $artists );
+	}
+
+	$names = array();
+
+	foreach ( array_filter( (array) $artists ) as $artist ) {
+		$name = '';
+
+		if ( $artist instanceof WP_Post ) {
+			$name = get_the_title( $artist );
+		} elseif ( is_numeric( $artist ) ) {
+			$name = get_the_title( (int) $artist );
+		} elseif ( is_array( $artist ) && ! empty( $artist['post_title'] ) ) {
+			$name = $artist['post_title'];
+		}
+
+		if ( $name ) {
+			$names[] = $name;
+		}
+	}
+
+	return implode( ' / ', array_unique( $names ) );
+}
+
 function pepsee_prepare_post_link_items( $entities ) {
 	$items = array();
 
@@ -412,7 +462,7 @@ function pepsee_prepare_media_cards( $posts ) {
 
 		if ( in_array( $post_type, array( 'music', 'album', 'riddim' ), true ) ) {
 			$acf_title = trim( (string) get_field( 'titre', $post_object->ID ) );
-			$artistes  = trim( (string) get_field( 'artistes', $post_object->ID ) );
+			$artistes  = pepsee_format_artist_display( get_field( 'artistes', $post_object->ID ) );
 
 			if ( '' !== $acf_title ) {
 				$title = $acf_title;

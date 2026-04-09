@@ -10,7 +10,7 @@
 get_header(); ?>
 
 <?php while ( have_posts() ) : the_post();
-	$artistes          = trim( (string) get_field( 'artistes' ) );
+	$artistes          = pepsee_format_artist_display( get_field( 'artistes' ) );
 	$titre             = trim( (string) get_field( 'titre' ) );
 	$spotify           = get_field( 'spotify' );
 	$beatmakers        = get_field( 'beatmaker' );
@@ -25,7 +25,7 @@ get_header(); ?>
 	$compositeur       = trim( (string) get_field( 'compositeur' ) );
 	$artistes_principal = (array) get_field( 'artistes_principal' );
 	$artistes_associes  = (array) get_field( 'artistes_associes' );
-	$related_artist_ids = array_values( array_unique( array_merge( $artistes_principal, $artistes_associes ) ) );
+	$related_artist_ids = pepsee_normalize_related_ids( array_merge( $artistes_principal, $artistes_associes ) );
 	$associated_cards  = pepsee_prepare_people_cards( $related_artist_ids );
 	$genre_tags        = pepsee_prepare_text_tags( $genres );
 	$discovery_posts   = pepsee_get_related_posts_by_acf_relationship( 'album', array( 'artistes_principal', 'artistes_associes' ), $related_artist_ids, array( get_the_ID() ), 3 );

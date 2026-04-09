@@ -12,7 +12,7 @@ get_header();
 while ( have_posts() ) : the_post();
 	$artistes             = get_field( 'artistes' );
 	$artistes_associes    = get_field( 'artistes_associes' );
-	$artistes_display     = '';
+	$artistes_display     = pepsee_format_artist_display( $artistes );
 	$titre                = trim( (string) get_field( 'titre' ) );
 	$riddim               = trim( (string) get_field( 'riddim' ) );
 	$spotify              = get_field( 'spotify' );
@@ -25,24 +25,12 @@ while ( have_posts() ) : the_post();
 	$albums_associes      = get_field( 'albums_associes' );
 	$cover_id             = get_post_thumbnail_id();
 	$genre_tags           = pepsee_prepare_text_tags( $genres );
-	$associated_cards     = pepsee_prepare_people_cards( $artistes_associes );
-	$discovery_posts      = pepsee_get_related_posts_by_acf_relationship( 'music', 'artistes_associes', $artistes_associes, array( get_the_ID() ), 3 );
+	$related_artist_ids   = pepsee_normalize_related_ids( $artistes_associes );
+	$associated_cards     = pepsee_prepare_people_cards( $related_artist_ids );
+	$discovery_posts      = pepsee_get_related_posts_by_acf_relationship( 'music', 'artistes_associes', $related_artist_ids, array( get_the_ID() ), 3 );
 
 	if ( empty( $discovery_posts ) ) {
 		$discovery_posts = pepsee_get_recent_posts_by_type( 'music', array( get_the_ID() ), 3 );
-	}
-
-	if ( is_array( $artistes ) ) {
-		$names = array();
-		foreach ( $artistes as $artiste ) {
-			$name = get_the_title( $artiste );
-			if ( $name ) {
-				$names[] = $name;
-			}
-		}
-		$artistes_display = implode( ' / ', $names );
-	} elseif ( is_string( $artistes ) ) {
-		$artistes_display = trim( $artistes );
 	}
 
 	$credit_items = array_filter(

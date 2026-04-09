@@ -1630,42 +1630,55 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 # Media
 	## Galleries
 --------------------------------------------------------------*/
-.media-links {
+.media-links,
+.media-detail__links {
   margin-top: 4px;
 }
 @media (max-width: 767.98px) {
-  .media-links {
+  .media-links,
+  .media-detail__links {
     text-align: center;
   }
 }
-.media-links .stream ul {
+.media-links .stream ul,
+.media-detail__links .stream ul {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 0.75rem 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 @media (max-width: 767.98px) {
-  .media-links .stream ul {
+  .media-links .stream ul,
+  .media-detail__links .stream ul {
     justify-content: center;
   }
 }
-.media-links svg {
+.media-links svg,
+.media-detail__links svg {
   fill: currentColor;
   width: 40px;
   height: 40px;
 }
-.media-links a {
+.media-links a,
+.media-detail__links a {
   display: flex;
   align-items: center;
+  text-decoration: none;
 }
-.media-links span {
+.media-links span,
+.media-detail__links span {
   margin-left: 5px;
 }
-.media-links li {
+.media-links li,
+.media-detail__links li {
   display: inline-block;
   margin-right: 1rem;
 }
-.media-links li:last-child {
+.media-links li:last-child,
+.media-detail__links li:last-child {
   margin-right: 0;
 }
 
