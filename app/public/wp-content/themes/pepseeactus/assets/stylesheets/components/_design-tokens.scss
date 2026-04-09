@@ -1,0 +1,22 @@
+:root {
+  --pa-color-bg: #090c11;
+  --pa-color-surface: #11161d;
+  --pa-color-surface-strong: #181f29;
+  --pa-color-surface-soft: rgba(255, 255, 255, 0.05);
+  --pa-color-border: rgba(255, 255, 255, 0.08);
+  --pa-color-text: #f5f7fb;
+  --pa-color-text-muted: rgba(245, 247, 251, 0.72);
+  --pa-color-accent: #1ed760;
+  --pa-color-accent-warm: #ffb067;
+  --pa-gradient-hero: radial-gradient(circle at top, rgba(30, 215, 96, 0.2), transparent 42%), linear-gradient(135deg, #121822 0%, #090c11 55%, #06080d 100%);
+  --pa-shadow-card: 0 24px 60px rgba(0, 0, 0, 0.34);
+  --pa-radius-xl: 28px;
+  --pa-radius-lg: 20px;
+  --pa-radius-md: 14px;
+  --pa-space-section: clamp(2rem, 4vw, 4rem);
+}
+
+body {
+  background: var(--pa-color-bg);
+  color: var(--pa-color-text);
+}

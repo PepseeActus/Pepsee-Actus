@@ -12,7 +12,8 @@
  * @package PepseeActus
  */
 
-get_header(); ?>
+get_header();
+get_template_part( 'parts/front-hero' ); ?>
 
 <div class="home-layout row padding-inside section-padding">
 	<section class="releases">

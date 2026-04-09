@@ -22,6 +22,17 @@ get_header(); ?>
                 $spotify = get_field('spotify');
                 $deezer = get_field('deezer');
                 $apple = get_field('apple_music'); 
+                $genre_tags = array();
+                $genres_for_tags = get_field('genres');
+                if (is_array($genres_for_tags)) {
+                    foreach ($genres_for_tags as $genre_item) {
+                        if ($genre_item instanceof WP_Term) {
+                            $genre_tags[] = $genre_item->name;
+                        } elseif (is_string($genre_item) && trim($genre_item) !== '') {
+                            $genre_tags[] = trim($genre_item);
+                        }
+                    }
+                }
             ?>
         <div class="music-presentation">
             <div class="music-presentation__picture">
@@ -94,6 +105,27 @@ get_header(); ?>
             <div class="social-sharing">
                 <?php get_template_part( 'parts/sharing-buttons' ); ?>
             </div>
+            <?php
+                get_template_part(
+                    'parts/spotify-embed-shell',
+                    null,
+                    array(
+                        'spotify'     => $spotify,
+                        'eyebrow'     => 'Album / Mixtape',
+                        'title'       => $titre ?: get_the_title(),
+                        'artist'      => is_string($artistes) ? $artistes : '',
+                        'cover_id'    => get_post_thumbnail_id(),
+                        'description' => 'Conteneur premium autour de l’embed officiel Spotify, sans réinventer le player natif.',
+                        'meta_items'  => array_filter(
+                            array(
+                                'Sortie ' . get_the_date('d F Y'),
+                                $label ? wp_strip_all_tags($label) : '',
+                            )
+                        ),
+                        'tags'        => $genre_tags,
+                    )
+                );
+            ?>
             <div>
                 <h2>Crédits</h2>
                 <?php $beatmakers = get_field('beatmaker'); ?>

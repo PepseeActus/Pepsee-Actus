@@ -20,18 +20,28 @@
  */
 
 // ** MySQL settings - You can get this info from your web host ** //
-if (file_exists(dirname(__FILE__) . '/local.php')) {
-    // local database settings
-    define( 'DB_NAME', 'local' );
-    define( 'DB_USER', 'root' );
-    define( 'DB_PASSWORD', 'root' );
-    define( 'DB_HOST', 'localhost' );
+$pepsee_local_config_path = dirname( __FILE__ ) . '/local.php';
+$pepsee_has_local_config  = file_exists( $pepsee_local_config_path );
+$pepsee_local_config      = array();
+
+if ( $pepsee_has_local_config ) {
+	$pepsee_local_config = require $pepsee_local_config_path;
+
+	if ( ! is_array( $pepsee_local_config ) ) {
+		$pepsee_local_config = array();
+	}
+}
+
+if ( $pepsee_has_local_config ) {
+	define( 'DB_NAME', $pepsee_local_config['db_name'] ?? 'local' );
+	define( 'DB_USER', $pepsee_local_config['db_user'] ?? 'root' );
+	define( 'DB_PASSWORD', $pepsee_local_config['db_password'] ?? 'root' );
+	define( 'DB_HOST', $pepsee_local_config['db_host'] ?? 'localhost' );
 } else {
-    //live database settings
-    define( 'DB_NAME', 'chri4337_pepseeActusData' );
-    define( 'DB_USER', 'chri4337_wp362' );
-    define( 'DB_PASSWORD', '4hL1EHST@xb.' );
-    define( 'DB_HOST', 'localhost' );
+	define( 'DB_NAME', 'chri4337_pepseeActusData' );
+	define( 'DB_USER', 'chri4337_wp362' );
+	define( 'DB_PASSWORD', '4hL1EHST@xb.' );
+	define( 'DB_HOST', 'localhost' );
 }
 
 /** Database Charset to use in creating database tables. */
@@ -64,11 +74,23 @@ define('NONCE_SALT',       'wxxYAc7LizHpw1/9sEAuOIhI1agJayqMp1mfB8CufmpzIc99bJ+J
  * You can have multiple installations in one database if you give each
  * a unique prefix. Only numbers, letters, and underscores please!
  */
-$table_prefix = 'wp_cs87mn_';
+$table_prefix = $pepsee_local_config['table_prefix'] ?? 'wp_cs87mn_';
 
-define( 'WP_DEBUG', true );
-define( 'WP_DEBUG_LOG', true );
-define( 'WP_DEBUG_DISPLAY', false );
+if ( ! defined( 'WP_HOME' ) && ! empty( $pepsee_local_config['wp_home'] ) ) {
+	define( 'WP_HOME', $pepsee_local_config['wp_home'] );
+}
+
+if ( ! defined( 'WP_SITEURL' ) && ! empty( $pepsee_local_config['wp_siteurl'] ) ) {
+	define( 'WP_SITEURL', $pepsee_local_config['wp_siteurl'] );
+}
+
+if ( ! defined( 'WP_ENVIRONMENT_TYPE' ) ) {
+	define( 'WP_ENVIRONMENT_TYPE', $pepsee_local_config['environment_type'] ?? ( $pepsee_has_local_config ? 'local' : 'production' ) );
+}
+
+define( 'WP_DEBUG', isset( $pepsee_local_config['wp_debug'] ) ? (bool) $pepsee_local_config['wp_debug'] : true );
+define( 'WP_DEBUG_LOG', isset( $pepsee_local_config['wp_debug_log'] ) ? (bool) $pepsee_local_config['wp_debug_log'] : true );
+define( 'WP_DEBUG_DISPLAY', isset( $pepsee_local_config['wp_debug_display'] ) ? (bool) $pepsee_local_config['wp_debug_display'] : false );
 @ini_set( 'display_errors', 0 );
 
 /* That's all, stop editing! Happy publishing. */

@@ -175,6 +175,32 @@ function pepsee_music_share_card_template( $template ) {
 	return $template;
 }
 
+function pepsee_get_spotify_embed_data( $spotify_value ) {
+	if ( empty( $spotify_value ) || ! is_string( $spotify_value ) ) {
+		return null;
+	}
+
+	$spotify_value = trim( $spotify_value );
+	$matches       = array();
+
+	if ( preg_match( '~spotify:(track|album|playlist|episode|show):([A-Za-z0-9]+)~i', $spotify_value, $matches ) ) {
+		$type = strtolower( $matches[1] );
+		$id   = $matches[2];
+	} elseif ( preg_match( '~open\.spotify\.com/(?:intl-[a-z]{2}/)?(track|album|playlist|episode|show)/([A-Za-z0-9]+)~i', $spotify_value, $matches ) ) {
+		$type = strtolower( $matches[1] );
+		$id   = $matches[2];
+	} else {
+		return null;
+	}
+
+	return array(
+		'type'          => $type,
+		'id'            => $id,
+		'canonical_url' => sprintf( 'https://open.spotify.com/%1$s/%2$s', $type, $id ),
+		'embed_url'     => sprintf( 'https://open.spotify.com/embed/%1$s/%2$s?utm_source=generator', $type, $id ),
+	);
+}
+
 // Format de date sur les posts
 function meks_time_ago() {
 	return 'Il y a '.human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) );

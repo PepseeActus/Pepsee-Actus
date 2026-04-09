@@ -12,7 +12,21 @@ get_header();
 while ( have_posts() ) : the_post(); ?>
     <div>
         <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-            <?php $label = get_field('label'); ?>
+            <?php
+                $label = get_field('label');
+                $spotify = get_field('spotify');
+                $genre_tags = array();
+                $genres_for_tags = get_field('genres');
+                if (is_array($genres_for_tags)) {
+                    foreach ($genres_for_tags as $genre_item) {
+                        if ($genre_item instanceof WP_Term) {
+                            $genre_tags[] = $genre_item->name;
+                        } elseif (is_string($genre_item) && trim($genre_item) !== '') {
+                            $genre_tags[] = trim($genre_item);
+                        }
+                    }
+                }
+            ?>
             <div class="music-presentation">
                 <div class="music-presentation__picture rotate">
                     <?php the_post_thumbnail('thumbnail'); ?>
@@ -83,6 +97,26 @@ while ( have_posts() ) : the_post(); ?>
                 <div class="social-sharing">
                     <?php get_template_part( 'parts/sharing-buttons' ); ?>
                 </div>
+                <?php
+                    get_template_part(
+                        'parts/spotify-embed-shell',
+                        null,
+                        array(
+                            'spotify'     => $spotify,
+                            'eyebrow'     => 'Riddim',
+                            'title'       => get_the_title(),
+                            'cover_id'    => get_post_thumbnail_id(),
+                            'description' => 'Le redesign prépare un bloc d’écoute premium sans jamais altérer l’embed officiel Spotify.',
+                            'meta_items'  => array_filter(
+                                array(
+                                    'Sortie ' . get_the_date('d F Y'),
+                                    $label ? wp_strip_all_tags($label) : '',
+                                )
+                            ),
+                            'tags'        => $genre_tags,
+                        )
+                    );
+                ?>
                 <div>
                     <h2>Crédits</h2>
                     <?php $beatmakers = get_field('beatmaker'); ?>

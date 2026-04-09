@@ -1,0 +1,15 @@
+<?php
+
+return array(
+	'db_name'          => 'pepseeactus_local',
+	'db_user'          => 'root',
+	'db_password'      => 'root',
+	'db_host'          => '127.0.0.1',
+	'table_prefix'     => 'wp_cs87mn_',
+	'wp_home'          => 'http://pepseeactus.local',
+	'wp_siteurl'       => 'http://pepseeactus.local',
+	'environment_type' => 'local',
+	'wp_debug'         => true,
+	'wp_debug_log'     => true,
+	'wp_debug_display' => false,
+);

@@ -28,6 +28,8 @@ while ( have_posts() ) : the_post(); ?>
         }
         $titre = get_field('titre');
         $riddim = get_field('riddim');
+        $spotify = get_field('spotify');
+        $genres = get_field('genres');
         $cover_id = get_post_thumbnail_id();
         $cover_url = $cover_id ? wp_get_attachment_image_url( $cover_id, 'thumbnail' ) : '';
         $cover_host = $cover_url ? wp_parse_url( $cover_url, PHP_URL_HOST ) : '';
@@ -92,10 +94,41 @@ while ( have_posts() ) : the_post(); ?>
                     <div class="social-sharing">
                         <?php get_template_part( 'parts/sharing-buttons' ); ?>
                     </div>
+                    <?php
+                        $genre_tags = array();
+                        if ( is_array( $genres ) ) {
+                            foreach ( $genres as $genre ) {
+                                if ( $genre instanceof WP_Term ) {
+                                    $genre_tags[] = $genre->name;
+                                } elseif ( is_string( $genre ) && '' !== trim( $genre ) ) {
+                                    $genre_tags[] = trim( $genre );
+                                }
+                            }
+                        }
+
+                        get_template_part(
+                            'parts/spotify-embed-shell',
+                            null,
+                            array(
+                                'spotify'     => $spotify,
+                                'eyebrow'     => 'Single',
+                                'title'       => $titre ?: get_the_title(),
+                                'artist'      => $artistes_display,
+                                'cover_id'    => $cover_id,
+                                'description' => 'Le player reste l’embed officiel Spotify, intégré dans un conteneur éditorial premium pensé pour la découverte.',
+                                'meta_items'  => array_filter(
+                                    array(
+                                        $riddim ? sprintf( 'Riddim %s', $riddim ) : '',
+                                        get_the_date( 'd F Y' ),
+                                    )
+                                ),
+                                'tags'        => $genre_tags,
+                            )
+                        );
+                    ?>
                     <div>
                         <h2>Crédits</h2>
                         <?php $beatmakers = get_field('beatmaker'); ?>
-                        <?php $genres = get_field('genres'); ?>
                         <?php $mixs = get_field('mix'); ?>
                         <?php $masterings = get_field('mastering'); ?>
                         <?php $credits_more = get_field('more'); ?>

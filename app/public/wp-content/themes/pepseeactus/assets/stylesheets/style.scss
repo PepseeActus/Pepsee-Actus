@@ -49,13 +49,16 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 @use "mixins/mixins-base";
 @use "mixins/grid";
 @use "utilities/spacing";
+@use "components/design-tokens";
 @use "components/artist-strip";
 @use "components/artist-media-cards";
 @use "components/artist-page-sections";
 @use "components/artist-presentation";
 @use "components/decorative-media";
+@use "components/front-hero";
 @use "components/media-links";
 @use "components/music-presentation";
+@use "components/spotify-shell";
 
 /*--------------------------------------------------------------
 # Normalize

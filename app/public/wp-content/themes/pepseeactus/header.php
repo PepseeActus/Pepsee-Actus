@@ -76,41 +76,7 @@
 			</nav>
 		</div>
 	</header>
-	<?php 
-
-	//HOME
-	if (is_front_page()) : ?>
-		<div class="hero-banner">
-			<section class="header-actus">
-				<div class="post-title">
-					<h1>Le meilleur de la<br>French Caribbean Music.</h1>
-					<p>Découvres la plus grosse base de données<br>de sons Dancehall Lokal</p>
-					<p>Dancehall | Shatta | Soca | Bouyon | Afro</p>
-					<?php
-						$counts = get_custom_post_counts();
-
-						echo '<p><b>PepseeActus</b> cherche à répertorier chaque acteur qui fait avancer la musique urbaine des Antilles Guyane française. Nous contenons dans notre base de données <b>' 
-							. $counts['music']['total'] . '</b> musiques, <b>' 
-							. $counts['album']['total'] . '</b> albums, <b>' 
-							. $counts['riddim']['total'] . '</b> Riddims, <b>' 
-							. $counts['beatmaker']['total'] . '</b> beatmakers et <b>' 
-							. $counts['artist']['total'] . '</b> artistes.</p>';
-						
-						echo '<p>Depuis le début de l\'année 2026, <b>' 
-							. $counts['music']['since_2025'] . '</b> musiques ont été ajoutées sur PepseeActus, <b>' 
-							. $counts['album']['since_2025'] . '</b> albums, <b>' 
-							. $counts['riddim']['since_2025'] . '</b> Riddims, <b>' 
-							. $counts['beatmaker']['since_2025'] . '</b> beatmakers et <b>' 
-							. $counts['artist']['since_2025'] . '</b> artistes.</p>';
-					?>
-				</div>
-				<div>
-					<?php get_template_part( 'parts/social-stat' ); ?>
-				</div>
-			</section>
-		</div>
-	<?php endif;
-
+	<?php
 	if ( function_exists('yoast_breadcrumb') && !is_front_page()) {
 		yoast_breadcrumb( '<p class="container" id="breadcrumbs">','</p>' );
 	}

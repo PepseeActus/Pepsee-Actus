@@ -47,35 +47,6 @@
         position: relative;
     }
 
-    .header-actus {
-        margin: 10rem auto 3rem;
-
-        @include variables-base.media(phone) {
-            margin-top: 0;
-        }
-
-        .post-title {
-            text-align: center;
-            font-size: 24px;
-
-            h1 {
-                font-weight: 800;
-
-                @include variables-base.media(desktop) {
-                    line-height: 54px;
-                }
-
-                @include variables-base.media(phone) {
-                    font-size: 40px;
-                }
-            }
-
-            p {
-                margin: 20px auto;
-            }
-        }
-    }
-
     .home-layout {
         display: flex;
         justify-content: space-between;
