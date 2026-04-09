@@ -422,7 +422,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 .artist-detail {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.25rem;
   padding: clamp(1.25rem, 3vw, 2rem) 0 clamp(2.5rem, 6vw, 4rem);
 }
 .artist-detail .artist-detail__hero,
@@ -440,6 +440,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
   grid-template-columns: minmax(250px, 340px) minmax(0, 1fr);
   gap: clamp(1.25rem, 3vw, 2.5rem);
   padding: clamp(1.25rem, 3vw, 2rem);
+  align-items: center;
 }
 @media (max-width: 767.98px) {
   .artist-detail .artist-detail__hero {
@@ -456,6 +457,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
   border-radius: 28px;
   overflow: hidden;
   background: radial-gradient(circle at top, rgba(30, 215, 96, 0.18), rgba(255, 255, 255, 0.02));
+  box-shadow: 0 24px 44px rgba(0, 0, 0, 0.28);
 }
 .artist-detail .artist-detail__hero-image {
   display: block;
@@ -474,6 +476,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 .artist-detail .artist-detail__network-card,
 .artist-detail .artist-detail__news-card,
 .artist-detail .artist-detail__discovery-card {
+  border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: var(--pa-radius-lg);
   background: rgba(255, 255, 255, 0.04);
 }
@@ -508,6 +511,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 0.15rem;
 }
 .artist-detail .artist-detail__title-row {
   display: flex;
@@ -520,6 +524,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
   font-size: clamp(2.8rem, 8vw, 5.5rem);
   line-height: 0.9;
   text-transform: uppercase;
+  letter-spacing: -0.05em;
 }
 .artist-detail .artist-detail__verified-badge {
   display: inline-flex;
@@ -539,6 +544,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
   margin: 0.85rem 0 0;
   color: var(--pa-color-text-muted);
   font-size: 1rem;
+  line-height: 1.6;
 }
 .artist-detail .artist-detail__chips {
   display: flex;
@@ -577,13 +583,15 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
   height: 2.75rem;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   color: var(--pa-color-text);
   text-decoration: none;
-  transition: transform 0.2s ease, background-color 0.2s ease;
+  transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
 }
 .artist-detail .artist-detail__socials a:hover {
   transform: translateY(-1px);
   background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.16);
 }
 .artist-detail .artist-detail__socials svg {
   width: 18px;
@@ -617,6 +625,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
   max-width: 34rem;
   margin: 0;
   color: var(--pa-color-text-muted);
+  line-height: 1.55;
 }
 .artist-detail .artist-detail__facts-grid,
 .artist-detail .artist-detail__network-grid,
@@ -669,6 +678,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 }
 .artist-detail .artist-detail__narrative p:last-of-type {
   margin-bottom: 2rem;
+  line-height: 1.7;
 }
 .artist-detail .artist-detail__media-grid {
   display: grid;
@@ -687,6 +697,15 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
   gap: 0.9rem;
   min-width: 0;
   padding: 0.9rem;
+  transition: transform 0.24s ease, background-color 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease;
+}
+.artist-detail .artist-detail__media-card:hover,
+.artist-detail .artist-detail__network-card:hover,
+.artist-detail .artist-detail__discovery-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 16px 28px rgba(0, 0, 0, 0.16);
 }
 .artist-detail .artist-detail__media-thumb,
 .artist-detail .artist-detail__network-thumb,
@@ -713,6 +732,9 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 .artist-detail .artist-detail__discovery-copy,
 .artist-detail .artist-detail__news-copy {
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .artist-detail .artist-detail__media-title,
 .artist-detail .artist-detail__network-name,
@@ -725,6 +747,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
   font-weight: 700;
   line-height: 1.2;
   text-decoration: none;
+  letter-spacing: -0.015em;
 }
 .artist-detail .artist-detail__media-subtitle,
 .artist-detail .artist-detail__media-date,
@@ -763,6 +786,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 }
 .artist-detail .artist-detail__network-group {
   padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: var(--pa-radius-lg);
   background: rgba(255, 255, 255, 0.03);
 }
@@ -810,6 +834,27 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 .artist-detail .artist-detail__sharing {
   display: flex;
   justify-content: center;
+}
+@media (max-width: 767.98px) {
+  .artist-detail {
+    gap: 1rem;
+  }
+  .artist-detail .artist-detail__hero,
+  .artist-detail .artist-detail__section,
+  .artist-detail .artist-detail__sharing {
+    border-radius: 22px;
+    box-shadow: none;
+  }
+  .artist-detail .artist-detail__hero {
+    padding: 1rem;
+  }
+  .artist-detail .artist-detail__title {
+    font-size: clamp(2.2rem, 12vw, 3.2rem);
+  }
+  .artist-detail .artist-detail__section,
+  .artist-detail .artist-detail__sharing {
+    padding: 0.95rem;
+  }
 }
 
 /*
@@ -1298,6 +1343,12 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
   font-weight: 600;
   letter-spacing: 0.03em;
 }
+.front-hero .front-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1.25rem 0 1.75rem;
+}
 .front-hero .front-hero__body {
   margin-bottom: 1rem;
 }
@@ -1342,6 +1393,11 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
   border-radius: var(--pa-radius-lg);
   background: rgba(0, 0, 0, 0.24);
   border: 1px solid var(--pa-color-border);
+}
+@media (max-width: 767.98px) {
+  .front-hero .front-hero__actions {
+    margin: 1rem 0 1.35rem;
+  }
 }
 
 /*
@@ -1391,22 +1447,36 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 .media-detail {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
   padding: clamp(1.25rem, 2vw, 2rem) 0 clamp(2.5rem, 5vw, 4rem);
 }
 .media-detail .media-detail__hero,
 .media-detail .media-detail__section,
 .media-detail .media-detail__sharing {
+  position: relative;
+  overflow: hidden;
   border: 1px solid var(--pa-color-border);
   border-radius: var(--pa-radius-xl);
   background: linear-gradient(145deg, rgba(24, 31, 41, 0.96), rgba(9, 12, 17, 0.98));
   box-shadow: var(--pa-shadow-card);
+}
+.media-detail .media-detail__hero::before,
+.media-detail .media-detail__section::before,
+.media-detail .media-detail__sharing::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(30, 215, 96, 0.35), rgba(255, 255, 255, 0));
+  pointer-events: none;
 }
 .media-detail .media-detail__hero {
   display: grid;
   grid-template-columns: minmax(220px, 320px) minmax(0, 1fr);
   gap: 1.5rem;
   padding: clamp(1.25rem, 3vw, 2rem);
+  align-items: center;
 }
 @media (max-width: 767.98px) {
   .media-detail .media-detail__hero {
@@ -1424,11 +1494,13 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
   max-width: 320px;
   height: auto;
   border-radius: 24px;
+  box-shadow: 0 24px 44px rgba(0, 0, 0, 0.28);
 }
 .media-detail .media-detail__hero-copy {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 0.15rem;
 }
 .media-detail .media-detail__eyebrow,
 .media-detail .media-detail__person-type,
@@ -1446,11 +1518,14 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
   font-size: clamp(2.2rem, 5vw, 4rem);
   line-height: 0.95;
   text-transform: uppercase;
+  letter-spacing: -0.04em;
 }
 .media-detail .media-detail__subtitle {
   margin: 0.75rem 0 0;
   color: var(--pa-color-text-muted);
   font-size: clamp(1rem, 2vw, 1.2rem);
+  max-width: 34rem;
+  line-height: 1.55;
 }
 .media-detail .media-detail__meta,
 .media-detail .media-detail__tags {
@@ -1502,6 +1577,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
   max-width: 32rem;
   margin: 0;
   color: var(--pa-color-text-muted);
+  line-height: 1.55;
 }
 .media-detail .media-detail__people-grid,
 .media-detail .media-detail__discovery-grid {
@@ -1521,8 +1597,17 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
   gap: 0.9rem;
   min-width: 0;
   padding: 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: var(--pa-radius-lg);
   background: rgba(255, 255, 255, 0.03);
+  transition: transform 0.24s ease, background-color 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease;
+}
+.media-detail .media-detail__person-card:hover,
+.media-detail .media-detail__discovery-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 16px 28px rgba(0, 0, 0, 0.16);
 }
 .media-detail .media-detail__person-thumb,
 .media-detail .media-detail__discovery-thumb {
@@ -1540,6 +1625,9 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 .media-detail .media-detail__person-copy,
 .media-detail .media-detail__discovery-copy {
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .media-detail .media-detail__person-name,
 .media-detail .media-detail__discovery-title {
@@ -1549,6 +1637,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
   font-weight: 700;
   line-height: 1.2;
   text-decoration: none;
+  letter-spacing: -0.015em;
 }
 .media-detail .media-detail__verified,
 .media-detail .media-detail__discovery-subtitle {
@@ -1569,6 +1658,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 }
 .media-detail .media-detail__credit-card {
   padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: var(--pa-radius-lg);
   background: rgba(255, 255, 255, 0.03);
 }
@@ -1584,6 +1674,28 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 .media-detail .media-detail__narrative-content p,
 .media-detail .media-detail__narrative-content ul {
   margin-bottom: 1rem;
+  line-height: 1.7;
+}
+@media (max-width: 767.98px) {
+  .media-detail {
+    gap: 1rem;
+  }
+  .media-detail .media-detail__hero,
+  .media-detail .media-detail__section,
+  .media-detail .media-detail__sharing {
+    border-radius: 22px;
+    box-shadow: none;
+  }
+  .media-detail .media-detail__hero {
+    padding: 1rem;
+  }
+  .media-detail .media-detail__title {
+    font-size: clamp(1.9rem, 9vw, 2.7rem);
+  }
+  .media-detail .media-detail__section,
+  .media-detail .media-detail__sharing {
+    padding: 0.95rem;
+  }
 }
 
 /*
@@ -4105,8 +4217,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 .home .home-feed__spotlight-context a {
   color: var(--pa-color-text);
 }
-.home .home-feed__spotlight-actions,
-.home .front-hero__actions {
+.home .home-feed__spotlight-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;

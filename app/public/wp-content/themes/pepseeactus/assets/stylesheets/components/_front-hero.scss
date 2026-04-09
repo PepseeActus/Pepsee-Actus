@@ -58,6 +58,13 @@
     letter-spacing: 0.03em;
   }
 
+  .front-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin: 1.25rem 0 1.75rem;
+  }
+
   .front-hero__body {
     margin-bottom: 1rem;
   }
@@ -108,5 +115,11 @@
     border-radius: var(--pa-radius-lg);
     background: rgba(0, 0, 0, 0.24);
     border: 1px solid var(--pa-color-border);
+  }
+
+  @include variables-base.media(phone) {
+    .front-hero__actions {
+      margin: 1rem 0 1.35rem;
+    }
   }
 }
