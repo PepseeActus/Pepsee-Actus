@@ -186,6 +186,11 @@
     height: 100%;
   }
 
+  .home-feed__side-card-media img {
+    position: absolute;
+    inset: 0;
+  }
+
   .home-feed__spotlight-cover {
     align-self: stretch;
     height: clamp(280px, 34vw, 420px);
@@ -227,7 +232,9 @@
 
   .home-feed__side-card-media {
     margin-bottom: 0.9rem;
-    aspect-ratio: 16 / 10;
+    height: clamp(180px, 20vw, 240px);
+    min-height: 180px;
+    max-height: 240px;
   }
 
   .home-feed__side-card-tag,
