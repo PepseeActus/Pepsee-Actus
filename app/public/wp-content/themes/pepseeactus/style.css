@@ -3988,6 +3988,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 .home .home-feed__spotlight {
   display: grid;
   grid-template-columns: minmax(0, 1.5fr) minmax(300px, 0.85fr);
+  align-items: start;
   gap: 1rem;
   padding: clamp(1rem, 3vw, 1.5rem);
 }
@@ -3999,6 +4000,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 .home .home-feed__spotlight-primary {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(210px, 0.9fr);
+  align-items: stretch;
   gap: 1.25rem;
   min-width: 0;
   padding: clamp(1rem, 3vw, 1.5rem);
@@ -4109,6 +4111,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 .home .home-feed__side-card-media,
 .home .home-feed__artist-spotlight-media {
   display: block;
+  position: relative;
   overflow: hidden;
   border-radius: 24px;
   background: rgba(255, 255, 255, 0.04);
@@ -4126,11 +4129,16 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
   object-fit: cover;
 }
 .home .home-feed__spotlight-image {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
 }
 .home .home-feed__spotlight-cover {
-  min-height: clamp(260px, 34vw, 420px);
+  align-self: stretch;
+  height: clamp(280px, 34vw, 420px);
+  min-height: 280px;
+  max-height: 420px;
 }
 .home .home-feed__spotlight-placeholder,
 .home .home-media-card__thumb-placeholder,
