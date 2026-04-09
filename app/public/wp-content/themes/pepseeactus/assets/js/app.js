@@ -6,8 +6,6 @@ $(document).ready(function() {
 
     // SWIPER
     if ($('.swiper-actus').length > 0) {
-        console.log($('.swiper-actus').length);
-        
         const actusSwiper = new Swiper('.swiper-actus', {
             slidesPerView: 2,
             spaceBetween: 10,
@@ -23,6 +21,25 @@ $(document).ready(function() {
             }
         });
     }
+
+    document.querySelectorAll('.home-feed__carousel').forEach(function(carousel) {
+        const nextButton = carousel.querySelector('.home-feed__carousel-button--next');
+        const prevButton = carousel.querySelector('.home-feed__carousel-button--prev');
+
+        new Swiper(carousel, {
+            slidesPerView: 'auto',
+            spaceBetween: 16,
+            navigation: nextButton && prevButton ? {
+                nextEl: nextButton,
+                prevEl: prevButton,
+            } : undefined,
+            breakpoints: {
+                992: {
+                    spaceBetween: 20
+                }
+            }
+        });
+    });
 
     // MOUSE EFFECT ON SINGLE TITLE
     let mouseX, mouseY;

@@ -177,7 +177,12 @@
   }
 
   .home-feed__spotlight-image {
-    aspect-ratio: 1 / 1;
+    width: 100%;
+    height: 100%;
+  }
+
+  .home-feed__spotlight-cover {
+    min-height: clamp(260px, 34vw, 420px);
   }
 
   .home-feed__spotlight-placeholder,
@@ -289,20 +294,63 @@
     text-decoration: none;
   }
 
-  .home-feed__rail,
-  .home-feed__artist-grid {
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: minmax(220px, 1fr);
-    gap: 1rem;
-    overflow-x: auto;
-    padding-bottom: 0.25rem;
-    scroll-snap-type: x proximity;
+  .home-feed__carousel {
+    position: relative;
+    overflow: hidden;
+
+    .swiper-wrapper {
+      align-items: stretch;
+    }
+
+    .swiper-slide {
+      height: auto;
+    }
   }
 
-  .home-feed__rail > *,
-  .home-feed__artist-grid > * {
-    scroll-snap-align: start;
+  .home-feed__carousel--media .swiper-slide {
+    width: 280px;
+
+    @include variables-base.media(phone) {
+      width: 240px;
+    }
+  }
+
+  .home-feed__carousel--artists .swiper-slide {
+    width: 220px;
+
+    @include variables-base.media(phone) {
+      width: 190px;
+    }
+  }
+
+  .home-feed__carousel-nav {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    margin-top: 1rem;
+
+    @include variables-base.media(phone) {
+      display: none;
+    }
+  }
+
+  .home-feed__carousel-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.85rem;
+    height: 2.85rem;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--pa-color-text);
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+
+    &:hover {
+      transform: translateY(-1px);
+      background: rgba(255, 255, 255, 0.08);
+    }
   }
 
   .home-media-card {
@@ -473,12 +521,9 @@
     }
   }
 
-  .home-feed__artist-grid {
-    grid-auto-columns: minmax(180px, 1fr);
-  }
-
   .home-feed__artist-card {
     padding: 0.9rem;
+    height: 100%;
   }
 
   .home-feed__artist-card-media {

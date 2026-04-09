@@ -177,20 +177,32 @@ $riddim_archive         = get_post_type_archive_link( 'riddim' );
 				<a class="home-feed__section-link" href="<?= esc_url( $music_archive ); ?>">Voir toute la sélection</a>
 			<?php endif; ?>
 		</div>
-		<div class="home-feed__rail">
-			<?php foreach ( $trending_music_cards as $index => $card ) : ?>
-				<?php
-				get_template_part(
-					'parts/home-media-card',
-					null,
-					array(
-						'card'  => $card,
-						'class' => 'home-media-card--rail',
-						'badge' => 0 === $index ? 'New' : '',
-					)
-				);
-				?>
-			<?php endforeach; ?>
+		<div class="home-feed__carousel home-feed__carousel--media swiper">
+			<div class="swiper-wrapper">
+				<?php foreach ( $trending_music_cards as $index => $card ) : ?>
+					<div class="swiper-slide">
+						<?php
+						get_template_part(
+							'parts/home-media-card',
+							null,
+							array(
+								'card'  => $card,
+								'class' => 'home-media-card--rail',
+								'badge' => 0 === $index ? 'New' : '',
+							)
+						);
+						?>
+					</div>
+				<?php endforeach; ?>
+			</div>
+			<div class="home-feed__carousel-nav">
+				<button class="home-feed__carousel-button home-feed__carousel-button--prev" type="button" aria-label="Précédent">
+					<span aria-hidden="true">&larr;</span>
+				</button>
+				<button class="home-feed__carousel-button home-feed__carousel-button--next" type="button" aria-label="Suivant">
+					<span aria-hidden="true">&rarr;</span>
+				</button>
+			</div>
 		</div>
 	</section>
 
@@ -301,20 +313,32 @@ $riddim_archive         = get_post_type_archive_link( 'riddim' );
 				</article>
 			<?php endif; ?>
 
-			<div class="home-feed__artist-grid">
-				<?php foreach ( $artist_cards as $artist_card ) : ?>
-					<article class="home-feed__artist-card">
-						<a class="home-feed__artist-card-media" href="<?= esc_url( $artist_card['url'] ); ?>">
-							<?php if ( ! empty( $artist_card['image'] ) ) : ?>
-								<img src="<?= esc_url( $artist_card['image'] ); ?>" alt="<?= esc_attr( $artist_card['title'] ); ?>" loading="lazy" />
-							<?php endif; ?>
-						</a>
-						<div class="home-feed__artist-card-copy">
-							<a class="home-feed__artist-card-name" href="<?= esc_url( $artist_card['url'] ); ?>"><?= esc_html( $artist_card['title'] ); ?></a>
-							<p class="home-feed__artist-card-meta"><?= $artist_card['verified'] ? 'Verified artist' : 'Fiche artiste'; ?></p>
+			<div class="home-feed__carousel home-feed__carousel--artists swiper">
+				<div class="swiper-wrapper">
+					<?php foreach ( $artist_cards as $artist_card ) : ?>
+						<div class="swiper-slide">
+							<article class="home-feed__artist-card">
+								<a class="home-feed__artist-card-media" href="<?= esc_url( $artist_card['url'] ); ?>">
+									<?php if ( ! empty( $artist_card['image'] ) ) : ?>
+										<img src="<?= esc_url( $artist_card['image'] ); ?>" alt="<?= esc_attr( $artist_card['title'] ); ?>" loading="lazy" />
+									<?php endif; ?>
+								</a>
+								<div class="home-feed__artist-card-copy">
+									<a class="home-feed__artist-card-name" href="<?= esc_url( $artist_card['url'] ); ?>"><?= esc_html( $artist_card['title'] ); ?></a>
+									<p class="home-feed__artist-card-meta"><?= $artist_card['verified'] ? 'Verified artist' : 'Fiche artiste'; ?></p>
+								</div>
+							</article>
 						</div>
-					</article>
-				<?php endforeach; ?>
+					<?php endforeach; ?>
+				</div>
+				<div class="home-feed__carousel-nav">
+					<button class="home-feed__carousel-button home-feed__carousel-button--prev" type="button" aria-label="Précédent">
+						<span aria-hidden="true">&larr;</span>
+					</button>
+					<button class="home-feed__carousel-button home-feed__carousel-button--next" type="button" aria-label="Suivant">
+						<span aria-hidden="true">&rarr;</span>
+					</button>
+				</div>
 			</div>
 		</section>
 	<?php endif; ?>
