@@ -5,16 +5,28 @@
   .home-feed {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.25rem;
     padding: 0 0 clamp(2.5rem, 6vw, 4rem);
   }
 
   .home-feed__spotlight,
   .home-feed__section {
+    position: relative;
+    overflow: hidden;
     border: 1px solid var(--pa-color-border);
     border-radius: var(--pa-radius-xl);
     background: linear-gradient(155deg, rgba(18, 24, 34, 0.98), rgba(9, 12, 17, 0.98));
     box-shadow: var(--pa-shadow-card);
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(30, 215, 96, 0.4), rgba(255, 255, 255, 0));
+      pointer-events: none;
+    }
   }
 
   .home-feed__spotlight {
@@ -30,6 +42,7 @@
   }
 
   .home-feed__spotlight-primary {
+    position: relative;
     display: grid;
     grid-template-columns: minmax(0, 1.1fr) minmax(210px, 0.9fr);
     align-items: stretch;
@@ -44,6 +57,18 @@
     @include variables-base.media(phone) {
       grid-template-columns: 1fr;
     }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: -5rem;
+      right: -4rem;
+      width: 14rem;
+      height: 14rem;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(30, 215, 96, 0.18), rgba(30, 215, 96, 0));
+      pointer-events: none;
+    }
   }
 
   .home-feed__spotlight-copy,
@@ -51,6 +76,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    gap: 0.15rem;
   }
 
   .home-feed__section-kicker {
@@ -73,14 +99,17 @@
 
   .home-feed__spotlight-primary h2 {
     font-size: clamp(2.1rem, 5vw, 4rem);
+    letter-spacing: -0.04em;
   }
 
   .home-feed__section-heading h2 {
     font-size: clamp(1.8rem, 3vw, 2.6rem);
+    letter-spacing: -0.03em;
   }
 
   .home-feed__artist-spotlight-copy h3 {
     font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: -0.04em;
   }
 
   .home-feed__spotlight-subtitle,
@@ -93,6 +122,7 @@
   .home-feed__spotlight-subtitle {
     margin: 0.7rem 0 0;
     font-size: 1.05rem;
+    max-width: 30rem;
   }
 
   .home-feed__spotlight-meta {
@@ -114,6 +144,8 @@
 
   .home-feed__spotlight-context {
     margin: 1rem 0 0;
+    max-width: 28rem;
+    line-height: 1.55;
 
     a {
       color: var(--pa-color-text);
@@ -141,11 +173,13 @@
     color: var(--pa-color-text);
     font-weight: 600;
     text-decoration: none;
-    transition: transform 0.2s ease, background-color 0.2s ease;
+    transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 
     &:hover {
       transform: translateY(-1px);
       background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.24);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
     }
   }
 
@@ -164,6 +198,7 @@
     overflow: hidden;
     border-radius: 24px;
     background: rgba(255, 255, 255, 0.04);
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.25);
   }
 
   .home-feed__spotlight-image,
@@ -196,6 +231,7 @@
     height: clamp(280px, 34vw, 420px);
     min-height: 280px;
     max-height: 420px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
   }
 
   .home-feed__spotlight-placeholder,
@@ -222,8 +258,17 @@
   .home-feed__discovery-card,
   .home-story-card,
   .home-media-card {
+    border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: var(--pa-radius-lg);
     background: rgba(255, 255, 255, 0.04);
+    transition: transform 0.24s ease, background-color 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.06);
+      box-shadow: 0 18px 30px rgba(0, 0, 0, 0.18);
+    }
   }
 
   .home-feed__side-card {
@@ -235,6 +280,7 @@
     height: clamp(180px, 20vw, 240px);
     min-height: 180px;
     max-height: 240px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
   }
 
   .home-feed__side-card-tag,
@@ -260,6 +306,28 @@
     font-weight: 700;
     line-height: 1.2;
     text-decoration: none;
+  }
+
+  .home-feed__side-card-title,
+  .home-story-card__title,
+  .home-media-card__title,
+  .home-feed__artist-card-name,
+  .home-feed__discovery-title {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .home-feed__side-card-title,
+  .home-feed__discovery-title {
+    -webkit-line-clamp: 3;
+  }
+
+  .home-story-card__title,
+  .home-media-card__title,
+  .home-feed__artist-card-name {
+    -webkit-line-clamp: 2;
   }
 
   .home-feed__artist-highlight {
@@ -300,18 +368,35 @@
     p {
       margin: 0.45rem 0 0;
       max-width: 40rem;
+      line-height: 1.55;
     }
   }
 
   .home-feed__section-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
     color: var(--pa-color-text);
     font-weight: 600;
     text-decoration: none;
+
+    &::after {
+      content: "→";
+      transition: transform 0.2s ease;
+    }
+
+    &:hover::after {
+      transform: translateX(2px);
+    }
   }
 
   .home-feed__carousel {
     position: relative;
     overflow: hidden;
+
+    .swiper {
+      overflow: visible;
+    }
 
     .swiper-wrapper {
       align-items: stretch;
@@ -366,6 +451,12 @@
       transform: translateY(-1px);
       background: rgba(255, 255, 255, 0.08);
     }
+
+    &.swiper-button-disabled {
+      opacity: 0.35;
+      cursor: default;
+      transform: none;
+    }
   }
 
   .home-media-card {
@@ -373,6 +464,7 @@
     gap: 0.9rem;
     min-width: 0;
     padding: 0.9rem;
+    min-height: 100%;
   }
 
   .home-media-card__thumb {
@@ -394,6 +486,9 @@
 
   .home-media-card__copy {
     min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .home-media-card__eyebrow-row {
@@ -432,6 +527,7 @@
 
   .home-media-card__title {
     font-size: 1rem;
+    letter-spacing: -0.015em;
   }
 
   .home-media-card__subtitle,
@@ -464,10 +560,12 @@
     display: flex;
     gap: 0.9rem;
     padding: 0.9rem;
+    min-height: 100%;
   }
 
   .home-story-card--featured {
     flex-direction: column;
+    padding: 1rem;
 
     .home-story-card__media {
       aspect-ratio: 16 / 10;
@@ -495,6 +593,9 @@
 
   .home-story-card__copy {
     min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .home-story-card__meta {
@@ -521,6 +622,9 @@
     gap: 1rem;
     margin-bottom: 1rem;
     padding: 1rem;
+    background:
+      radial-gradient(circle at top left, rgba(30, 215, 96, 0.14), transparent 45%),
+      rgba(255, 255, 255, 0.04);
 
     @include variables-base.media(phone) {
       grid-template-columns: 1fr;
@@ -584,6 +688,9 @@
 
   .home-feed__discovery-copy {
     min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .front-hero__quicklinks {
@@ -608,6 +715,95 @@
       color: var(--pa-color-text);
       font-size: 0.92rem;
       text-decoration: none;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+
+      &:hover {
+        transform: translateY(-1px);
+        background: rgba(255, 255, 255, 0.08);
+      }
+    }
+  }
+
+  @include variables-base.media(phone) {
+    .home-feed {
+      gap: 1rem;
+    }
+
+    .home-feed__spotlight,
+    .home-feed__section {
+      border-radius: 22px;
+    }
+
+    .home-feed__spotlight,
+    .home-feed__section,
+    .home-feed__artist-spotlight,
+    .home-feed__side-card,
+    .home-story-card,
+    .home-media-card,
+    .home-feed__artist-card,
+    .home-feed__discovery-card {
+      box-shadow: none;
+    }
+
+    .home-feed__spotlight-primary {
+      gap: 1rem;
+      padding: 0.95rem;
+    }
+
+    .home-feed__spotlight-primary h2 {
+      font-size: clamp(1.8rem, 9vw, 2.4rem);
+    }
+
+    .home-feed__spotlight-cover {
+      height: 220px;
+      min-height: 220px;
+    }
+
+    .home-feed__section {
+      padding: 0.95rem;
+    }
+
+    .home-feed__section-heading {
+      margin-bottom: 0.85rem;
+    }
+
+    .home-feed__section-link {
+      font-size: 0.95rem;
+    }
+
+    .home-feed__stories-stack,
+    .home-feed__stack,
+    .home-feed__discovery-grid {
+      gap: 0.8rem;
+    }
+
+    .home-story-card,
+    .home-feed__discovery-card,
+    .home-media-card {
+      padding: 0.8rem;
+    }
+
+    .home-story-card__media {
+      width: 108px;
+      min-width: 108px;
+    }
+
+    .home-media-card__thumb {
+      width: 78px;
+      min-width: 78px;
+    }
+
+    .home-feed__artist-spotlight {
+      padding: 0.9rem;
+    }
+
+    .front-hero__quicklinks {
+      gap: 0.5rem;
+
+      a {
+        min-height: 2.2rem;
+        font-size: 0.84rem;
+      }
     }
   }
 }
