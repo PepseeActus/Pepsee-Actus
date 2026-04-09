@@ -9,220 +9,108 @@
 
 get_header();
 
-while ( have_posts() ) : the_post(); ?>
-    <div>
-        <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-            <?php
-                $label = get_field('label');
-                $spotify = get_field('spotify');
-                $genre_tags = array();
-                $genres_for_tags = get_field('genres');
-                if (is_array($genres_for_tags)) {
-                    foreach ($genres_for_tags as $genre_item) {
-                        if ($genre_item instanceof WP_Term) {
-                            $genre_tags[] = $genre_item->name;
-                        } elseif (is_string($genre_item) && trim($genre_item) !== '') {
-                            $genre_tags[] = trim($genre_item);
-                        }
-                    }
-                }
-            ?>
-            <div class="music-presentation">
-                <div class="music-presentation__picture rotate">
-                    <?php the_post_thumbnail('thumbnail'); ?>
-                </div>
-                <div class="music-presentation__info">
-                    <div class="music-presentation__info-name">
-                        <span class="entry-title"><?= get_the_title(); ?></span>
-                    </div>
-                    <div class="media-links">
-                        <?php get_template_part( 'parts/stream-link-template' ); ?>
-                    </div>
-                </div>
-            </div>
-            <div class="music-content">
-                <section class="artist-album">
-                    <?php
-                    $artistes_principal = get_field('artistes_principal');
-                    $posts = get_field('artistes_associes');
-                    if ($artistes_principal || $posts): ?>
-                        <div class="artist-image__container">
-                            <?php if ($artistes_principal): ?>
-                                <?php foreach ($artistes_principal as $post) {
-                                    $badge = get_field('compte_verifie'); ?>
-                                        <div class="artist-image">
-                                            <a href="<?= get_the_permalink($post); ?>">
-                                                <img src="<?= get_the_post_thumbnail_url($post, 'thumbnail'); ?>" alt="<?= get_the_title($post); ?>">
-                                            </a>
-                                        </div>
-                                <?php } ?>
-                            <?php endif; ?>
-                            <?php if ($posts): ?>
-                                <?php foreach ($posts as $post) {
-                                    $badge = get_field('compte_verifie'); ?>
-                                        <div class="artist-image">
-                                            <a href="<?= get_the_permalink($post); ?>">
-                                                <img src="<?= get_the_post_thumbnail_url($post, 'thumbnail'); ?>" alt="<?= get_the_title($post); ?>">
-                                            </a>
-                                        </div>
-                                <?php } ?>
-                            <?php endif; ?>
-                            <?php wp_reset_postdata(); ?>
-                        </div>
-                    <?php endif;
-                    if ($artistes_principal || $posts): ?>
-                        <div class="artist-info__container">
-                            <?php if ($artistes_principal): ?>
-                                <?php foreach ($artistes_principal as $post) {
-                                    $badge = get_field('compte_verifie'); ?>
-                                        <div class="associated-artist__info">
-                                            <a class="associated-artist__name" href="<?= get_the_permalink($post); ?>"><?= get_the_title(); ?></a>
-                                            <?php if ($badge) echo '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/></svg>'; ?>
-                                        </div>
-                                <?php } ?>
-                            <?php endif; ?>
-                            <?php if ($posts): ?>
-                                <?php foreach ($posts as $post) {
-                                    $badge = get_field('compte_verifie'); ?>
-                                        <div class="associated-artist__info">
-                                            <a class="associated-artist__name" href="<?= get_the_permalink($post); ?>"><?= get_the_title(); ?></a>
-                                            <?php if ($badge) echo '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/></svg>'; ?>
-                                        </div>
-                                <?php } ?>
-                            <?php endif; ?>
-                            <?php wp_reset_postdata(); ?>
-                        </div>
-                    <?php endif; ?>
-                </section>
-                <div class="social-sharing">
-                    <?php get_template_part( 'parts/sharing-buttons' ); ?>
-                </div>
-                <?php
-                    get_template_part(
-                        'parts/spotify-embed-shell',
-                        null,
-                        array(
-                            'spotify'     => $spotify,
-                            'eyebrow'     => 'Riddim',
-                            'title'       => get_the_title(),
-                            'cover_id'    => get_post_thumbnail_id(),
-                            'description' => 'Le redesign prépare un bloc d’écoute premium sans jamais altérer l’embed officiel Spotify.',
-                            'meta_items'  => array_filter(
-                                array(
-                                    'Sortie ' . get_the_date('d F Y'),
-                                    $label ? wp_strip_all_tags($label) : '',
-                                )
-                            ),
-                            'tags'        => $genre_tags,
-                        )
-                    );
-                ?>
-                <div>
-                    <h2>Crédits</h2>
-                    <?php $beatmakers = get_field('beatmaker'); ?>
-                    <?php
-                        $genres = get_field('genres');
-                        if (empty($genres)) {
-                            $genres = get_the_terms(get_the_ID(), 'genres');
-                        }
-                    ?>
-                    <?php $mixs = get_field('mix'); ?>
-                    <?php $masterings = get_field('mastering'); ?>
-                    <?php $credits_more = get_field('more'); ?>
-                    <?php $label = get_field('label'); ?>
-                    <ul>
-                        <li>
-                            <?php if ($beatmakers): ?>
-                                Beatmaker :
-                                    <?php
-                                        $beatmaker_links = array();
-                                        foreach ($beatmakers as $beatmaker) {
-                                            $beatmaker_links[] = sprintf(
-                                                '<a href="%s"><b>%s</b></a>',
-                                                esc_url( get_the_permalink( $beatmaker ) ),
-                                                esc_html( get_the_title( $beatmaker ) )
-                                            );
-                                        }
-                                        echo implode( ' / ', $beatmaker_links );
-                                    ?>
-                                <?php wp_reset_postdata(); ?>
-                            <?php endif; ?>
-                        </li>
-                        <li>
-                            <?php $compositeur = get_field('compositeur');
-                            if ($compositeur): ?>
-                                Compositeur : <b><?= $compositeur ?></b>
-                            <?php endif; ?>
-                        </li>
-                        <li>
-                            <?php if ($genres): ?>
-                                Genre musical :
-                                    <?php
-                                        $genre_links = array();
-                                        foreach ( $genres as $genre ) {
-                                            if ( $genre instanceof WP_Term ) {
-                                                $genre_links[] = sprintf(
-                                                    '<a href="%s">%s</a>',
-                                                    esc_url( get_term_link( $genre ) ),
-                                                    esc_html( $genre->name )
-                                                );
-                                            } elseif ( is_numeric( $genre ) ) {
-                                                $term = get_term( (int) $genre );
-                                                if ( $term && ! is_wp_error( $term ) ) {
-                                                    $genre_links[] = sprintf(
-                                                        '<a href="%s">%s</a>',
-                                                        esc_url( get_term_link( $term ) ),
-                                                        esc_html( $term->name )
-                                                    );
-                                                }
-                                            } elseif ( is_string( $genre ) && $genre !== '' ) {
-                                                $genre_links[] = esc_html( $genre );
-                                            }
-                                        }
-                                        echo implode( ' / ', $genre_links );
-                                    ?>
-                                <?php wp_reset_postdata(); ?>
-                            <?php endif; ?>
-                        </li>
-                        <li>
-                            <?php if ($mixs): ?>
-                                Mix :
-                                    <?php foreach ($mixs as $mix) { ?>
-                                        <a href="<?= get_the_permalink($mix); ?>"><b><?= get_the_title($mix); ?></b></a>
-                                    <?php } ?>
-                                <?php wp_reset_postdata(); ?>
-                            <?php endif; ?>
-                        </li>
-                        <li>
-                            <?php if ($masterings): ?>
-                                Mastering :
-                                    <?php foreach ($masterings as $mastering) { ?>
-                                        <a href="<?= get_the_permalink($mastering); ?>"><b><?= get_the_title($mastering); ?></b></a>
-                                    <?php } ?>
-                                <?php wp_reset_postdata(); ?>
-                            <?php endif; ?>
-                        </li>
-                        <li>
-                            <?php if ( $label ) : ?>
-                                Label : <?php echo wp_kses_post( $label ); ?>
-                            <?php endif; ?>
-                        </li>
-                        <li>
-                            <?php
-                                $credits_more = is_string($credits_more) ? trim($credits_more) : '';
-                            ?>
-                            <?php if ( $credits_more !== '' ) : ?>
-                                <?php echo wp_kses_post( $credits_more ); ?>
-                            <?php endif; ?>
-                        </li>
-                        <li>Date de sortie : <?php echo get_the_date('d F Y'); ?></li>
-                    </ul>
-                </div>
-                <?php the_content(); ?>
-            </div>
-        </div>
-    </div>
-<?php endwhile; ?>
+while ( have_posts() ) : the_post();
+	$label              = get_field( 'label' );
+	$spotify            = get_field( 'spotify' );
+	$beatmakers         = get_field( 'beatmaker' );
+	$genres             = get_field( 'genres' );
+	if ( empty( $genres ) ) {
+		$genres = get_the_terms( get_the_ID(), 'genres' );
+	}
+	$mixs                = get_field( 'mix' );
+	$masterings          = get_field( 'mastering' );
+	$credits_more        = trim( (string) get_field( 'more' ) );
+	$compositeur         = trim( (string) get_field( 'compositeur' ) );
+	$artistes_principal  = (array) get_field( 'artistes_principal' );
+	$artistes_associes   = (array) get_field( 'artistes_associes' );
+	$related_artist_ids  = array_values( array_unique( array_merge( $artistes_principal, $artistes_associes ) ) );
+	$associated_cards    = pepsee_prepare_people_cards( $related_artist_ids );
+	$genre_tags          = pepsee_prepare_text_tags( $genres );
+	$discovery_posts     = pepsee_get_related_posts_by_acf_relationship( 'riddim', array( 'artistes_principal', 'artistes_associes' ), $related_artist_ids, array( get_the_ID() ), 3 );
 
-<?php
+	if ( empty( $discovery_posts ) ) {
+		$discovery_posts = pepsee_get_recent_posts_by_type( 'riddim', array( get_the_ID() ), 3 );
+	}
+
+	$credit_items = array_filter(
+		array(
+			array(
+				'label' => 'Beatmaker',
+				'value' => implode( ' / ', pepsee_prepare_post_link_items( $beatmakers ) ),
+			),
+			array(
+				'label' => 'Compositeur',
+				'value' => esc_html( $compositeur ),
+			),
+			array(
+				'label' => 'Genres',
+				'value' => implode( ' / ', pepsee_prepare_term_link_items( $genres ) ),
+			),
+			array(
+				'label' => 'Mix',
+				'value' => implode( ' / ', pepsee_prepare_post_link_items( $mixs ) ),
+			),
+			array(
+				'label' => 'Mastering',
+				'value' => implode( ' / ', pepsee_prepare_post_link_items( $masterings ) ),
+			),
+			array(
+				'label' => 'Label',
+				'value' => $label ? wp_kses_post( $label ) : '',
+			),
+			array(
+				'label' => 'Notes',
+				'value' => $credits_more ? wp_kses_post( $credits_more ) : '',
+			),
+			array(
+				'label' => 'Date de sortie',
+				'value' => esc_html( get_the_date( 'd F Y' ) ),
+			),
+		),
+		static function ( $item ) {
+			return ! empty( $item['value'] );
+		}
+	);
+
+	get_template_part(
+		'parts/media-detail-shell',
+		null,
+		array(
+			'type_label'        => 'Riddim',
+			'type_slug'         => 'riddim',
+			'title'             => get_the_title(),
+			'cover_id'          => get_post_thumbnail_id(),
+			'cover_class'       => 'rotate',
+			'meta_items'        => array_values(
+				array_filter(
+					array(
+						get_the_date( 'd F Y' ),
+						$label ? wp_strip_all_tags( $label ) : '',
+					)
+				)
+			),
+			'tags'              => $genre_tags,
+			'associated_cards'  => $associated_cards,
+			'spotify_args'      => $spotify ? array(
+				'spotify'     => $spotify,
+				'eyebrow'     => 'Riddim',
+				'title'       => get_the_title(),
+				'cover_id'    => get_post_thumbnail_id(),
+				'description' => 'Le redesign prépare un bloc d’écoute premium sans jamais altérer l’embed officiel Spotify.',
+				'meta_items'  => array_values(
+					array_filter(
+						array(
+							'Sortie ' . get_the_date( 'd F Y' ),
+							$label ? wp_strip_all_tags( $label ) : '',
+						)
+					)
+				),
+				'tags'        => $genre_tags,
+			) : array(),
+			'credit_items'      => $credit_items,
+			'content_html'      => apply_filters( 'the_content', get_the_content() ),
+			'discovery_cards'   => pepsee_prepare_discovery_cards( $discovery_posts ),
+		)
+	);
+endwhile;
 get_footer();

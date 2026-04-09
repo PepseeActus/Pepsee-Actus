@@ -951,6 +951,248 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 # Media
 	## Galleries
 --------------------------------------------------------------*/
+.media-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: clamp(1.25rem, 2vw, 2rem) 0 clamp(2.5rem, 5vw, 4rem);
+}
+.media-detail .media-detail__hero,
+.media-detail .media-detail__section,
+.media-detail .media-detail__sharing {
+  border: 1px solid var(--pa-color-border);
+  border-radius: var(--pa-radius-xl);
+  background: linear-gradient(145deg, rgba(24, 31, 41, 0.96), rgba(9, 12, 17, 0.98));
+  box-shadow: var(--pa-shadow-card);
+}
+.media-detail .media-detail__hero {
+  display: grid;
+  grid-template-columns: minmax(220px, 320px) minmax(0, 1fr);
+  gap: 1.5rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+@media (max-width: 767.98px) {
+  .media-detail .media-detail__hero {
+    grid-template-columns: 1fr;
+  }
+}
+.media-detail .media-detail__cover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.media-detail .media-detail__cover-image {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  border-radius: 24px;
+}
+.media-detail .media-detail__hero-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.media-detail .media-detail__eyebrow,
+.media-detail .media-detail__person-type,
+.media-detail .media-detail__credit-label,
+.media-detail .media-detail__discovery-eyebrow {
+  margin: 0 0 0.45rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--pa-color-accent);
+}
+.media-detail .media-detail__title {
+  margin: 0;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+.media-detail .media-detail__subtitle {
+  margin: 0.75rem 0 0;
+  color: var(--pa-color-text-muted);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+}
+.media-detail .media-detail__meta,
+.media-detail .media-detail__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.media-detail .media-detail__meta li,
+.media-detail .media-detail__tags li {
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  background: var(--pa-color-surface-soft);
+  color: var(--pa-color-text-muted);
+  font-size: 0.9rem;
+}
+.media-detail .media-detail__tags li {
+  color: var(--pa-color-text);
+}
+.media-detail .media-detail__links {
+  margin-top: 1.25rem;
+}
+.media-detail .media-detail__section,
+.media-detail .media-detail__sharing {
+  padding: clamp(1rem, 3vw, 1.5rem);
+}
+.media-detail .media-detail__section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+@media (max-width: 767.98px) {
+  .media-detail .media-detail__section-heading {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+.media-detail .media-detail__section-heading h2 {
+  margin: 0;
+  font-size: clamp(1.7rem, 3vw, 2.5rem);
+  line-height: 1;
+  text-transform: uppercase;
+}
+.media-detail .media-detail__section-heading p {
+  max-width: 32rem;
+  margin: 0;
+  color: var(--pa-color-text-muted);
+}
+.media-detail .media-detail__people-grid,
+.media-detail .media-detail__discovery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+@media (max-width: 767.98px) {
+  .media-detail .media-detail__people-grid,
+  .media-detail .media-detail__discovery-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.media-detail .media-detail__person-card,
+.media-detail .media-detail__discovery-card {
+  display: flex;
+  gap: 0.9rem;
+  min-width: 0;
+  padding: 0.9rem;
+  border-radius: var(--pa-radius-lg);
+  background: rgba(255, 255, 255, 0.03);
+}
+.media-detail .media-detail__person-thumb,
+.media-detail .media-detail__discovery-thumb {
+  width: 88px;
+  min-width: 88px;
+}
+.media-detail .media-detail__person-thumb img,
+.media-detail .media-detail__discovery-thumb img {
+  display: block;
+  width: 100%;
+  height: 88px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+.media-detail .media-detail__person-copy,
+.media-detail .media-detail__discovery-copy {
+  min-width: 0;
+}
+.media-detail .media-detail__person-name,
+.media-detail .media-detail__discovery-title {
+  display: block;
+  color: var(--pa-color-text);
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-decoration: none;
+}
+.media-detail .media-detail__verified,
+.media-detail .media-detail__discovery-subtitle {
+  display: inline-block;
+  margin-top: 0.45rem;
+  color: var(--pa-color-text-muted);
+  font-size: 0.9rem;
+}
+.media-detail .media-detail__credit-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+@media (max-width: 767.98px) {
+  .media-detail .media-detail__credit-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.media-detail .media-detail__credit-card {
+  padding: 1rem;
+  border-radius: var(--pa-radius-lg);
+  background: rgba(255, 255, 255, 0.03);
+}
+.media-detail .media-detail__credit-value {
+  color: var(--pa-color-text);
+}
+.media-detail .media-detail__credit-value a {
+  color: inherit;
+}
+.media-detail .media-detail__narrative-content {
+  color: var(--pa-color-text);
+}
+.media-detail .media-detail__narrative-content p,
+.media-detail .media-detail__narrative-content ul {
+  margin-bottom: 1rem;
+}
+
+/*
+Theme Name: PepseeActus
+Theme URI: http://components.underscores.me/
+Author: Le Peps
+Author URI: http://pepseeactus.com
+Description: Premier thème from scratch PepseeActus
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: pepseeactus
+Tags:
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+PepseeActus is created by the theme generator at http://components.underscores.me/, (C) 2015-2016 Automattic, Inc.
+Components is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
+*/
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Normalize
+# Accessibility
+# Alignments
+# Typography
+# Forms
+# Buttons
+# Formatting
+# Lists
+# Tables
+# Navigation
+# Links
+# Layout
+	## Posts
+	## Pages
+# Comments
+# Widgets
+# Infinite scroll
+# Media
+	## Galleries
+--------------------------------------------------------------*/
 .media-links {
   margin-top: 4px;
 }
@@ -4034,13 +4276,6 @@ body.single-music aside {
   background-color: #232323;
 }
 
-.single-music h2 {
-  font-size: 3rem;
-  font-weight: 600;
-  letter-spacing: inherit;
-  margin-bottom: 0;
-  margin-top: 3rem;
-}
 .single-music .music-content p, .single-music .music-content ul {
   margin-bottom: 1rem;
 }
@@ -4064,6 +4299,9 @@ body.single-music aside {
 }
 .single-music .jp-relatedposts-post-date {
   text-align: left;
+}
+.single-music .music-presentation {
+  display: none;
 }
 
 /*
@@ -4144,6 +4382,10 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 .single-riddim aside,
 .single-album aside {
   margin-top: 1.5rem;
+}
+.single-riddim .music-presentation,
+.single-album .music-presentation {
+  display: none;
 }
 
 .single-riddim .beatmaker p {

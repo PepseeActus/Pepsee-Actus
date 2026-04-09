@@ -201,6 +201,178 @@ function pepsee_get_spotify_embed_data( $spotify_value ) {
 	);
 }
 
+function pepsee_prepare_people_cards( $entities ) {
+	$cards = array();
+
+	foreach ( array_filter( (array) $entities ) as $entity ) {
+		$post_object = get_post( $entity );
+
+		if ( ! $post_object instanceof WP_Post ) {
+			continue;
+		}
+
+		$cards[] = array(
+			'id'       => $post_object->ID,
+			'url'      => get_permalink( $post_object ),
+			'title'    => get_the_title( $post_object ),
+			'image'    => get_the_post_thumbnail_url( $post_object, 'medium' ),
+			'verified' => (bool) get_field( 'compte_verifie', $post_object->ID ),
+			'type'     => get_post_type( $post_object ),
+		);
+	}
+
+	return $cards;
+}
+
+function pepsee_prepare_post_link_items( $entities ) {
+	$items = array();
+
+	foreach ( array_filter( (array) $entities ) as $entity ) {
+		$post_object = get_post( $entity );
+
+		if ( ! $post_object instanceof WP_Post ) {
+			continue;
+		}
+
+		$items[] = sprintf(
+			'<a href="%s"><b>%s</b></a>',
+			esc_url( get_permalink( $post_object ) ),
+			esc_html( get_the_title( $post_object ) )
+		);
+	}
+
+	return $items;
+}
+
+function pepsee_prepare_term_link_items( $terms ) {
+	$items = array();
+
+	foreach ( array_filter( (array) $terms ) as $term ) {
+		if ( $term instanceof WP_Term ) {
+			$items[] = sprintf(
+				'<a href="%s">%s</a>',
+				esc_url( get_term_link( $term ) ),
+				esc_html( $term->name )
+			);
+			continue;
+		}
+
+		if ( is_numeric( $term ) ) {
+			$term_object = get_term( (int) $term );
+
+			if ( $term_object instanceof WP_Term && ! is_wp_error( $term_object ) ) {
+				$items[] = sprintf(
+					'<a href="%s">%s</a>',
+					esc_url( get_term_link( $term_object ) ),
+					esc_html( $term_object->name )
+				);
+			}
+
+			continue;
+		}
+
+		if ( is_string( $term ) && '' !== trim( $term ) ) {
+			$items[] = esc_html( trim( $term ) );
+		}
+	}
+
+	return $items;
+}
+
+function pepsee_prepare_text_tags( $items ) {
+	$tags = array();
+
+	foreach ( array_filter( (array) $items ) as $item ) {
+		if ( $item instanceof WP_Term ) {
+			$tags[] = $item->name;
+		} elseif ( is_string( $item ) && '' !== trim( $item ) ) {
+			$tags[] = trim( $item );
+		}
+	}
+
+	return array_values( array_unique( $tags ) );
+}
+
+function pepsee_get_related_posts_by_acf_relationship( $post_type, $field_names, $related_ids, $exclude_ids = array(), $limit = 3 ) {
+	$related_ids = array_values( array_unique( array_filter( array_map( 'intval', (array) $related_ids ) ) ) );
+	$field_names = array_values( array_filter( (array) $field_names ) );
+	$exclude_ids = array_values( array_unique( array_filter( array_map( 'intval', (array) $exclude_ids ) ) ) );
+
+	if ( empty( $related_ids ) || empty( $field_names ) ) {
+		return array();
+	}
+
+	$meta_query = array( 'relation' => 'OR' );
+
+	foreach ( $field_names as $field_name ) {
+		foreach ( $related_ids as $related_id ) {
+			$meta_query[] = array(
+				'key'     => $field_name,
+				'value'   => '"' . $related_id . '"',
+				'compare' => 'LIKE',
+			);
+		}
+	}
+
+	return get_posts(
+		array(
+			'post_type'           => $post_type,
+			'post_status'         => 'publish',
+			'posts_per_page'      => $limit,
+			'post__not_in'        => $exclude_ids,
+			'meta_query'          => $meta_query,
+			'ignore_sticky_posts' => true,
+		)
+	);
+}
+
+function pepsee_get_recent_posts_by_type( $post_type, $exclude_ids = array(), $limit = 3 ) {
+	return get_posts(
+		array(
+			'post_type'           => $post_type,
+			'post_status'         => 'publish',
+			'posts_per_page'      => $limit,
+			'post__not_in'        => array_filter( array_map( 'intval', (array) $exclude_ids ) ),
+			'ignore_sticky_posts' => true,
+		)
+	);
+}
+
+function pepsee_prepare_discovery_cards( $posts ) {
+	$cards = array();
+
+	foreach ( array_filter( (array) $posts ) as $post_object ) {
+		$post_object = get_post( $post_object );
+
+		if ( ! $post_object instanceof WP_Post ) {
+			continue;
+		}
+
+		$post_type = get_post_type( $post_object );
+		$subtitle  = '';
+		$title     = get_the_title( $post_object );
+
+		if ( in_array( $post_type, array( 'music', 'album' ), true ) ) {
+			$subtitle = trim( (string) get_field( 'artistes', $post_object->ID ) );
+			$acf_title = trim( (string) get_field( 'titre', $post_object->ID ) );
+
+			if ( '' !== $acf_title ) {
+				$title = $acf_title;
+			}
+		}
+
+		$cards[] = array(
+			'url'      => get_permalink( $post_object ),
+			'title'    => $title,
+			'subtitle' => $subtitle,
+			'image'    => get_the_post_thumbnail_url( $post_object, 'medium_large' ),
+			'eyebrow'  => get_post_type_object( $post_type )->labels->singular_name ?? ucfirst( $post_type ),
+		);
+	}
+
+	return $cards;
+}
+
 // Format de date sur les posts
 function meks_time_ago() {
 	return 'Il y a '.human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) );
