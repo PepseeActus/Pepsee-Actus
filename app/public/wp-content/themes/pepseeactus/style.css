@@ -419,6 +419,443 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 # Media
 	## Galleries
 --------------------------------------------------------------*/
+.artist-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: clamp(1.25rem, 3vw, 2rem) 0 clamp(2.5rem, 6vw, 4rem);
+}
+.artist-detail .artist-detail__hero,
+.artist-detail .artist-detail__section,
+.artist-detail .artist-detail__sharing {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--pa-color-border);
+  border-radius: var(--pa-radius-xl);
+  background: linear-gradient(155deg, rgba(18, 24, 34, 0.98), rgba(9, 12, 17, 0.98));
+  box-shadow: var(--pa-shadow-card);
+}
+.artist-detail .artist-detail__hero {
+  display: grid;
+  grid-template-columns: minmax(250px, 340px) minmax(0, 1fr);
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+@media (max-width: 767.98px) {
+  .artist-detail .artist-detail__hero {
+    grid-template-columns: 1fr;
+  }
+}
+.artist-detail .artist-detail__hero-media {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.artist-detail .artist-detail__hero-cover {
+  position: relative;
+  border-radius: 28px;
+  overflow: hidden;
+  background: radial-gradient(circle at top, rgba(30, 215, 96, 0.18), rgba(255, 255, 255, 0.02));
+}
+.artist-detail .artist-detail__hero-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+.artist-detail .artist-detail__stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+.artist-detail .artist-detail__stat-card,
+.artist-detail .artist-detail__fact-card,
+.artist-detail .artist-detail__media-card,
+.artist-detail .artist-detail__network-card,
+.artist-detail .artist-detail__news-card,
+.artist-detail .artist-detail__discovery-card {
+  border-radius: var(--pa-radius-lg);
+  background: rgba(255, 255, 255, 0.04);
+}
+.artist-detail .artist-detail__stat-card {
+  padding: 1rem;
+}
+.artist-detail .artist-detail__stat-value,
+.artist-detail .artist-detail__title {
+  margin: 0;
+  color: var(--pa-color-text);
+  font-weight: 700;
+}
+.artist-detail .artist-detail__stat-value {
+  font-size: clamp(1.6rem, 4vw, 2.5rem);
+  line-height: 1;
+}
+.artist-detail .artist-detail__stat-label,
+.artist-detail .artist-detail__fact-label,
+.artist-detail .artist-detail__media-eyebrow,
+.artist-detail .artist-detail__network-type,
+.artist-detail .artist-detail__news-date,
+.artist-detail .artist-detail__discovery-eyebrow,
+.artist-detail .artist-detail__eyebrow {
+  margin: 0;
+  color: var(--pa-color-accent);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.artist-detail .artist-detail__hero-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.artist-detail .artist-detail__title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+.artist-detail .artist-detail__title {
+  font-size: clamp(2.8rem, 8vw, 5.5rem);
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+.artist-detail .artist-detail__verified-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(30, 215, 96, 0.12);
+  color: var(--pa-color-accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.artist-detail .artist-detail__status {
+  margin: 0.85rem 0 0;
+  color: var(--pa-color-text-muted);
+  font-size: 1rem;
+}
+.artist-detail .artist-detail__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.artist-detail .artist-detail__chips li {
+  padding: 0.5rem 0.85rem;
+  border-radius: 999px;
+  background: var(--pa-color-surface-soft);
+  color: var(--pa-color-text);
+  font-size: 0.92rem;
+}
+.artist-detail .artist-detail__socials {
+  margin-top: 1.5rem;
+}
+.artist-detail .artist-detail__socials ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.artist-detail .artist-detail__socials li {
+  margin: 0;
+}
+.artist-detail .artist-detail__socials a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--pa-color-text);
+  text-decoration: none;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+.artist-detail .artist-detail__socials a:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.08);
+}
+.artist-detail .artist-detail__socials svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+.artist-detail .artist-detail__section,
+.artist-detail .artist-detail__sharing {
+  padding: clamp(1rem, 3vw, 1.5rem);
+}
+.artist-detail .artist-detail__section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+@media (max-width: 767.98px) {
+  .artist-detail .artist-detail__section-heading {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+.artist-detail .artist-detail__section-heading h2 {
+  margin: 0;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  line-height: 1;
+  text-transform: uppercase;
+}
+.artist-detail .artist-detail__section-heading p {
+  max-width: 34rem;
+  margin: 0;
+  color: var(--pa-color-text-muted);
+}
+.artist-detail .artist-detail__facts-grid,
+.artist-detail .artist-detail__network-grid,
+.artist-detail .artist-detail__news-grid,
+.artist-detail .artist-detail__discovery-grid {
+  display: grid;
+  gap: 1rem;
+}
+.artist-detail .artist-detail__facts-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+@media (max-width: 767.98px) {
+  .artist-detail .artist-detail__facts-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.artist-detail .artist-detail__fact-card {
+  padding: 1rem;
+}
+.artist-detail .artist-detail__fact-value {
+  margin-top: 0.35rem;
+  color: var(--pa-color-text);
+}
+.artist-detail .artist-detail__fact-value a {
+  color: inherit;
+}
+.artist-detail .artist-detail__narrative {
+  position: relative;
+  max-height: 18rem;
+  overflow: hidden;
+  color: var(--pa-color-text-muted);
+  transition: max-height 0.35s ease;
+}
+.artist-detail .artist-detail__narrative.open {
+  max-height: none;
+  padding-bottom: 3rem;
+}
+.artist-detail .artist-detail__narrative .readmore-link {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: 0;
+  padding: 2rem 0 0.5rem;
+  text-align: center;
+  background: linear-gradient(180deg, rgba(9, 12, 17, 0), rgb(9, 12, 17));
+}
+.artist-detail .artist-detail__narrative.open .readmore-link {
+  background: none;
+}
+.artist-detail .artist-detail__narrative p:last-of-type {
+  margin-bottom: 2rem;
+}
+.artist-detail .artist-detail__media-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+@media (max-width: 767.98px) {
+  .artist-detail .artist-detail__media-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.artist-detail .artist-detail__media-card,
+.artist-detail .artist-detail__network-card,
+.artist-detail .artist-detail__discovery-card {
+  display: flex;
+  gap: 0.9rem;
+  min-width: 0;
+  padding: 0.9rem;
+}
+.artist-detail .artist-detail__media-thumb,
+.artist-detail .artist-detail__network-thumb,
+.artist-detail .artist-detail__discovery-thumb {
+  display: block;
+  width: 98px;
+  min-width: 98px;
+}
+.artist-detail .artist-detail__media-thumb img,
+.artist-detail .artist-detail__network-thumb img,
+.artist-detail .artist-detail__discovery-thumb img {
+  display: block;
+  width: 100%;
+  height: 98px;
+  object-fit: cover;
+  border-radius: 18px;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5);
+}
+.artist-detail .artist-detail__media-thumb--circle img {
+  border-radius: 999px;
+}
+.artist-detail .artist-detail__media-copy,
+.artist-detail .artist-detail__network-copy,
+.artist-detail .artist-detail__discovery-copy,
+.artist-detail .artist-detail__news-copy {
+  min-width: 0;
+}
+.artist-detail .artist-detail__media-title,
+.artist-detail .artist-detail__network-name,
+.artist-detail .artist-detail__news-title,
+.artist-detail .artist-detail__discovery-title {
+  display: block;
+  margin-top: 0.35rem;
+  color: var(--pa-color-text);
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-decoration: none;
+}
+.artist-detail .artist-detail__media-subtitle,
+.artist-detail .artist-detail__media-date,
+.artist-detail .artist-detail__network-header p,
+.artist-detail .artist-detail__discovery-subtitle {
+  margin: 0.35rem 0 0;
+  color: var(--pa-color-text-muted);
+  font-size: 0.92rem;
+}
+.artist-detail .artist-detail__section-action {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+.artist-detail .artist-detail__reveal-button,
+.artist-detail .artist-detail__narrative .readmore-link a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.7rem 1rem;
+  border: 0;
+  border-radius: 999px;
+  background: #f66d38;
+  color: #fefcfb;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.artist-detail .artist-detail__network-groups {
+  display: grid;
+  gap: 1rem;
+}
+.artist-detail .artist-detail__network-group {
+  padding: 1rem;
+  border-radius: var(--pa-radius-lg);
+  background: rgba(255, 255, 255, 0.03);
+}
+.artist-detail .artist-detail__network-header {
+  margin-bottom: 0.9rem;
+}
+.artist-detail .artist-detail__network-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+}
+.artist-detail .artist-detail__network-grid,
+.artist-detail .artist-detail__discovery-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+@media (max-width: 767.98px) {
+  .artist-detail .artist-detail__network-grid,
+  .artist-detail .artist-detail__discovery-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.artist-detail .artist-detail__news-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+@media (max-width: 767.98px) {
+  .artist-detail .artist-detail__news-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.artist-detail .artist-detail__news-card {
+  overflow: hidden;
+}
+.artist-detail .artist-detail__news-thumb {
+  display: block;
+}
+.artist-detail .artist-detail__news-thumb img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1.2/1;
+  object-fit: cover;
+}
+.artist-detail .artist-detail__news-copy {
+  padding: 1rem;
+}
+.artist-detail .artist-detail__sharing {
+  display: flex;
+  justify-content: center;
+}
+
+/*
+Theme Name: PepseeActus
+Theme URI: http://components.underscores.me/
+Author: Le Peps
+Author URI: http://pepseeactus.com
+Description: Premier thème from scratch PepseeActus
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: pepseeactus
+Tags:
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+PepseeActus is created by the theme generator at http://components.underscores.me/, (C) 2015-2016 Automattic, Inc.
+Components is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
+*/
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Normalize
+# Accessibility
+# Alignments
+# Typography
+# Forms
+# Buttons
+# Formatting
+# Lists
+# Tables
+# Navigation
+# Links
+# Layout
+	## Posts
+	## Pages
+# Comments
+# Widgets
+# Infinite scroll
+# Media
+	## Galleries
+--------------------------------------------------------------*/
 :is(.single.single-artist, .single-beatmaker) .artist {
   padding: 1.5rem;
   border-radius: 5px;

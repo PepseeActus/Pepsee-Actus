@@ -119,20 +119,47 @@ $(document).ready(function() {
     $('.related-album a').text(album);
 
     //SEE MORE BIO DES ARTISTES
-    var readmore = document.querySelectorAll(".readmore-link a");
-    for (var i = 0; i < readmore.length; i++) {
-        var el = readmore[i];
-        el.onclick = function() {
+    document.querySelectorAll("[data-readmore-toggle], .readmore-link a").forEach(function(link) {
+        link.addEventListener("click", function(event) {
+            event.preventDefault();
 
-            let readmoreContainer = el.closest("div");
+            const readmoreContainer = link.closest(".readmore");
+
+            if (!readmoreContainer) {
+                return;
+            }
+
             readmoreContainer.classList.toggle("open");
 
-            let lable = (el.innerHTML === "Voir plus") ? "Voir moins" : "Voir plus";
-            el.innerHTML = lable;
+            const label = link.innerHTML === "Voir plus" ? "Voir moins" : "Voir plus";
+            link.innerHTML = label;
+        });
+    });
 
-            return false;
-        };
-    }
+    document.querySelectorAll("[data-reveal-trigger]").forEach(function(button) {
+        button.addEventListener("click", function() {
+            const targetSelector = button.getAttribute("data-reveal-target");
+            const target = targetSelector ? document.querySelector(targetSelector) : null;
+
+            if (!target) {
+                return;
+            }
+
+            const hiddenCards = target.querySelectorAll(".is-hidden");
+            const isExpanded = button.getAttribute("data-reveal-expanded") === "true";
+
+            hiddenCards.forEach(function(card) {
+                if (isExpanded) {
+                    card.setAttribute("hidden", "hidden");
+                } else {
+                    card.removeAttribute("hidden");
+                }
+            });
+
+            button.setAttribute("data-reveal-expanded", isExpanded ? "false" : "true");
+            button.textContent = isExpanded ? button.getAttribute("data-reveal-label-more") : button.getAttribute("data-reveal-label-less");
+        });
+    });
 
     //CACHER LES VISUELS D'ARTISTES QUAND ILS SONT TROP NOMBREUX (PAGE MUSIQUE)
     if ( $('.artist-image__container .artist-image').length > 4 ) {

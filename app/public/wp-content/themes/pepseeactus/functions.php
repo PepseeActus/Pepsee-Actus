@@ -373,6 +373,79 @@ function pepsee_prepare_discovery_cards( $posts ) {
 	return $cards;
 }
 
+function pepsee_sort_posts_by_date_desc( $posts ) {
+	$posts = array_filter( (array) $posts );
+
+	usort(
+		$posts,
+		function ( $left, $right ) {
+			$left_post  = get_post( $left );
+			$right_post = get_post( $right );
+
+			if ( ! $left_post instanceof WP_Post || ! $right_post instanceof WP_Post ) {
+				return 0;
+			}
+
+			return strcmp( $right_post->post_date, $left_post->post_date );
+		}
+	);
+
+	return $posts;
+}
+
+function pepsee_prepare_media_cards( $posts ) {
+	$cards = array();
+
+	foreach ( array_filter( (array) $posts ) as $post_object ) {
+		$post_object = get_post( $post_object );
+
+		if ( ! $post_object instanceof WP_Post ) {
+			continue;
+		}
+
+		$post_type   = get_post_type( $post_object );
+		$post_object_type = get_post_type_object( $post_type );
+		$title       = get_the_title( $post_object );
+		$subtitle    = '';
+		$date_format = 'F Y';
+		$thumb_shape = 'square';
+
+		if ( in_array( $post_type, array( 'music', 'album', 'riddim' ), true ) ) {
+			$acf_title = trim( (string) get_field( 'titre', $post_object->ID ) );
+			$artistes  = trim( (string) get_field( 'artistes', $post_object->ID ) );
+
+			if ( '' !== $acf_title ) {
+				$title = $acf_title;
+			}
+
+			if ( '' !== $artistes ) {
+				$subtitle = $artistes;
+			}
+		}
+
+		if ( 'music' === $post_type ) {
+			$thumb_shape = 'circle';
+		}
+
+		if ( in_array( $post_type, array( 'album', 'riddim' ), true ) && get_the_time( 'Y', $post_object ) < 2015 ) {
+			$date_format = 'Y';
+		}
+
+		$cards[] = array(
+			'url'         => get_permalink( $post_object ),
+			'title'       => $title,
+			'subtitle'    => $subtitle,
+			'eyebrow'     => $post_object_type->labels->singular_name ?? ucfirst( $post_type ),
+			'date'        => get_the_date( $date_format, $post_object ),
+			'image'       => get_the_post_thumbnail_url( $post_object, 'medium' ),
+			'image_alt'   => get_the_title( $post_object ),
+			'thumb_shape' => $thumb_shape,
+		);
+	}
+
+	return $cards;
+}
+
 // Format de date sur les posts
 function meks_time_ago() {
 	return 'Il y a '.human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) );
