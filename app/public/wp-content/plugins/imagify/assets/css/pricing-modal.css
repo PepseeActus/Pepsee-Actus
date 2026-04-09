@@ -41,7 +41,7 @@
 	z-index: 10;
 }
 .imagify-payment-modal .imagify-modal-content {
-	width: 980px;
+	width: 1065px;
 	max-width: 100%;
 	min-width: 925px;
 	padding: 0;
@@ -56,7 +56,9 @@
 	height: 668px;
 }
 .imagify-payment-modal .imagify-modal-main {
-	width: 70%;
+	width: 100%;
+	background-color: #f5f7f9;
+	padding: 30px 50px;
 }
 .imagify-iframe-viewing .imagify-modal-main {
 	width: auto;
@@ -99,7 +101,9 @@
 	margin-bottom: .5em;
 }
 .imagify-modal-title {
-	font-size: 1.8em;
+	font-size: 2.2em;
+	font-weight: 600;
+	margin: 30px 0 10px;
 }
 .imagify-modal-title .imagify-inner-sub-title {
 	display: block;
@@ -163,7 +167,7 @@
 
 .imagify-small-options {
 	width: 300px;
-	margin: 1em auto .5em;
+	margin: 5em auto 5em;
 	background: #338EA6;
 	border-radius: 4px;
 }
@@ -394,10 +398,11 @@ div.imagify-col-checkbox {
 /* Offer col */
 .imagify-offer-size {
 	font-size: 30px;
-	color: #2E3243;
+	color: #5F758E;
 	font-weight: bold;
 	-webkit-transition: all .275s;
 	transition: all .275s;
+	text-transform: uppercase;
 }
 .imagify-offer-by {
 	font-size: 10px;
@@ -422,11 +427,14 @@ div.imagify-col-price {
 .imagify-offer-monthly .imagify-flex-table .imagify-price-block,
 .imagify-offer-monthlies .imagify-price-block {
 	padding-top: 0;
+	max-width: 39%;
 }
 .imagify-flex-table .imagify-price-complement {
 	padding-right: 0;
 	font-size: 10px;
 	font-weight: bold;
+	font-size: 0.9em;
+    line-height: 1.7;
 }
 .imagify-price-block,
 .imagify-price-discount {
@@ -490,10 +498,17 @@ span.imagify-price-mini {
 	vertical-align: 2px;
 }
 span.imagify-price-by {
-	font-size: 10px;
-	color: #1F2332;
-	vertical-align: -13px;
-	text-indent: -27px;
+	font-size: 0.9em;
+    color: #5F758E;
+    text-indent: -27px;
+    display: block;
+    text-align: center;
+    margin-top: 9px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.imagify-plans-selection-view span.imagify-price-by {
+    text-indent: -66px;
 }
 
 .imagify-col-other-actions {
@@ -694,8 +709,9 @@ input.imagify-coupon-code {
 	width: 500px;
 	max-width: 100%;
 	margin: 2em auto 2.5em;
-	font-size: 0.85em;
+	font-size: 0.9em;
 	line-height: 1.5;
+	font-weight:600
 }
 
 /* Year selected */
@@ -741,9 +757,11 @@ div.imagify-col-details {
 }
 .imagify-pricing-table .imagify-offer-line {
 	padding: .6em 0;
-	border: 2px solid #E8EEF0;
+	background-color: white;
+	margin-bottom: 30px;
 	text-align: left;
 	border-radius: 3px;
+	position: relative;
 }
 .imagify-pricing-table .imagify-offer-line:first-child {
 	margin-top: .75em;
@@ -1152,3 +1170,339 @@ p.imagify-modal-sidebar-title.imagify-modal-sidebar-title {
 	float: right;
 	font-weight: bold;
 }
+.imagify-col-details p.imagify-label-plans{
+	margin-left: 10px;
+	font-size: 1.5em;
+	text-transform: uppercase;
+	color: #3FB1CF;
+}
+div.imagify-col-label {
+	width:15%;
+}
+.imagify-pricing-table .imagify-col-other-actions.imagify-choose-plan-col {
+    width: 14.5%;
+}
+@media (max-width: 782px) {
+	.imagify-payment-modal .imagify-modal-content{
+		width: 90%;
+		min-width: auto;
+		-webkit-flex-direction: column;
+		-ms-flex-direction: column;
+		flex-direction: column;
+		-webkit-box-direction: normal;
+		-webkit-box-orient: vertical;
+		-moz-box-direction: normal;
+		-moz-box-orient: vertical;
+		align-items: center;
+	}
+	.imagify-payment-modal .imagify-modal-main{
+		width: 100%;
+	}
+	.imagify-payment-modal .imagify-modal-sidebar{
+		width: 100%;
+
+	}
+	.imagify-modal-section.section-gray{
+		padding: 10px 10px 15px;
+	}
+	.imagify-modal-section{
+		padding: 0 10px;
+	}
+	.imagify-submit-line{
+		-webkit-flex-direction: column;
+		-ms-flex-direction: column;
+		flex-direction: column;
+		-webkit-box-direction: normal;
+		-webkit-box-orient: vertical;
+		-moz-box-direction: normal;
+		-moz-box-orient: vertical;
+		align-items: center;
+	}
+	.imagify-coupon-section{
+		-webkit-flex-direction: column;
+		-ms-flex-direction: column;
+		flex-direction: column;
+		-webkit-box-direction: normal;
+		-webkit-box-orient: vertical;
+		-moz-box-direction: normal;
+		-moz-box-orient: vertical;
+		align-items: center;
+		margin-bottom: 20px;
+	}
+	.imagify-coupon-section .imagify-coupon-text{
+		text-align: center;
+		width: 100%;
+		padding: 0;
+		margin-bottom: 20px;
+	}
+
+	.imagify-modal-cols{
+		-webkit-flex-direction: column;
+		-ms-flex-direction: column;
+		flex-direction: column;
+		-webkit-box-direction: normal;
+		-webkit-box-orient: vertical;
+		-moz-box-direction: normal;
+		-moz-box-orient: vertical;
+		align-items: center;
+	}
+	.imagify-col{
+		padding: 0;
+		float: none;
+		width: 100%;
+	}
+	.imagify-payment-modal .imagify-iconed{
+		margin: 1.5em auto;
+		max-width: 260px;
+	}
+	.imagify-offer-header{
+		padding: 0;
+	}
+	.imagify-offer-header .imagify-inline-options input[type="radio"]:not(:checked) + label,
+	.imagify-offer-header .imagify-inline-options input[type="radio"]:checked + label{
+		padding: 7px 15px;
+	}
+	.imagify-offer-header .imagify-inline-options input[type="radio"]:checked + label{
+		padding: 7px 15px;
+	}
+	.imagify-offer-header .imagify-offer-title.imagify-switch-my .imagify-monthly,
+	.imagify-offer-header .imagify-offer-title.imagify-switch-my .imagify-yearly{
+		padding: 10px 5px;
+		font-size: 12px;
+	}
+	.imagify-offer-size{
+		font-size: 18px;
+	}
+	.imagify-col-other-actions{
+		padding: 10px;
+		text-align: center;
+	}
+	.imagify-2-free{
+		padding: 2px 5px;
+	}
+	.imagify-2-free.imagify-b-right {
+		position: absolute;
+		bottom: 100%;
+		left: 0;
+		right: 0;
+		padding: 2px 5px;
+		margin-bottom: 0px;
+		margin-left: 0px;
+		font-size: 0.8em;
+		letter-spacing: 0;
+		text-transform: none;
+		text-align: center;
+		color: #FFF;
+		background: #10121A;
+		border-radius: 2px;
+	}
+	.imagify-2-free.imagify-b-right:after{
+		content: "";
+		position: absolute;
+		left: 50%;
+		top: unset;
+		bottom: -6px;
+		margin-left: -3px;
+		border-top: 3px solid #10121A;
+		border-left: 3px solid transparent;
+		border-right: 3px solid transparent;
+	}
+	div.imagify-col-price{
+		-webkit-flex-direction: column;
+		-ms-flex-direction: column;
+		flex-direction: column;
+		-webkit-box-direction: normal;
+		-webkit-box-orient: vertical;
+		-moz-box-direction: normal;
+		-moz-box-orient: vertical;
+		align-items: center;
+	}
+	.imagify-flex-table .imagify-price-complement{
+		padding: 5px 0 0 0;
+		margin: 0;
+		text-align: center;
+	}
+	div.imagify-col-details{
+		padding: 10px 0px 10px 10px;
+	}
+	.imagify-pricing-table .imagify-col-other-actions{
+		padding: 0 10px 0 0;
+	}
+	.imagify-pricing-table .imagify-button-secondary{
+		font-size: 12px;
+		white-space: normal;
+		line-height: 14px;
+		padding: 10px;
+	}
+	.imagify-price-big{
+		font-size: 24px;
+	}
+	span.imagify-price-mini{
+		font-size: 12px;
+	}
+	.imagify-col-checkbox label{
+		padding-left: 30px !important;
+	}
+	.medium.imagify-checkbox:not(:checked) + label:before,
+	.medium.imagify-checkbox:checked + label:before{
+		width: 15px;
+		height: 15px;
+	}
+	div.imagify-col-checkbox{
+		padding: 0;
+	}
+	.imagify-offer-monthly .imagify-flex-table .imagify-price-block,
+	.imagify-offer-monthlies .imagify-price-block{
+		padding: 0;
+	}
+	.imagify-pricing-table{
+		margin: 0 .5em;
+	}
+	.imagify-payment-modal .close-btn{
+		top: 5px;
+		right: 5px;
+	}
+	.imagify-col-checkbox .imagify-checkbox.imagify-checkbox:not(:checked) + label:after,
+	.imagify-col-checkbox .imagify-checkbox.imagify-checkbox:checked + label:after{
+		top: -1px;
+		left: 10px;
+	}
+}
+
+/** Ribbon **/
+.imagify-ribbon {
+	position: absolute;
+	left: -5px; top: -5px;
+	z-index: 1;
+	overflow: hidden;
+	width: 75px; height: 75px;
+	text-align: right;
+}
+.imagify-ribbon span {
+	font-size: 0.9em;
+	font-weight: bold;
+	color: #FFF;
+	text-align: center;
+	line-height: 22px;
+	transform: rotate(-45deg);
+	-webkit-transform: rotate(-45deg);
+	width: 100px;
+	display: block;
+	background: #79A70A;
+	background: linear-gradient(#3FB1CF 0%, #3FB1CF 100%);
+	box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+	position: absolute;
+	top: 19px; left: -21px;
+}
+.imagify-ribbon span::before {
+	content: "";
+	position: absolute; left: 0px; top: 100%;
+	z-index: -1;
+	border-left: 3px solid #3FB1CF;
+	border-right: 3px solid transparent;
+	border-bottom: 3px solid transparent;
+	border-top: 3px solid #3FB1CF;
+}
+.imagify-ribbon span::after {
+	content: "";
+	position: absolute; right: 0px; top: 100%;
+	z-index: -1;
+	border-left: 3px solid transparent;
+	border-right: 3px solid #3FB1CF;
+	border-bottom: 3px solid transparent;
+	border-top: 3px solid #3FB1CF;
+}
+/** End Ribbon **/
+
+/** Toggle Switch **/
+.imagify-toggle-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+    width: 70%;
+    margin: 80px auto 40px;
+}
+.imagify-toggle-container .toggle-label {
+    font-size: 16px;
+    font-weight: 500;
+}
+.toggle-container .toggle-label:nth-of-type(2) {
+    color: #c8ced5;
+}
+.imagify-switch {
+    position: relative;
+    display: inline-block;
+    width: 48px;
+    height: 24px;
+}
+.imagify-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.imagify-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #97c45e;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+.imagify-slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    bottom: 3px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.4s;
+}
+input:checked + .imagify-slider {
+    background-color: #97c45e;
+}
+input:checked + .imagify-slider:before {
+    transform: translateX(22px);
+}
+.imagify-badge-container {
+    align-items: center;
+    gap: 5px;
+	position:absolute;
+	right: 80px;
+	top: -25px;
+}
+.imagify-badge {
+    font-size: 12px;
+    padding: 4px 10px;
+    border: 1px solid #b8bfc5;
+    border-radius: 3px;
+    color: #b8bfc5;
+	font-weight: 700;
+    transition: background-color 0.4s, color 0.4s;
+}
+.imagify-badge.imagify-badge-checked {
+	background-color: #E2F0D1;
+	color: #8bc34a;
+	border: 1px solid #8bc34a
+}
+.imagify-arrow-container {
+	position: absolute;
+    right: 180px;
+    top: 0px;
+}
+.imagify-toggle-container img:nth-of-type(1) {
+    display: none;
+}
+input:checked ~ .imagify-badge-container .imagify-badge {
+    background-color: #97c45e;
+    color: white;
+    border-color: #97c45e;
+    opacity: 1;
+}
+/** End Toggle Switch **/

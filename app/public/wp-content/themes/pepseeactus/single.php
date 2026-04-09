@@ -10,8 +10,8 @@
 get_header();
 
 while ( have_posts() ) : the_post(); ?>
-	<div class="row">
-		<article id="post-<?php the_ID(); ?>" <?php post_class('col-12 col-lg-9'); ?>>
+	<div>
+		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<div class="post-thumbnail">
 				<?php the_post_thumbnail('large'); ?>
 				<?php the_title( '<h3 class="single-title"><span>', '</span></h3>' ); ?>
@@ -41,8 +41,8 @@ while ( have_posts() ) : the_post(); ?>
 								<a class="music-cover rotate" href="<?php get_the_permalink($song); ?>">
 									<img src="<?= get_the_post_thumbnail_url($song, 'thumbnail'); ?>" alt="<?= get_the_title($song); ?>">
 								</a>
-								<div class="music-info">
-									<a href="<?= get_the_permalink($song); ?>"><?= get_the_title($song); ?></a>
+								<div class="media-card-row__info media-listing__info">
+									<a class="media-card-row__title media-listing__title" href="<?= get_the_permalink($song); ?>"><?= get_the_title($song); ?></a>
 								</div>
 							</div>
 						<?php } ?>
@@ -57,8 +57,6 @@ while ( have_posts() ) : the_post(); ?>
 				</div>
 			</div>
 
-
-			<div id="graphcomment"></div>
 			<?php $posts = get_field('artistes_associes');
 			if ($posts): ?>
 				<div class="artist desktop-visually-hidden">
@@ -73,9 +71,9 @@ while ( have_posts() ) : the_post(); ?>
 										<img src="<?= get_the_post_thumbnail_url($post, 'thumbnail'); ?>" alt="<?= get_the_title($post); ?>">
 									</a>
 								</div>
-								<div class="artist-info">
-									<a class="artist-title" href="<?= get_the_permalink($post); ?>"><?= get_the_title($post); ?></a>
-									<?php if ($badge) echo '<i class="fas fa-check-circle"></i>'; ?>
+								<div class="associated-artist__info">
+									<a class="associated-artist__name" href="<?= get_the_permalink($post); ?>"><?= get_the_title($post); ?></a>
+									<?php if ($badge) echo '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/></svg>'; ?>
 									<?php get_template_part( 'parts/reseaux-template' ); ?>
 								</div>
 							</div>
@@ -85,58 +83,6 @@ while ( have_posts() ) : the_post(); ?>
 				</div>
 			<?php endif; ?>
 		</article>
-		<aside class="col-lg-3 mobile-visually-hidden">
-			<div class="sticky">
-				<section class="widget follow-us">
-					<h3 class="widget-title">suivez-nous</h3>
-					<div class="follow-us__box">
-						<a class="facebook" href="https://www.facebook.com/PepseeActus/" target="_blank">
-							<p class="icon"><i class="fab fa-facebook"></i><span>103K</span></p>
-						</a>
-						<a class="youtube" href="https://www.youtube.com/channel/UCrgv-BXDaZ39gdWUl_c7qHQ" target="_blank">
-							<p class="icon"><i class="fab fa-youtube"></i><span>30K</span></p>
-						</a>
-						<a class="instagram" href="https://www.instagram.com/pepseeactus/" target="_blank">
-							<p class="icon"><i class="fab fa-instagram"></i><span>5K</span></p>
-						</a>
-						<a class="soundcloud" href="https://soundcloud.com/pepsee" target="_blank">
-							<p class="icon"><i class="fab fa-soundcloud"></i><span>2K</span></p>
-						</a>
-					</div>
-				</section>
-				<section class="widget instagram-feed">
-					<?= do_shortcode("[instagram-feed]"); ?>
-				</section>
-				<?php $posts = get_field('artistes_associes');
-				if ($posts): ?>
-					<section class="artist">
-						<h3 class="widget-title">Artiste<?= (count($posts) > 1) ? 's' : ''; ?></h3>
-						<div class="artist__container">
-							<?php foreach ($posts as $post) {
-								$badge = get_field('compte_verifie'); ?>
-								
-								<div class="artist__container-box">
-									<div class="artist-image">
-										<a href="<?= get_the_permalink($post); ?>">
-											<img src="<?= get_the_post_thumbnail_url($post, 'thumbnail'); ?>" alt="<?= get_the_title($post); ?>">
-										</a>
-									</div>
-									<div class="artist-info">
-										<a class="artist-title" href="<?= get_the_permalink($post); ?>"><?= get_the_title($post); ?></a>
-										<?php if ($badge) echo '<i class="fas fa-check-circle"></i>'; ?>
-										<?php get_template_part( 'parts/reseaux-template' ); ?>
-									</div>
-								</div>
-							<?php } ?>
-							<?php wp_reset_postdata(); ?>
-						</div>
-					</section>
-				<?php endif; ?>
-				<div class="share">
-					<?= do_shortcode("[scriptless buttons='facebook,twitter,whatsapp,pinterest,linkedin,email']"); ?>
-				</div>
-			</div>
-		</aside>
 	</div>
 <?php endwhile; ?>
 

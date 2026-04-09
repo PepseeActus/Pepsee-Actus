@@ -1,0 +1,17 @@
+@use "../variables/variables-base";
+
+.padding-inside,
+.section-padding {
+  padding: 2rem;
+}
+
+.margin-outside,
+.section-stack {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+
+  @include variables-base.media(phone) {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+}

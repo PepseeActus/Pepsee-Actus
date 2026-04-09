@@ -12,6 +12,9 @@ get_header();
 
 <h2>Riddims</h2>
 <div class="padding-inside">
+    <p>Dans la musique dancehall jamaïcaine, le terme "<i>Riddim</i>" désigne la partie instrumentale qui accompagne un morceau, souvent associée à la section rythmique. Ce concept est au cœur de nombreux genres musicaux jamaïcains, où le <i>Riddim</i> s'allie à la voix du deejay pour former un ensemble unique. Lorsqu'un <i>Riddim</i> devient populaire, il peut être réutilisé dans des dizaines, voire des centaines de morceaux, aussi bien en studio que lors de performances live.</p>
+</div>
+<div class="padding-inside">
     <div class="principal">
         <?php
         $yearly = new WP_Query([

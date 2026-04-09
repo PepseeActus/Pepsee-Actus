@@ -1,36 +1,41 @@
-const gulp = require('gulp');
-const sass = require('gulp-sass');
-const del = require('del');
+const fs = require('node:fs/promises');
+const path = require('node:path');
+const { watch, series } = require('gulp');
+const sass = require('sass');
 
-gulp.task('styles', () => {
-    return gulp.src('assets/stylesheets/**/*.scss')
-        .pipe(sass().on('error', sass.logError))
-        .pipe(gulp.dest('./'));
-});
+const paths = {
+  styles: {
+    src: 'assets/stylesheets/style.scss',
+    watch: 'assets/stylesheets/**/*.scss',
+    dest: './',
+  },
+};
 
-gulp.task('clean', () => {
-    return del([
-        'css/main.css',
-    ]);
-});
+function styles() {
+  return sass
+    .compileAsync(paths.styles.src, {
+      style: 'expanded',
+      sourceMap: true,
+      loadPaths: [path.resolve('assets/stylesheets')],
+    })
+    .then(async (result) => {
+      const cssOutput = path.join(paths.styles.dest, 'style.css');
+      const mapOutput = `${cssOutput}.map`;
+      const relativeMapPath = path.basename(mapOutput);
+      const cssWithSourceMap = `${result.css}\n/*# sourceMappingURL=${relativeMapPath} */\n`;
 
-gulp.task('default', gulp.series(['clean', 'styles']));
-gulp.task('styles', () => {
-    return gulp.src('assets/stylesheets/**/*.scss')
-        .pipe(sass().on('error', sass.logError))
-        .pipe(gulp.dest('./'));
-});
+      await fs.writeFile(cssOutput, cssWithSourceMap);
 
-gulp.task('clean', () => {
-    return del([
-        'css/main.css',
-    ]);
-});
-
-gulp.task('default', gulp.series(['clean', 'styles']));
-
-gulp.task('watch', () => {
-    gulp.watch('assets/stylesheets/**/*.scss', (done) => {
-        gulp.series(['clean', 'styles'])(done);
+      if (result.sourceMap) {
+        await fs.writeFile(mapOutput, JSON.stringify(result.sourceMap, null, 2));
+      }
     });
-});
+}
+
+function watchFiles() {
+  watch(paths.styles.watch, styles);
+}
+
+exports.styles = styles;
+exports.watch = watchFiles;
+exports.default = series(styles, watchFiles);

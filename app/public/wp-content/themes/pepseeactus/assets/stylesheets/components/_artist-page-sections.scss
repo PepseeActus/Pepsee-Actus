@@ -1,0 +1,156 @@
+@use "../variables/colors";
+@use "../variables/variables-base";
+
+:is(.single.single-artist, .single-beatmaker) {
+  .artist {
+    padding: 1.5rem;
+    border-radius: 5px;
+
+    @include variables-base.media(phone) {
+      background: rgba(255, 255, 255, 0.01);
+    }
+  }
+
+  h2 {
+    font-size: 4rem;
+    font-weight: 600;
+    letter-spacing: inherit;
+    margin-bottom: 5px;
+    position: relative;
+    text-transform: initial;
+
+    @include variables-base.media(phone) {
+      font-size: 30px;
+    }
+  }
+
+  .artist-bio {
+    position: relative;
+    max-height: 190px;
+    margin-bottom: 2rem;
+    text-align: justify;
+    overflow-y: hidden;
+    transition: all 0.5s ease;
+
+    &.open {
+      max-height: 100%;
+      padding-bottom: 3rem;
+      transition: all 0.5s ease;
+
+      .readmore-link {
+        background: none;
+      }
+    }
+
+    p {
+      margin-bottom: 3rem;
+    }
+
+    .readmore-link {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      margin: 0;
+      padding: 15px 0 5px;
+      text-align: center;
+      background-image: -moz-linear-gradient(top, transparent, white);
+      background-image: -webkit-gradient(
+        linear,
+        left top,
+        left bottom,
+        color-stop(0, transparent),
+        color-stop(1, colors.$surface-base)
+      );
+
+      a {
+        text-decoration: none;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        background-color: colors.$brand-accent;
+        padding: 5px 10px;
+        border-radius: 5px;
+        transition: all 0.25s ease;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 36px;
+
+        &:hover {
+          opacity: 1;
+        }
+
+        &:focus-visible {
+          outline: 2px solid colors.$brand-accent;
+          outline-offset: 3px;
+          background-color: colors.$surface-light;
+          color: colors.$surface-base;
+        }
+      }
+    }
+  }
+
+  .artist-album {
+    flex-flow: column;
+    margin-bottom: 2rem;
+
+    .artist-album__container {
+      display: flex;
+      flex-flow: wrap;
+    }
+  }
+
+  .artist-music {
+    position: relative;
+    margin-bottom: 2rem;
+
+    &__container {
+      display: flex;
+      flex-flow: wrap;
+    }
+  }
+
+  .actus {
+    margin-bottom: 2rem;
+
+    .swiper-actus {
+      position: relative;
+      overflow: hidden;
+    }
+  }
+
+  .jp-relatedposts {
+    display: none;
+  }
+}
+
+.single .actus article a::before {
+  content: none;
+}
+
+:is(.single.single-artist, .single-beatmaker) .more-music {
+  .date {
+    position: relative;
+    margin-left: 15px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    padding: 5px 10px;
+    font-weight: bold;
+    cursor: pointer;
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 9px;
+      height: 4px;
+      width: 40px;
+      background: colors.$brand-accent;
+    }
+  }
+
+  .artist-music__container {
+    display: flex;
+  }
+}

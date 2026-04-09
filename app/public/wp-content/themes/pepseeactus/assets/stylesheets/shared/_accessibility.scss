@@ -1,3 +1,6 @@
+@use "../mixins/mixins-base";
+@use "../variables/colors";
+
 /* Text meant only for screen readers. */
 .screen-reader-text {
 	clip: rect(1px, 1px, 1px, 1px);
@@ -7,13 +10,13 @@
 	overflow: hidden;
 
 	&:focus {
-		background-color: $color__background-screen;
+		background-color: colors.$color__background-screen;
 		border-radius: 3px;
 		box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
 		clip: auto !important;
-		color: $color__text-screen;
+		color: colors.$color__text-screen;
 		display: block;
-		@include font-size(0.875);
+		@include mixins-base.font-size(0.875);
 		font-weight: bold;
 		height: auto;
 		left: 5px;
@@ -29,4 +32,43 @@
 /* Do not show the outline on the skip link target. */
 #content[tabindex="-1"]:focus {
 	outline: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html:focus-within {
+		scroll-behavior: auto;
+	}
+
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+
+	.rotate:hover,
+	.media-disc:hover {
+		animation: none !important;
+	}
+
+	.title-angle:hover,
+	.title-outline:hover {
+		background-size: 100% 100%;
+	}
+
+	.search-overlay {
+		transform: none;
+	}
+
+	.site-header,
+	.nveMenu,
+	.overlay,
+	.search-overlay,
+	.search-overlay__close,
+	.jp-relatedposts-post a,
+	.media-card-row__info ul li a {
+		transition: none !important;
+	}
 }

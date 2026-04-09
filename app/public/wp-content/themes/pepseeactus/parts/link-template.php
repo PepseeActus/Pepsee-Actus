@@ -11,7 +11,7 @@
 <?php if ($download) : ?>
     <?= ($download) ? '<div><a href="'.$download.'" target="_blank">Télécharger</a></div>' : ''; ?>
 <?php else : ?>
-    <ul>
+    <ul class="mt-4 mb-4">
         <?= ($download) ? '<li><a href="'.$download.'" target="_blank">Télécharger</a></li>' : ''; ?>
         <?= ($backlink) ? '<li><a href="'.$backlink.'" target="_blank">
             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 314 314" xml:space="preserve">

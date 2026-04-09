@@ -1,3 +1,8 @@
+@use "../mixins/mixins-base";
+@use "../variables/colors";
+@use "../variables/typography";
+@use "../variables/variables-base";
+
 html {
 	font-size: 62.5%;
 }
@@ -7,11 +12,11 @@ button,
 input,
 select,
 textarea {
-	font-family: $font__main;
+	font-family: typography.$font-sans;
 	font-size: 1.6rem;
-	line-height: $font__line-height-body;
-	color: #fff;
-	font-weight: 200;
+	line-height: typography.$line-height-body;
+	color: colors.$surface-light;
+	font-weight: typography.$weight-light;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -31,9 +36,9 @@ address {
 }
 
 pre {
-	background: $color__background-pre;
-	@include font-size(0.9375);
-	line-height: $font__line-height-pre;
+	background: colors.$color__background-pre;
+	@include mixins-base.font-size(0.9375);
+	line-height: typography.$line-height-pre;
 	margin-bottom: 1.6em;
 	max-width: 100%;
 	overflow: auto;
@@ -41,16 +46,16 @@ pre {
 }
 
 code, kbd, tt, var {
-	@include font-size(0.9375);
+	@include mixins-base.font-size(0.9375);
 }
 
 abbr, acronym {
-	border-bottom: 1px dotted $color__border-abbr;
+	border-bottom: 1px dotted colors.$color__border-abbr;
 	cursor: help;
 }
 
 mark, ins {
-	background: $color__background-ins;
+	background: colors.$color__background-ins;
 	text-decoration: none;
 }
 
@@ -70,7 +75,7 @@ blockquote, q {
 h1 {
 	font-size: 6rem;
 
-	@include media(phone) {
+	@include variables-base.media(phone) {
 		font-size: 1.5625rem;
 	}
 }
@@ -78,45 +83,22 @@ h1 {
 h2 {
 	font-size: 5rem;
 
-	@include media(phone) {
+	@include variables-base.media(phone) {
 		font-size: 30px;
 	}
 }
 
 h3 {
-	font-size: 3rem;
-
-	&.widget-title {
-		padding: 0 0 0 15px;
-		margin-bottom: 1rem;
-		font-size: 2.5rem;
-		border-radius: 5px;
-		text-transform: uppercase;
-		font-weight: 700;
-		letter-spacing: .5px;
-		position: relative;
-
-		&::before {
-            top: 50%;
-			content: '';
-			position: absolute;
-			bottom: 0;
-			left: 0;
-			height: 30px;
-			width: 5px;
-			background: $color__orange;
-			transform: translateY(-50%);
-		}
-	}
+	font-size: 2rem;
 }
 
 strong {
-	font-weight: 600;
+	font-weight: typography.$weight-semibold;
 }
 
 em {
-	font-weight: 300;
-	color: $color__orange;
+	font-weight: typography.$weight-regular;
+	color: colors.$brand-accent;
 }
 
 figure {
@@ -128,7 +110,7 @@ figure {
 
 figcaption {
 	font-size: 1.2rem;
-	color: grey;
+	color: rgba(colors.$surface-light, 0.72);
 }
 
 .single article, .page .page-content {
@@ -142,5 +124,9 @@ figcaption {
 
 	a {
 		text-decoration: underline;
+	}
+
+	.jp-relatedposts-post-a {
+		text-decoration: none;
 	}
 }

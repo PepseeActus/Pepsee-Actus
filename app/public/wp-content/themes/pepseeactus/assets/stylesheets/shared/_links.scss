@@ -1,20 +1,18 @@
-a {
-	color: #fff;
+@use "../variables/colors";
+@use "../variables/variables-base";
 
-	&:visited {
-		color: #fff;
-	}
-	&:hover,
-	&:focus,
-	&:active {
-		color: #fff;
-	}
-	&:focus {
-		outline: none;
-	}
+a {
+	color: colors.$surface-light;
+
+	&:visited,
 	&:hover,
 	&:active {
-		outline: 0;
+		color: colors.$surface-light;
+	}
+
+	&:focus-visible {
+		outline: 2px solid colors.$brand-accent;
+		outline-offset: 2px;
 	}
 }
 
@@ -23,12 +21,12 @@ a {
 	margin-bottom: 3rem;
 	letter-spacing: .3rem;
 	text-transform: uppercase;
-	text-align: left !important;
+	text-align: left;
 
 	em {
-		color: white !important;
-		font-weight: 700 !important;
-		font-style: initial !important;
+		color: white;
+		font-weight: 700;
+		font-style: initial;
 	}
 
 	&::after {
@@ -38,26 +36,26 @@ a {
 		left: 0;
 		height: 5px;
 		width: 77px;
-		background: $color__orange;
+		background: colors.$brand-accent;
 	}
 
-	@include media(phone) {
+	@include variables-base.media(phone) {
 		letter-spacing: 0;
 	}
 }
 
 .jp-relatedposts {
-	margin-top: 5rem;
+	margin: 3rem 0;
 }
 
 .jp-relatedposts-items {
-	@include media(desktop) {
+	@include variables-base.media(desktop) {
 		display: flex;
 	}
 }
 
 .jp-relatedposts-post {
-	@include media(desktop) {
+	@include variables-base.media(desktop) {
 		width: 32%;
 		max-width: 32%;
 
@@ -66,7 +64,7 @@ a {
 		}
 	}
 
-	@include media(phone) {
+	@include variables-base.media(phone) {
 		&:not(:last-of-type) {
 			margin-bottom: 3rem;
 		}

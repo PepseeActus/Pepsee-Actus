@@ -1,3 +1,5 @@
+@use "../variables/variables-base";
+
 .post-type-archive-riddim,
 .post-type-archive-album,
 .post-type-archive-artist,
@@ -12,17 +14,7 @@
         text-transform: uppercase;
         position: relative;
 
-        &::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            height: 5px;
-            width: 77px;
-            background: $color__orange;
-        }
-
-        @include media(phone) {
+        @include variables-base.media(phone) {
             letter-spacing: 0;
         }
     }
@@ -36,11 +28,11 @@
         border-radius: 5px;
         background: rgba(255,255,255,.06);
 
-        @include media(phone) {
+        @include variables-base.media(phone) {
             column-count: 1;
         }
 
-        @include media(tablet) {
+        @include variables-base.media(tablet) {
             column-count: 3;
         }
     }
@@ -64,7 +56,7 @@
     .bloc-letter {
         padding: 5px 0;
 
-        @include media(phone) {
+        @include variables-base.media(phone) {
             padding: 10px 0;
         }
 

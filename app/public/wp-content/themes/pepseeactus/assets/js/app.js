@@ -1,78 +1,28 @@
 import { Search } from './search.js';
 
 $(document).ready(function() {
-
     // SEARCH
     const search = new Search();
 
-    window.gc_params = {
-        graphcomment_id: 'PepseeActus',
-        overlay: {
-            "width": 480,
-            "button": {
-                "background": "#F66D38",
-                "color": "#ffffff",
-                "label": "Commentez"
-            },
-            "bubble": true,
-            "visible": false
-        }
-    };
-
     // SWIPER
-    const actusSwiper = new Swiper('.swiper-actus', {
-        slidesPerView: 2,
-        spaceBetween: 10,
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        breakpoints: {
-            992: {
-                slidesPerView: 4,
-                spaceBetween: 20
+    if ($('.swiper-actus').length > 0) {
+        console.log($('.swiper-actus').length);
+        
+        const actusSwiper = new Swiper('.swiper-actus', {
+            slidesPerView: 2,
+            spaceBetween: 10,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
             },
-        }
-    });
-
-    const headerSwiper = new Swiper('.swiper-header', {
-        slidesPerView: 1,
-        pagination: {
-            el: ".swiper-pagination",
-        },
-        clickable: true,
-        autoplay: {
-            delay: 5000,
-        },
-        loop: true
-    });
-
-    // COMMENTAIRES
-    let gc_params = {
-        graphcomment_id: 'PepseeActus'
-    };
-
-    (function() {
-        const gc = document.createElement('script'); gc.type = 'text/javascript'; gc.async = true;
-        gc.src = 'https://graphcomment.com/js/integration.js?' + Math.round(Math.random() * 1e8);
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(gc);
-    })();
-
-    // BACK TO TOP
-    const btn = $('#button');
-
-    $(window).scroll(function() {
-        if ($(window).scrollTop() > 300) {
-        btn.addClass('show');
-        } else {
-        btn.removeClass('show');
-        }
-    });
-
-    btn.on('click', function(e) {
-        e.preventDefault();
-        $('html, body').animate({scrollTop:0}, '300');
-    });
+            breakpoints: {
+                992: {
+                    slidesPerView: 4,
+                    spaceBetween: 20
+                },
+            }
+        });
+    }
 
     // MOUSE EFFECT ON SINGLE TITLE
     let mouseX, mouseY;
@@ -127,9 +77,6 @@ $(document).ready(function() {
             data : $('#pepsee_filters').serialize(), // form data
             dataType : 'json', // this data type allows us to receive objects from the server
             type : 'POST',
-            beforeSend : function(xhr){
-                $('#pepsee_filters').find('button').text('Ça filtre...');
-            },
             success : function( data ){
 
                 // when filter applied:
@@ -141,9 +88,6 @@ $(document).ready(function() {
 
                 // set the new max page parameter
                 pepsee_loadmore_params.max_page = data.max_page;
-
-                // change the button label back
-                $('#pepsee_filters').find('button').text('Appique le filtre');
 
                 // insert the posts to the container
                 $('#pepsee_posts_wrap').html(data.content);
@@ -161,19 +105,12 @@ $(document).ready(function() {
         return false;
     });
 
-    // PROGRESS BAR & HEADER FADE
+    // PROGRESS BAR
     let progress = document.getElementById('progressbar');
-    let navHeader = $('.home .site-header');
     let totalHeight = document.body.scrollHeight - window.innerHeight;
-
     window.onscroll = function() {
         let progressHeight = (window.pageYOffset / totalHeight) * 100;
         progress.style.height = progressHeight + '%';
-        if (window.scrollY > 200 && window.innerWidth > 992) {
-            navHeader.addClass('blackNav');
-        } else {
-            navHeader.removeClass('blackNav');
-        }
     }
 
     //RETIRE LE NOM DE L'ARTISTE DANS LE NOM DE L'ALBUM
@@ -183,28 +120,41 @@ $(document).ready(function() {
 
     //SEE MORE BIO DES ARTISTES
     var readmore = document.querySelectorAll(".readmore-link a");
-
     for (var i = 0; i < readmore.length; i++) {
         var el = readmore[i];
         el.onclick = function() {
-            
+
             let readmoreContainer = el.closest("div");
             readmoreContainer.classList.toggle("open");
-            
+
             let lable = (el.innerHTML === "Voir plus") ? "Voir moins" : "Voir plus";
             el.innerHTML = lable;
-            
+
             return false;
         };
     }
 
     //CACHER LES VISUELS D'ARTISTES QUAND ILS SONT TROP NOMBREUX (PAGE MUSIQUE)
-    if ( $('.artist-image__container .artist-image').length > 6 ) {
-        $('.artist-image__container .artist-image').slice(6).hide();
+    if ( $('.artist-image__container .artist-image').length > 4 ) {
+        $('.artist-image__container .artist-image').slice(4).hide();
+        $('.artist-image__container').append('<div class="artist-image last"></div>')
     }
+    $('.artist-image.last').on('click', function () {
+        $('.artist-image__container .artist-image').show();
+        $('.artist-image.last').hide();
+    });
 
-    if ( $('.artist-info__container .artist-info').length > 5 ) {
-        $('.artist-info__container .artist-info').slice(5).hide();
-        $('.artist-info__container').append('<div class="artist-info">and more...</div>')
-    }
+    // NAV MOBILE
+    $("#navbar").on("click touchstart", function() {
+        $(".nveMenu").addClass("is-opened");
+        $(".overlay").addClass("is-on");
+        $(".close-nav-menu ").addClass("is-on");
+        $(".site-header").hide();
+    });
+    $(".overlay").on("click touchstart", function() {
+        $(this).removeClass("is-on");
+        $(".close-nav-menu ").removeClass("is-on");
+        $(".nveMenu").removeClass("is-opened");
+        $(".site-header").show();
+    });
 });

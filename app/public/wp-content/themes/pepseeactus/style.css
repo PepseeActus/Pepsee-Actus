@@ -43,84 +43,6 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 # Media
 	## Galleries
 --------------------------------------------------------------*/
-.visually-hidden {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px; }
-
-.padding-inside {
-  padding-top: 2rem;
-  padding-bottom: 2rem; }
-
-.margin-outside {
-  margin-top: 5rem;
-  margin-bottom: 5rem; }
-  @media screen and (max-width: 768px) {
-    .margin-outside {
-      margin-top: 2rem;
-      margin-bottom: 2rem; } }
-
-.post-meta {
-  font-size: 1.2rem;
-  margin-top: 2rem; }
-
-.rotate {
-  position: relative;
-  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5);
-  border-radius: 50%;
-  overflow: hidden;
-  border: 2px solid rgba(244, 244, 244, 0.7);
-  display: block; }
-  .rotate::before {
-    position: absolute;
-    content: '';
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 2rem;
-    height: 2rem;
-    border: 1px solid #F4F4F4;
-    border-radius: 50%;
-    z-index: 1; }
-  .rotate::after {
-    position: absolute;
-    content: '';
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 1rem;
-    height: 1rem;
-    background-color: #22272C;
-    border-radius: 50%;
-    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5); }
-  .rotate:hover {
-    animation: rotating 2s linear infinite; }
-
-@keyframes rotating {
-  from {
-    transform: rotate(0deg); }
-  to {
-    transform: rotate(360deg); } }
-
-@media screen and (min-width: 768px) {
-  .title-angle {
-    cursor: pointer;
-    -webkit-text-stroke-color: #fff;
-    -webkit-text-stroke-width: 0.02em;
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-    background-repeat: no-repeat;
-    transition: background-size 0.5s cubic-bezier(0.67, 0.01, 0.15, 0.98);
-    background-image: linear-gradient(135deg, #fff 0%, #fff 50%, transparent 50.1%);
-    background-size: 0% 100%; }
-    .title-angle:hover {
-      background-size: 220% 100%; } }
-
 @media (max-width: 1023.98px) {
   .mobile-visually-hidden {
     border: 0;
@@ -131,7 +53,9 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
     padding: 0;
     position: absolute;
     width: 1px;
-    display: none; } }
+    display: none;
+  }
+}
 
 @media (min-width: 1024px) {
   .desktop-visually-hidden {
@@ -143,15 +67,1071 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
     padding: 0;
     position: absolute;
     width: 1px;
-    display: none; } }
+    display: none;
+  }
+}
+
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+/*
+Theme Name: PepseeActus
+Theme URI: http://components.underscores.me/
+Author: Le Peps
+Author URI: http://pepseeactus.com
+Description: Premier thème from scratch PepseeActus
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: pepseeactus
+Tags:
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+PepseeActus is created by the theme generator at http://components.underscores.me/, (C) 2015-2016 Automattic, Inc.
+Components is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
+*/
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Normalize
+# Accessibility
+# Alignments
+# Typography
+# Forms
+# Buttons
+# Formatting
+# Lists
+# Tables
+# Navigation
+# Links
+# Layout
+	## Posts
+	## Pages
+# Comments
+# Widgets
+# Infinite scroll
+# Media
+	## Galleries
+--------------------------------------------------------------*/
+/*
+Theme Name: PepseeActus
+Theme URI: http://components.underscores.me/
+Author: Le Peps
+Author URI: http://pepseeactus.com
+Description: Premier thème from scratch PepseeActus
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: pepseeactus
+Tags:
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+PepseeActus is created by the theme generator at http://components.underscores.me/, (C) 2015-2016 Automattic, Inc.
+Components is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
+*/
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Normalize
+# Accessibility
+# Alignments
+# Typography
+# Forms
+# Buttons
+# Formatting
+# Lists
+# Tables
+# Navigation
+# Links
+# Layout
+	## Posts
+	## Pages
+# Comments
+# Widgets
+# Infinite scroll
+# Media
+	## Galleries
+--------------------------------------------------------------*/
+.padding-inside,
+.section-padding {
+  padding: 2rem;
+}
+
+.margin-outside,
+.section-stack {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+@media (max-width: 767.98px) {
+  .margin-outside,
+  .section-stack {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+}
+
+/*
+Theme Name: PepseeActus
+Theme URI: http://components.underscores.me/
+Author: Le Peps
+Author URI: http://pepseeactus.com
+Description: Premier thème from scratch PepseeActus
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: pepseeactus
+Tags:
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+PepseeActus is created by the theme generator at http://components.underscores.me/, (C) 2015-2016 Automattic, Inc.
+Components is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
+*/
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Normalize
+# Accessibility
+# Alignments
+# Typography
+# Forms
+# Buttons
+# Formatting
+# Lists
+# Tables
+# Navigation
+# Links
+# Layout
+	## Posts
+	## Pages
+# Comments
+# Widgets
+# Infinite scroll
+# Media
+	## Galleries
+--------------------------------------------------------------*/
+.single .artist-album {
+  display: flex;
+  justify-content: center;
+  flex-flow: wrap;
+  margin-bottom: 1rem;
+  margin-top: 3rem;
+  flex-direction: column;
+}
+@media (max-width: 767.98px) {
+  .single .artist-album {
+    flex-direction: column;
+  }
+  .single .artist-album .artist-info__container {
+    flex-flow: wrap;
+    justify-content: center;
+  }
+}
+.single .artist-album .artist-image__container {
+  margin-left: 30px;
+}
+.single .artist-album .artist-info__container {
+  justify-content: center;
+  max-width: 500px;
+}
+.single .artist-album .artist-image__container,
+.single .artist-album .artist-info__container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+@media (max-width: 767.98px) {
+  .single .artist-album .artist-image__container,
+  .single .artist-album .artist-info__container {
+    justify-content: center;
+  }
+}
+.single .artist-album .artist-image {
+  position: relative;
+  margin-left: -30px;
+  height: 8rem;
+  width: 8rem;
+  min-width: 8rem;
+  min-height: 8rem;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 1px solid #fff;
+}
+.single .artist-album .artist-image.last {
+  background: #494745;
+  cursor: pointer;
+}
+.single .artist-album .artist-image.last::after {
+  content: "+";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 60px;
+}
+.single .artist-album .artist-image img {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  min-height: 100%;
+  max-width: 8rem;
+}
+@media (min-width: 1024px) {
+  .single .artist-album .associated-artist__info {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  .single .artist-album .associated-artist__info:first-of-type {
+    margin-left: 0;
+  }
+  .single .artist-album .associated-artist__info:last-of-type {
+    margin-right: 0;
+  }
+}
+@media (min-width: 768px) and (max-width: 1023.98px) {
+  .single .artist-album .associated-artist__info {
+    margin-top: 2rem;
+  }
+}
+.single .artist-album .associated-artist__info + .associated-artist__info::before {
+  content: "|";
+  margin-right: 5px;
+}
+@media (max-width: 767.98px) {
+  .single .artist-album .associated-artist__info + .associated-artist__info::before {
+    margin: 0 1px 0 5px;
+  }
+}
+.single .artist-album .associated-artist__info .associated-artist__name {
+  font-weight: 600;
+}
+.single .artist-album .associated-artist__info > svg {
+  fill: #f66d38;
+  width: 20px;
+}
+
+:is(.artist-album__container-box, .media-card-row) :is(.album-image, .media-card-row__thumb) {
+  margin-right: 1rem;
+}
+:is(.artist-album__container-box, .media-card-row) :is(.album-image, .media-card-row__thumb) img {
+  width: 105px;
+  height: 105px;
+  min-width: 105px;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5);
+}
+
+:is(.artist-music__container-box, .media-card-row) :is(.music-image, .media-card-row__thumb) {
+  margin-right: 1rem;
+  width: 120px;
+  min-width: 120px;
+  height: 120px;
+}
+:is(.artist-music__container-box, .media-card-row) :is(.music-image, .media-card-row__thumb) img {
+  max-width: 120px;
+}
+
+/*
+Theme Name: PepseeActus
+Theme URI: http://components.underscores.me/
+Author: Le Peps
+Author URI: http://pepseeactus.com
+Description: Premier thème from scratch PepseeActus
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: pepseeactus
+Tags:
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+PepseeActus is created by the theme generator at http://components.underscores.me/, (C) 2015-2016 Automattic, Inc.
+Components is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
+*/
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Normalize
+# Accessibility
+# Alignments
+# Typography
+# Forms
+# Buttons
+# Formatting
+# Lists
+# Tables
+# Navigation
+# Links
+# Layout
+	## Posts
+	## Pages
+# Comments
+# Widgets
+# Infinite scroll
+# Media
+	## Galleries
+--------------------------------------------------------------*/
+:is(.single.single-artist, .single-beatmaker) .artist {
+  padding: 1.5rem;
+  border-radius: 5px;
+}
+@media (max-width: 767.98px) {
+  :is(.single.single-artist, .single-beatmaker) .artist {
+    background: rgba(255, 255, 255, 0.01);
+  }
+}
+:is(.single.single-artist, .single-beatmaker) h2 {
+  font-size: 4rem;
+  font-weight: 600;
+  letter-spacing: inherit;
+  margin-bottom: 5px;
+  position: relative;
+  text-transform: initial;
+}
+@media (max-width: 767.98px) {
+  :is(.single.single-artist, .single-beatmaker) h2 {
+    font-size: 30px;
+  }
+}
+:is(.single.single-artist, .single-beatmaker) .artist-bio {
+  position: relative;
+  max-height: 190px;
+  margin-bottom: 2rem;
+  text-align: justify;
+  overflow-y: hidden;
+  transition: all 0.5s ease;
+}
+:is(.single.single-artist, .single-beatmaker) .artist-bio.open {
+  max-height: 100%;
+  padding-bottom: 3rem;
+  transition: all 0.5s ease;
+}
+:is(.single.single-artist, .single-beatmaker) .artist-bio.open .readmore-link {
+  background: none;
+}
+:is(.single.single-artist, .single-beatmaker) .artist-bio p {
+  margin-bottom: 3rem;
+}
+:is(.single.single-artist, .single-beatmaker) .artist-bio .readmore-link {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  margin: 0;
+  padding: 15px 0 5px;
+  text-align: center;
+  background-image: -moz-linear-gradient(top, transparent, white);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, transparent), color-stop(1, #22272c));
+}
+:is(.single.single-artist, .single-beatmaker) .artist-bio .readmore-link a {
+  text-decoration: none;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background-color: #f66d38;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+}
+:is(.single.single-artist, .single-beatmaker) .artist-bio .readmore-link a:hover {
+  opacity: 1;
+}
+:is(.single.single-artist, .single-beatmaker) .artist-bio .readmore-link a:focus-visible {
+  outline: 2px solid #f66d38;
+  outline-offset: 3px;
+  background-color: #fefcfb;
+  color: #22272c;
+}
+:is(.single.single-artist, .single-beatmaker) .artist-album {
+  flex-flow: column;
+  margin-bottom: 2rem;
+}
+:is(.single.single-artist, .single-beatmaker) .artist-album .artist-album__container {
+  display: flex;
+  flex-flow: wrap;
+}
+:is(.single.single-artist, .single-beatmaker) .artist-music {
+  position: relative;
+  margin-bottom: 2rem;
+}
+:is(.single.single-artist, .single-beatmaker) .artist-music__container {
+  display: flex;
+  flex-flow: wrap;
+}
+:is(.single.single-artist, .single-beatmaker) .actus {
+  margin-bottom: 2rem;
+}
+:is(.single.single-artist, .single-beatmaker) .actus .swiper-actus {
+  position: relative;
+  overflow: hidden;
+}
+:is(.single.single-artist, .single-beatmaker) .jp-relatedposts {
+  display: none;
+}
+
+.single .actus article a::before {
+  content: none;
+}
+
+:is(.single.single-artist, .single-beatmaker) .more-music .date {
+  position: relative;
+  margin-left: 15px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  padding: 5px 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+:is(.single.single-artist, .single-beatmaker) .more-music .date::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 9px;
+  height: 4px;
+  width: 40px;
+  background: #f66d38;
+}
+:is(.single.single-artist, .single-beatmaker) .more-music .artist-music__container {
+  display: flex;
+}
+
+/*
+Theme Name: PepseeActus
+Theme URI: http://components.underscores.me/
+Author: Le Peps
+Author URI: http://pepseeactus.com
+Description: Premier thème from scratch PepseeActus
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: pepseeactus
+Tags:
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+PepseeActus is created by the theme generator at http://components.underscores.me/, (C) 2015-2016 Automattic, Inc.
+Components is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
+*/
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Normalize
+# Accessibility
+# Alignments
+# Typography
+# Forms
+# Buttons
+# Formatting
+# Lists
+# Tables
+# Navigation
+# Links
+# Layout
+	## Posts
+	## Pages
+# Comments
+# Widgets
+# Infinite scroll
+# Media
+	## Galleries
+--------------------------------------------------------------*/
+:is(.single.single-artist, .single-beatmaker) .artist-presentation {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-bottom: 35px;
+}
+@media (max-width: 767.98px) {
+  :is(.single.single-artist, .single-beatmaker) .artist-presentation {
+    display: block;
+    text-align: center;
+    padding-top: 20px;
+  }
+}
+:is(.single.single-artist, .single-beatmaker) .artist-presentation .artist-presentation__picture {
+  position: relative;
+  margin-right: 2rem;
+  max-width: 15rem;
+  min-width: 15rem;
+  max-height: 15rem;
+  width: 15rem;
+  height: 15rem;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5);
+}
+@media (max-width: 767.98px) {
+  :is(.single.single-artist, .single-beatmaker) .artist-presentation .artist-presentation__picture {
+    margin: 0 auto;
+  }
+}
+:is(.single.single-artist, .single-beatmaker) .artist-presentation .artist-presentation__picture img {
+  min-height: 100%;
+  min-width: 100%;
+  width: auto;
+  max-width: 200px;
+}
+@media (max-width: 767.98px) {
+  :is(.single.single-artist, .single-beatmaker) .artist-presentation .artist-presentation__info {
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
+}
+:is(.single.single-artist, .single-beatmaker) .artist-presentation .artist-presentation__info-name {
+  display: flex;
+  align-items: center;
+}
+@media (max-width: 767.98px) {
+  :is(.single.single-artist, .single-beatmaker) .artist-presentation .artist-presentation__info-name {
+    display: block;
+  }
+}
+:is(.single.single-artist, .single-beatmaker) .artist-presentation .artist-presentation__info-name .entry-title {
+  margin: 0 0.5rem 0 0;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+@media (max-width: 767.98px) {
+  :is(.single.single-artist, .single-beatmaker) .artist-presentation .artist-presentation__info-name .entry-title {
+    font-size: 30px;
+    display: inline-block;
+  }
+}
+:is(.single.single-artist, .single-beatmaker) .artist-presentation .artist-presentation__info-name svg {
+  width: 2rem;
+  fill: #f66d38;
+}
+@media (max-width: 767.98px) {
+  :is(.single.single-artist, .single-beatmaker) .artist-presentation .artist-presentation__info-name svg {
+    width: 15px;
+    vertical-align: super;
+  }
+}
+:is(.single.single-artist, .single-beatmaker) .artist-presentation .artist-presentation__info-reseaux {
+  margin-top: 1rem;
+}
+@media (max-width: 767.98px) {
+  :is(.single.single-artist, .single-beatmaker) .artist-presentation .artist-presentation__info-reseaux {
+    margin-bottom: 1rem;
+  }
+}
+:is(.single.single-artist, .single-beatmaker) .artist-presentation .artist-presentation__info-reseaux li {
+  display: inline-block;
+  margin-right: 1rem;
+}
+:is(.single.single-artist, .single-beatmaker) .artist-presentation .artist-presentation__info-reseaux svg {
+  fill: currentColor;
+  width: 25px;
+  height: 25px;
+}
+:is(.single.single-artist, .single-beatmaker) .artist-presentation .artist-presentation__status {
+  margin-top: 2rem;
+  font-size: 20px;
+}
+@media (max-width: 767.98px) {
+  :is(.single.single-artist, .single-beatmaker) .artist-presentation .artist-presentation__status {
+    margin-top: 1rem;
+  }
+}
+
+.post-meta,
+.meta-copy {
+  font-size: 1.2rem;
+  margin-top: 2rem;
+}
+
+.rotate,
+.media-disc {
+  position: relative;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(244, 244, 244, 0.7);
+  display: block;
+}
+.rotate::before,
+.media-disc::before {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid #f4f4f4;
+  border-radius: 50%;
+  z-index: 1;
+}
+.rotate::after,
+.media-disc::after {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2rem;
+  height: 2rem;
+  background-color: #22272c;
+  border-radius: 50%;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5);
+}
+.rotate:hover,
+.media-disc:hover {
+  animation: rotating 2s linear infinite;
+}
+
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media screen and (min-width: 768px) {
+  .title-angle,
+  .title-outline {
+    cursor: pointer;
+    -webkit-text-stroke-color: #fff;
+    -webkit-text-stroke-width: 0.02em;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-repeat: no-repeat;
+    transition: background-size 0.5s cubic-bezier(0.67, 0.01, 0.15, 0.98);
+    background-image: linear-gradient(135deg, #fff 0%, #fff 50%, transparent 50.1%);
+    background-size: 0% 100%;
+  }
+  .title-angle:hover,
+  .title-outline:hover {
+    background-size: 220% 100%;
+  }
+}
+
+/*
+Theme Name: PepseeActus
+Theme URI: http://components.underscores.me/
+Author: Le Peps
+Author URI: http://pepseeactus.com
+Description: Premier thème from scratch PepseeActus
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: pepseeactus
+Tags:
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+PepseeActus is created by the theme generator at http://components.underscores.me/, (C) 2015-2016 Automattic, Inc.
+Components is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
+*/
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Normalize
+# Accessibility
+# Alignments
+# Typography
+# Forms
+# Buttons
+# Formatting
+# Lists
+# Tables
+# Navigation
+# Links
+# Layout
+	## Posts
+	## Pages
+# Comments
+# Widgets
+# Infinite scroll
+# Media
+	## Galleries
+--------------------------------------------------------------*/
+.media-links {
+  margin-top: 4px;
+}
+@media (max-width: 767.98px) {
+  .media-links {
+    text-align: center;
+  }
+}
+.media-links .stream ul {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+}
+@media (max-width: 767.98px) {
+  .media-links .stream ul {
+    justify-content: center;
+  }
+}
+.media-links svg {
+  fill: currentColor;
+  width: 40px;
+  height: 40px;
+}
+.media-links a {
+  display: flex;
+  align-items: center;
+}
+.media-links span {
+  margin-left: 5px;
+}
+.media-links li {
+  display: inline-block;
+  margin-right: 1rem;
+}
+.media-links li:last-child {
+  margin-right: 0;
+}
+
+.social-sharing {
+  margin: 0 0 40px;
+  text-align: center;
+}
+.social-sharing svg {
+  fill: currentColor;
+  width: 40px;
+  height: 40px;
+}
+
+.share-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+.share-buttons .share-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+}
+.share-buttons .share-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.92;
+}
+.share-buttons .share-btn:focus-visible {
+  outline: 2px solid #f66d38;
+  outline-offset: 3px;
+}
+.share-buttons .share-btn svg {
+  fill: currentColor;
+  width: 24px;
+  height: 24px;
+}
+.share-buttons .facebook {
+  color: #4267b2;
+}
+.share-buttons .twitter {
+  color: #55acee;
+}
+.share-buttons .whatsapp {
+  color: #25d366;
+}
+.share-buttons .snapchat {
+  color: #fffc00;
+}
+.share-buttons .instagram {
+  color: #e1306c;
+}
+
+:is(.artist-album__container-box, .artist-music__container-box, .media-card-row) {
+  display: flex;
+  margin-bottom: 2rem;
+}
+
+:is(.artist-album__container-box, .artist-music__container-box, .media-card-row) .media-card-row__info :is(.media-card-row__title, .media-listing__title) {
+  font-weight: 600;
+}
+:is(.artist-album__container-box, .artist-music__container-box, .media-card-row) .media-card-row__info svg {
+  fill: currentColor;
+  width: 30px;
+  height: 30px;
+}
+:is(.artist-album__container-box, .artist-music__container-box, .media-card-row) .media-card-row__info a {
+  display: block;
+}
+:is(.artist-album__container-box, .artist-music__container-box, .media-card-row) .media-card-row__info ul {
+  margin-top: 0.5rem;
+}
+:is(.artist-album__container-box, .artist-music__container-box, .media-card-row) .media-card-row__info ul li {
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+:is(.artist-album__container-box, .artist-music__container-box, .media-card-row) .media-card-row__info ul li a {
+  transition: transform 0.3s ease-out;
+}
+:is(.artist-album__container-box, .artist-music__container-box, .media-card-row) .media-card-row__info ul li a:hover {
+  transform: translateY(0.5rem);
+}
+
+/*
+Theme Name: PepseeActus
+Theme URI: http://components.underscores.me/
+Author: Le Peps
+Author URI: http://pepseeactus.com
+Description: Premier thème from scratch PepseeActus
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: pepseeactus
+Tags:
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+PepseeActus is created by the theme generator at http://components.underscores.me/, (C) 2015-2016 Automattic, Inc.
+Components is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
+*/
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Normalize
+# Accessibility
+# Alignments
+# Typography
+# Forms
+# Buttons
+# Formatting
+# Lists
+# Tables
+# Navigation
+# Links
+# Layout
+	## Posts
+	## Pages
+# Comments
+# Widgets
+# Infinite scroll
+# Media
+	## Galleries
+--------------------------------------------------------------*/
+:is(.single-album, .single-riddim) .music-presentation {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+}
+@media (max-width: 767.98px) {
+  :is(.single-album, .single-riddim) .music-presentation {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+:is(.single-album, .single-riddim) .music-presentation .music-presentation__picture {
+  margin-right: 2rem;
+  min-width: 150px;
+  width: 150px;
+  height: 150px;
+}
+@media (max-width: 767.98px) {
+  :is(.single-album, .single-riddim) .music-presentation .music-presentation__picture {
+    margin: 0;
+  }
+}
+:is(.single-album, .single-riddim) .music-presentation .music-presentation__picture img {
+  border-radius: 0.5rem;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5);
+}
+:is(.single-album, .single-riddim) .music-presentation .music-presentation__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+@media (max-width: 767.98px) {
+  :is(.single-album, .single-riddim) .music-presentation .music-presentation__info {
+    align-items: center;
+    margin-top: 20px;
+  }
+}
+@media (max-width: 767.98px) {
+  :is(.single-album, .single-riddim) .music-presentation .music-presentation__info-name {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+}
+:is(.single-album, .single-riddim) .music-presentation .entry-title {
+  margin: 0 0.5rem 0 0;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 3rem;
+  line-height: 2.5rem;
+}
+@media (max-width: 767.98px) {
+  :is(.single-album, .single-riddim) .music-presentation .entry-title {
+    font-size: 1.8rem;
+  }
+}
+:is(.single-album, .single-riddim) .music-presentation .music-presentation__info-reseaux svg {
+  fill: currentColor;
+  width: 20px;
+  height: 20px;
+}
+:is(.single-album, .single-riddim) .music-presentation .music-presentation__info-reseaux li {
+  display: inline-block;
+  margin-right: 1rem;
+}
+@media (max-width: 767.98px) {
+  :is(.single-album, .single-riddim) .music-presentation .beatmaker {
+    text-align: center;
+  }
+}
+
+.single-music .music-presentation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+.single-music .music-presentation .music-presentation__picture {
+  min-width: 250px;
+  width: 250px;
+  height: 250px;
+}
+.single-music .music-presentation .music-presentation__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 20px;
+}
+.single-music .music-presentation .music-presentation__info svg {
+  fill: currentColor;
+  width: 20px;
+  height: 20px;
+}
+.single-music .music-presentation .music-presentation__info-name {
+  text-align: center;
+}
+.single-music .music-presentation .music-presentation__info-name .entry-title {
+  margin: 0 0.5rem 0 0;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 3rem;
+  line-height: 2.5rem;
+}
+.single-music .music-presentation .music-presentation__info-name .entry-title.name {
+  font-weight: 200;
+}
+.single-music .music-presentation .music-presentation__info-name .entry-title.riddim {
+  font-weight: 800;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+@media (max-width: 767.98px) {
+  .single-music .music-presentation .music-presentation__info-name .entry-title {
+    font-size: 2rem;
+  }
+}
+.single-music .music-presentation .music-presentation__info-name i {
+  font-size: 2rem;
+  color: #f66d38;
+}
+.single-music .music-presentation .beatmaker {
+  margin-top: 20px;
+  text-align: center;
+}
+.single-music .music-presentation .music-presentation__info-reseaux li {
+  display: inline-block;
+  margin-right: 1rem;
+}
 
 /*--------------------------------------------------------------
 # Normalize
 --------------------------------------------------------------*/
+/*
+Theme Name: PepseeActus
+Theme URI: http://components.underscores.me/
+Author: Le Peps
+Author URI: http://pepseeactus.com
+Description: Premier thème from scratch PepseeActus
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: pepseeactus
+Tags:
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+PepseeActus is created by the theme generator at http://components.underscores.me/, (C) 2015-2016 Automattic, Inc.
+Components is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
+*/
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Normalize
+# Accessibility
+# Alignments
+# Typography
+# Forms
+# Buttons
+# Formatting
+# Lists
+# Tables
+# Navigation
+# Links
+# Layout
+	## Posts
+	## Pages
+# Comments
+# Widgets
+# Infinite scroll
+# Media
+	## Galleries
+--------------------------------------------------------------*/
 html {
-  font-family: Montserrat;
   -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%; }
+  -ms-text-size-adjust: 100%;
+}
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -168,27 +1148,32 @@ menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
   margin: 0;
   padding: 0;
-  border: 0; }
+  border: 0;
+}
 
 aside {
-  height: 100%; }
+  height: 100%;
+}
 
-body {
-  background: #22272C; }
-  @media (max-width: 1023.98px) {
-    body {
-      padding: 44px 0; } }
+@media (max-width: 1023.98px) {
+  body {
+    padding: 44px 0;
+  }
+}
 
 ol, ul {
-  list-style: none; }
+  list-style: none;
+}
 
 blockquote, q {
-  quotes: none; }
+  quotes: none;
+}
 
 blockquote:before, blockquote:after,
 q:before, q:after {
-  content: '';
-  content: none; }
+  content: "";
+  content: none;
+}
 
 article,
 aside,
@@ -202,86 +1187,106 @@ menu,
 nav,
 section,
 summary {
-  display: block; }
+  display: block;
+}
 
 audio,
 canvas,
 progress,
 video {
-  display: inline-block; }
+  display: inline-block;
+}
 
 audio:not([controls]) {
   display: none;
-  height: 0; }
+  height: 0;
+}
 
 [hidden],
 template {
-  display: none; }
+  display: none;
+}
 
 a:active,
 a:hover {
-  outline: 0;
-  text-decoration: none; }
+  text-decoration: none;
+}
 
 abbr[title] {
-  border-bottom: 1px dotted; }
+  border-bottom: 1px dotted;
+}
 
 b,
 strong {
-  font-weight: bold; }
+  font-weight: bold;
+}
 
 dfn {
-  font-style: italic; }
+  font-style: italic;
+}
 
 h1 {
   font-size: 2em;
-  margin: 0.67em 0; }
+  margin: 0.67em 0;
+}
 
 mark {
   background: #ff0;
-  color: #000; }
+  color: #000;
+}
 
 small {
-  font-size: 80%; }
+  font-size: 80%;
+}
 
 sub,
 sup {
   font-size: 75%;
   line-height: 0;
-  position: relative; }
+  position: relative;
+}
 
 sup {
-  top: -0.5em; }
+  top: -0.5em;
+}
 
 sub {
-  bottom: -0.25em; }
+  bottom: -0.25em;
+}
 
 img {
-  border: 0; }
+  border: 0;
+}
 
 svg:not(:root) {
-  overflow: hidden; }
+  overflow: hidden;
+}
 
 figure {
-  margin: 1em 2.5rem; }
+  margin: 1em 2.5rem;
+}
 
 hr {
   box-sizing: content-box;
-  height: 0; }
+  height: 0;
+}
 
 pre {
-  overflow: auto; }
+  overflow: auto;
+}
 
 code,
 kbd,
 pre,
 samp {
   font-family: monospace, monospace;
-  font-size: 1em; }
+  font-size: 1em;
+}
 
 select {
   background: transparent;
-  border: none; }
+  border: none;
+}
 
 button,
 input,
@@ -290,80 +1295,90 @@ select,
 textarea {
   color: inherit;
   font: inherit;
-  margin: 0; }
+  margin: 0;
+}
 
 button {
-  overflow: visible; }
+  overflow: visible;
+}
 
 button,
 select {
-  text-transform: none; }
+  text-transform: none;
+}
 
 button,
-html input[type="button"],
-input[type="reset"],
-input[type="submit"] {
+html input[type=button],
+input[type=reset],
+input[type=submit] {
   -webkit-appearance: button;
-  cursor: pointer; }
+  cursor: pointer;
+}
 
 button[disabled],
 html input[disabled] {
-  cursor: default; }
+  cursor: default;
+}
 
 button::-moz-focus-inner,
 input::-moz-focus-inner {
   border: 0;
-  padding: 0; }
+  padding: 0;
+}
 
 input {
-  line-height: normal; }
+  line-height: normal;
+}
 
-input[type="checkbox"],
-input[type="radio"] {
+input[type=checkbox],
+input[type=radio] {
   box-sizing: border-box;
-  padding: 0; }
+  padding: 0;
+}
 
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  height: auto; }
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
 
-input[type="search"] {
+input[type=search] {
   -webkit-appearance: textfield;
-  box-sizing: content-box; }
+  box-sizing: content-box;
+}
 
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-decoration {
-  -webkit-appearance: none; }
+input[type=search]::-webkit-search-cancel-button,
+input[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
 
 fieldset {
   border: 1px solid #c0c0c0;
   margin: 0 2px;
-  padding: 0.35em 0.625em 0.75em; }
+  padding: 0.35em 0.625em 0.75em;
+}
 
 legend {
   border: 0;
-  padding: 0; }
+  padding: 0;
+}
 
 textarea {
-  overflow: auto; }
+  overflow: auto;
+}
 
 optgroup {
-  font-weight: bold; }
+  font-weight: bold;
+}
 
 table {
   border-collapse: collapse;
-  border-spacing: 0; }
+  border-spacing: 0;
+}
 
 td,
 th {
-  padding: 0; }
-
-.pepsee-container {
-  max-width: 130rem;
-  margin: 0 auto; }
-  @media (max-width: 1023.98px) {
-    .pepsee-container {
-      max-width: 90%; } }
+  padding: 0;
+}
 
 /*--------------------------------------------------------------
 # Accessibility
@@ -374,78 +1389,166 @@ th {
   position: absolute !important;
   height: 1px;
   width: 1px;
-  overflow: hidden; }
-  .screen-reader-text:focus {
-    background-color: #f1f1f1;
-    border-radius: 3px;
-    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
-    clip: auto !important;
-    color: #21759b;
-    display: block;
-    font-size: 14px;
-    font-size: 0.875rem;
-    font-weight: bold;
-    height: auto;
-    left: 5px;
-    line-height: normal;
-    padding: 15px 23px 14px;
-    text-decoration: none;
-    top: 5px;
-    width: auto;
-    z-index: 100000;
-    /* Above WP toolbar. */ }
+  overflow: hidden;
+}
+.screen-reader-text:focus {
+  background-color: #f1f1f1;
+  border-radius: 3px;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+  clip: auto !important;
+  color: #21759b;
+  display: block;
+  font-size: 14px;
+  font-size: 0.875rem;
+  font-weight: bold;
+  height: auto;
+  left: 5px;
+  line-height: normal;
+  padding: 15px 23px 14px;
+  text-decoration: none;
+  top: 5px;
+  width: auto;
+  z-index: 100000; /* Above WP toolbar. */
+}
 
 /* Do not show the outline on the skip link target. */
 #content[tabindex="-1"]:focus {
-  outline: 0; }
+  outline: 0;
+}
 
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .rotate:hover,
+  .media-disc:hover {
+    animation: none !important;
+  }
+  .title-angle:hover,
+  .title-outline:hover {
+    background-size: 100% 100%;
+  }
+  .search-overlay {
+    transform: none;
+  }
+  .site-header,
+  .nveMenu,
+  .overlay,
+  .search-overlay,
+  .search-overlay__close,
+  .jp-relatedposts-post a,
+  .media-card-row__info ul li a {
+    transition: none !important;
+  }
+}
 /*--------------------------------------------------------------
 # Alignments
 --------------------------------------------------------------*/
 .alignleft {
   display: inline;
   float: left;
-  margin-right: 1.5em; }
+  margin-right: 1.5em;
+}
 
 .alignright {
   display: inline;
   float: right;
-  margin-left: 1.5em; }
+  margin-left: 1.5em;
+}
 
 .aligncenter {
   clear: both;
   display: block;
   margin-left: auto;
-  margin-right: auto; }
+  margin-right: auto;
+}
 
 /*--------------------------------------------------------------
 # Typography
 --------------------------------------------------------------*/
+/*
+Theme Name: PepseeActus
+Theme URI: http://components.underscores.me/
+Author: Le Peps
+Author URI: http://pepseeactus.com
+Description: Premier thème from scratch PepseeActus
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: pepseeactus
+Tags:
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+PepseeActus is created by the theme generator at http://components.underscores.me/, (C) 2015-2016 Automattic, Inc.
+Components is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
+*/
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Normalize
+# Accessibility
+# Alignments
+# Typography
+# Forms
+# Buttons
+# Formatting
+# Lists
+# Tables
+# Navigation
+# Links
+# Layout
+	## Posts
+	## Pages
+# Comments
+# Widgets
+# Infinite scroll
+# Media
+	## Galleries
+--------------------------------------------------------------*/
 html {
-  font-size: 62.5%; }
+  font-size: 62.5%;
+}
 
 body,
 button,
 input,
 select,
 textarea {
-  font-family: "Montserrat", sans-serif;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Inter", "SF Pro Display", "Segoe UI", Roboto, Arial, sans-serif;
   font-size: 1.6rem;
   line-height: 1.5;
-  color: #fff;
-  font-weight: 200; }
+  color: #fefcfb;
+  font-weight: 200;
+}
 
 h1, h2, h3, h4, h5, h6 {
-  clear: both; }
+  clear: both;
+}
 
 dfn, cite, em, i {
-  font-style: italic; }
+  font-style: italic;
+}
 
 blockquote {
-  margin: 0 1.5em; }
+  margin: 0 1.5em;
+}
 
 address {
-  margin: 0 0 1.5em; }
+  margin: 0 0 1.5em;
+}
 
 pre {
   background: #eee;
@@ -455,331 +1558,535 @@ pre {
   margin-bottom: 1.6em;
   max-width: 100%;
   overflow: auto;
-  padding: 1.6em; }
+  padding: 1.6em;
+}
 
 code, kbd, tt, var {
   font-size: 15px;
-  font-size: 0.9375rem; }
+  font-size: 0.9375rem;
+}
 
 abbr, acronym {
   border-bottom: 1px dotted #666;
-  cursor: help; }
+  cursor: help;
+}
 
 mark, ins {
   background: #fff9c0;
-  text-decoration: none; }
+  text-decoration: none;
+}
 
 big {
-  font-size: 125%; }
+  font-size: 125%;
+}
 
 blockquote, q {
-  quotes: "" ""; }
-  blockquote:before, blockquote:after, q:before, q:after {
-    content: ""; }
+  quotes: "" "";
+}
+blockquote:before, blockquote:after, q:before, q:after {
+  content: "";
+}
 
 h1 {
-  font-size: 6rem; }
-  @media (max-width: 767.98px) {
-    h1 {
-      font-size: 1.5625rem; } }
+  font-size: 6rem;
+}
+@media (max-width: 767.98px) {
+  h1 {
+    font-size: 1.5625rem;
+  }
+}
 
 h2 {
-  font-size: 5rem; }
-  @media (max-width: 767.98px) {
-    h2 {
-      font-size: 30px; } }
+  font-size: 5rem;
+}
+@media (max-width: 767.98px) {
+  h2 {
+    font-size: 30px;
+  }
+}
 
 h3 {
-  font-size: 3rem; }
-  h3.widget-title {
-    padding: 0 0 0 15px;
-    margin-bottom: 1rem;
-    font-size: 2.5rem;
-    border-radius: 5px;
-    text-transform: uppercase;
-    font-weight: 700;
-    letter-spacing: .5px;
-    position: relative; }
-    h3.widget-title::before {
-      top: 50%;
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      height: 30px;
-      width: 5px;
-      background: #F66D38;
-      transform: translateY(-50%); }
+  font-size: 2rem;
+}
 
 strong {
-  font-weight: 600; }
+  font-weight: 600;
+}
 
 em {
-  font-weight: 300;
-  color: #F66D38; }
+  font-weight: 400;
+  color: #f66d38;
+}
 
 figure {
   margin-right: 0;
   margin-left: 0;
   margin-top: 0;
-  text-align: center; }
+  text-align: center;
+}
 
 figcaption {
   font-size: 1.2rem;
-  color: grey; }
+  color: rgba(254, 252, 251, 0.72);
+}
 
 .single article p, .page .page-content p {
-  margin: 1rem 0; }
-
+  margin: 1rem 0;
+}
 .single article .scriptlesssocialsharing__buttons a :hover, .page .page-content .scriptlesssocialsharing__buttons a :hover {
-  transform: inherit; }
-
+  transform: inherit;
+}
 .single article a, .page .page-content a {
-  text-decoration: underline; }
+  text-decoration: underline;
+}
+.single article .jp-relatedposts-post-a, .page .page-content .jp-relatedposts-post-a {
+  text-decoration: none;
+}
 
 /*--------------------------------------------------------------
 # Links
 --------------------------------------------------------------*/
+/*
+Theme Name: PepseeActus
+Theme URI: http://components.underscores.me/
+Author: Le Peps
+Author URI: http://pepseeactus.com
+Description: Premier thème from scratch PepseeActus
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: pepseeactus
+Tags:
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+PepseeActus is created by the theme generator at http://components.underscores.me/, (C) 2015-2016 Automattic, Inc.
+Components is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
+*/
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Normalize
+# Accessibility
+# Alignments
+# Typography
+# Forms
+# Buttons
+# Formatting
+# Lists
+# Tables
+# Navigation
+# Links
+# Layout
+	## Posts
+	## Pages
+# Comments
+# Widgets
+# Infinite scroll
+# Media
+	## Galleries
+--------------------------------------------------------------*/
 a {
-  color: #fff; }
-  a:visited {
-    color: #fff; }
-  a:hover, a:focus, a:active {
-    color: #fff; }
-  a:focus {
-    outline: none; }
-  a:hover, a:active {
-    outline: 0; }
+  color: #fefcfb;
+}
+a:visited, a:hover, a:active {
+  color: #fefcfb;
+}
+a:focus-visible {
+  outline: 2px solid #f66d38;
+  outline-offset: 2px;
+}
 
 .jp-relatedposts-headline {
   position: relative;
   margin-bottom: 3rem;
-  letter-spacing: .3rem;
+  letter-spacing: 0.3rem;
   text-transform: uppercase;
-  text-align: left !important; }
-  .jp-relatedposts-headline em {
-    color: white !important;
-    font-weight: 700 !important;
-    font-style: initial !important; }
-  .jp-relatedposts-headline::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    height: 5px;
-    width: 77px;
-    background: #F66D38; }
-  @media (max-width: 767.98px) {
-    .jp-relatedposts-headline {
-      letter-spacing: 0; } }
+  text-align: left;
+}
+.jp-relatedposts-headline em {
+  color: white;
+  font-weight: 700;
+  font-style: initial;
+}
+.jp-relatedposts-headline::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  height: 5px;
+  width: 77px;
+  background: #f66d38;
+}
+@media (max-width: 767.98px) {
+  .jp-relatedposts-headline {
+    letter-spacing: 0;
+  }
+}
 
 .jp-relatedposts {
-  margin-top: 5rem; }
+  margin: 3rem 0;
+}
 
 @media (min-width: 1024px) {
   .jp-relatedposts-items {
-    display: flex; } }
+    display: flex;
+  }
+}
 
 @media (min-width: 1024px) {
   .jp-relatedposts-post {
     width: 32%;
-    max-width: 32%; }
-    .jp-relatedposts-post:not(:last-of-type) {
-      margin-right: 1rem; } }
-
+    max-width: 32%;
+  }
+  .jp-relatedposts-post:not(:last-of-type) {
+    margin-right: 1rem;
+  }
+}
 @media (max-width: 767.98px) {
   .jp-relatedposts-post:not(:last-of-type) {
-    margin-bottom: 3rem; } }
+    margin-bottom: 3rem;
+  }
+}
 
 .jp-relatedposts-post-title {
-  text-align: initial; }
+  text-align: initial;
+}
 
 .jp-relatedposts-post-img {
-  border-radius: .5rem;
-  margin-bottom: 1rem; }
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
 
 .jp-relatedposts-post-excerpt {
-  display: none; }
+  display: none;
+}
 
 .jp-relatedposts-post-date {
-  font-size: 1rem; }
+  font-size: 1rem;
+}
 
 /*--------------------------------------------------------------
 # Comments
 --------------------------------------------------------------*/
 .comment-content a {
-  word-wrap: break-word; }
+  word-wrap: break-word;
+}
 
 .bypostauthor {
-  display: block; }
+  display: block;
+}
 
+/*
+Theme Name: PepseeActus
+Theme URI: http://components.underscores.me/
+Author: Le Peps
+Author URI: http://pepseeactus.com
+Description: Premier thème from scratch PepseeActus
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: pepseeactus
+Tags:
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+PepseeActus is created by the theme generator at http://components.underscores.me/, (C) 2015-2016 Automattic, Inc.
+Components is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
+*/
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Normalize
+# Accessibility
+# Alignments
+# Typography
+# Forms
+# Buttons
+# Formatting
+# Lists
+# Tables
+# Navigation
+# Links
+# Layout
+	## Posts
+	## Pages
+# Comments
+# Widgets
+# Infinite scroll
+# Media
+	## Galleries
+--------------------------------------------------------------*/
 #breadcrumbs {
-  margin-top: 7rem;
-  margin-bottom: 3rem; }
-  @media (max-width: 767.98px) {
-    #breadcrumbs {
-      font-size: 1.2rem;
-      margin: 1rem 0; } }
-  #breadcrumbs .breadcrumb_last {
-    color: #F66D38; }
-  #breadcrumbs a:hover {
-    text-decoration: underline; }
+  margin-bottom: 3rem;
+}
+@media (max-width: 767.98px) {
+  #breadcrumbs {
+    font-size: 1.2rem;
+    margin: 1rem 0;
+  }
+}
+#breadcrumbs .breadcrumb_last {
+  color: #f66d38;
+}
+#breadcrumbs a:hover {
+  text-decoration: underline;
+}
 
+/*
+Theme Name: PepseeActus
+Theme URI: http://components.underscores.me/
+Author: Le Peps
+Author URI: http://pepseeactus.com
+Description: Premier thème from scratch PepseeActus
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: pepseeactus
+Tags:
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+PepseeActus is created by the theme generator at http://components.underscores.me/, (C) 2015-2016 Automattic, Inc.
+Components is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
+*/
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Normalize
+# Accessibility
+# Alignments
+# Typography
+# Forms
+# Buttons
+# Formatting
+# Lists
+# Tables
+# Navigation
+# Links
+# Layout
+	## Posts
+	## Pages
+# Comments
+# Widgets
+# Infinite scroll
+# Media
+	## Galleries
+--------------------------------------------------------------*/
 .music-content,
 .artist-bio,
 .single-content {
-  text-align: justify; }
-  @media (max-width: 374.98px) {
-    .music-content,
-    .artist-bio,
-    .single-content {
-      margin-top: 2rem; } }
-  .music-content h2,
-  .artist-bio h2,
-  .single-content h2 {
-    font-size: 4rem;
-    letter-spacing: inherit;
-    margin-bottom: 1rem;
-    display: block;
-    text-transform: uppercase;
-    font-weight: 600; }
-  .music-content img,
-  .artist-bio img,
-  .single-content img {
-    width: auto;
-    max-height: 500px; }
-  .music-content .fb_iframe_widget,
-  .artist-bio .fb_iframe_widget,
-  .single-content .fb_iframe_widget {
-    display: block; }
-    .music-content .fb_iframe_widget span,
-    .artist-bio .fb_iframe_widget span,
-    .single-content .fb_iframe_widget span {
-      display: block;
-      margin: 0 auto 40px; }
-  .music-content iframe,
-  .artist-bio iframe,
-  .single-content iframe {
-    width: 80%;
-    margin: 25px auto;
-    display: block;
-    background: white; }
-    @media (max-width: 767.98px) {
-      .music-content iframe,
-      .artist-bio iframe,
-      .single-content iframe {
-        width: 100%; } }
-    .music-content iframe.instagram-media,
-    .artist-bio iframe.instagram-media,
-    .single-content iframe.instagram-media {
-      margin: 25px auto !important; }
-  .music-content figure,
-  .artist-bio figure,
-  .single-content figure {
-    margin: 25px 0; }
+  text-align: center;
+}
+@media (max-width: 374.98px) {
+  .music-content,
+  .artist-bio,
+  .single-content {
+    margin-top: 2rem;
+  }
+}
+.music-content h2,
+.artist-bio h2,
+.single-content h2 {
+  font-size: 4rem;
+  letter-spacing: inherit;
+  margin-bottom: 1rem;
+  display: block;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.music-content img,
+.artist-bio img,
+.single-content img {
+  width: auto;
+  max-height: 500px;
+}
+.music-content .fb_iframe_widget,
+.artist-bio .fb_iframe_widget,
+.single-content .fb_iframe_widget {
+  display: block;
+}
+.music-content .fb_iframe_widget span,
+.artist-bio .fb_iframe_widget span,
+.single-content .fb_iframe_widget span {
+  display: block;
+  margin: 0 auto 40px;
+}
+.music-content iframe,
+.artist-bio iframe,
+.single-content iframe {
+  margin: 25px auto;
+  display: block;
+  width: 100%;
+}
+.music-content iframe.instagram-media,
+.artist-bio iframe.instagram-media,
+.single-content iframe.instagram-media {
+  margin: 25px auto;
+}
+.music-content figure,
+.artist-bio figure,
+.single-content figure {
+  margin: 25px 0;
+}
+.music-content a,
+.artist-bio a,
+.single-content a {
+  text-decoration: underline;
+}
+.music-content a.associated-artist__name,
+.artist-bio a.associated-artist__name,
+.single-content a.associated-artist__name {
+  text-decoration: none;
+}
+
+.artist-perso a {
+  text-decoration: underline;
+}
+.artist-perso svg {
+  fill: currentColor;
+  width: 30px;
+  height: 30px;
+}
 
 .add-artist {
   display: flex;
   align-items: flex-end;
-  margin-bottom: 1rem; }
-  .add-artist .artist-image {
-    width: 6rem;
-    height: 6rem;
-    margin-right: 2rem;
-    border-radius: 50%;
-    overflow: hidden; }
-  .add-artist p {
-    font-size: 1.3rem;
-    color: grey; }
-  .add-artist .artist-name {
-    font-weight: 600;
-    font-size: 2.5rem; }
+  margin-bottom: 1rem;
+}
+.add-artist .artist-image {
+  width: 6rem;
+  height: 6rem;
+  margin-right: 2rem;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.add-artist p {
+  font-size: 1.3rem;
+  color: rgba(254, 252, 251, 0.72);
+}
+.add-artist :is(.banner-artist__name, .associated-artist__name) {
+  font-weight: 600;
+  font-size: 2.5rem;
+}
 
 .add-song {
   position: relative;
   display: flex;
   align-items: flex-end;
   margin-bottom: 2rem;
-  padding: 3rem 0;
+  padding: 3rem 10px;
   background-size: 100%;
   background-repeat: no-repeat;
   background-position-x: right;
   background-position-y: center;
   overflow: hidden;
-  border-radius: 4px; }
-  .add-song::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 25rem;
-    background: linear-gradient(to right, #22272C 10%, rgba(255, 255, 255, 0) 90%); }
-  .add-song .song-image {
-    width: 8rem;
-    height: 8rem;
-    margin-right: 2rem;
-    border-radius: 5px;
-    overflow: hidden;
-    z-index: 1; }
-  .add-song .song-info {
-    z-index: 1; }
+  border-radius: 4px;
+}
+.add-song::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 25rem;
+  background: linear-gradient(to right, rgba(34, 39, 44, 0.85) 100%, rgba(255, 255, 255, 0) 100%);
+}
+.add-song .song-image {
+  width: 8rem;
+  height: 8rem;
+  margin-right: 2rem;
+  border-radius: 5px;
+  overflow: hidden;
+  z-index: 1;
+}
+.add-song .featured-song__info {
+  z-index: 1;
+}
+.add-song .featured-song__artist {
+  font-weight: 600;
+}
+.add-song .featured-song__name {
+  font-weight: 600;
+}
 
 /*--------------------------------------------------------------
 # Widgets
 --------------------------------------------------------------*/
 .widget {
-  margin: 0 0 1.5em;
-  /* Make sure select elements fit in widgets. */ }
-  .widget select {
-    max-width: 100%; }
+  text-align: center;
+}
+.widget select {
+  max-width: 100%;
+}
 
 .follow-us .follow-us__box {
   display: flex;
-  justify-content: space-around; }
-
+  justify-content: space-around;
+  max-width: 300px;
+  margin: 0 auto;
+}
 .follow-us .icon {
   display: flex;
   flex-direction: column;
+  align-items: center;
   text-align: center;
   width: 50px;
   padding: 7px 0 5px;
   border-radius: 50%;
-  transition: all 0.8s ease; }
-
-.follow-us .facebook:hover .icon {
-  background: #4267B2; }
-
-.follow-us .youtube:hover .icon {
-  background: #F50E02; }
-
-.follow-us .instagram:hover .icon {
-  background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d); }
-
-.follow-us .soundcloud:hover .icon {
-  background: #F53202; }
+  transition: all 0.8s ease;
+}
+.follow-us .facebook:hover .icon svg {
+  fill: #4267b2;
+}
+.follow-us .youtube:hover .icon svg {
+  fill: #f50e02;
+}
+.follow-us .instagram:hover .icon svg {
+  fill: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+}
+.follow-us .soundcloud:hover .icon svg {
+  fill: #f53202;
+}
+.follow-us svg {
+  fill: currentColor;
+  width: 30px;
+  height: 30px;
+}
 
 /*--------------------------------------------------------------
 # Infinite scroll
 --------------------------------------------------------------*/
 /* Globally hidden elements when Infinite Scroll is supported and in use. */
 .infinite-scroll .posts-navigation,
-.infinite-scroll.neverending .site-footer {
-  /* Theme Footer (when set to scrolling) */
-  display: none; }
+.infinite-scroll.neverending .site-footer { /* Theme Footer (when set to scrolling) */
+  display: none;
+}
 
 /* When Infinite Scroll has reached its end we need to re-display elements that were hidden (via .neverending) before. */
 .infinity-end.neverending .site-footer {
-  display: block; }
+  display: block;
+}
 
 /*--------------------------------------------------------------
 # Media
 --------------------------------------------------------------*/
 img {
-  height: auto;
-  /* Make sure images are scaled correctly. */
-  max-width: 100%;
-  /* Adhere to container width. */ }
+  height: auto; /* Make sure images are scaled correctly. */
+  max-width: 100%; /* Adhere to container width. */
+}
 
 .page-content .wp-smiley,
 .entry-content .wp-smiley,
@@ -787,72 +2094,164 @@ img {
   border: none;
   margin-bottom: 0;
   margin-top: 0;
-  padding: 0; }
+  padding: 0;
+}
 
 /* Make sure embeds and iframes fit their containers. */
 embed,
 iframe,
 object {
-  max-width: 100%; }
+  max-width: 100%;
+}
 
 .wp-caption {
   margin: 1em 0 1.5em;
-  max-width: 100%; }
-  .wp-caption img[class*="wp-image-"] {
-    display: block;
-    margin-left: auto;
-    margin-right: auto; }
-  .wp-caption .wp-caption-text {
-    margin: 0.8075em 0; }
+  max-width: 100%;
+}
+.wp-caption img[class*=wp-image-] {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.wp-caption .wp-caption-text {
+  display: none;
+}
 
 /* Ensure center-aligned captions center-align properly. */
 .wp-caption.aligncenter {
   margin-left: auto;
-  margin-right: auto; }
+  margin-right: auto;
+}
 
 /* Give some padding to floated elements, to prevent them butting up against text. */
 .wp-caption.alignleft {
-  margin-right: 20px; }
+  margin-right: 20px;
+}
 
 .wp-caption.alignright {
-  margin-left: 20px; }
+  margin-left: 20px;
+}
 
 .wp-caption-text {
-  text-align: center; }
+  text-align: center;
+}
 
 /*--------------------------------------------------------------
 # Layout
 --------------------------------------------------------------*/
 html {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
 /*--------------------------------------------------------------
 ## Posts
 --------------------------------------------------------------*/
 .byline,
 .updated:not(.published) {
-  display: none; }
+  display: none;
+}
 
 .single .byline,
 .group-blog .byline {
-  display: inline; }
+  display: inline;
+}
 
 .page-content,
 .entry-content,
 .entry-summary {
   padding: 10px 20px;
   border-radius: 5px;
-  background: rgba(255, 255, 255, 0.1); }
+  background: rgba(255, 255, 255, 0.1);
+}
 
 /*--------------------------------------------------------------
 ## Pages
 --------------------------------------------------------------*/
 .page-links {
   clear: both;
-  margin: 0 0 1.5em; }
+  margin: 0 0 1.5em;
+}
 
-::-webkit-scrollbar {
-  width: 0; }
+/*
+Theme Name: PepseeActus
+Theme URI: http://components.underscores.me/
+Author: Le Peps
+Author URI: http://pepseeactus.com
+Description: Premier thème from scratch PepseeActus
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: pepseeactus
+Tags:
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+PepseeActus is created by the theme generator at http://components.underscores.me/, (C) 2015-2016 Automattic, Inc.
+Components is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
+*/
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Normalize
+# Accessibility
+# Alignments
+# Typography
+# Forms
+# Buttons
+# Formatting
+# Lists
+# Tables
+# Navigation
+# Links
+# Layout
+	## Posts
+	## Pages
+# Comments
+# Widgets
+# Infinite scroll
+# Media
+	## Galleries
+--------------------------------------------------------------*/
+@media (max-width: 1023.98px) {
+  .mobile-visually-hidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    display: none;
+  }
+}
+@media (min-width: 1024px) {
+  .desktop-visually-hidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    display: none;
+  }
+}
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
 
 #scrollPath {
   position: fixed;
@@ -860,7 +2259,8 @@ html {
   right: 0;
   width: 10px;
   height: 100%;
-  background: rgba(255, 255, 255, 0.05); }
+  background: rgba(255, 255, 255, 0.05);
+}
 
 #progressbar {
   position: fixed;
@@ -868,244 +2268,170 @@ html {
   right: 0;
   width: 10px;
   background: linear-gradient(to top, #008aff, #00ffe7);
-  animation: animate 5s linear infinite; }
-  #progressbar::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to top, #008aff, #00ffe7);
-    filter: blur(10px); }
-  #progressbar::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to top, #008aff, #00ffe7);
-    filter: blur(30px); }
+  animation: animate 5s linear infinite;
+}
+
+#progressbar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, #008aff, #00ffe7);
+  filter: blur(10px);
+}
+
+#progressbar::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, #008aff, #00ffe7);
+  filter: blur(30px);
+}
 
 @keyframes animate {
   0%, 100% {
-    filter: hue-rotate(0deg); }
+    filter: hue-rotate(0deg);
+  }
   50% {
-    filter: hue-rotate(360deg); } }
-
+    filter: hue-rotate(360deg);
+  }
+}
 .site-header {
-  background: #22272C;
+  background: #232323;
   width: 100%;
   top: 0;
   position: fixed;
   z-index: 2;
   transition: background 0.3s ease;
-  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5); }
-  @media (min-width: 1024px) {
-    .home .site-header {
-      background: transparent;
-      box-shadow: none; } }
-  @media (max-width: 1023.98px) {
-    .site-header {
-      background: #fff; } }
-  .site-header.blackNav {
-    background: #22272C;
-    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5); }
-  .site-header nav {
-    display: flex;
-    justify-content: space-between; }
-  .site-header .logo {
-    display: flex;
-    align-items: center; }
-    .site-header .logo a {
-      color: #fff;
-      font-weight: 100;
-      font-size: 2.2rem; }
-      @media (max-width: 1023.98px) {
-        .site-header .logo a {
-          color: #22272C; } }
-      .site-header .logo a span {
-        font-weight: 700; }
-  @media (max-width: 1023.98px) {
-    .site-header .nav-wrapper {
-      color: #22272C; } }
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 1023.98px) {
+  .site-header {
+    background: #fefcfb;
+  }
+}
+.site-header nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.site-header .logo {
+  display: flex;
+  align-items: center;
+}
+
+.site-header .logo a {
+  color: #fefcfb;
+  font-weight: 100;
+  font-size: 2.2rem;
+}
+
+@media (max-width: 1023.98px) {
+  .site-header .logo a {
+    color: #22272c;
+  }
+}
+.site-header .logo a span {
+  font-weight: 700;
+}
+
+@media (max-width: 1023.98px) {
+  .site-header .nav-wrapper {
+    color: #22272c;
+  }
+}
+.site-header .nav-wrapper .search-trigger__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.site-header .nav-wrapper .search-trigger__button svg {
+  fill: currentColor;
+  width: 24px;
+  height: 24px;
+}
+
+.site-header .nav-wrapper .search-trigger__button:focus-visible {
+  outline: 2px solid #f66d38;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.site-header .nav-wrapper ul {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+@media (max-width: 1023.98px) {
   .site-header .nav-wrapper ul {
-    display: flex;
-    align-items: center;
-    height: 100%; }
-    @media (max-width: 1023.98px) {
-      .site-header .nav-wrapper ul {
-        padding: 1rem 0;
-        justify-content: space-between; } }
-    .site-header .nav-wrapper ul li {
-      margin: 15px 1rem; }
-      @media (max-width: 1023.98px) {
-        .site-header .nav-wrapper ul li {
-          margin: 0 1rem; } }
-      .site-header .nav-wrapper ul li.current-menu-item a {
-        position: relative; }
-        .site-header .nav-wrapper ul li.current-menu-item a::after {
-          content: '';
-          height: 4px;
-          width: 100%;
-          background-color: #F66D38;
-          display: inline-block;
-          position: absolute;
-          bottom: -5px;
-          left: 50%;
-          transform: translateX(-50%); }
-      .site-header .nav-wrapper ul li a {
-        transition: all 0.2s ease; }
-        .site-header .nav-wrapper ul li a:hover {
-          color: #F66D38; }
+    padding: 1rem 0;
+    justify-content: space-between;
+  }
+}
+.site-header .nav-wrapper ul li {
+  margin: 15px 1rem;
+}
+
+@media (max-width: 1023.98px) {
+  .site-header .nav-wrapper ul li {
+    margin: 0 1rem;
+  }
+}
+.site-header .nav-wrapper ul li.current-menu-item a {
+  position: relative;
+  font-weight: 800;
+}
+
+.site-header .nav-wrapper ul li a:focus-visible {
+  outline: 2px solid #f66d38;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
 
 .hero-banner {
   position: relative;
-  overflow: hidden; }
-  @media (min-width: 1024px) {
-    .hero-banner {
-      min-height: 40rem; } }
-  .hero-banner .hero-banner-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0; }
-    @media (max-width: 767.98px) {
-      .hero-banner .hero-banner-background {
-        display: flex; } }
-    .hero-banner .hero-banner-background img {
-      object-fit: cover;
-      max-width: initial;
-      min-width: 100%;
-      max-height: 100%; }
-    .hero-banner .hero-banner-background::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 15rem;
-      background: linear-gradient(to top, #22272C 10%, rgba(255, 255, 255, 0) 90%); }
-  .hero-banner .headerLogo {
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    top: 20%;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1;
-    opacity: 0; }
-    @media (max-width: 1023.98px) {
-      .hero-banner .headerLogo {
-        display: none; } }
-  .hero-banner .video-background {
-    background: #000;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: -99;
-    filter: blur(5px); }
-  .hero-banner .video-foreground,
-  .hero-banner .video-background iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none; }
-  @media (min-aspect-ratio: 16 / 9) {
-    .hero-banner .video-foreground {
-      height: 300%;
-      top: -100%; } }
-  @media (max-aspect-ratio: 16 / 9) {
-    .hero-banner .video-foreground {
-      width: 300%;
-      left: -100%; } }
-  .hero-banner .banner-info {
-    position: absolute;
-    bottom: 6rem;
-    left: 23rem;
-    max-width: 30rem;
-    top: 50%;
-    transform: translateY(-50%); }
-    @media (max-width: 767.98px) {
-      .hero-banner .banner-info {
-        left: 50%;
-        top: 7rem;
-        transform: translateX(-50%);
-        text-align: center;
-        max-width: 100%;
-        bottom: 1rem;
-        width: 90%; } }
-    .hero-banner .banner-info .name,
-    .hero-banner .banner-info .album {
-      background-color: transparent;
-      background-image: linear-gradient(270deg, #abb2c4 0%, #F66D38 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-size: 6rem;
-      text-transform: uppercase;
-      font-weight: 900;
-      line-height: 4.7rem; }
-      @media (max-width: 767.98px) {
-        .hero-banner .banner-info .name,
-        .hero-banner .banner-info .album {
-          font-size: 4rem;
-          line-height: 2.9rem; } }
-    .hero-banner .banner-info .album {
-      margin-bottom: 2.3rem; }
-      @media (max-width: 767.98px) {
-        .hero-banner .banner-info .album {
-          margin-bottom: .5rem; } }
-    .hero-banner .banner-info button {
-      margin-top: 2.3rem;
-      background-color: #F66D38;
-      border-radius: 2.5rem;
-      padding: 1.3rem 3.2rem;
-      border: 2px solid white; }
-      @media (max-width: 767.98px) {
-        .hero-banner .banner-info button {
-          margin-top: .5rem; } }
-  .hero-banner .banner-more {
-    position: absolute;
-    top: 50%;
-    right: 23rem;
-    transform: translateY(-50%); }
-    @media (max-width: 767.98px) {
-      .hero-banner .banner-more {
-        display: none; } }
-    .hero-banner .banner-more .artist-image {
-      overflow: hidden;
-      border-radius: 50%;
-      border: 2px solid white;
-      max-width: 13rem; }
-      .hero-banner .banner-more .artist-image:hover img {
-        transform: scale(1.1); }
-      .hero-banner .banner-more .artist-image img {
-        transition: transform ease-out .2s; }
+  overflow: hidden;
+  background-color: #232323;
+}
 
 .single .hero-banner {
   min-height: 22rem;
-  position: relative; }
-  .single .hero-banner.single-format-standard {
-    display: none; }
-  @media (max-width: 767.98px) {
-    .single .hero-banner {
-      display: none; } }
-  .single .hero-banner .banner {
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    filter: blur(3px);
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0; }
+  position: relative;
+}
+
+.single .hero-banner.single-format-standard {
+  display: none;
+}
+
+@media (max-width: 767.98px) {
+  .single .hero-banner {
+    display: none;
+  }
+}
+.single .hero-banner .banner {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: blur(3px);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
 
 .search-overlay {
   overflow-y: auto;
@@ -1120,93 +2446,174 @@ html {
   visibility: hidden;
   opacity: 0;
   transform: scale(1.09);
-  transition: opacity .3s, transform .3s, visibility .3s;
-  box-sizing: border-box; }
-  .search-overlay .event-summary {
-    margin-bottom: 0;
-    margin-top: 2rem; }
-    .search-overlay .event-summary p {
-      padding-top: 0; }
-  .search-overlay .search-overlay__top {
-    background-color: rgba(0, 0, 0, 0.6); }
-    .search-overlay .search-overlay__top > .container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between; }
-    .search-overlay .search-overlay__top .search-term {
-      width: 100%;
-      box-sizing: border-box;
-      border: none;
-      padding: 1.5rem 0;
-      margin: 0;
-      background-color: transparent;
-      font-size: 3rem;
-      font-weight: 300;
-      outline: none; }
-      @media (max-width: 374.98px) {
-        .search-overlay .search-overlay__top .search-term {
-          font-size: 20px; } }
+  transition: opacity 0.3s, transform 0.3s, visibility 0.3s;
+  box-sizing: border-box;
+}
+
+.search-overlay .event-summary {
+  margin-bottom: 0;
+  margin-top: 2rem;
+}
+
+.search-overlay .event-summary p {
+  padding-top: 0;
+}
+
+.search-overlay .search-overlay__top {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.search-overlay .search-overlay__top > .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.search-overlay .search-overlay__top .search-term {
+  width: 100%;
+  box-sizing: border-box;
+  border: none;
+  padding: 1.5rem 0;
+  margin: 0;
+  background-color: transparent;
+  font-size: 3rem;
+  font-weight: 300;
+}
+
+.search-overlay .search-overlay__top .search-term:focus-visible {
+  outline: 2px solid #f66d38;
+  outline-offset: 4px;
+}
+
+@media (max-width: 374.98px) {
+  .search-overlay .search-overlay__top .search-term {
+    font-size: 20px;
+  }
+}
+.search-overlay .search-overlay__icon {
+  margin-right: 1rem;
+  font-size: 3rem;
+  color: #fefcfb;
+}
+
+@media (max-width: 767.98px) {
   .search-overlay .search-overlay__icon {
-    margin-right: 1rem;
-    font-size: 3rem;
-    color: #fff; }
-    @media (max-width: 767.98px) {
-      .search-overlay .search-overlay__icon {
-        font-size: 20px; } }
-  .search-overlay--active {
-    visibility: visible;
-    opacity: 1;
-    transform: scale(1); }
+    font-size: 20px;
+  }
+}
+.search-overlay--active {
+  visibility: visible;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.search-overlay .search-overlay__section-title {
+  margin: 3rem 0 2rem;
+  padding: 1.5rem 0 0;
+  font-size: 3rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+@media (max-width: 767.98px) {
   .search-overlay .search-overlay__section-title {
-    margin: 3rem 0 2rem;
-    padding: 1.5rem 0 0;
-    font-size: 3rem;
-    letter-spacing: 1px;
-    text-transform: uppercase; }
-    @media (max-width: 767.98px) {
-      .search-overlay .search-overlay__section-title {
-        padding: 1.5rem 0 0;
-        margin-bottom: 20px; } }
-  .search-overlay .search-overlay__close {
-    fill: currentColor;
-    cursor: pointer;
-    transition: all .3s;
-    color: #fff;
-    width: 25px;
-    height: 25px; }
-  .search-overlay .one-half {
-    padding-bottom: 0; }
-  .search-overlay #search-overlay__results .artist-card {
-    display: flex;
-    align-items: center;
-    margin-bottom: 2rem; }
-    .search-overlay #search-overlay__results .artist-card .artist-image {
-      border-radius: 50%;
-      overflow: hidden;
-      box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5);
-      margin-right: 1rem;
-      width: 50px;
-      height: 50px; }
-      .search-overlay #search-overlay__results .artist-card .artist-image img {
-        transition: all .3s ease-out;
-        width: 100%; }
-      .search-overlay #search-overlay__results .artist-card .artist-image:hover img {
-        transform: scale(1.1); }
+    padding: 1rem 0 0;
+    margin-bottom: 20px;
+    font-size: 2.2rem;
+  }
+}
+.search-overlay .search-overlay__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s;
+  color: #fefcfb;
+  width: 41px;
+  height: 41px;
+}
+
+.search-overlay .search-overlay__close:focus-visible {
+  outline: 2px solid #f66d38;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.search-overlay .search-overlay__close-icon {
+  fill: currentColor;
+  width: 25px;
+  height: 25px;
+}
+
+.search-overlay .one-half {
+  padding-bottom: 0;
+}
+
+@media (max-width: 767.98px) {
+  .search-overlay #search-overlay__results {
+    padding-bottom: 3rem;
+  }
+}
+.search-overlay #search-overlay__results ul {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.search-overlay #search-overlay__results li {
+  margin-bottom: 0.75rem;
+}
+
+.search-overlay #search-overlay__results a:focus-visible {
+  outline: 2px solid #f66d38;
+  outline-offset: 2px;
+}
+
+.search-overlay #search-overlay__results .artist-card {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.search-overlay #search-overlay__results .artist-card .artist-image {
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5);
+  margin-right: 1rem;
+  width: 50px;
+  height: 50px;
+  min-width: 50px;
+}
+
+.search-overlay #search-overlay__results .artist-card .artist-image img {
+  transition: all 0.3s ease-out;
+  width: 100%;
+}
+
+.search-overlay #search-overlay__results .artist-card .artist-image:hover img {
+  transform: scale(1.1);
+}
 
 @media (min-width: 1024px) {
   body.admin-bar .site-header,
   body.admin-bar .search-overlay {
-    top: 32px; } }
-
+    top: 32px;
+  }
+}
 .body-no-scroll {
-  overflow: hidden; }
+  overflow: hidden;
+}
 
 @keyframes spin {
   0% {
-    transform: rotate(0deg); }
+    transform: rotate(0deg);
+  }
   100% {
-    transform: rotate(360deg); } }
-
+    transform: rotate(360deg);
+  }
+}
 .spinner-loader {
   margin-top: 4.5rem;
   border-radius: 50%;
@@ -1214,138 +2621,262 @@ html {
   height: 24px;
   border: 0.25rem solid rgba(0, 0, 0, 0.2);
   border-top-color: black;
-  animation: spin 1s infinite linear; }
+  animation: spin 1s infinite linear;
+}
 
 .search-trigger {
-  cursor: pointer; }
+  display: inline-flex;
+  align-items: center;
+}
 
-.mobile-nav {
+/*
+Theme Name: PepseeActus
+Theme URI: http://components.underscores.me/
+Author: Le Peps
+Author URI: http://pepseeactus.com
+Description: Premier thème from scratch PepseeActus
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: pepseeactus
+Tags:
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+PepseeActus is created by the theme generator at http://components.underscores.me/, (C) 2015-2016 Automattic, Inc.
+Components is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
+*/
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Normalize
+# Accessibility
+# Alignments
+# Typography
+# Forms
+# Buttons
+# Formatting
+# Lists
+# Tables
+# Navigation
+# Links
+# Layout
+	## Posts
+	## Pages
+# Comments
+# Widgets
+# Infinite scroll
+# Media
+	## Galleries
+--------------------------------------------------------------*/
+@media (max-width: 1023.98px) {
+  .mobile-visually-hidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    display: none;
+  }
+}
+@media (min-width: 1024px) {
+  .desktop-visually-hidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    display: none;
+  }
+}
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+#navbar {
+  padding: 1rem 0;
+  color: #22272c;
+}
+
+#navbar i {
+  margin: 0 1rem;
+}
+
+.nveMenu {
   position: fixed;
-  bottom: 0;
+  top: 0;
   left: 0;
   right: 0;
-  background: #fff;
-  z-index: 9;
-  margin: 0 auto; }
-  .mobile-nav ul {
-    display: flex;
-    justify-content: space-around; }
-    .mobile-nav ul li {
-      margin: 5px 0 0; }
-      .mobile-nav ul li svg {
-        fill: currentColor;
-        color: #22272C;
-        width: 27px;
-        height: 27px; }
-      .mobile-nav ul li.current-menu-item svg {
-        color: #F66D38; }
-    .mobile-nav ul a {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      color: black;
-      font-size: 12px; }
-  .mobile-nav .home {
-    position: relative;
-    width: 60px;
-    text-align: center; }
-    .mobile-nav .home::after {
-      content: "";
-      position: absolute;
-      padding: 30px;
-      top: 25%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: #fff;
-      border-radius: 50%;
-      border: 5px solid #22272C; }
-    .mobile-nav .home a {
-      position: relative;
-      z-index: 1; }
-    .mobile-nav .home svg {
-      position: absolute;
-      top: -5px;
-      left: 50%;
-      transform: translateX(-50%); }
+  height: 100%;
+  width: min(320px, 86vw);
+  background: #1C1C1C;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 999;
+  transform: translateX(-100%);
+  transition: all 0.5s cubic-bezier(0.7, 0, 0.3, 1);
+  padding: 0 20px 20px;
+}
 
-.playlist-nav {
-  display: flex;
-  flex-direction: column;
+.nveMenu.is-opened {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+  overflow-y: auto;
+}
+
+.overlay {
   position: fixed;
-  right: -35px;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: #F66D38;
-  text-align: center;
-  font-size: 2rem;
-  z-index: 3;
-  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5); }
-  .playlist-nav:hover {
-    right: 0;
-    transition: all .3s linear;
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px; }
-  .playlist-nav a {
-    padding: 1rem;
-    color: white;
-    transition: all .3s ease-out; }
-    .playlist-nav a i {
-      transition: all .3s ease-out; }
-    .playlist-nav a:hover {
-      transform: scale(1.1); }
-      .playlist-nav a:hover .fa-spotify {
-        color: #49D75F; }
-      .playlist-nav a:hover .fa-soundcloud {
-        color: #F53202; }
-      .playlist-nav a:hover .fa-youtube {
-        color: #F50E02; }
-      .playlist-nav a:hover .fa-apple {
-        background: linear-gradient(345deg, #d253b1, #fb6f4a);
-        -webkit-text-fill-color: transparent;
-        -webkit-background-clip: text;
-        box-decoration-break: clone; }
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: calc(100% - min(320px, 86vw));
+  background: rgba(0, 0, 0, 0.71);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+.overlay.is-on {
+  opacity: 1;
+  visibility: visible;
+  z-index: 10;
+}
+
+.navlinks {
+  margin-top: 35px;
+}
+
+.navlinks li {
+  display: block;
+  padding: 10px 0;
+}
+
+.navlinks li:first-of-type {
+  padding: 0 0 10px;
+}
+
+.navlinks li a {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  font-size: 32px;
+}
+
+.navlinks li a svg {
+  width: 30px;
+  height: 30px;
+  margin-right: 15px;
+  color: #fbc003;
+}
+
+.site-sidebar__meta .social-icons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.site-sidebar__meta .social-icon svg {
+  width: 40px;
+  height: 40px;
+  color: #fff;
+}
+
+.playlist-menu {
+  margin: 25px 0;
+}
+
+.playlist-menu h3 {
+  font-size: 20px;
+}
+
+.playlist-menu p {
+  font-size: 12px;
+}
+
+.playlist-menu img {
+  margin: 5px 0 20px;
+}
 
 .site-footer {
-  background: #1C1C1C;
-  padding: 3rem 0; }
-  .site-footer a:hover {
-    text-decoration: underline; }
-  .site-footer .custom-logo {
-    max-width: 8rem;
-    margin-top: 2rem; }
+  background: #232323;
+  color: #fefcfb;
+  padding: 3rem 0;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+}
+
+.site-footer .custom-logo {
+  max-width: 8rem;
+  margin-top: 2rem;
+}
+
+.site-footer .footer-wrap {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto 5rem;
+  max-width: 68rem;
+}
+
+@media (max-width: 767.98px) {
   .site-footer .footer-wrap {
-    display: flex;
-    justify-content: space-between;
-    margin: 0 auto 5rem;
-    max-width: 68rem; }
-    @media (max-width: 767.98px) {
-      .site-footer .footer-wrap {
-        justify-content: center; } }
-    .site-footer .footer-wrap .footer-section-1 {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center; }
-      @media (max-width: 767.98px) {
-        .site-footer .footer-wrap .footer-section-1 {
-          display: none; } }
-    .site-footer .footer-wrap .footer-section-menu {
-      border-left: 1px solid rgba(255, 255, 255, 0.3);
-      border-right: 1px solid rgba(255, 255, 255, 0.3);
-      text-align: center; }
-      @media (max-width: 767.98px) {
-        .site-footer .footer-wrap .footer-section-menu {
-          border: none; } }
-    .site-footer .footer-wrap .footer-section-rgpd {
-      text-align: center; }
-  .site-footer .site-info {
-    text-align: center;
-    font-size: 1.2rem;
-    font-weight: 100; }
+    justify-content: center;
+  }
+}
+.site-footer .footer-wrap .footer-section-1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+@media (max-width: 767.98px) {
+  .site-footer .footer-wrap .footer-section-1 {
+    display: none;
+  }
+}
+.site-footer .footer-wrap .footer-section-menu {
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+  text-align: center;
+}
+
+@media (max-width: 767.98px) {
+  .site-footer .footer-wrap .footer-section-menu {
+    border: none;
+  }
+}
+.site-footer .footer-wrap .footer-section-rgpd {
+  text-align: center;
+}
+
+.site-footer .site-info {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 100;
+}
 
 #button {
   display: inline-block;
-  background-color: #F66D38;
+  background-color: #f66d38;
   width: 4rem;
   height: 4rem;
   text-align: center;
@@ -1353,385 +2884,427 @@ html {
   position: fixed;
   bottom: 1rem;
   left: 1rem;
-  transition: background-color .3s, opacity .5s, visibility .5s;
+  transition: background-color 0.3s, opacity 0.5s, visibility 0.5s;
   z-index: 1000;
   opacity: 0;
   visibility: hidden;
-  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5); }
-  #button:hover {
-    cursor: pointer;
-    background-color: #333;
-    text-decoration: none; }
-  #button:active {
-    background-color: #555; }
-  #button::after {
-    content: "\f077";
-    font-family: FontAwesome;
-    font-weight: normal;
-    font-style: normal;
-    font-size: 2rem;
-    line-height: 4rem;
-    color: #fff; }
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5);
+}
+
+#button:hover {
+  cursor: pointer;
+  background-color: #333;
+  text-decoration: none;
+}
+
+#button:active {
+  background-color: #555;
+}
+
+#button::after {
+  content: "\f077";
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 2rem;
+  line-height: 4rem;
+  color: #fff;
+}
+
+#button.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (max-width: 767.98px) {
   #button.show {
-    opacity: 1;
-    visibility: visible; }
-    @media (max-width: 767.98px) {
-      #button.show {
-        display: none; } }
-
-.about {
-  position: fixed;
-  z-index: 10;
-  bottom: 20px;
-  right: 20px;
-  width: 4rem;
-  height: 4rem;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  transition: all 0.2s ease; }
-  .about .bg_links {
-    width: 4rem;
-    height: 4rem;
-    border-radius: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 100%;
-    backdrop-filter: blur(5px);
-    position: absolute; }
-  .about .logo {
-    width: 4rem;
-    height: 4rem;
-    z-index: 9;
-    background-image: url("assets/img/logo-perso.png");
-    background-size: 65%;
-    background-repeat: no-repeat;
-    background-position: 7px 7px;
-    opacity: 0.9;
-    transition: all 1s 0.2s ease;
-    bottom: 0;
-    right: 0; }
-  .about .social {
-    opacity: 0;
-    right: 0;
-    bottom: 0; }
-    .about .social .icon {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      transition: all 0.2s ease, background-color 0.4s ease;
-      opacity: 0;
-      border-radius: 100%; }
-      .about .social .icon i {
-        font-size: 24px;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%); }
-    .about .social.facebook, .about .social.youtube, .about .social.instagram {
-      transition: all 0.8s ease; }
-  .about:hover {
-    width: 105px;
-    height: 105px;
-    transition: all 0.6s cubic-bezier(0.64, 0.01, 0.07, 1.65); }
-    .about:hover .logo {
-      opacity: 1;
-      transition: all 0.6s ease; }
-    .about:hover .social {
-      opacity: 1; }
-      .about:hover .social .icon {
-        opacity: 0.9; }
-      .about:hover .social:hover {
-        background-size: 28px; }
-        .about:hover .social:hover .icon {
-          background-size: 65%;
-          opacity: 1; }
-      .about:hover .social.facebook {
-        right: 0;
-        bottom: calc(100% - 40px);
-        transition: all 0.3s 0s cubic-bezier(0.64, 0.01, 0.07, 1.65); }
-        .about:hover .social.facebook .icon:hover {
-          background-color: #4267B2; }
-      .about:hover .social.youtube {
-        bottom: 45%;
-        right: 45%;
-        transition: all 0.3s 0.15s cubic-bezier(0.64, 0.01, 0.07, 1.65); }
-        .about:hover .social.youtube .icon:hover {
-          background-color: #F50E02; }
-      .about:hover .social.instagram {
-        bottom: 0;
-        right: calc(100% - 40px);
-        transition: all 0.3s 0.25s cubic-bezier(0.64, 0.01, 0.07, 1.65); }
-        .about:hover .social.instagram .icon:hover {
-          background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d); }
-
+    display: none;
+  }
+}
 /*--------------------------------------------------------------
 # Pages
 --------------------------------------------------------------*/
+/*
+Theme Name: PepseeActus
+Theme URI: http://components.underscores.me/
+Author: Le Peps
+Author URI: http://pepseeactus.com
+Description: Premier thème from scratch PepseeActus
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: pepseeactus
+Tags:
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+PepseeActus is created by the theme generator at http://components.underscores.me/, (C) 2015-2016 Automattic, Inc.
+Components is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
+*/
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Normalize
+# Accessibility
+# Alignments
+# Typography
+# Forms
+# Buttons
+# Formatting
+# Lists
+# Tables
+# Navigation
+# Links
+# Layout
+	## Posts
+	## Pages
+# Comments
+# Widgets
+# Infinite scroll
+# Media
+	## Galleries
+--------------------------------------------------------------*/
+.home a,
+.home p {
+  color: #fefcfb;
+}
+.home svg {
+  color: #fefcfb;
+  fill: currentColor;
+}
 @media (max-width: 767.98px) {
   .home > .container {
     display: flex;
-    flex-direction: column; } }
-
+    flex-direction: column;
+  }
+}
 .home svg {
-  fill: currentColor;
   width: 30px;
-  height: 30px; }
-
+  height: 30px;
+}
 .home h2 {
   text-transform: uppercase;
   font-weight: 700;
   margin-bottom: 2rem;
-  position: relative; }
-  .home h2::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    height: 5px;
-    width: 77px;
-    background: #F66D38; }
-
+  position: relative;
+}
 .home .header-actus {
-  margin-top: 10rem; }
-  @media (max-width: 767.98px) {
-    .home .header-actus {
-      margin-top: 5rem; } }
-  .home .header-actus .header-section {
-    display: flex;
-    align-items: center; }
-    @media (max-width: 767.98px) {
-      .home .header-actus .header-section {
-        flex-direction: column; } }
-    .home .header-actus .header-section .thumbnail-wrapper {
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5); }
-    .home .header-actus .header-section .swiper-container {
-      max-width: 100%;
-      overflow: hidden; }
-      @media (min-width: 1024px) {
-        .home .header-actus .header-section .swiper-container {
-          max-width: 30%;
-          margin-left: 3rem; } }
-    .home .header-actus .header-section .swiper-pagination {
-      position: relative;
-      padding: 2rem 0; }
-      .home .header-actus .header-section .swiper-pagination .swiper-pagination-bullet-active,
-      .home .header-actus .header-section .swiper-pagination .swiper-pagination-bullet {
-        background: white; }
-    .home .header-actus .header-section .see-more {
-      border: 1px solid white;
-      border-radius: 5px;
-      cursor: pointer; }
-
-.home .wrapper {
+  margin: 10rem auto 3rem;
+}
+@media (max-width: 767.98px) {
+  .home .header-actus {
+    margin-top: 0;
+  }
+}
+.home .header-actus .post-title {
+  text-align: center;
+  font-size: 24px;
+}
+.home .header-actus .post-title h1 {
+  font-weight: 800;
+}
+@media (min-width: 1024px) {
+  .home .header-actus .post-title h1 {
+    line-height: 54px;
+  }
+}
+@media (max-width: 767.98px) {
+  .home .header-actus .post-title h1 {
+    font-size: 40px;
+  }
+}
+.home .header-actus .post-title p {
+  margin: 20px auto;
+}
+.home .home-layout {
   display: flex;
   justify-content: space-between;
-  border-radius: 1rem; }
-  @media (max-width: 767.98px) {
-    .home .wrapper {
-      padding-top: 0;
-      border-radius: 0; } }
-  .home .wrapper .principal {
-    border-radius: 1rem;
-    padding-top: 0; }
-    @media (max-width: 767.98px) {
-      .home .wrapper .principal {
-        border-radius: 0; } }
-
+  align-items: flex-start;
+  gap: 3rem;
+}
+@media (max-width: 767.98px) {
+  .home .home-layout {
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
 .home .riddim,
 .home .releases,
 .home .album {
-  position: relative; }
-  @media (max-width: 767.98px) {
-    .home .riddim,
-    .home .releases,
-    .home .album {
-      font-size: 14px; } }
+  position: relative;
+  color: #fefcfb;
+}
+.home .riddim a,
+.home .releases a,
+.home .album a {
+  color: #fefcfb;
+}
+.home .riddim a:visited, .home .riddim a:hover, .home .riddim a:focus, .home .riddim a:active,
+.home .releases a:visited,
+.home .releases a:hover,
+.home .releases a:focus,
+.home .releases a:active,
+.home .album a:visited,
+.home .album a:hover,
+.home .album a:focus,
+.home .album a:active {
+  color: #fefcfb;
+}
+@media (max-width: 767.98px) {
+  .home .riddim,
+  .home .releases,
+  .home .album {
+    font-size: 14px;
+  }
+}
+.home .riddim-wrap,
+.home .releases-wrap,
+.home .album-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1.5rem 0;
+}
+@media (max-width: 767.98px) {
   .home .riddim-wrap,
   .home .releases-wrap,
   .home .album-wrap {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    background: rgba(255, 255, 255, 0.06);
-    padding: 15px 15px 0;
-    border-radius: 5px; }
-    @media (max-width: 767.98px) {
-      .home .riddim-wrap,
-      .home .releases-wrap,
-      .home .album-wrap {
-        justify-content: center; } }
-    @media (max-width: 374.98px) {
-      .home .riddim-wrap,
-      .home .releases-wrap,
-      .home .album-wrap {
-        flex-direction: column; } }
-    .home .riddim-wrap article,
-    .home .releases-wrap article,
-    .home .album-wrap article {
-      margin-bottom: 2rem;
-      display: flex;
-      align-items: flex-start;
-      position: relative;
-      width: 50%; }
-      @media (max-width: 767.98px) {
-        .home .riddim-wrap article,
-        .home .releases-wrap article,
-        .home .album-wrap article {
-          flex-direction: column;
-          align-items: center; } }
-      @media (max-width: 374.98px) {
-        .home .riddim-wrap article,
-        .home .releases-wrap article,
-        .home .album-wrap article {
-          width: 100%;
-          flex-direction: row; } }
-      .home .riddim-wrap article .new,
-      .home .releases-wrap article .new,
-      .home .album-wrap article .new {
-        display: inline-block;
-        text-transform: uppercase;
-        font-weight: 600;
-        background: linear-gradient(90deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        font-size: 10px; }
-        .home .riddim-wrap article .new svg,
-        .home .releases-wrap article .new svg,
-        .home .album-wrap article .new svg {
-          width: 13px;
-          height: 13px;
-          color: red;
-          vertical-align: baseline; }
-      .home .riddim-wrap article .rotate,
-      .home .releases-wrap article .rotate,
-      .home .album-wrap article .rotate {
-        width: 8rem;
-        height: 8rem;
-        min-width: 8rem; }
-        @media (max-width: 374.98px) {
-          .home .riddim-wrap article .rotate,
-          .home .releases-wrap article .rotate,
-          .home .album-wrap article .rotate {
-            margin-right: 8px; } }
-      .home .riddim-wrap article img,
-      .home .releases-wrap article img,
-      .home .album-wrap article img {
-        box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5);
-        width: 100%;
-        max-width: 15rem; }
-      .home .riddim-wrap article.album img,
-      .home .releases-wrap article.album img,
-      .home .album-wrap article.album img {
-        min-width: 11rem; }
-        @media (max-width: 767.98px) {
-          .home .riddim-wrap article.album img,
-          .home .releases-wrap article.album img,
-          .home .album-wrap article.album img {
-            min-width: 6rem; } }
-      .home .riddim-wrap article .info,
-      .home .releases-wrap article .info,
-      .home .album-wrap article .info {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        margin-left: 1rem;
-        width: 100%; }
-        @media (max-width: 767.98px) {
-          .home .riddim-wrap article .info,
-          .home .releases-wrap article .info,
-          .home .album-wrap article .info {
-            margin-left: 0;
-            margin-top: 1rem;
-            text-align: center; } }
-        @media (max-width: 374.98px) {
-          .home .riddim-wrap article .info,
-          .home .releases-wrap article .info,
-          .home .album-wrap article .info {
-            text-align: left; } }
-        .home .riddim-wrap article .info p,
-        .home .releases-wrap article .info p,
-        .home .album-wrap article .info p {
-          font-weight: 600;
-          margin: 0; }
-        .home .riddim-wrap article .info ul,
-        .home .releases-wrap article .info ul,
-        .home .album-wrap article .info ul {
-          display: flex; }
-          @media (max-width: 767.98px) {
-            .home .riddim-wrap article .info ul,
-            .home .releases-wrap article .info ul,
-            .home .album-wrap article .info ul {
-              justify-content: center; } }
-          .home .riddim-wrap article .info ul li:not(:last-of-type),
-          .home .releases-wrap article .info ul li:not(:last-of-type),
-          .home .album-wrap article .info ul li:not(:last-of-type) {
-            margin-right: 5px; }
-        .home .riddim-wrap article .info .beatmaker p,
-        .home .releases-wrap article .info .beatmaker p,
-        .home .album-wrap article .info .beatmaker p {
-          display: inline-block; }
-          .home .riddim-wrap article .info .beatmaker p + p::before,
-          .home .releases-wrap article .info .beatmaker p + p::before,
-          .home .album-wrap article .info .beatmaker p + p::before {
-            content: '/';
-            margin-right: 5px; }
-
+    justify-content: center;
+  }
+}
+@media (max-width: 374.98px) {
+  .home .riddim-wrap,
+  .home .releases-wrap,
+  .home .album-wrap {
+    flex-direction: column;
+  }
+}
+.home .riddim-wrap article,
+.home .releases-wrap article,
+.home .album-wrap article {
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  width: calc(33.333% - 1rem);
+}
+@media (max-width: 767.98px) {
+  .home .riddim-wrap article,
+  .home .releases-wrap article,
+  .home .album-wrap article {
+    flex-direction: column;
+    align-items: center;
+    width: calc(50% - 1rem);
+  }
+}
+@media (max-width: 374.98px) {
+  .home .riddim-wrap article,
+  .home .releases-wrap article,
+  .home .album-wrap article {
+    width: 100%;
+    flex-direction: row;
+  }
+}
+.home .riddim-wrap article .new,
+.home .releases-wrap article .new,
+.home .album-wrap article .new {
+  display: inline-block;
+  text-transform: uppercase;
+  font-weight: 600;
+  background: linear-gradient(90deg, rgb(131, 58, 180) 0%, rgb(253, 29, 29) 50%, rgb(252, 176, 69) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 10px;
+}
+.home .riddim-wrap article .new svg,
+.home .releases-wrap article .new svg,
+.home .album-wrap article .new svg {
+  width: 13px;
+  height: 13px;
+  color: red;
+  vertical-align: baseline;
+}
+.home .riddim-wrap article .rotate,
+.home .releases-wrap article .rotate,
+.home .album-wrap article .rotate {
+  width: 8rem;
+  height: 8rem;
+  min-width: 8rem;
+}
+@media (max-width: 374.98px) {
+  .home .riddim-wrap article .rotate,
+  .home .releases-wrap article .rotate,
+  .home .album-wrap article .rotate {
+    margin-right: 8px;
+  }
+}
+.home .riddim-wrap article img,
+.home .releases-wrap article img,
+.home .album-wrap article img {
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  max-width: 15rem;
+}
+.home .riddim-wrap article.album img,
+.home .releases-wrap article.album img,
+.home .album-wrap article.album img {
+  min-width: 11rem;
+}
+@media (max-width: 767.98px) {
+  .home .riddim-wrap article.album img,
+  .home .releases-wrap article.album img,
+  .home .album-wrap article.album img {
+    min-width: 6rem;
+  }
+}
+.home .riddim-wrap article .media-card__info,
+.home .releases-wrap article .media-card__info,
+.home .album-wrap article .media-card__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 1rem;
+  width: 100%;
+  min-width: 0;
+}
+@media (max-width: 767.98px) {
+  .home .riddim-wrap article .media-card__info,
+  .home .releases-wrap article .media-card__info,
+  .home .album-wrap article .media-card__info {
+    margin-left: 0;
+    margin-top: 1rem;
+    text-align: center;
+  }
+}
+@media (max-width: 374.98px) {
+  .home .riddim-wrap article .media-card__info,
+  .home .releases-wrap article .media-card__info,
+  .home .album-wrap article .media-card__info {
+    text-align: left;
+  }
+}
+.home .riddim-wrap article .media-card__info p,
+.home .releases-wrap article .media-card__info p,
+.home .album-wrap article .media-card__info p {
+  font-weight: 600;
+  margin: 0;
+}
+.home .riddim-wrap article .media-card__info .media-card__title,
+.home .riddim-wrap article .media-card__info .media-card-row__title,
+.home .releases-wrap article .media-card__info .media-card__title,
+.home .releases-wrap article .media-card__info .media-card-row__title,
+.home .album-wrap article .media-card__info .media-card__title,
+.home .album-wrap article .media-card__info .media-card-row__title {
+  line-height: 1.2;
+}
+.home .riddim-wrap article .media-card__info ul,
+.home .releases-wrap article .media-card__info ul,
+.home .album-wrap article .media-card__info ul {
+  display: flex;
+}
+@media (max-width: 767.98px) {
+  .home .riddim-wrap article .media-card__info ul,
+  .home .releases-wrap article .media-card__info ul,
+  .home .album-wrap article .media-card__info ul {
+    justify-content: center;
+  }
+}
+.home .riddim-wrap article .media-card__info ul li:not(:last-of-type),
+.home .releases-wrap article .media-card__info ul li:not(:last-of-type),
+.home .album-wrap article .media-card__info ul li:not(:last-of-type) {
+  margin-right: 10px;
+}
+.home .riddim-wrap article .media-card__info .beatmaker p,
+.home .releases-wrap article .media-card__info .beatmaker p,
+.home .album-wrap article .media-card__info .beatmaker p {
+  display: inline-block;
+}
+.home .riddim-wrap article .media-card__info .beatmaker p + p::before,
+.home .releases-wrap article .media-card__info .beatmaker p + p::before,
+.home .album-wrap article .media-card__info .beatmaker p + p::before {
+  content: "/";
+  margin-right: 5px;
+}
 .home .artist {
   display: flex;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  color: #fefcfb;
+}
+.home .artist a {
+  color: #fefcfb;
+}
+.home .artist a:visited, .home .artist a:hover, .home .artist a:focus, .home .artist a:active {
+  color: #fefcfb;
+}
+.home .artist .artist-wrap {
+  display: flex;
+  flex-flow: wrap;
+}
+@media (max-width: 767.98px) {
   .home .artist .artist-wrap {
-    display: flex;
-    flex-flow: wrap; }
+    justify-content: center;
+  }
+}
+.home .artist article {
+  display: inline-block;
+  margin: 0 20px;
+  max-width: 11rem;
+  text-align: center;
+}
+@media (max-width: 767.98px) {
   .home .artist article {
-    display: inline-block;
-    margin: 0 20px;
-    max-width: 11rem;
-    text-align: center; }
-    @media (max-width: 767.98px) {
-      .home .artist article {
-        margin: 0 0 35px; }
-        .home .artist article:not(:last-of-type) {
-          margin-right: 10px; } }
-  .home .artist .image-wrapper {
-    position: relative;
-    margin: 0 auto;
-    max-width: 10rem;
-    max-height: 10rem;
-    width: 10rem;
-    height: 10rem;
-    overflow: hidden;
-    border-radius: 50%; }
-  .home .artist img {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    min-height: 100%;
-    max-width: 110%; }
+    margin: 0 0 35px;
+  }
+  .home .artist article:not(:last-of-type) {
+    margin-right: 10px;
+  }
+}
+.home .artist .image-wrapper {
+  position: relative;
+  margin: 0 auto;
+  max-width: 10rem;
+  max-height: 10rem;
+  width: 10rem;
+  height: 10rem;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.home .artist img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-height: 100%;
+  max-width: 110%;
+}
+.home .artist .name {
+  max-width: 17rem;
+}
+@media (max-width: 767.98px) {
   .home .artist .name {
-    max-width: 17rem; }
-    @media (max-width: 767.98px) {
-      .home .artist .name {
-        max-width: 10rem; } }
-    .home .artist .name a {
-      text-transform: uppercase; }
-      @media (max-width: 767.98px) {
-        .home .artist .name a {
-          font-size: 1.1rem; } }
+    max-width: 10rem;
+  }
+}
+.home .artist .name a {
+  text-transform: uppercase;
+}
+@media (max-width: 767.98px) {
+  .home .artist .name a {
+    font-size: 1.1rem;
+  }
+}
 
 .actus .thumbnail-wrapper {
   height: 20rem;
   overflow: hidden;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover; }
-
+  background-size: cover;
+}
 .actus .swiper-button-prev,
 .actus .swiper-button-next {
   top: 35%;
@@ -1742,132 +3315,150 @@ html {
   border-radius: 50%;
   color: #000;
   background: #FFF;
-  box-shadow: 0 0 8px 3px rgba(0, 0, 0, 0.5); }
-  .actus .swiper-button-prev::after,
-  .actus .swiper-button-next::after {
-    display: none; }
-
+  box-shadow: 0 0 8px 3px rgba(0, 0, 0, 0.5);
+}
+.actus .swiper-button-prev::after,
+.actus .swiper-button-next::after {
+  display: none;
+}
 .actus .swiper-button-disabled {
-  display: none; }
-
+  display: none;
+}
 @media (min-width: 1024px) {
   .actus .actus-wrap {
-    margin-bottom: 60px; } }
-
+    margin-bottom: 60px;
+  }
+}
 .actus .actus-wrap .swiper-container {
   position: relative;
   width: 100%;
-  overflow: hidden; }
-
+  overflow: hidden;
+}
+.actus .actus-wrap {
+  color: #fefcfb;
+}
+.actus .actus-wrap a {
+  color: #fefcfb;
+}
+.actus .actus-wrap a:visited, .actus .actus-wrap a:hover, .actus .actus-wrap a:focus, .actus .actus-wrap a:active {
+  color: #fefcfb;
+}
 @media (max-width: 767.98px) {
   .actus article,
   .actus .category-actus,
   .actus .category-videos {
-    width: 100%; } }
-
+    width: 100%;
+  }
+}
 .actus .actus-single,
 .actus .actus-info,
-.actus .videos-info {
-  margin-top: 10px; }
-  @media (max-width: 767.98px) {
-    .actus .actus-single p,
-    .actus .actus-info p,
-    .actus .videos-info p {
-      display: none; } }
-
+.actus .videos-info,
+.actus .front-story__meta {
+  margin-top: 10px;
+  padding-inline: 0.25rem;
+}
+@media (max-width: 767.98px) {
+  .actus .actus-single p,
+  .actus .actus-info p,
+  .actus .videos-info p,
+  .actus .front-story__meta p {
+    display: none;
+  }
+}
+.actus .actus-single .entry-title a,
+.actus .actus-info .entry-title a,
+.actus .videos-info .entry-title a,
+.actus .front-story__meta .entry-title a {
+  line-height: 1.25;
+}
 .actus .actus-single a {
   font-size: 15px;
-  text-transform: initial; }
+  text-transform: initial;
+  text-decoration: none;
+}
 
+/*
+Theme Name: PepseeActus
+Theme URI: http://components.underscores.me/
+Author: Le Peps
+Author URI: http://pepseeactus.com
+Description: Premier thème from scratch PepseeActus
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: pepseeactus
+Tags:
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+PepseeActus is created by the theme generator at http://components.underscores.me/, (C) 2015-2016 Automattic, Inc.
+Components is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
+*/
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Normalize
+# Accessibility
+# Alignments
+# Typography
+# Forms
+# Buttons
+# Formatting
+# Lists
+# Tables
+# Navigation
+# Links
+# Layout
+	## Posts
+	## Pages
+# Comments
+# Widgets
+# Infinite scroll
+# Media
+	## Galleries
+--------------------------------------------------------------*/
+.single {
+  background-color: #232323;
+  color: #fefcfb;
+}
+.single main {
+  padding: 2rem 0;
+}
+@media (max-width: 767.98px) {
+  .single main {
+    padding: 0 2rem;
+  }
+}
 .single .scriptlesssocialsharing .scriptlesssocialsharing__buttons {
-  justify-content: space-around; }
-
+  justify-content: space-around;
+}
 .single .scriptlesssocialsharing a.button {
   margin: 5px 0;
   border: none;
-  background-color: #F66D38 !important; }
-  .single .scriptlesssocialsharing a.button::before {
-    border: none; }
-
+  background-color: #f66d38;
+}
+.single .scriptlesssocialsharing a.button::before {
+  border: none;
+}
 .single .music-content p, .single .music-content ul {
-  margin-bottom: 1rem; }
-
+  margin-bottom: 1rem;
+}
 .single .music-content li {
-  text-align: center; }
-
-.single .artist-album {
-  display: flex;
-  justify-content: center;
-  flex-flow: wrap; }
-  @media (max-width: 767.98px) {
-    .single .artist-album {
-      flex-direction: column; }
-      .single .artist-album .artist-info__container {
-        flex-flow: wrap;
-        justify-content: center; } }
-  .single .artist-album .artist-image__container {
-    margin-left: 30px; }
-  .single .artist-album .artist-image__container,
-  .single .artist-album .artist-info__container {
-    display: flex;
-    align-items: center; }
-    @media (max-width: 767.98px) {
-      .single .artist-album .artist-image__container,
-      .single .artist-album .artist-info__container {
-        justify-content: center; } }
-    .single .artist-album .artist-image__container .artist-image,
-    .single .artist-album .artist-info__container .artist-image {
-      position: relative;
-      margin-left: -30px;
-      height: 8rem;
-      width: 8rem;
-      min-width: 8rem;
-      min-height: 8rem;
-      overflow: hidden;
-      border-radius: 50%;
-      border: 4px solid #22272C; }
-      .single .artist-album .artist-image__container .artist-image img,
-      .single .artist-album .artist-info__container .artist-image img {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        min-height: 100%;
-        max-width: 8rem; }
-    @media (min-width: 1024px) {
-      .single .artist-album .artist-image__container .artist-info,
-      .single .artist-album .artist-info__container .artist-info {
-        margin-left: 5px; }
-        .single .artist-album .artist-image__container .artist-info:first-of-type,
-        .single .artist-album .artist-info__container .artist-info:first-of-type {
-          margin-left: 10px; } }
-    @media (min-width: 768px) and (max-width: 1023.98px) {
-      .single .artist-album .artist-image__container .artist-info,
-      .single .artist-album .artist-info__container .artist-info {
-        margin-top: 2rem; } }
-    @media (max-width: 767.98px) {
-      .single .artist-album .artist-image__container .artist-info:first-of-type,
-      .single .artist-album .artist-info__container .artist-info:first-of-type {
-        margin-right: 10px; } }
-    .single .artist-album .artist-image__container .artist-info + .artist-info::before,
-    .single .artist-album .artist-info__container .artist-info + .artist-info::before {
-      content: '/';
-      margin-right: 5px; }
-    .single .artist-album .artist-image__container .artist-info .artist-title,
-    .single .artist-album .artist-info__container .artist-info .artist-title {
-      font-weight: 600; }
-    .single .artist-album .artist-image__container .artist-info > i,
-    .single .artist-album .artist-info__container .artist-info > i {
-      color: #F66D38; }
-
+  text-align: center;
+}
 .single li.pis-li {
   display: flex;
   align-items: center;
-  margin-bottom: 20px; }
-
+  margin-bottom: 20px;
+}
 .single p.pis-title {
   order: 1;
-  font-size: 15px; }
-
+  font-size: 15px;
+}
 .single p.pis-excerpt {
   position: relative;
   order: 0;
@@ -1877,87 +3468,129 @@ html {
   min-height: 86px;
   margin-right: 10px;
   border-radius: 50%;
-  overflow: hidden; }
-  .single p.pis-excerpt img {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: 100%;
-    width: auto;
-    max-width: initial; }
-
-.single .beatmaker p {
-  display: inline-block; }
-  .single .beatmaker p + p::before {
-    content: '/';
-    margin-right: 5px; }
+  overflow: hidden;
+}
+.single p.pis-excerpt img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 100%;
+  width: auto;
+  max-width: initial;
+}
+.single.single-music .beatmaker p, .single.single-riddim .beatmaker p, .single.single-album .beatmaker p {
+  display: inline-block;
+}
+.single.single-music .beatmaker p + p::before, .single.single-riddim .beatmaker p + p::before, .single.single-album .beatmaker p + p::before {
+  content: "|";
+  margin-right: 5px;
+  margin-left: 2px;
+}
+.single.single-artist .artist-bio h3, .single.single-beatmaker .artist-bio h3 {
+  margin-bottom: 10px;
+  font-size: 1.75rem;
+  text-decoration: underline;
+}
+.single #see-more {
+  position: relative;
+  margin-top: 10px;
+  padding: 10px 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background-color: #f66d38;
+  border-radius: 5px;
+  border: none;
+}
 
 @media (max-width: 1023.98px) {
   .single-post {
-    margin-bottom: 30px; } }
-
+    margin-bottom: 30px;
+  }
+}
 .single-post .category-actus {
-  border-radius: 5px; }
+  border-radius: 5px;
+}
+.single-post .category-actus .single-content {
+  border-radius: 5px;
+}
+@media (max-width: 767.98px) {
   .single-post .category-actus .single-content {
-    border-radius: 5px;
-    padding: 5px 20px; }
-    @media (max-width: 767.98px) {
-      .single-post .category-actus .single-content {
-        position: relative; } }
-    @media (min-width: 1024px) {
-      .single-post .category-actus .single-content {
-        background: rgba(255, 255, 255, 0.1);
-        margin-bottom: 20px; } }
-
+    position: relative;
+  }
+}
+@media (min-width: 1024px) {
+  .single-post .category-actus .single-content {
+    padding: 5px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    margin-bottom: 20px;
+  }
+}
 .single-post .single-content {
-  text-align: center; }
-  .single-post .single-content h3 {
-    text-align: center;
-    text-transform: uppercase; }
-  .single-post .single-content .music-box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-flow: wrap; }
-  .single-post .single-content .music-cover {
-    margin-right: 10px;
-    width: 8rem;
-    height: 8rem; }
-  .single-post .single-content .post-meta {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 10px;
-    display: flex;
-    justify-content: space-between; }
-    .single-post .single-content .post-meta .fa.fa-eye {
-      margin-right: 5px; }
-  .single-post .single-content .jp-relatedposts-post-date {
-    text-align: left; }
-
+  text-align: left;
+}
+.single-post .single-content h3 {
+  text-align: left;
+  text-transform: uppercase;
+  font-size: 2.3rem;
+  margin-top: 40px;
+}
+.single-post .single-content .music-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: wrap;
+}
+.single-post .single-content .music-cover {
+  margin-right: 10px;
+  width: 8rem;
+  height: 8rem;
+}
+.single-post .single-content .post-meta {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.single-post .single-content .post-meta .fa.fa-eye {
+  margin-right: 5px;
+}
+.single-post .single-content .jp-relatedposts-post-date {
+  text-align: left;
+}
 .single-post .clip-box {
   text-align: center;
   position: relative;
-  margin-bottom: 5rem; }
-
+  margin-bottom: 5rem;
+}
 .single-post .post-thumbnail {
   margin: 0 auto 5rem;
   text-align: center;
   position: relative;
-  max-width: 75%; }
+  max-width: 100%;
+}
+@media (min-width: 1024px) {
   .single-post .post-thumbnail::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
     height: 250px;
-    background: linear-gradient(to top, #22272C 10%, rgba(255, 255, 255, 0) 90%); }
-  @media (max-width: 767.98px) {
-    .single-post .post-thumbnail {
-      width: 100%;
-      max-width: 100%;
-      margin: 0; } }
-
+    background: linear-gradient(to top, #22272c 10%, rgba(255, 255, 255, 0) 90%);
+  }
+}
+@media (max-width: 767.98px) {
+  .single-post .post-thumbnail {
+    width: 100%;
+    margin: 0;
+  }
+}
 .single-post .post-thumbnail .single-title,
 .single-post .clip-box .single-title {
   position: absolute;
@@ -1968,664 +3601,461 @@ html {
   font-size: 3.2rem;
   line-height: 60px;
   width: 75%;
-  z-index: 1; }
-  @media (max-width: 767.98px) {
-    .single-post .post-thumbnail .single-title,
-    .single-post .clip-box .single-title {
-      width: 90%; } }
-  @media (max-width: 374.98px) {
-    .single-post .post-thumbnail .single-title,
-    .single-post .clip-box .single-title {
-      display: none; } }
-  .single-post .post-thumbnail .single-title span,
-  .single-post .clip-box .single-title span {
-    background: #F66D38;
-    -webkit-box-decoration-break: clone;
-    padding: .5rem 1rem;
-    color: #fff; }
-
+  z-index: 1;
+}
+@media (max-width: 767.98px) {
+  .single-post .post-thumbnail .single-title,
+  .single-post .clip-box .single-title {
+    display: none;
+  }
+}
+.single-post .post-thumbnail .single-title span,
+.single-post .clip-box .single-title span {
+  background: #f66d38;
+  -webkit-box-decoration-break: clone;
+  padding: 0.5rem 1rem;
+  color: #fefcfb;
+}
 .single-post .post-thumbnail .single-title {
-  text-align: left; }
-  @media (max-width: 767.98px) {
-    .single-post .post-thumbnail .single-title {
-      font-size: 25px;
-      bottom: -15px;
-      line-height: 45px; } }
-
+  text-align: left;
+}
+@media (max-width: 767.98px) {
+  .single-post .post-thumbnail .single-title {
+    font-size: 25px;
+    bottom: -15px;
+    line-height: 45px;
+  }
+}
 .single-post .clip-box .single-title {
-  text-align: center; }
-
+  text-align: center;
+}
 .single-post .twitter-tweet {
-  margin: 10px auto; }
-
+  margin: 10px auto;
+}
 .single-post .artist .artist__container .artist__container-box {
   display: flex;
   align-items: center;
-  margin-bottom: 2rem; }
-  @media (min-width: 768px) and (max-width: 1023.98px) {
-    .single-post .artist .artist__container .artist__container-box {
-      justify-content: center;
-      flex-direction: column; } }
+  margin-bottom: 2rem;
+}
+@media (min-width: 768px) and (max-width: 1023.98px) {
+  .single-post .artist .artist__container .artist__container-box {
+    justify-content: center;
+    flex-direction: column;
+  }
+}
+.single-post .artist .artist__container .artist__container-box .artist-image {
+  margin-right: 1rem;
+  width: 12rem;
+  height: 12rem;
+  min-width: 12rem;
+  max-width: 12rem;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5);
+}
+@media (min-width: 768px) and (max-width: 1023.98px) {
   .single-post .artist .artist__container .artist__container-box .artist-image {
-    margin-right: 1rem;
-    width: 12rem;
-    height: 12rem;
-    min-width: 12rem;
-    max-width: 12rem;
-    border-radius: 50%;
-    overflow: hidden;
-    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5); }
-    @media (min-width: 768px) and (max-width: 1023.98px) {
-      .single-post .artist .artist__container .artist__container-box .artist-image {
-        margin-right: 0; } }
-    .single-post .artist .artist__container .artist__container-box .artist-image:hover img {
-      transform: scale(1.1); }
-    .single-post .artist .artist__container .artist__container-box .artist-image img {
-      transition: all .3s ease-out; }
-  @media (min-width: 768px) and (max-width: 1023.98px) {
-    .single-post .artist .artist__container .artist__container-box .artist-info {
-      margin-top: 2rem; } }
-  .single-post .artist .artist__container .artist__container-box .artist-info .artist-title {
-    font-weight: 600;
-    box-shadow: none; }
-  .single-post .artist .artist__container .artist__container-box .artist-info > i {
-    color: #F66D38; }
-  .single-post .artist .artist__container .artist__container-box .artist-info ul {
-    margin-top: .5rem; }
-    .single-post .artist .artist__container .artist__container-box .artist-info ul li {
-      display: inline-block;
-      margin-right: .5rem; }
-      .single-post .artist .artist__container .artist__container-box .artist-info ul li a {
-        display: block; }
-      .single-post .artist .artist__container .artist__container-box .artist-info ul li i {
-        font-size: 2rem;
-        transition: all .3s; }
-        .single-post .artist .artist__container .artist__container-box .artist-info ul li i.fa-twitter:hover {
-          color: #55ACEE; }
-        .single-post .artist .artist__container .artist__container-box .artist-info ul li i.fa-instagram:hover {
-          background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
-          -webkit-text-fill-color: transparent;
-          -webkit-background-clip: text;
-          box-decoration-break: clone; }
-        .single-post .artist .artist__container .artist__container-box .artist-info ul li i.fa-facebook-f:hover {
-          color: #4267B2; }
-        .single-post .artist .artist__container .artist__container-box .artist-info ul li i.fa-youtube:hover {
-          color: #F50E02; }
+    margin-right: 0;
+  }
+}
+.single-post .artist .artist__container .artist__container-box .artist-image:hover img {
+  transform: scale(1.1);
+}
+.single-post .artist .artist__container .artist__container-box .artist-image img {
+  transition: all 0.3s ease-out;
+}
+@media (min-width: 768px) and (max-width: 1023.98px) {
+  .single-post .artist .artist__container .artist__container-box .associated-artist__info {
+    margin-top: 2rem;
+  }
+}
+.single-post .artist .artist__container .artist__container-box .associated-artist__info .associated-artist__name {
+  font-weight: 600;
+  box-shadow: none;
+}
+.single-post .artist .artist__container .artist__container-box .associated-artist__info > svg {
+  fill: #f66d38;
+  width: 20px;
+}
+.single-post .artist .artist__container .artist__container-box .associated-artist__info ul {
+  margin-top: 0.5rem;
+}
+.single-post .artist .artist__container .artist__container-box .associated-artist__info ul li {
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+.single-post .artist .artist__container .artist__container-box .associated-artist__info ul li a {
+  display: block;
+}
 
-@media (min-width: 1024px) {
-  .single-post .graphcomment-button,
-  .single-post .about {
-    display: none; } }
-
-@media (max-width: 767.98px) {
-  .single-post .graphcomment-button {
-    margin-bottom: 20px;
-    font-size: 12px;
-    padding-left: 15px; } }
-
-.single-post .graphcomment-button span svg {
-  display: none; }
-
-.single-post .graphcomment-button a,
-.single-post .graphcomment-button span {
-  display: inline !important;
-  background: none !important;
-  padding: 0 2px !important;
-  font-weight: 100 !important;
-  text-transform: unset !important; }
-
-.single-post .graphcomment-button a::before {
-  border: none; }
-
-.single-post #graphcomment-bubble {
-  background: #989494 !important; }
-
-.link {
-  margin: 20px 0 20px;
-  text-align: center; }
-  .link .stream {
-    color: #F66D38;
-    margin-bottom: 20px; }
-    .link .stream p {
-      text-transform: uppercase;
-      font-weight: 400; }
-  .link svg {
-    fill: currentColor;
-    width: 40px;
-    height: 40px; }
-  .link .download {
-    margin-bottom: 20px; }
-    .link .download p {
-      margin-bottom: 18px; }
-    .link .download a {
-      border-radius: 10px;
-      border: 1px solid #F66D38;
-      box-shadow: 0 0 0 0 #F66D38;
-      animation: pulse 1.3s infinite;
-      padding: 10px 20px; }
-
-@keyframes pulse {
-  to {
-    box-shadow: 0 0 0 5px rgba(246, 109, 56, 0.05); } }
-  .link li {
-    display: inline-block;
-    margin-right: 1rem; }
-
+.page {
+  background-color: #232323;
+}
 .page .page-title {
   margin-top: 3rem;
   text-transform: uppercase;
-  font-weight: 600; }
-
-.single.single-artist main,
-.single-beatmaker main {
-  padding-top: 5rem;
-  padding-bottom: 2rem; }
-  @media (max-width: 767.98px) {
-    .single.single-artist main,
-    .single-beatmaker main {
-      padding-top: 2rem; } }
-
-.single.single-artist .artist,
-.single-beatmaker .artist {
-  padding: 1.5rem;
-  border-radius: 5px; }
-  @media (max-width: 767.98px) {
-    .single.single-artist .artist,
-    .single-beatmaker .artist {
-      background: rgba(255, 255, 255, 0.01); } }
-
-.single.single-artist h2,
-.single-beatmaker h2 {
-  font-size: 4rem;
   font-weight: 600;
-  letter-spacing: inherit;
-  margin-bottom: 3rem;
-  position: relative;
-  text-transform: initial; }
-  @media (max-width: 767.98px) {
-    .single.single-artist h2,
-    .single-beatmaker h2 {
-      font-size: 30px; } }
-  .single.single-artist h2::after,
-  .single-beatmaker h2::after {
-    content: '';
-    position: absolute;
-    bottom: -9px;
-    left: 0;
-    height: 5px;
-    width: 60px;
-    background: #F66D38; }
+}
 
-.single.single-artist .artist-presentation,
-.single-beatmaker .artist-presentation {
-  display: flex;
-  align-items: center;
-  position: relative;
-  top: -6.5rem; }
-  @media (max-width: 767.98px) {
-    .single.single-artist .artist-presentation,
-    .single-beatmaker .artist-presentation {
-      display: block;
-      text-align: center;
-      top: 0; } }
-  .single.single-artist .artist-presentation .artist-presentation__picture,
-  .single-beatmaker .artist-presentation .artist-presentation__picture {
-    position: relative;
-    margin-right: 2rem;
-    max-width: 15rem;
-    min-width: 15rem;
-    max-height: 15rem;
-    width: 15rem;
-    height: 15rem;
-    border-radius: 50%;
-    overflow: hidden;
-    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5); }
-    @media (max-width: 767.98px) {
-      .single.single-artist .artist-presentation .artist-presentation__picture,
-      .single-beatmaker .artist-presentation .artist-presentation__picture {
-        margin: 0 auto; } }
-    .single.single-artist .artist-presentation .artist-presentation__picture img,
-    .single-beatmaker .artist-presentation .artist-presentation__picture img {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      min-height: 100%;
-      min-width: 100%;
-      width: auto;
-      max-width: 200px; }
-  .single.single-artist .artist-presentation .artist-presentation__info .artist-presentation__info-name,
-  .single-beatmaker .artist-presentation .artist-presentation__info .artist-presentation__info-name {
-    display: flex;
-    align-items: center; }
-    @media (max-width: 767.98px) {
-      .single.single-artist .artist-presentation .artist-presentation__info .artist-presentation__info-name,
-      .single-beatmaker .artist-presentation .artist-presentation__info .artist-presentation__info-name {
-        display: block; } }
-    .single.single-artist .artist-presentation .artist-presentation__info .artist-presentation__info-name .entry-title,
-    .single-beatmaker .artist-presentation .artist-presentation__info .artist-presentation__info-name .entry-title {
-      margin: 0 .5rem 0 0;
-      text-transform: uppercase;
-      font-weight: 600; }
-      @media (max-width: 767.98px) {
-        .single.single-artist .artist-presentation .artist-presentation__info .artist-presentation__info-name .entry-title,
-        .single-beatmaker .artist-presentation .artist-presentation__info .artist-presentation__info-name .entry-title {
-          font-size: 30px;
-          display: inline-block; } }
-    .single.single-artist .artist-presentation .artist-presentation__info .artist-presentation__info-name i,
-    .single-beatmaker .artist-presentation .artist-presentation__info .artist-presentation__info-name i {
-      font-size: 2rem;
-      color: #F66D38; }
-      @media (max-width: 767.98px) {
-        .single.single-artist .artist-presentation .artist-presentation__info .artist-presentation__info-name i,
-        .single-beatmaker .artist-presentation .artist-presentation__info .artist-presentation__info-name i {
-          font-size: 15px;
-          vertical-align: super; } }
-  .single.single-artist .artist-presentation .artist-presentation__info .artist-presentation__info-reseaux,
-  .single-beatmaker .artist-presentation .artist-presentation__info .artist-presentation__info-reseaux {
-    margin-top: 1rem; }
-    .single.single-artist .artist-presentation .artist-presentation__info .artist-presentation__info-reseaux li,
-    .single-beatmaker .artist-presentation .artist-presentation__info .artist-presentation__info-reseaux li {
-      display: inline-block;
-      margin-right: 1rem; }
-    .single.single-artist .artist-presentation .artist-presentation__info .artist-presentation__info-reseaux i,
-    .single-beatmaker .artist-presentation .artist-presentation__info .artist-presentation__info-reseaux i {
-      font-size: 2rem;
-      transition: all .3s; }
-      .single.single-artist .artist-presentation .artist-presentation__info .artist-presentation__info-reseaux i.fa-twitter:hover,
-      .single-beatmaker .artist-presentation .artist-presentation__info .artist-presentation__info-reseaux i.fa-twitter:hover {
-        color: #55ACEE; }
-      .single.single-artist .artist-presentation .artist-presentation__info .artist-presentation__info-reseaux i.fa-instagram:hover,
-      .single-beatmaker .artist-presentation .artist-presentation__info .artist-presentation__info-reseaux i.fa-instagram:hover {
-        background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
-        -webkit-text-fill-color: transparent;
-        -webkit-background-clip: text;
-        box-decoration-break: clone; }
-      .single.single-artist .artist-presentation .artist-presentation__info .artist-presentation__info-reseaux i.fa-facebook-f:hover,
-      .single-beatmaker .artist-presentation .artist-presentation__info .artist-presentation__info-reseaux i.fa-facebook-f:hover {
-        color: #4267B2; }
-      .single.single-artist .artist-presentation .artist-presentation__info .artist-presentation__info-reseaux i.fa-youtube:hover,
-      .single-beatmaker .artist-presentation .artist-presentation__info .artist-presentation__info-reseaux i.fa-youtube:hover {
-        color: #F50E02; }
+/*
+Theme Name: PepseeActus
+Theme URI: http://components.underscores.me/
+Author: Le Peps
+Author URI: http://pepseeactus.com
+Description: Premier thème from scratch PepseeActus
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: pepseeactus
+Tags:
 
-.single.single-artist .artist-bio,
-.single-beatmaker .artist-bio {
-  position: relative;
-  max-height: 160px;
-  margin-bottom: 2rem;
-  text-align: justify;
-  overflow-y: hidden;
-  transition: all 0.5s ease; }
-  .single.single-artist .artist-bio.open,
-  .single-beatmaker .artist-bio.open {
-    max-height: 100%;
-    transition: all 0.5s ease; }
-  .single.single-artist .artist-bio p,
-  .single-beatmaker .artist-bio p {
-    margin-bottom: 1rem; }
-  .single.single-artist .artist-bio .readmore-link,
-  .single-beatmaker .artist-bio .readmore-link {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    margin: 0;
-    padding: 15px 0 5px;
-    text-align: center;
-    background-image: -moz-linear-gradient(top, transparent, white);
-    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, transparent), color-stop(1, #22272C)); }
-    .single.single-artist .artist-bio .readmore-link a,
-    .single-beatmaker .artist-bio .readmore-link a {
-      text-decoration: none;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      background-color: #F66D38;
-      padding: 5px 10px;
-      border-radius: 5px;
-      transition: all 0.25s ease; }
-      .single.single-artist .artist-bio .readmore-link a:hover,
-      .single-beatmaker .artist-bio .readmore-link a:hover {
-        opacity: 1; }
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
 
-.single.single-artist .artist-album,
-.single-beatmaker .artist-album {
-  flex-flow: column;
-  margin-bottom: 2rem; }
-  .single.single-artist .artist-album .artist-album__container,
-  .single-beatmaker .artist-album .artist-album__container {
-    display: flex;
-    flex-flow: wrap; }
-  .single.single-artist .artist-album .artist-album__container-box,
-  .single-beatmaker .artist-album .artist-album__container-box {
-    display: flex;
-    margin-bottom: 2rem; }
-    .single.single-artist .artist-album .artist-album__container-box .album-image,
-    .single-beatmaker .artist-album .artist-album__container-box .album-image {
-      margin-right: 1rem; }
-      .single.single-artist .artist-album .artist-album__container-box .album-image img,
-      .single-beatmaker .artist-album .artist-album__container-box .album-image img {
-        width: 105px;
-        height: 105px;
-        box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5); }
-    .single.single-artist .artist-album .artist-album__container-box .album-info .album-title,
-    .single-beatmaker .artist-album .artist-album__container-box .album-info .album-title {
-      font-weight: 600; }
-    .single.single-artist .artist-album .artist-album__container-box .album-info svg,
-    .single-beatmaker .artist-album .artist-album__container-box .album-info svg {
-      fill: currentColor;
-      width: 30px;
-      height: 30px; }
-    .single.single-artist .artist-album .artist-album__container-box .album-info a,
-    .single-beatmaker .artist-album .artist-album__container-box .album-info a {
-      display: block; }
-    .single.single-artist .artist-album .artist-album__container-box .album-info ul,
-    .single-beatmaker .artist-album .artist-album__container-box .album-info ul {
-      margin-top: .5rem; }
-      .single.single-artist .artist-album .artist-album__container-box .album-info ul li,
-      .single-beatmaker .artist-album .artist-album__container-box .album-info ul li {
-        display: inline-block;
-        margin-right: .5rem; }
-        .single.single-artist .artist-album .artist-album__container-box .album-info ul li a,
-        .single-beatmaker .artist-album .artist-album__container-box .album-info ul li a {
-          transition: transform .3s ease-out; }
-          .single.single-artist .artist-album .artist-album__container-box .album-info ul li a:hover,
-          .single-beatmaker .artist-album .artist-album__container-box .album-info ul li a:hover {
-            transform: translateY(0.5rem); }
+PepseeActus is created by the theme generator at http://components.underscores.me/, (C) 2015-2016 Automattic, Inc.
+Components is distributed under the terms of the GNU GPL v2 or later.
 
-.single.single-artist .artist-music,
-.single-beatmaker .artist-music {
-  position: relative;
-  margin-bottom: 2rem; }
-  .single.single-artist .artist-music__container,
-  .single-beatmaker .artist-music__container {
-    display: flex;
-    flex-flow: wrap; }
-    .single.single-artist .artist-music__container-box,
-    .single-beatmaker .artist-music__container-box {
-      display: flex;
-      margin-bottom: 2rem; }
-      .single.single-artist .artist-music__container-box .music-image,
-      .single-beatmaker .artist-music__container-box .music-image {
-        margin-right: 1rem;
-        width: 90px;
-        min-width: 90px;
-        height: 90px; }
-        .single.single-artist .artist-music__container-box .music-image img,
-        .single-beatmaker .artist-music__container-box .music-image img {
-          max-width: 90px; }
-      .single.single-artist .artist-music__container-box .music-info .music-title,
-      .single-beatmaker .artist-music__container-box .music-info .music-title {
-        font-weight: 600; }
-      .single.single-artist .artist-music__container-box .music-info svg,
-      .single-beatmaker .artist-music__container-box .music-info svg {
-        fill: currentColor;
-        width: 30px;
-        height: 30px; }
-      .single.single-artist .artist-music__container-box .music-info a,
-      .single-beatmaker .artist-music__container-box .music-info a {
-        display: block; }
-      .single.single-artist .artist-music__container-box .music-info ul,
-      .single-beatmaker .artist-music__container-box .music-info ul {
-        margin-top: .5rem; }
-        .single.single-artist .artist-music__container-box .music-info ul li,
-        .single-beatmaker .artist-music__container-box .music-info ul li {
-          display: inline-block;
-          margin-right: .5rem; }
-          .single.single-artist .artist-music__container-box .music-info ul li a,
-          .single-beatmaker .artist-music__container-box .music-info ul li a {
-            transition: transform .3s ease-out; }
-            .single.single-artist .artist-music__container-box .music-info ul li a:hover,
-            .single-beatmaker .artist-music__container-box .music-info ul li a:hover {
-              transform: translateY(0.5rem); }
-
-.single.single-artist .actus,
-.single-beatmaker .actus {
-  margin-bottom: 2rem; }
-  .single.single-artist .actus .swiper-actus,
-  .single-beatmaker .actus .swiper-actus {
-    position: relative;
-    overflow: hidden; }
-
-.single.single-artist .jp-relatedposts,
-.single-beatmaker .jp-relatedposts {
-  display: none !important; }
-
-.single .actus article a::before {
-  content: none; }
-
-.single-music main {
-  padding-top: 5rem;
-  padding-bottom: 2rem; }
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
+*/
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Normalize
+# Accessibility
+# Alignments
+# Typography
+# Forms
+# Buttons
+# Formatting
+# Lists
+# Tables
+# Navigation
+# Links
+# Layout
+	## Posts
+	## Pages
+# Comments
+# Widgets
+# Infinite scroll
+# Media
+	## Galleries
+--------------------------------------------------------------*/
+body.single-music {
+  background: #232323;
+}
+body.single-music aside {
+  padding: 20px;
+  border-radius: 12px;
+  background-color: #232323;
+}
 
 .single-music h2 {
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: 600;
   letter-spacing: inherit;
-  margin-bottom: 2rem; }
-
-.single-music .music {
-  background: rgba(255, 255, 255, 0.01);
-  border-radius: 15px; }
-
-.single-music .music-presentation {
-  display: flex;
-  position: relative;
-  top: -5rem; }
-  .single-music .music-presentation .music-presentation__picture {
-    margin-right: 2rem;
-    width: 95px;
-    height: 95px;
-    min-width: 95px; }
-  .single-music .music-presentation .music-presentation__info {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end; }
-    .single-music .music-presentation .music-presentation__info svg {
-      fill: currentColor;
-      width: 30px;
-      height: 30px; }
-    .single-music .music-presentation .music-presentation__info .music-presentation__info-name .entry-title {
-      margin: 0 .5rem 0 0;
-      text-transform: uppercase;
-      font-weight: 600;
-      font-size: 3rem;
-      line-height: 2.5rem; }
-      .single-music .music-presentation .music-presentation__info .music-presentation__info-name .entry-title.name {
-        font-weight: 200; }
-      .single-music .music-presentation .music-presentation__info .music-presentation__info-name .entry-title.riddim {
-        font-weight: 800;
-        display: block;
-        margin-bottom: .5rem; }
-      @media (max-width: 767.98px) {
-        .single-music .music-presentation .music-presentation__info .music-presentation__info-name .entry-title {
-          font-size: 1.8rem; } }
-    .single-music .music-presentation .music-presentation__info .music-presentation__info-name i {
-      font-size: 2rem;
-      color: #F66D38; }
-    .single-music .music-presentation .music-presentation__info .music-presentation__info-reseaux li {
-      display: inline-block;
-      margin-right: 1rem; }
-
+  margin-bottom: 0;
+  margin-top: 3rem;
+}
 .single-music .music-content p, .single-music .music-content ul {
-  margin-bottom: 1rem; }
-
+  margin-bottom: 1rem;
+}
+.single-music .music-content img {
+  width: 100%;
+  max-height: initial;
+}
 .single-music .related-album {
-  font-weight: 500; }
-  .single-music .related-album a {
-    font-weight: 300; }
+  font-weight: 500;
+}
+.single-music .related-album a {
+  font-weight: 300;
+}
+.single-music .artist-album {
+  align-items: center;
+}
+.single-music .jp-relatedposts-post-date {
+  text-align: left;
+}
 
-.single-riddim main,
-.single-album main {
-  padding-top: 5rem;
-  padding-bottom: 2rem; }
+/*
+Theme Name: PepseeActus
+Theme URI: http://components.underscores.me/
+Author: Le Peps
+Author URI: http://pepseeactus.com
+Description: Premier thème from scratch PepseeActus
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: pepseeactus
+Tags:
 
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+PepseeActus is created by the theme generator at http://components.underscores.me/, (C) 2015-2016 Automattic, Inc.
+Components is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
+*/
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Normalize
+# Accessibility
+# Alignments
+# Typography
+# Forms
+# Buttons
+# Formatting
+# Lists
+# Tables
+# Navigation
+# Links
+# Layout
+	## Posts
+	## Pages
+# Comments
+# Widgets
+# Infinite scroll
+# Media
+	## Galleries
+--------------------------------------------------------------*/
 .single-riddim h2,
 .single-album h2 {
   font-size: 4rem;
   font-weight: 600;
   letter-spacing: inherit;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   position: relative;
   text-transform: initial;
-  text-align: center; }
-  @media (max-width: 767.98px) {
-    .single-riddim h2,
-    .single-album h2 {
-      font-size: 30px; } }
-
-.single-riddim .music-presentation,
-.single-album .music-presentation {
-  display: flex;
-  align-items: center;
-  position: relative;
-  top: -5rem; }
-  .single-riddim .music-presentation .music-presentation__picture,
-  .single-album .music-presentation .music-presentation__picture {
-    margin-right: 2rem; }
-    .single-riddim .music-presentation .music-presentation__picture img,
-    .single-album .music-presentation .music-presentation__picture img {
-      border-radius: .5rem;
-      box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5); }
-  .single-riddim .music-presentation .music-presentation__info,
-  .single-album .music-presentation .music-presentation__info {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end; }
-    .single-riddim .music-presentation .music-presentation__info .entry-title,
-    .single-album .music-presentation .music-presentation__info .entry-title {
-      margin: 0 .5rem 0 0;
-      text-transform: uppercase;
-      font-weight: 600;
-      font-size: 3rem;
-      line-height: 2.5rem; }
-      @media (max-width: 767.98px) {
-        .single-riddim .music-presentation .music-presentation__info .entry-title,
-        .single-album .music-presentation .music-presentation__info .entry-title {
-          font-size: 1.8rem; } }
-    .single-riddim .music-presentation .music-presentation__info .music-presentation__info-reseaux svg,
-    .single-album .music-presentation .music-presentation__info .music-presentation__info-reseaux svg {
-      fill: currentColor;
-      width: 30px;
-      height: 30px; }
-    .single-riddim .music-presentation .music-presentation__info .music-presentation__info-reseaux li,
-    .single-album .music-presentation .music-presentation__info .music-presentation__info-reseaux li {
-      display: inline-block;
-      margin-right: 1rem; }
-
+  text-align: center;
+}
+@media (max-width: 767.98px) {
+  .single-riddim h2,
+  .single-album h2 {
+    font-size: 30px;
+  }
+}
+.single-riddim .music-content img,
+.single-album .music-content img {
+  width: 100%;
+  max-height: initial;
+}
 .single-riddim .artist-album,
 .single-album .artist-album {
   flex-direction: column;
-  align-items: center; }
-
+  align-items: center;
+}
 .single-riddim aside,
 .single-album aside {
-  margin-top: 1.5rem; }
+  margin-top: 1.5rem;
+}
 
 .single-riddim .beatmaker p {
-  display: inline-block; }
-  .single-riddim .beatmaker p + p::before {
-    content: '/';
-    margin-right: 5px; }
+  display: inline-block;
+}
+.single-riddim .beatmaker p + p::before {
+  content: "/";
+  margin-right: 5px;
+}
 
+/*
+Theme Name: PepseeActus
+Theme URI: http://components.underscores.me/
+Author: Le Peps
+Author URI: http://pepseeactus.com
+Description: Premier thème from scratch PepseeActus
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: pepseeactus
+Tags:
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+PepseeActus is created by the theme generator at http://components.underscores.me/, (C) 2015-2016 Automattic, Inc.
+Components is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
+*/
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Normalize
+# Accessibility
+# Alignments
+# Typography
+# Forms
+# Buttons
+# Formatting
+# Lists
+# Tables
+# Navigation
+# Links
+# Layout
+	## Posts
+	## Pages
+# Comments
+# Widgets
+# Infinite scroll
+# Media
+	## Galleries
+--------------------------------------------------------------*/
 .post-type-archive-music h2 {
   font-size: 4rem;
   font-weight: 700;
   text-transform: uppercase;
-  position: relative; }
-  .post-type-archive-music h2::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    height: 5px;
-    width: 77px;
-    background: #F66D38; }
-  @media (max-width: 767.98px) {
-    .post-type-archive-music h2 {
-      font-size: 30px; } }
-
+  position: relative;
+}
+@media (max-width: 767.98px) {
+  .post-type-archive-music h2 {
+    font-size: 30px;
+  }
+}
 .post-type-archive-music .principal {
   border-radius: 5px;
-  background: rgba(255, 255, 255, 0.06); }
-
+  background: rgba(255, 255, 255, 0.06);
+}
 .post-type-archive-music #pepsee_filters {
   margin-bottom: 2.1875rem;
-  border-bottom: 1px solid #F66D38; }
-  @media (max-width: 767.98px) {
-    .post-type-archive-music #pepsee_filters {
-      text-align: center; } }
-  .post-type-archive-music #pepsee_filters button {
-    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5);
-    border: 0; }
-
+  border-bottom: 1px solid #f66d38;
+}
+@media (max-width: 767.98px) {
+  .post-type-archive-music #pepsee_filters {
+    text-align: center;
+  }
+}
+.post-type-archive-music #pepsee_filters button {
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5);
+  border: 0;
+}
+.post-type-archive-music #pepsee_filters button:focus-visible {
+  outline: 2px solid #f66d38;
+  outline-offset: 3px;
+}
+.post-type-archive-music #pepsee_filters select:focus-visible {
+  outline: 2px solid #f66d38;
+  outline-offset: 2px;
+}
 .post-type-archive-music .post-item {
   margin-bottom: 2rem;
   display: flex;
-  align-items: center; }
+  align-items: center;
+}
+.post-type-archive-music .post-item .rotate {
+  margin-right: 2rem;
+  min-width: 4.625rem;
+}
+@media (max-width: 767.98px) {
   .post-type-archive-music .post-item .rotate {
-    margin-right: 2rem;
-    min-width: 4.625rem; }
-    @media (max-width: 767.98px) {
-      .post-type-archive-music .post-item .rotate {
-        min-width: 7rem; } }
-  .post-type-archive-music .post-item img {
-    width: 7rem; }
-  .post-type-archive-music .post-item div a {
-    display: block; }
-  .post-type-archive-music .post-item div a:hover {
-    text-decoration: underline; }
-
-.post-type-archive-music .music-info {
-  max-width: 235px; }
-
+    min-width: 7rem;
+  }
+}
+.post-type-archive-music .post-item img {
+  width: 7rem;
+}
+.post-type-archive-music .post-item div a {
+  display: block;
+}
+.post-type-archive-music .post-item div a:hover {
+  text-decoration: underline;
+}
+.post-type-archive-music .post-item div a:focus-visible {
+  outline: 2px solid #f66d38;
+  outline-offset: 2px;
+}
+.post-type-archive-music .media-listing__info {
+  max-width: 235px;
+}
 .post-type-archive-music #pepsee_loadmore {
   text-align: center;
-  color: #fff;
   padding: 0.625rem 1.875rem;
   margin: 1.875rem auto 0;
   transition: all ease-out;
   width: 140px;
-  border: 1px solid #F66D38;
+  border: 1px solid #f66d38;
   border-radius: 5px;
-  cursor: pointer; }
-  .post-type-archive-music #pepsee_loadmore:focus {
-    outline: none; }
-  .post-type-archive-music #pepsee_loadmore:active {
-    transform: scale(0.98);
-    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24); }
+  cursor: pointer;
+}
+.post-type-archive-music #pepsee_loadmore:focus-visible {
+  outline: 2px solid #f66d38;
+  outline-offset: 2px;
+}
+.post-type-archive-music #pepsee_loadmore:active {
+  transform: scale(0.98);
+  box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+}
 
+/*
+Theme Name: PepseeActus
+Theme URI: http://components.underscores.me/
+Author: Le Peps
+Author URI: http://pepseeactus.com
+Description: Premier thème from scratch PepseeActus
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: pepseeactus
+Tags:
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+PepseeActus is created by the theme generator at http://components.underscores.me/, (C) 2015-2016 Automattic, Inc.
+Components is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
+*/
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Normalize
+# Accessibility
+# Alignments
+# Typography
+# Forms
+# Buttons
+# Formatting
+# Lists
+# Tables
+# Navigation
+# Links
+# Layout
+	## Posts
+	## Pages
+# Comments
+# Widgets
+# Infinite scroll
+# Media
+	## Galleries
+--------------------------------------------------------------*/
 .post-type-archive-riddim .hero-banner,
 .post-type-archive-album .hero-banner,
 .post-type-archive-artist .hero-banner,
 .post-type-archive-beatmaker .hero-banner {
-  display: none; }
-
+  display: none;
+}
 .post-type-archive-riddim h2,
 .post-type-archive-album h2,
 .post-type-archive-artist h2,
 .post-type-archive-beatmaker h2 {
-  letter-spacing: .3rem;
+  letter-spacing: 0.3rem;
   font-weight: 700;
   text-transform: uppercase;
-  position: relative; }
-  .post-type-archive-riddim h2::after,
-  .post-type-archive-album h2::after,
-  .post-type-archive-artist h2::after,
-  .post-type-archive-beatmaker h2::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    height: 5px;
-    width: 77px;
-    background: #F66D38; }
-  @media (max-width: 767.98px) {
-    .post-type-archive-riddim h2,
-    .post-type-archive-album h2,
-    .post-type-archive-artist h2,
-    .post-type-archive-beatmaker h2 {
-      letter-spacing: 0; } }
-
+  position: relative;
+}
+@media (max-width: 767.98px) {
+  .post-type-archive-riddim h2,
+  .post-type-archive-album h2,
+  .post-type-archive-artist h2,
+  .post-type-archive-beatmaker h2 {
+    letter-spacing: 0;
+  }
+}
 .post-type-archive-riddim .principal,
 .post-type-archive-album .principal,
 .post-type-archive-artist .principal,
@@ -2636,20 +4066,24 @@ html {
   column-count: 4;
   column-gap: 2em;
   border-radius: 5px;
-  background: rgba(255, 255, 255, 0.06); }
-  @media (max-width: 767.98px) {
-    .post-type-archive-riddim .principal,
-    .post-type-archive-album .principal,
-    .post-type-archive-artist .principal,
-    .post-type-archive-beatmaker .principal {
-      column-count: 1; } }
-  @media (min-width: 768px) and (max-width: 1023.98px) {
-    .post-type-archive-riddim .principal,
-    .post-type-archive-album .principal,
-    .post-type-archive-artist .principal,
-    .post-type-archive-beatmaker .principal {
-      column-count: 3; } }
-
+  background: rgba(255, 255, 255, 0.06);
+}
+@media (max-width: 767.98px) {
+  .post-type-archive-riddim .principal,
+  .post-type-archive-album .principal,
+  .post-type-archive-artist .principal,
+  .post-type-archive-beatmaker .principal {
+    column-count: 1;
+  }
+}
+@media (min-width: 768px) and (max-width: 1023.98px) {
+  .post-type-archive-riddim .principal,
+  .post-type-archive-album .principal,
+  .post-type-archive-artist .principal,
+  .post-type-archive-beatmaker .principal {
+    column-count: 3;
+  }
+}
 .post-type-archive-riddim .group,
 .post-type-archive-album .group,
 .post-type-archive-artist .group,
@@ -2657,8 +4091,8 @@ html {
   display: inline-block;
   margin: 0 0 2em;
   width: 100%;
-  transition: 1s ease all; }
-
+  transition: 1s ease all;
+}
 .post-type-archive-riddim .letter,
 .post-type-archive-album .letter,
 .post-type-archive-artist .letter,
@@ -2668,24 +4102,84 @@ html {
   margin-top: 0;
   margin-bottom: 0.25rem;
   padding-bottom: 0.2em;
-  border-bottom: 0.125rem solid #fff; }
-
+  border-bottom: 0.125rem solid #fff;
+}
 .post-type-archive-riddim .bloc-letter,
 .post-type-archive-album .bloc-letter,
 .post-type-archive-artist .bloc-letter,
 .post-type-archive-beatmaker .bloc-letter {
-  padding: 5px 0; }
-  @media (max-width: 767.98px) {
-    .post-type-archive-riddim .bloc-letter,
-    .post-type-archive-album .bloc-letter,
-    .post-type-archive-artist .bloc-letter,
-    .post-type-archive-beatmaker .bloc-letter {
-      padding: 10px 0; } }
-  .post-type-archive-riddim .bloc-letter a:hover,
-  .post-type-archive-album .bloc-letter a:hover,
-  .post-type-archive-artist .bloc-letter a:hover,
-  .post-type-archive-beatmaker .bloc-letter a:hover {
-    text-decoration: underline; }
+  padding: 5px 0;
+}
+@media (max-width: 767.98px) {
+  .post-type-archive-riddim .bloc-letter,
+  .post-type-archive-album .bloc-letter,
+  .post-type-archive-artist .bloc-letter,
+  .post-type-archive-beatmaker .bloc-letter {
+    padding: 10px 0;
+  }
+}
+.post-type-archive-riddim .bloc-letter a:hover,
+.post-type-archive-album .bloc-letter a:hover,
+.post-type-archive-artist .bloc-letter a:hover,
+.post-type-archive-beatmaker .bloc-letter a:hover {
+  text-decoration: underline;
+}
+
+/*
+Theme Name: PepseeActus
+Theme URI: http://components.underscores.me/
+Author: Le Peps
+Author URI: http://pepseeactus.com
+Description: Premier thème from scratch PepseeActus
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: pepseeactus
+Tags:
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+PepseeActus is created by the theme generator at http://components.underscores.me/, (C) 2015-2016 Automattic, Inc.
+Components is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
+*/
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Normalize
+# Accessibility
+# Alignments
+# Typography
+# Forms
+# Buttons
+# Formatting
+# Lists
+# Tables
+# Navigation
+# Links
+# Layout
+	## Posts
+	## Pages
+# Comments
+# Widgets
+# Infinite scroll
+# Media
+	## Galleries
+--------------------------------------------------------------*/
+.archive {
+  background-color: #232323;
+}
+.archive main {
+  padding: 2rem 0;
+}
+@media (max-width: 767.98px) {
+  .archive main {
+    padding: 1rem 2rem;
+  }
+}
 
 .category-actus .principal {
   display: flex;
@@ -2695,109 +4189,180 @@ html {
   padding-left: 8px;
   padding-right: 8px;
   border-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.06); }
-  @media (max-width: 767.98px) {
-    .category-actus .principal {
-      max-height: 270rem; } }
-
+  background-color: rgba(255, 255, 255, 0.06);
+}
+@media (max-width: 767.98px) {
+  .category-actus .principal {
+    max-height: 270rem;
+  }
+}
 .category-actus .post-item {
   width: 33%;
   padding: 0 8px;
-  margin-bottom: 1rem; }
-  @media (max-width: 767.98px) {
-    .category-actus .post-item {
-      width: 50%; } }
-  .category-actus .post-item .image-wrapper {
-    position: relative;
-    width: 100%;
-    margin-bottom: 1rem;
-    overflow: hidden;
-    border-radius: 10px; }
-  .category-actus .post-item .post-meta {
-    font-size: 1.2rem;
-    margin: .5rem 0; }
-    .category-actus .post-item .post-meta .fa.fa-eye {
-      margin-left: 7px; }
-  @media (max-width: 767.98px) {
-    .category-actus .post-item div {
-      margin-left: 0; } }
-  .category-actus .post-item div a {
-    font-size: 1.5rem;
-    text-transform: uppercase; }
-  .category-actus .post-item div p {
-    font-size: 1.2rem;
-    opacity: .6; }
-
+  margin-bottom: 1rem;
+}
+@media (max-width: 767.98px) {
+  .category-actus .post-item {
+    width: 50%;
+  }
+}
+.category-actus .post-item .image-wrapper {
+  position: relative;
+  width: 100%;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  border-radius: 10px;
+}
+.category-actus .post-item .post-meta {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+}
+.category-actus .post-item .post-meta svg {
+  fill: currentColor;
+  width: 15px;
+  height: 15px;
+  margin: 0 7px;
+}
+@media (max-width: 767.98px) {
+  .category-actus .post-item div {
+    margin-left: 0;
+  }
+}
+.category-actus .post-item div a {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+.category-actus .post-item div p {
+  font-size: 1.2rem;
+  opacity: 0.6;
+}
 .category-actus .archive-header h2 {
   font-size: 4rem;
   font-weight: 700;
   text-transform: uppercase;
-  position: relative; }
-  .category-actus .archive-header h2::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    height: 5px;
-    width: 77px;
-    background: #F66D38; }
-
+  position: relative;
+}
 .category-actus .page-numbers {
-  margin-bottom: 3rem; }
-  @media (max-width: 767.98px) {
-    .category-actus .page-numbers {
-      line-height: 4.5rem; } }
-  .category-actus .page-numbers li {
-    display: inline-block; }
-    .category-actus .page-numbers li a {
-      background: #F66D38;
-      padding: 1rem 1.5rem; }
-    .category-actus .page-numbers li .current {
-      padding: .6rem 1.3rem;
-      border: 0.4rem solid #F66D38; }
-
+  margin-bottom: 3rem;
+}
+@media (max-width: 767.98px) {
+  .category-actus .page-numbers {
+    line-height: 4.5rem;
+  }
+}
+.category-actus .page-numbers li {
+  display: inline-block;
+}
+.category-actus .page-numbers li a {
+  background: #f66d38;
+  padding: 1rem 1.5rem;
+}
+.category-actus .page-numbers li .current {
+  padding: 0.6rem 1.3rem;
+  border: 0.4rem solid #f66d38;
+}
 @media (max-width: 767.98px) {
   .category-actus aside {
-    margin-top: 3rem; } }
+    margin-top: 3rem;
+  }
+}
 
 .error404 .page-header {
   text-align: center;
-  margin-top: 6rem; }
-
+  margin-top: 6rem;
+}
 .error404 h2 {
-  font-size: 4rem; }
-
+  font-size: 4rem;
+}
 .error404 .page-content a:hover {
-  text-decoration: underline; }
+  text-decoration: underline;
+}
 
+/*
+Theme Name: PepseeActus
+Theme URI: http://components.underscores.me/
+Author: Le Peps
+Author URI: http://pepseeactus.com
+Description: Premier thème from scratch PepseeActus
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: pepseeactus
+Tags:
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+PepseeActus is created by the theme generator at http://components.underscores.me/, (C) 2015-2016 Automattic, Inc.
+Components is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
+*/
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Normalize
+# Accessibility
+# Alignments
+# Typography
+# Forms
+# Buttons
+# Formatting
+# Lists
+# Tables
+# Navigation
+# Links
+# Layout
+	## Posts
+	## Pages
+# Comments
+# Widgets
+# Infinite scroll
+# Media
+	## Galleries
+--------------------------------------------------------------*/
 .search a:hover {
-  text-decoration: underline; }
-
+  text-decoration: underline;
+}
 .search .page-header {
-  margin-bottom: 4rem; }
-
+  margin-bottom: 4rem;
+}
 .search .entry-title {
   font-size: 3rem;
-  font-weight: 500; }
-
+  font-weight: 500;
+}
 .search .entry-summary {
-  margin-top: .5rem; }
-
+  margin-top: 0.5rem;
+}
 .search .nav-links {
-  margin-top: 4rem; }
-  @media (max-width: 767.98px) {
-    .search .nav-links {
-      text-align: center;
-      display: flex; } }
-  .search .nav-links .nav-previous {
-    margin-right: 1rem; }
+  margin-top: 4rem;
+}
+@media (max-width: 767.98px) {
+  .search .nav-links {
+    text-align: center;
+    display: flex;
+  }
+}
+.search .nav-links .nav-previous {
+  margin-right: 1rem;
+}
+.search .nav-links .nav-previous,
+.search .nav-links .nav-next {
+  display: inline-block;
+  background-color: #f66d38;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+}
+@media (max-width: 767.98px) {
   .search .nav-links .nav-previous,
   .search .nav-links .nav-next {
-    display: inline-block;
-    background-color: #F66D38;
-    padding: .5rem 1rem;
-    font-weight: 600; }
-    @media (max-width: 767.98px) {
-      .search .nav-links .nav-previous,
-      .search .nav-links .nav-next {
-        padding: .2rem 0; } }
+    padding: 0.2rem 0;
+  }
+}
+
+.search-trigger svg {
+  width: 20px;
+  fill: currentColor;
+}
+/*# sourceMappingURL=style.css.map */

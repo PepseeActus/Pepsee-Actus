@@ -1,3 +1,6 @@
+@use "../variables/colors";
+@use "../variables/variables-base";
+
 .search {
     a:hover {
         text-decoration: underline;
@@ -19,7 +22,7 @@
     .nav-links {
         margin-top: 4rem;
 
-        @include media(phone) {
+        @include variables-base.media(phone) {
             text-align: center;
             display: flex;
         }
@@ -31,13 +34,20 @@
         .nav-previous,
         .nav-next {
             display: inline-block;
-            background-color: $color__orange;
+            background-color: colors.$brand-accent;
             padding: .5rem 1rem;
             font-weight: 600;
 
-            @include media(phone) {
+            @include variables-base.media(phone) {
                 padding: .2rem 0;
             }
         }
+    }
+}
+
+.search-trigger {
+    svg {
+        width: 20px;
+		fill: currentColor;
     }
 }

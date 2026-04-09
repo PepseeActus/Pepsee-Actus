@@ -94,40 +94,35 @@ function pepsee_post_types() {
             'singular_name' => 'Riddim'
         ]
     ]);
+}
 
-    // Banner Post Type
-    register_post_type('banner', [
-        'supports'     => ['title', 'editor', 'thumbnail', 'revisions', 'custom-fields'],
-        'rewrite'      => ['slug' => 'banner'],
-        'menu_position'=> 6,
-        'public'       => true,
-        'show_in_rest' => true,
-        'menu_icon'    => 'dashicons-format-image',
-        'labels' => [
-            'name'          => 'Banner',
-            'add_new_item'  => 'Ajouter un nouvel banner',
-            'edit_item'     => 'Éditer un banner',
-            'all_items'     => 'Toutes les banners',
-            'singular_name' => 'banner'
-        ]
+
+function pepsee_register_genre_taxonomy() {
+
+    register_taxonomy('genre', ['artist', 'beatmaker', 'music', 'album', 'riddim'], [
+        'hierarchical'      => true,
+        'labels'            => [
+            'name'              => 'Genres musicaux',
+            'singular_name'     => 'Genre musical',
+            'search_items'      => 'Rechercher un genre',
+            'all_items'         => 'Tous les genres',
+            'parent_item'       => 'Genre parent',
+            'parent_item_colon' => 'Genre parent :',
+            'edit_item'         => 'Éditer le genre',
+            'update_item'       => 'Mettre à jour le genre',
+            'add_new_item'      => 'Ajouter un nouveau genre',
+            'new_item_name'     => 'Nom du nouveau genre',
+            'menu_name'         => 'Genres musicaux',
+        ],
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'show_in_rest'      => true,
+        'rewrite'           => [
+            'slug'         => 'genre',
+            'hierarchical' => true
+        ],
     ]);
-
-    // Banner Music Post Type
-    register_post_type('banner-music', [
-        'supports'     => ['title', 'editor', 'thumbnail', 'revisions', 'custom-fields'],
-        'rewrite'      => ['slug' => 'banner-music'],
-        'menu_position'=> 6,
-        'public'       => true,
-        'show_in_rest' => true,
-        'menu_icon'    => 'dashicons-money',
-        'labels' => [
-            'name'          => 'Banner Music',
-            'add_new_item'  => 'Ajouter un nouvel banner',
-            'edit_item'     => 'Éditer un banner',
-            'all_items'     => 'Toutes les banners',
-            'singular_name' => 'banner'
-        ]
-    ]);    
 }
 
 add_action('init', 'pepsee_post_types');
+add_action('init', 'pepsee_register_genre_taxonomy');

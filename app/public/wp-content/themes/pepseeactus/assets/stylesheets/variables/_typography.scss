@@ -1,12 +1,8 @@
-$font__main: 'Montserrat', sans-serif;
-$font__line-height-body: 1.5;
-$font__line-height-pre: 1.6;
+$font-sans: ui-sans-serif, system-ui, -apple-system, "Inter", "SF Pro Display", "Segoe UI", Roboto, Arial, sans-serif;
+$line-height-body: 1.5;
+$line-height-pre: 1.6;
 
-// fonts-weight
-$ultralight: 100;
-$light: 200;
-$regular: 300;
-$medium: 400;
-$semibold: 600;
-$bold: 700;
-$extrabold: 800;
+$weight-light: 200;
+$weight-regular: 400;
+$weight-semibold: 600;
+$weight-bold: 800;

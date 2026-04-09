@@ -1,0 +1,112 @@
+@use "../mixins/mixins-base";
+@use "../variables/colors";
+@use "../variables/variables-base";
+
+.single .artist-album {
+  display: flex;
+  justify-content: center;
+  flex-flow: wrap;
+  margin-bottom: 1rem;
+  margin-top: 3rem;
+  flex-direction: column;
+
+  @include variables-base.media(phone) {
+    flex-direction: column;
+
+    .artist-info__container {
+      flex-flow: wrap;
+      justify-content: center;
+    }
+  }
+
+  .artist-image__container {
+    margin-left: 30px;
+  }
+
+  .artist-info__container {
+    justify-content: center;
+    max-width: 500px;
+  }
+
+  .artist-image__container,
+  .artist-info__container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    @include variables-base.media(phone) {
+      justify-content: center;
+    }
+  }
+
+  .artist-image {
+    position: relative;
+    margin-left: -30px;
+    height: 8rem;
+    width: 8rem;
+    min-width: 8rem;
+    min-height: 8rem;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 1px solid #fff;
+
+    &.last {
+      background: #494745;
+      cursor: pointer;
+
+      &::after {
+        content: "+";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 60px;
+      }
+    }
+
+    img {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      min-height: 100%;
+      max-width: 8rem;
+    }
+  }
+
+  .associated-artist__info {
+    @include variables-base.media(desktop) {
+      margin-left: 5px;
+      margin-right: 5px;
+
+      &:first-of-type {
+        margin-left: 0;
+      }
+
+      &:last-of-type {
+        margin-right: 0;
+      }
+    }
+
+    @include variables-base.media(tablet) {
+      margin-top: 2rem;
+    }
+
+    + .associated-artist__info::before {
+      content: "|";
+      margin-right: 5px;
+
+      @include variables-base.media(phone) {
+        margin: 0 1px 0 5px;
+      }
+    }
+
+    .associated-artist__name {
+      font-weight: 600;
+    }
+
+    > svg {
+      fill: colors.$brand-accent;
+      width: 20px;
+    }
+  }
+}

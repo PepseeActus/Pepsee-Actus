@@ -1,3 +1,5 @@
+@use "../mixins/mixins-base";
+
 .alignleft {
 	display: inline;
 	float: left;
@@ -12,5 +14,5 @@
 
 .aligncenter {
 	clear: both;
-	@include center-block;
+	@include mixins-base.center-block;
 }

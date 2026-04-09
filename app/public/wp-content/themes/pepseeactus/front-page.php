@@ -14,38 +14,31 @@
 
 get_header(); ?>
 
-<section>
-	<?php get_template_part( 'parts/add-banner-music' ); ?>
-</section>
-
-<div class="wrapper row padding-inside">
-	<div class="principal col-12 col-lg-9">
-		<section class="releases">
-			<h2>Nouveautés</h2>
-			<div class="releases-wrap">
-				<?php
-					$args = [
-						'posts_per_page' => 14,
-						'orderby' => 'date',
-						'post_type' => 'music',
-						'date_query' => [[
-							'after' => ['year' => 2015],
-							'inclusive' => true
-						]],
-					];
-					
-					$query = new WP_Query( $args );
-					if ( $query->have_posts() ) {
-						while ( $query->have_posts() ) {
-							$query->the_post();
-							get_template_part( 'parts/front-music-template' );
-						}
+<div class="home-layout row padding-inside section-padding">
+	<section class="releases">
+		<h2>Nouveautés</h2>
+		<div class="releases-wrap">
+			<?php
+				$args = [
+					'posts_per_page' => 16,
+					'orderby' => 'date',
+					'post_type' => 'music',
+					'date_query' => [[
+						'after' => ['year' => 2015],
+						'inclusive' => true
+					]],
+				];
+				
+				$query = new WP_Query( $args );
+				if ( $query->have_posts() ) {
+					while ( $query->have_posts() ) {
+						$query->the_post();
+						get_template_part( 'parts/front-music-template' );
 					}
-				wp_reset_postdata(); ?>
-			</div>
-		</section>
-	</div>
-	<?php get_sidebar(); ?>
+				}
+			wp_reset_postdata(); ?>
+		</div>
+	</section>
 </div>
 
 <section class="actus margin-outside">
@@ -89,7 +82,7 @@ get_header(); ?>
 						<a href="<?php the_permalink(); ?>">
 							<div class="thumbnail-wrapper" style="background-image: url('<?= get_the_post_thumbnail_url(); ?>')"></div>
 						</a>
-						<div class="<?= $categories[0]->slug; ?>-info">
+						<div class="front-story__meta front-story__meta--<?= esc_attr( $categories[0]->slug ); ?>">
 							<div class="entry-title">
 								<a href="<?= get_the_permalink(); ?>"><?= wp_trim_words( get_the_title(), 10, '...' ); ?></a>
 							</div>
@@ -122,7 +115,7 @@ get_header(); ?>
 	</div>
 </section>
 
-<section class="riddim margin-outside"></section>
+<section class="riddim margin-outside">
 	<h2>Riddims</h2>
 	<div class="riddim-wrap">
 		<?php $args = [
@@ -145,7 +138,7 @@ get_header(); ?>
 	<h2>Nouveaux artistes</h2>
 	<div class="artist-wrap">
 		<?php $args = array(
-				'posts_per_page' => 5,
+				'posts_per_page' => 6,
 				'orderby' => 'date',
 				'post_type' => 'artist'
 			);

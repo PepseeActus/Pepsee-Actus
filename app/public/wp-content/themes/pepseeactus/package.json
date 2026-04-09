@@ -4,19 +4,14 @@
   "description": "PepseeActus first website",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:css": "gulp styles",
+    "watch:css": "gulp watch"
   },
   "author": "Le Peps",
   "license": "ISC",
   "devDependencies": {
-    "browser-sync": "^2.26.7",
-    "del": "^5.0.0",
     "gulp": "^4.0.2",
-    "gulp-sass": "^4.0.2"
-  },
-  "dependencies": {
-    "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12"
+    "sass": "^1.93.2"
   },
   "keywords": []
 }

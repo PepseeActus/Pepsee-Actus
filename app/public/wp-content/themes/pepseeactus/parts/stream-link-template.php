@@ -7,15 +7,12 @@
     $apple = get_field('apple_music');
     $download = get_field('download');
 ?>
-<?php if ($download) :?>
-    <div class="download">
-        <p>For promotional use only</p>
-        <a href="<?= $download ?>" target="_blank">Télécharger</a>
-    </div>
-<?php endif; ?>
 <div class="stream">
-    <p>Streamez et supportez vos artistes</p>
     <ul>
+        <?= ($download) ? '<li><a href="'.$download.'" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M352 96C352 78.3 337.7 64 320 64C302.3 64 288 78.3 288 96L288 306.7L246.6 265.3C234.1 252.8 213.8 252.8 201.3 265.3C188.8 277.8 188.8 298.1 201.3 310.6L297.3 406.6C309.8 419.1 330.1 419.1 342.6 406.6L438.6 310.6C451.1 298.1 451.1 277.8 438.6 265.3C426.1 252.8 405.8 252.8 393.3 265.3L352 306.7L352 96zM160 384C124.7 384 96 412.7 96 448L96 480C96 515.3 124.7 544 160 544L480 544C515.3 544 544 515.3 544 480L544 448C544 412.7 515.3 384 480 384L433.1 384L376.5 440.6C345.3 471.8 294.6 471.8 263.4 440.6L206.9 384L160 384zM464 440C477.3 440 488 450.7 488 464C488 477.3 477.3 488 464 488C450.7 488 440 477.3 440 464C440 450.7 450.7 440 464 440z"/></svg>
+            <span>Télécharger</span>
+        </a></li>' : ''; ?>
         <?= ($backlink) ? '<li><a href="'.$backlink.'" target="_blank">
             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 314 314" xml:space="preserve">
                 <path d="M7,138.428c-3.866,0-7,3.134-7,7v23.145c0,3.866,3.134,7,7,7s7-3.134,7-7v-23.145C14,141.561,10.866,138.428,7,138.428z"/>
@@ -42,7 +39,7 @@
                 <path d="M307,138.428c-3.866,0-7,3.134-7,7v23.145c0,3.866,3.134,7,7,7s7-3.134,7-7v-23.145
                 C314,141.561,310.866,138.428,307,138.428z"/>
             </svg>
-            Streamer
+            <span>Streamer</span>
         </a></li>' : ''; ?>
         <?= ($soundcloud) ? '<li><a href="'.$soundcloud.'" target="_blank">
             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 317.531 317.531" xml:space="preserve">
@@ -62,6 +59,7 @@
                 <path d="M125.551,111.481c-4.142,0-7.5,3.358-7.5,7.5v109.826c0,4.142,3.358,7.5,7.5,7.5c4.142,0,7.5-3.358,7.5-7.5V118.981
                     C133.051,114.839,129.693,111.481,125.551,111.481z"/>
             </svg>
+            <span>SoundCloud</span>
         </a></li>' : ''; ?>
         <?= ($youtube) ? '<li><a href="'.$youtube.'" target="_blank">
             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 209.673 209.673" xml:space="preserve">
@@ -74,6 +72,7 @@
                     c2.105-1.388,3.372-3.74,3.372-6.262C148.467,102.31,147.2,99.958,145.095,98.57z M92.871,127.562V82.109l34.471,22.723
                     L92.871,127.562z"/>
             </svg>
+            <span>YouTube</span>
         </a></li>' : ''; ?>
         <?= ($spotify) ? '<li><a href="'.$spotify.'" target="_blank">
             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 186.845 186.845" xml:space="preserve">
@@ -90,6 +89,7 @@
                     C186.845,41.909,144.936,0.001,93.423,0.001z M93.423,171.844C50.18,171.844,15,136.664,15,93.42
                     c0-43.241,35.18-78.42,78.423-78.42c43.242,0,78.422,35.179,78.422,78.42C171.845,136.664,136.665,171.844,93.423,171.844z"/>
             </svg>
+            <span>Spotify</span>
         </a></li>' : ''; ?>
         <?= ($deezer) ? '<li><a href="'.$deezer.'" target="_blank">
             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="97.75px" height="97.75px" viewBox="0 0 97.75 97.75" xml:space="preserve">
@@ -108,6 +108,7 @@
                     h13.312V48.271z M85.385,43.025H72.072v-4.033h13.312V43.025z M85.385,37.78H72.072v-4.033h13.312V37.78z M72.072,32.536v-4.034
                     h13.312v4.034H72.072z"/>
             </svg>
+            <span>Deezer</span>
         </a></li>' : ''; ?>
         <?= ($apple) ? '<li><a href="'.$apple.'" target="_blank">
             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 203.499 203.499" xml:space="preserve">
@@ -127,6 +128,7 @@
                     c10.505,0,20.406,4.316,27.651,11.819c-10.245,7.965-16.515,20.384-16.515,33.635c0,15.987,8.798,30.275,22.522,37.555
                     C157.049,171.568,142.684,188.499,131.63,188.499z"/>
             </svg>
+            <span>iTunes</span>
         </a></li>' : ''; ?>
     </ul>
 </div>

@@ -10,7 +10,7 @@ function pepseeactusRegisterSearch() {
 function pepseeSearchResults($data) {
     $mainQuery = new WP_Query([
         'posts_per_page' => -1,
-        'post_type'      => ['post', 'artist', 'music', 'album'],
+        'post_type'      => ['post', 'artist', 'music', 'album', 'riddim', 'beatmaker'],
         's'              => sanitize_text_field($data['term'])
     ]);
 
@@ -18,7 +18,9 @@ function pepseeSearchResults($data) {
         'generalInfo' => [],
         'artist' => [],
         'music' => [],
-        'album' => []
+        'album' => [],
+        'riddim' => [],
+        'beatmaker' => []
     ];
 
     while($mainQuery->have_posts()) {
@@ -39,6 +41,14 @@ function pepseeSearchResults($data) {
             ]);
         }
 
+        if (get_post_type() == 'beatmaker') {
+            array_push($results['beatmaker'], [
+                'title' => get_the_title(),
+                'permalink' => get_the_permalink(),
+                'image' => get_the_post_thumbnail_url(0, 'thumbnail')
+            ]);
+        }
+
         if (get_post_type() == 'music') {
             array_push($results['music'], [
                 'title' => get_the_title(),
@@ -48,6 +58,13 @@ function pepseeSearchResults($data) {
 
         if (get_post_type() == 'album') {
             array_push($results['album'], [
+                'title' => get_the_title(),
+                'permalink' => get_the_permalink()
+            ]);
+        }
+
+        if (get_post_type() == 'riddim') {
+            array_push($results['riddim'], [
                 'title' => get_the_title(),
                 'permalink' => get_the_permalink()
             ]);

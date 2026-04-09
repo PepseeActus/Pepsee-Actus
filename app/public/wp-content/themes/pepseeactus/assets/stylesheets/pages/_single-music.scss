@@ -1,85 +1,33 @@
-.single-music {
-    main {
-        padding-top: 5rem;
-        padding-bottom: 2rem;
-    }
+@use "../variables/colors";
+@use "../variables/variables-base";
 
+body.single-music {
+    background: colors.$surface-dark;
+
+    aside {
+        padding: 20px;
+        border-radius: 12px;
+        background-color: colors.$surface-dark;
+    }
+}
+
+.single-music {
     h2 {
-        font-size: 4rem;
+        font-size: 3rem;
         font-weight: 600;
         letter-spacing: inherit;
-        margin-bottom: 2rem;
-    }
-
-    .music {
-        background: rgba(255,255,255,.01);
-        border-radius: 15px;
-    }
-
-    .music-presentation {
-        display: flex;
-        position: relative;
-        top: -5rem;
-
-        .music-presentation__picture {
-            margin-right: 2rem;
-            width: 95px;
-            height: 95px;
-            min-width: 95px;
-        }
-
-        .music-presentation__info {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-
-            svg {
-                fill: currentColor;
-                width: 30px;
-                height: 30px;
-            }
-
-            .music-presentation__info-name {
-                .entry-title {
-                    margin: 0 .5rem 0 0;
-                    text-transform: uppercase;
-                    font-weight: 600;
-                    font-size: 3rem;
-                    line-height: 2.5rem;
-
-                    &.name {
-                        font-weight: 200;
-                    }
-
-                    &.riddim {
-                        font-weight: 800;
-                        display: block;
-                        margin-bottom: .5rem;
-                    }
-
-                    @include media(phone) {
-                        font-size: 1.8rem;
-                    }
-                }
-
-                i {
-                    font-size: 2rem;
-                    color: $color__orange;
-                }
-            }
-
-            .music-presentation__info-reseaux {
-                li {
-                    display: inline-block;
-                    margin-right: 1rem;
-                }
-            }
-        }
+        margin-bottom: 0;
+        margin-top: 3rem;
     }
 
     .music-content {
         p, ul {
             margin-bottom: 1rem;
+        }
+
+        img {
+            width: 100%;
+            max-height: initial;
         }
     }
 
@@ -89,5 +37,13 @@
         a {
             font-weight: 300;
         }
+    }
+
+    .artist-album {
+        align-items: center;
+    }
+
+    .jp-relatedposts-post-date {
+        text-align: left;
     }
 }

@@ -14,7 +14,7 @@ if ( have_posts() ) : ?>
     <div class="archive-header">
         <h2>Musique</h2>
     </div>
-    <div class="wrapper row padding-inside">
+    <div class="archive-layout row padding-inside section-padding">
         <div class="principal col-12 col-lg-9 padding-inside">
             <form id="pepsee_filters" action="#">
                 <select name="pepsee_number_of_results" id="pepsee_number_of_results">
@@ -72,10 +72,10 @@ if ( have_posts() ) : ?>
                             $titre = get_field('titre');
                         ?>
                         <a class="rotate" href="<?php the_permalink(); ?>"><?php the_post_thumbnail('thumbnail'); ?></a>
-                        <div class="music-infos">
+                        <div class="media-card-row__info media-listing__info">
                             <a href="<?php the_permalink(); ?>"><?= wp_trim_words( $artistes, 8, '...' ); ?></a>
-                            <a href="<?php the_permalink(); ?>"><?= $titre; ?></a>
-                            <?php the_date('M Y') ?>
+                            <a class="media-card-row__title media-listing__title" href="<?php the_permalink(); ?>"><?= $titre; ?></a>
+                            <?php echo get_the_date('M Y') ?>
                         </div>
                     </div>
                 <?php endwhile; ?>

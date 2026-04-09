@@ -1,3 +1,18 @@
+@use "../variables/colors";
+@use "../variables/variables-base";
+
+.archive {
+    background-color: colors.$surface-dark;
+
+    main {
+        padding: 2rem 0;
+
+        @include variables-base.media(phone) {
+            padding: 1rem 2rem;
+        }
+    }
+}
+
 .category-actus {
     .principal {
         display: flex;
@@ -9,7 +24,7 @@
         border-radius: 5px;
         background-color: rgba(255,255,255,.06);
 
-        @include media(phone) {
+        @include variables-base.media(phone) {
             max-height: 270rem;
         }
     }
@@ -19,7 +34,7 @@
         padding: 0 8px;
         margin-bottom: 1rem;
 
-        @include media(phone) {
+        @include variables-base.media(phone) {
             width: 50%;
         }
 
@@ -32,20 +47,20 @@
             border-radius: 10px;
         }
 
-        img {
-        }
-
         .post-meta {
             font-size: 1.2rem;
             margin: .5rem 0;
 
-            .fa.fa-eye {
-                margin-left: 7px;
+            svg {
+                fill: currentColor;
+                width: 15px;
+                height: 15px;
+                margin: 0 7px;
             }
         }
 
         div {
-            @include media(phone) {
+            @include variables-base.media(phone) {
                 margin-left: 0;
             }    
 
@@ -67,23 +82,13 @@
             font-weight: 700;
             text-transform: uppercase;
             position: relative;
-
-            &::after {
-                content: '';
-                position: absolute;
-                bottom: -5px;
-                left: 0;
-                height: 5px;
-                width: 77px;
-                background: $color__orange;
-            }
         }
     }
 
     .page-numbers {
         margin-bottom: 3rem;
 
-        @include media(phone) {
+        @include variables-base.media(phone) {
             line-height: 4.5rem;
         }
 
@@ -91,19 +96,19 @@
             display: inline-block;
 
             a {
-                background: $color__orange;
+                background: colors.$brand-accent;
                 padding: 1rem 1.5rem;
             }
 
             .current {
                 padding: .6rem 1.3rem;
-                border: .4rem solid $color__orange;
+                border: .4rem solid colors.$brand-accent;
             }
         }
     }
 
     aside {
-        @include media(phone) {
+        @include variables-base.media(phone) {
             margin-top: 3rem;
         }
     }

@@ -1,14 +1,16 @@
+@use "../variables/colors";
+@use "../variables/variables-base";
+
 #breadcrumbs {
-    margin-top: 7rem;
     margin-bottom: 3rem;
 
-    @include media(phone) {
+    @include variables-base.media(phone) {
         font-size: 1.2rem;
         margin: 1rem 0;
     }
 
     .breadcrumb_last {
-        color: $color__orange;
+        color: colors.$brand-accent;
     }
 
     a:hover {

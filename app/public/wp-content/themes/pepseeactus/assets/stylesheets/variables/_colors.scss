@@ -1,33 +1,47 @@
-$color__background-screen: #f1f1f1;
-$color__background-color: #22272C;
+$surface-screen: #f1f1f1;
+$surface-dark: #232323;
+$surface-base: #22272c;
+$surface-light: #fefcfb;
+$surface-muted: #f4f4f4;
+$surface-pre: #eee;
+$surface-highlight: #fff9c0;
+
+$text-screen: #21759b;
+$text-input: #666;
+$text-input-focus: #111;
+$text-main: rgba(#000, 0.8);
+
+$border-button: #ccc #ccc #bbb;
+$border-button-hover: #ccc #bbb #aaa;
+$border-button-focus: #aaa #bbb #bbb;
+$border-input: #ccc;
+$border-muted: #666;
+
+$brand-accent: #f66d38;
+$brand-highlight: #fbc003;
+
+$color__twitter: #55acee;
+$color__instagram: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+$color__facebook: #4267b2;
+$color__spotify: #49d75f;
+$color__soundcloud: #f53202;
+$color__youtube: #f50e02;
+$color__apple: linear-gradient(345deg, #d253b1, #fb6f4a);
+
+// Legacy WordPress-oriented tokens still used in a few shared partials.
+$color__background-screen: $surface-screen;
 $color__background-hr: #ccc;
 $color__background-button: #e6e6e6;
-$color__background-pre: #eee;
-$color__background-ins: #fff9c0;
+$color__background-pre: $surface-pre;
+$color__background-ins: $surface-highlight;
 
-$color__text-screen: #21759b;
-$color__text-input: #666;
-$color__text-input-focus: #111;
-$color__text-main: rgba(#000, 0.8);
-;
+$color__text-screen: $text-screen;
+$color__text-input: $text-input;
+$color__text-input-focus: $text-input-focus;
+$color__text-main: $text-main;
 
-$color__border-button: #ccc #ccc #bbb;
-$color__border-button-hover: #ccc #bbb #aaa;
-$color__border-button-focus: #aaa #bbb #bbb;
-$color__border-input: #ccc;
-$color__border-abbr: #666;
-
-$color__red: #FF0067; 
-$color__dark-red: #D00D1C; 
-$color__yellow: #FBC003;
-$color__orange: #F66D38;
-$color__black: #1C1C1C;
-$color__grey: #F4F4F4;
-
-$color__twitter: #55ACEE;
-$color__instagram: linear-gradient(45deg, #405de6,#5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
-$color__facebook: #4267B2;
-$color__spotify: #49D75F;
-$color__soundcloud: #F53202;
-$color__youtube: #F50E02;
-$color__apple: linear-gradient(345deg,#d253b1,#fb6f4a);
+$color__border-button: $border-button;
+$color__border-button-hover: $border-button-hover;
+$color__border-button-focus: $border-button-focus;
+$color__border-input: $border-input;
+$color__border-abbr: $border-muted;

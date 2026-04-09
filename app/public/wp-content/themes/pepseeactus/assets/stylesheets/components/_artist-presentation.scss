@@ -1,0 +1,105 @@
+@use "../mixins/mixins-base";
+@use "../variables/colors";
+@use "../variables/variables-base";
+
+:is(.single.single-artist, .single-beatmaker) .artist-presentation {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-bottom: 35px;
+
+  @include variables-base.media(phone) {
+    display: block;
+    text-align: center;
+    padding-top: 20px;
+  }
+
+  .artist-presentation__picture {
+    position: relative;
+    margin-right: 2rem;
+    max-width: 15rem;
+    min-width: 15rem;
+    max-height: 15rem;
+    width: 15rem;
+    height: 15rem;
+    border-radius: 50%;
+    overflow: hidden;
+    @include mixins-base.shadow();
+
+    @include variables-base.media(phone) {
+      margin: 0 auto;
+    }
+
+    img {
+      min-height: 100%;
+      min-width: 100%;
+      width: auto;
+      max-width: 200px;
+    }
+  }
+
+  .artist-presentation__info {
+    @include variables-base.media(phone) {
+      margin-top: 20px;
+      margin-bottom: 40px;
+    }
+  }
+
+  .artist-presentation__info-name {
+    display: flex;
+    align-items: center;
+
+    @include variables-base.media(phone) {
+      display: block;
+    }
+
+    .entry-title {
+      margin: 0 0.5rem 0 0;
+      text-transform: uppercase;
+      font-weight: 600;
+
+      @include variables-base.media(phone) {
+        font-size: 30px;
+        display: inline-block;
+      }
+    }
+
+    svg {
+      width: 2rem;
+      fill: colors.$brand-accent;
+
+      @include variables-base.media(phone) {
+        width: 15px;
+        vertical-align: super;
+      }
+    }
+  }
+
+  .artist-presentation__info-reseaux {
+    margin-top: 1rem;
+
+    @include variables-base.media(phone) {
+      margin-bottom: 1rem;
+    }
+
+    li {
+      display: inline-block;
+      margin-right: 1rem;
+    }
+
+    svg {
+      fill: currentColor;
+      width: 25px;
+      height: 25px;
+    }
+  }
+
+  .artist-presentation__status {
+    margin-top: 2rem;
+    font-size: 20px;
+
+    @include variables-base.media(phone) {
+      margin-top: 1rem;
+    }
+  }
+}

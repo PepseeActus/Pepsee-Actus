@@ -43,79 +43,85 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 # Media
 	## Galleries
 --------------------------------------------------------------*/
-@import "mixins/functions";
-@import "variables/variables-base";
-@import "mixins/breakpoints";
-@import "mixins/mixins-base";
-@import "mixins/grid";
+@use "mixins/functions";
+@use "variables/variables-base";
+@use "mixins/breakpoints";
+@use "mixins/mixins-base";
+@use "mixins/grid";
+@use "utilities/spacing";
+@use "components/artist-strip";
+@use "components/artist-media-cards";
+@use "components/artist-page-sections";
+@use "components/artist-presentation";
+@use "components/decorative-media";
+@use "components/media-links";
+@use "components/music-presentation";
 
 /*--------------------------------------------------------------
 # Normalize
 --------------------------------------------------------------*/
-@import "shared/normalize";
-@import "shared/grid";
+@use "shared/normalize";
 
 
 /*--------------------------------------------------------------
 # Accessibility
 --------------------------------------------------------------*/
-@import "shared/accessibility";
+@use "shared/accessibility";
 
 /*--------------------------------------------------------------
 # Alignments
 --------------------------------------------------------------*/
-@import "shared/alignments";
+@use "shared/alignments";
 
 /*--------------------------------------------------------------
 # Typography
 --------------------------------------------------------------*/
-@import "shared/typography";
+@use "shared/typography";
 
 /*--------------------------------------------------------------
 # Links
 --------------------------------------------------------------*/
-@import "shared/links";
+@use "shared/links";
 
 /*--------------------------------------------------------------
 # Comments
 --------------------------------------------------------------*/
-@import "sections/comments";
-@import "sections/breadcrumb";
-@import "sections/single-content";
-@import "sections/banner-music";
+@use "sections/comments";
+@use "sections/breadcrumb";
+@use "sections/single-content";
+@use "sections/banner-music";
 
 /*--------------------------------------------------------------
 # Widgets
 --------------------------------------------------------------*/
-@import "sections/widgets";
+@use "sections/widgets";
 
 /*--------------------------------------------------------------
 # Infinite scroll
 --------------------------------------------------------------*/
-@import "shared/infinitescroll";
+@use "shared/infinitescroll";
 
 /*--------------------------------------------------------------
 # Media
 --------------------------------------------------------------*/
-@import "shared/media";
+@use "shared/media";
 
 /*--------------------------------------------------------------
 # Layout
 --------------------------------------------------------------*/
-@import "layout/layout";
+@use "layout/layout";
 
 /*--------------------------------------------------------------
 # Pages
 --------------------------------------------------------------*/
-@import "pages/frontpage";
-@import "pages/single";
-@import "pages/page";
-@import "pages/single-artist";
-@import "pages/single-music";
-@import "pages/single-album";
-@import "pages/single-riddim";
-@import "pages/archive-music";
-@import "pages/archive-artist";
-@import "pages/archive";
-@import "pages/404";
-@import "pages/search";
+@use "pages/frontpage";
+@use "pages/single";
+@use "pages/page";
+@use "pages/single-music";
+@use "pages/single-album";
+@use "pages/single-riddim";
+@use "pages/archive-music";
+@use "pages/archive-artist";
+@use "pages/archive";
+@use "pages/404" as page404;
+@use "pages/search";

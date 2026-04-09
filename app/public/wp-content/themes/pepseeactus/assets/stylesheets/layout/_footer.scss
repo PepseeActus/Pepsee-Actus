@@ -1,124 +1,116 @@
-.mobile-nav {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: #fff;
-    z-index: 9;
-    margin: 0 auto;
+@use "../mixins/mixins-base";
+@use "../variables/colors";
+@use "../variables/variables-base";
 
-    ul {
-        display: flex;
-        justify-content: space-around;
+#navbar {
+    padding: 1rem 0;
+    color: colors.$surface-base;
 
-        li {
-            margin: 5px 0 0;
-
-            svg {
-                fill: currentColor;
-                color: $color__background-color;
-                width: 27px;
-                height: 27px;
-            }
-
-            &.current-menu-item svg {
-                color: $color__orange;
-            }
-        }
-
-    a {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        color: black;
-        font-size: 12px;
+    i {
+        margin: 0 1rem;
     }
 }
 
-    .home {
-        position: relative;
-        width: 60px;
-        text-align: center;
+.nveMenu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: min(320px, 86vw);
+    background: #1C1C1C;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 999;
+    transform: translateX(-100%);
+    transition: all 0.5s cubic-bezier(0.7, 0, 0.3, 1);
+    padding: 0 20px 20px;
 
-        &::after {
-            content: "";
-            position: absolute;
-            padding: 30px;
-            top: 25%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: #fff;
-            border-radius: 50%;
-            border: 5px solid $color__background-color;
+    &.is-opened {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(0);
+        overflow-y: auto;
+    }
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: calc(100% - min(320px, 86vw));
+    background: rgba(0, 0, 0, 0.71);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s cubic-bezier(0.7, 0, 0.3, 1);
+
+    &.is-on {
+        opacity: 1;
+        visibility: visible;
+        z-index: 10;
+    }
+}
+
+.navlinks {
+    margin-top: 35px;
+
+    li {
+        display: block;
+        padding: 10px 0;
+
+        &:first-of-type {
+            padding: 0 0 10px;
         }
 
         a {
-            position: relative;
-            z-index: 1;
-        }
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+            font-size: 32px;
 
-        svg {
-            position: absolute;
-            top: -5px;
-            left: 50%;
-            transform: translateX(-50%);
+            svg {
+                width: 30px;
+                height: 30px;
+                margin-right: 15px;
+                color: colors.$brand-highlight;
+            }
         }
     }
 }
 
-.playlist-nav {
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    right: -35px;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: $color__orange;
-    text-align: center;
-    font-size: 2rem;
-    z-index: 3;
-    @include shadow();
-
-    &:hover {
-        right: 0;
-        transition: all .3s linear;
-        border-top-left-radius: 15px;
-        border-bottom-left-radius: 15px;
+.site-sidebar__meta {
+    .social-icons {
+        display: flex;
+        justify-content: space-around;
     }
 
-    a {
-        padding: 1rem;
-        color: white;
-        transition: all .3s ease-out;
+    .social-icon svg {
+        width: 40px;
+        height: 40px;
+        color: #fff;
+    }
+}
 
-        i {
-            transition: all .3s ease-out;
-        }
+.playlist-menu {
+    margin: 25px 0;
 
-        &:hover {
-            transform: scale(1.1);
+    h3 {
+        font-size: 20px;
+    }
 
-            .fa-spotify {
-                color: $color__spotify;
-            }
-            .fa-soundcloud {
-                color: $color__soundcloud;
-            }
-            .fa-youtube {
-                color: $color__youtube;
-            }
-            .fa-apple {
-                background: $color__apple;
-                -webkit-text-fill-color: transparent;
-                -webkit-background-clip: text;
-                box-decoration-break: clone;
-            }
-        }
+    p {
+        font-size: 12px;
+    }
+
+    img {
+        margin: 5px 0 20px;
     }
 }
 
 .site-footer {
-    background: $color__black;
+    background: colors.$surface-dark;
+    color: colors.$surface-light;
     padding: 3rem 0;
 
     a {
@@ -138,7 +130,7 @@
         margin: 0 auto 5rem;
         max-width: 68rem;
 
-        @include media(phone) {
+        @include variables-base.media(phone) {
             justify-content: center;
         }
 
@@ -148,7 +140,7 @@
             align-items: center;
             text-align: center;
 
-            @include media(phone) {
+            @include variables-base.media(phone) {
                 display: none;
             }
         }
@@ -158,7 +150,7 @@
             border-right: 1px solid rgba(white, 0.3);
             text-align: center;
 
-            @include media(phone) {
+            @include variables-base.media(phone) {
                 border: none;
             }
         }
@@ -178,7 +170,7 @@
 // BACK TO TOP
 #button {
     display: inline-block;
-    background-color: $color__orange;
+    background-color: colors.$brand-accent;
     width: 4rem;
     height: 4rem;
     text-align: center;
@@ -190,7 +182,7 @@
     z-index: 1000;
     opacity: 0;
     visibility: hidden;
-    @include shadow();
+    @include mixins-base.shadow();
 
     &:hover {
         cursor: pointer;
@@ -215,145 +207,8 @@
     &.show {
         opacity: 1;
         visibility: visible;
-        @include media(phone) {
+        @include variables-base.media(phone) {
             display: none;
-        }
-    }
-}
-
-// ABOUT
-.about {
-    $cubic: cubic-bezier(0.64, 0.01, 0.07, 1.65);
-    $transition: 0.6s $cubic;
-    position: fixed;
-    z-index: 10;
-    bottom: 20px;
-    right: 20px;
-    width: 4rem;
-    height: 4rem;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    transition: all 0.2s ease;
-
-    .bg_links {
-        width: 4rem;
-        height: 4rem;
-        border-radius: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: rgba(#000, 0.5);
-        border-radius: 100%;
-        backdrop-filter: blur(5px);
-        position: absolute;
-    }
-
-    .logo {
-        width: 4rem;
-        height: 4rem;
-        z-index: 9;
-        background-image: url('assets/img/logo-perso.png');
-        background-size: 65%;
-        background-repeat: no-repeat;
-        background-position: 7px 7px;
-        opacity: 0.9;
-        transition: all 1s 0.2s ease;
-        bottom: 0;
-        right: 0;
-    }
-
-    .social {
-        opacity: 0;
-        right: 0;
-        bottom: 0;
-
-        .icon {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            transition: all 0.2s ease, background-color 0.4s ease;
-            opacity: 0;
-            border-radius: 100%;
-
-            i {
-                font-size: 24px;
-                position: absolute;
-                left: 50%;
-                top: 50%;
-                transform: translate(-50%, -50%);
-            }
-        }
-
-        &.facebook,
-        &.youtube,
-        &.instagram {
-            transition: all 0.8s ease;
-        }
-    }
-
-    &:hover {
-        width: 105px;
-        height: 105px;
-        transition: all $transition;
-
-        .logo {
-            opacity: 1;
-            transition: all 0.6s ease;
-        }
-
-        .social {
-            opacity: 1;
-
-            .icon {
-                opacity: 0.9;
-            }
-
-            &:hover {
-                background-size: 28px;
-
-                .icon {
-                    background-size: 65%;
-                    opacity: 1;
-                }
-            }
-
-            &.facebook {
-                right: 0;
-                bottom: calc(100% - 40px);
-                transition: all 0.3s 0s $cubic;
-
-                .icon {
-                    &:hover {
-                        background-color: $color__facebook;
-                    }
-                }
-            }
-
-            &.youtube {
-                bottom: 45%;
-                right: 45%;
-                transition: all 0.3s 0.15s $cubic;
-
-                .icon {
-                    &:hover {
-                        background-color: $color__youtube;
-                    }
-                }
-            }
-
-            &.instagram {
-                bottom: 0;
-                right: calc(100% - 40px);
-                transition: all 0.3s 0.25s $cubic;
-
-                .icon {
-                    &:hover {
-                        background: $color__instagram;
-                    }
-                }
-            }
         }
     }
 }

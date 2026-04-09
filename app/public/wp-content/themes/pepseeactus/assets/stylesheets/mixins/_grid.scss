@@ -1,17 +1,21 @@
+@use "sass:math";
+@use "../variables/variables-base";
+@use "breakpoints";
+
 /// Grid system
 //
 // Generate semantic grid columns with these mixins.
 
 @mixin make-container() {
   width: 100%;
-  padding-right: ($grid-gutter-width / 2);
-  padding-left: ($grid-gutter-width / 2);
+  padding-right: (variables-base.$grid-gutter-width / 2);
+  padding-left: (variables-base.$grid-gutter-width / 2);
   margin-right: auto;
   margin-left: auto;
 
-  @include media(phone-tablet) {
-    padding-right: ($small-gutter-width * 2);
-    padding-left: ($small-gutter-width * 2);
+  @include variables-base.media(phone-tablet) {
+    padding-right: (variables-base.$small-gutter-width * 2);
+    padding-left: (variables-base.$small-gutter-width * 2);
   }
 }
 
@@ -21,9 +25,9 @@
 
 
 // For each breakpoint, define the maximum width of the container in a media query
-@mixin make-container-max-widths($max-widths: $container-max-widths, $breakpoints: $grid-breakpoints) {
+@mixin make-container-max-widths($max-widths: variables-base.$container-max-widths, $breakpoints: variables-base.$grid-breakpoints) {
   @each $breakpoint, $container-max-width in $max-widths {
-    @include media-breakpoint-up($breakpoint, $breakpoints) {
+    @include breakpoints.media-breakpoint-up($breakpoint, $breakpoints) {
       max-width: $container-max-width;
     }
   }
@@ -32,17 +36,17 @@
 @mixin make-row() {
   display: flex;
   flex-wrap: wrap;
-  margin-right: ($grid-gutter-width / -2);
-  margin-left: ($grid-gutter-width / -2);
+  margin-right: (variables-base.$grid-gutter-width / -2);
+  margin-left: (variables-base.$grid-gutter-width / -2);
 
-  @include media(phone-tablet) {
-    margin-right: -($small-gutter-width / 2);
-    margin-left: -($small-gutter-width / 2);
+  @include variables-base.media(phone-tablet) {
+    margin-right: -(variables-base.$small-gutter-width / 2);
+    margin-left: -(variables-base.$small-gutter-width / 2);
 
     > .col,
     > [class*="col-"] {
-      padding-right: ($small-gutter-width / 2);
-      padding-left: ($small-gutter-width / 2);
+      padding-right: (variables-base.$small-gutter-width / 2);
+      padding-left: (variables-base.$small-gutter-width / 2);
     }
   }
 }
@@ -54,19 +58,24 @@
   // later on to override this initial width.
   width: 100%;
   min-height: 1px; // Prevent collapsing
-  padding-right: ($grid-gutter-width / 2);
-  padding-left: ($grid-gutter-width / 2);
+  padding-right: (variables-base.$grid-gutter-width / 2);
+  padding-left: (variables-base.$grid-gutter-width / 2);
 }
 
-@mixin make-col($size, $columns: $grid-columns) {
-  flex: 0 0 percentage($size / $columns);
+@mixin make-col($size, $columns: variables-base.$grid-columns) {
+  flex: 0 0 math.percentage($size / $columns);
   // Add a `max-width` to ensure content within each column does not blow out
   // the width of the column. Applies to IE10+ and Firefox. Chrome and Safari
   // do not appear to require this.
-  max-width: percentage($size / $columns);
+  max-width: math.percentage($size / $columns);
 }
 
-@mixin make-col-offset($size, $columns: $grid-columns) {
+@mixin make-col-offset($size, $columns: variables-base.$grid-columns) {
   $num: $size / $columns;
-  margin-left: if($num == 0, 0, percentage($num));
+
+  @if $num == 0 {
+    margin-left: 0;
+  } @else {
+    margin-left: math.percentage($num);
+  }
 }

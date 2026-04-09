@@ -1,9 +1,11 @@
+@use "../variables/variables-base";
+
 .music-content,
 .artist-bio,
 .single-content {
-    text-align: justify;
+    text-align: center;
 
-    @include media(phone-small) {
+    @include variables-base.media(phone-small) {
         margin-top: 2rem;
     }
 
@@ -31,22 +33,35 @@
     }
 
     iframe {
-        width: 80%;
         margin: 25px auto;
         display: block;
-        background: white;
-
-        @include media(phone) {
-            width: 100%;
-        }
+        width: 100%;
 
         &.instagram-media {
-            margin: 25px auto !important;
+            margin: 25px auto;
         }
     }
 
-
     figure {
         margin: 25px 0;
+    }
+
+    a {
+        text-decoration: underline;
+    }
+
+    a.associated-artist__name {
+        text-decoration: none;
+    }
+}
+
+.artist-perso {
+    a {
+        text-decoration: underline;
+    }
+    svg {
+        fill: currentColor;
+        width: 30px;
+        height: 30px;
     }
 }

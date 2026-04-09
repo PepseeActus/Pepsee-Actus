@@ -1,68 +1,25 @@
+@use "../variables/variables-base";
+
 .single-riddim,
 .single-album {
-    main {
-        padding-top: 5rem;
-        padding-bottom: 2rem;
-    }
-
     h2 {
         font-size: 4rem;
         font-weight: 600;
         letter-spacing: inherit;
-        margin-bottom: 3rem;
+        margin-bottom: 2rem;
         position: relative;
         text-transform: initial;
         text-align: center;
 
-        @include media(phone) {
+        @include variables-base.media(phone) {
             font-size: 30px;
         }
     }
 
-    .music-presentation {
-        display: flex;
-        align-items: center;
-        position: relative;
-        top: -5rem;
-
-        .music-presentation__picture {
-            margin-right: 2rem;
-
-            img {
-                border-radius: .5rem;
-                @include shadow;
-            }
-        }
-
-        .music-presentation__info {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-
-            .entry-title {
-                margin: 0 .5rem 0 0;
-                text-transform: uppercase;
-                font-weight: 600;
-                font-size: 3rem;
-                line-height: 2.5rem;
-                
-                @include media(phone) {
-                    font-size: 1.8rem;
-                }
-            }
-
-            .music-presentation__info-reseaux {
-                svg {
-                    fill: currentColor;
-                    width: 30px;
-                    height: 30px;
-                }
-
-                li {
-                    display: inline-block;
-                    margin-right: 1rem;
-                }
-            }
+    .music-content {
+        img {
+            width: 100%;
+            max-height: initial;
         }
     }
 

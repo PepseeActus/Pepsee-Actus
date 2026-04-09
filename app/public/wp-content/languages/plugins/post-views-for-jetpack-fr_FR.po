@@ -1,0 +1,70 @@
+# Translation of Plugins - Post Views for Jetpack - Stable (latest release) in French (France)
+# This file is distributed under the same license as the Plugins - Post Views for Jetpack - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2020-06-17 14:29:29+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: GlotPress/3.0.0-alpha.2\n"
+"Language: fr\n"
+"Project-Id-Version: Plugins - Post Views for Jetpack - Stable (latest release)\n"
+
+#. Author URI of the plugin
+msgid "https://jeremy.hu"
+msgstr "https://jeremy.hu"
+
+#. Author of the plugin
+msgid "Jeremy Herve"
+msgstr "Jeremy Herve"
+
+#. Description of the plugin
+msgid "Display the number of views for each one of your posts, as recorded by Jetpack Stats."
+msgstr "Afficher le nombre de vues enregistré par les stats de Jetpack pour chaque article sur votre site."
+
+#. Plugin URI of the plugin
+msgid "https://jeremy.hu/jetpack-post-views/"
+msgstr "https://jeremy.hu/jetpack-post-views/"
+
+#: widgets.jp-post-views.php:144
+msgid "Title:"
+msgstr "Titre&nbsp;:"
+
+#: widgets.jp-post-views.php:97
+msgid "No views"
+msgstr "Aucune vue"
+
+#: widgets.jp-post-views.php:60
+msgid "All Time Stats"
+msgstr "Total des stats"
+
+#: widgets.jp-post-views.php:43
+msgid "All Time Site Stats"
+msgstr "Total des stats sur ce site"
+
+#: widgets.jp-post-views.php:39
+msgid "Display All Time Stats on your site."
+msgstr "Afficher le total des stats sur votre site."
+
+#: jp-post-views.php:130
+msgid "The specified view is in an invalid format."
+msgstr "La vue spécifiée est dans un format non valide."
+
+#: functions.jp-post-views.php:110
+msgid "no views"
+msgstr "aucune vue"
+
+#: widgets.jp-post-views.php:87 functions.jp-post-views.php:100
+msgid "%s view"
+msgid_plural "%s views"
+msgstr[0] "%s vue"
+msgstr[1] "%s vues"
+
+#. Plugin Name of the plugin
+msgid "Post Views for Jetpack"
+msgstr "Compteur de vues pour Jetpack"
+
+#: jp-post-views.php:77
+msgid "To use the Post View for Jetpack plugin, you'll need to install and activate <a href=\"%s\">Jetpack</a> first, and then activate the Stats module."
+msgstr "Pour utiliser l’extension Compteur de vues pour Jetpack, vous devrez tout d’abord installer et activer <a href=\"%s\">Jetpack</a>, puis activer le module de stats."

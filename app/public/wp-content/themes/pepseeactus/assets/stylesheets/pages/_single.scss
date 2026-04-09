@@ -1,4 +1,34 @@
+@use "../mixins/mixins-base";
+@use "../variables/colors";
+@use "../variables/variables-base";
+
+@mixin centered-x {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@mixin inline-pipe-separated {
+    display: inline-block;
+
+    + p::before {
+        content: '|';
+        margin-right: 5px;
+        margin-left: 2px;
+    }
+}
+
 .single {
+    background-color: colors.$surface-dark;
+    color: colors.$surface-light;
+
+    main {
+        padding: 2rem 0;
+
+        @include variables-base.media(phone) {
+            padding: 0 2rem;
+        }
+    }
+
     .scriptlesssocialsharing {
         .scriptlesssocialsharing__buttons {
             justify-content: space-around;
@@ -7,7 +37,7 @@
         a.button {
             margin: 5px 0;
             border: none;
-            background-color: $color__orange !important;
+            background-color: colors.$brand-accent;
 
             &::before {
                 border: none;
@@ -22,88 +52,6 @@
 
         li {
             text-align: center;
-        }
-    }
-
-    .artist-album {    
-        display: flex;
-        justify-content: center;
-        flex-flow: wrap;
-
-        @include media(phone) {
-            flex-direction: column;
-
-            .artist-info__container {
-                flex-flow: wrap;
-                justify-content: center;
-            }
-        }
-
-        .artist-image__container {
-            margin-left: 30px;
-        }
-
-        .artist-image__container,
-        .artist-info__container {
-            display: flex;
-            align-items: center;
-
-            @include media(phone) {
-                justify-content: center;
-            }
-
-            .artist-image {
-                position: relative;
-                margin-left: -30px;
-                height: 8rem;
-                width: 8rem;
-                min-width: 8rem;
-                min-height: 8rem;
-                overflow: hidden;
-                border-radius: 50%;
-                border: 4px solid $color__background-color;
-
-                img {
-                    position: absolute;
-                    left: 50%;
-                    transform: translateX(-50%);
-                    min-height: 100%;
-                    max-width: 8rem;
-                }
-            }
-
-            .artist-info {
-                @include media(desktop) {
-                    margin-left: 5px;
-
-                    &:first-of-type {
-                        margin-left: 10px;
-                    }
-                }
-
-                @include media(tablet) {
-                    margin-top: 2rem;
-                }
-
-                @include media(phone) {
-                    &:first-of-type {
-                        margin-right: 10px;
-                    }
-                }
-
-                + .artist-info::before {
-                    content: '/';
-                    margin-right: 5px;
-                }
-
-                .artist-title {
-                    font-weight: 600;
-                }
-
-                > i {
-                    color: $color__orange
-                }
-            }
         }
     }
 
@@ -140,18 +88,37 @@
         }
     }
 
-    .beatmaker p {
-        display: inline-block;
+    &.single-music .beatmaker p,
+    &.single-riddim .beatmaker p,
+    &.single-album .beatmaker p {
+        @include inline-pipe-separated;
+    }
 
-        + p::before {
-            content: '/';
-            margin-right: 5px;
-        }
+    &.single-artist .artist-bio h3,
+    &.single-beatmaker .artist-bio h3 {
+        margin-bottom: 10px;
+        font-size: 1.75rem;
+        text-decoration: underline;
+    }
+
+    #see-more {
+        position: relative;
+        margin-top: 10px;
+        padding: 10px 15px;
+        @include centered-x;
+        text-decoration: none;
+        font-size: 12px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        background-color: colors.$brand-accent;
+        border-radius: 5px;
+        border: none;
     }
 }
 
 .single-post {
-    @include media(phone-tablet) {
+    @include variables-base.media(phone-tablet) {
         margin-bottom: 30px;
     }
 
@@ -160,13 +127,13 @@
 
         .single-content {
             border-radius: 5px;
-            padding: 5px 20px;
-
-            @include media(phone) {
+            
+            @include variables-base.media(phone) {
                 position: relative;
             }
-
-            @include media(desktop) {
+            
+            @include variables-base.media(desktop) {
+                padding: 5px 20px;
                 background: rgba(255, 255, 255, .1);
                 margin-bottom: 20px;
             }
@@ -174,11 +141,13 @@
     }
 
     .single-content {
-        text-align: center;
+        text-align: left;
 
         h3 {
-            text-align: center;
+            text-align: left;
             text-transform: uppercase;
+            font-size: 2.3rem;
+            margin-top: 40px;
         }
 
         .music-box {
@@ -220,21 +189,22 @@
         margin: 0 auto 5rem;
         text-align: center;
         position: relative;
-        max-width: 75%;
+        max-width: 100%;
 
-        &::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 250px;
-            background: linear-gradient(to top, $color__background-color 10%, rgba(255, 255, 255, 0) 90%);
+        @include variables-base.media(desktop) {
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 250px;
+                background: linear-gradient(to top, colors.$surface-base 10%, rgba(255, 255, 255, 0) 90%);
+            }
         }
 
-        @include media(phone) {
+        @include variables-base.media(phone) {
             width: 100%;
-            max-width: 100%;
             margin: 0;
         }
     }
@@ -243,34 +213,29 @@
     .clip-box .single-title {
         position: absolute;
         bottom: -3rem;
-        left: 50%;
-        transform: translateX(-50%);
+        @include centered-x;
         font-weight: 600;
         font-size: 3.2rem;
         line-height: 60px;
         width: 75%;
         z-index: 1;
 
-        @include media(phone) {
-            width: 90%;
-        }
-
-        @include media(phone-small) {
+        @include variables-base.media(phone) {
             display: none;
         }
 
         span {
-            background: $color__orange;
+            background: colors.$brand-accent;
             -webkit-box-decoration-break: clone;
             padding: .5rem 1rem;
-            color: #fff;
+            color: colors.$surface-light;
         }
     }
 
     .post-thumbnail .single-title {
         text-align: left;
 
-        @include media(phone) {
+        @include variables-base.media(phone) {
             font-size: 25px;
             bottom: -15px;
             line-height: 45px;
@@ -292,7 +257,7 @@
                 align-items: center;
                 margin-bottom: 2rem;
 
-                @include media(tablet) {
+                @include variables-base.media(tablet) {
                     justify-content: center;
                     flex-direction: column;
                 }
@@ -305,9 +270,9 @@
                     max-width: 12rem;
                     border-radius: 50%;
                     overflow: hidden;
-                    @include shadow;
+                    @include mixins-base.shadow;
 
-                    @include media(tablet) {
+                    @include variables-base.media(tablet) {
                         margin-right: 0;
                     }
 
@@ -322,18 +287,19 @@
                     }
                 }
 
-                .artist-info {
-                    @include media(tablet) {
+                .associated-artist__info {
+                    @include variables-base.media(tablet) {
                         margin-top: 2rem;
                     }
 
-                    .artist-title {
+                    .associated-artist__name {
                         font-weight: 600;
                         box-shadow: none;
                     }
 
-                    >i {
-                        color: $color__orange
+                    >svg {
+                        fill: colors.$brand-accent;
+                        width: 20px;
                     }
 
                     ul {
@@ -346,119 +312,10 @@
                             a {
                                 display: block;
                             }
-
-                            i {
-                                font-size: 2rem;
-                                transition: all .3s;
-
-                                &.fa-twitter:hover {
-                                    color: $color__twitter;
-                                }
-
-                                &.fa-instagram:hover {
-                                    background: $color__instagram;
-                                    -webkit-text-fill-color: transparent;
-                                    -webkit-background-clip: text;
-                                    box-decoration-break: clone;
-                                }
-
-                                &.fa-facebook-f:hover {
-                                    color: $color__facebook;
-                                }
-
-                                &.fa-youtube:hover {
-                                    color: $color__youtube;
-                                }
-                            }
                         }
                     }
                 }
             }
         }
-    }
-
-    .graphcomment-button,
-    .about {
-        @include media(desktop) {
-            display: none;
-        }
-    }
-
-    .graphcomment-button {
-        @include media(phone) {
-            margin-bottom: 20px;
-            font-size: 12px;
-            padding-left: 15px;
-        }
-
-        span svg {
-            display: none;
-        }
-
-        a,
-        span {
-            display: inline !important;
-            background: none !important;
-            padding: 0 2px !important;
-            font-weight: 100 !important;
-            text-transform: unset !important;
-        }
-
-        a::before {
-            border: none;
-        }
-    }
-
-    #graphcomment-bubble {
-        background: #989494 !important;
-    }
-}
-
-//BIG LINK
-.link {
-    margin: 20px 0 20px;
-    text-align: center;
-
-    .stream {
-        color: $color__orange;
-        margin-bottom: 20px;
-
-        p {
-            text-transform: uppercase;
-            font-weight: 400;
-        }
-    }
-
-    svg {
-        fill: currentColor;
-        width: 40px;
-        height: 40px;
-    }
-
-    .download {
-        margin-bottom: 20px;
-
-        p {
-            margin-bottom: 18px;
-        }
-
-        a {
-            border-radius: 10px;
-            border: 1px solid $color__orange;
-            box-shadow: 0 0 0 0 $color__orange;
-            animation: pulse 1.3s infinite;
-            padding: 10px 20px;
-        }
-    }
-
-    @keyframes pulse {
-        to {
-            box-shadow: 0 0 0 5px rgba($color__orange, .05);
-        }
-    }
-
-    li {
-        display: inline-block;
-        margin-right: 1rem;
     }
 }

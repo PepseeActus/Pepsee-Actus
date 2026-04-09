@@ -1,5 +1,10 @@
-::-webkit-scrollbar {
-    width: 0;
+@use "../mixins/mixins-base";
+@use "../variables/colors";
+@use "../variables/variables-base";
+
+@mixin accent-focus-ring($offset: 4px) {
+    outline: 2px solid colors.$brand-accent;
+    outline-offset: $offset;
 }
 
 #scrollPath {
@@ -53,28 +58,16 @@
 }
 
 .site-header {
-    background: $color__background-color;
+    background: colors.$surface-dark;
     width: 100%;
     top: 0;
     position: fixed;
     z-index: 2;
     transition: background 0.3s ease;
-    @include shadow();
+    @include mixins-base.shadow();
 
-    .home & {
-        @include media(desktop) {
-            background: transparent;
-            box-shadow: none;
-        }
-    }
-
-    @include media(phone-tablet) {
-        background: #fff;
-    }
-
-    &.blackNav {
-        background: $color__background-color;
-        @include shadow();
+    @include variables-base.media(phone-tablet) {
+        background: colors.$surface-light;
     }
 
     nav {
@@ -87,12 +80,12 @@
         align-items: center;
 
         a {
-            color: #fff;
+            color: colors.$surface-light;
             font-weight: 100;
             font-size: 2.2rem;
 
-            @include media(phone-tablet) {
-                color: $color__background-color;
+            @include variables-base.media(phone-tablet) {
+                color: colors.$surface-base;
             }
 
             span {
@@ -102,8 +95,30 @@
     }
 
     .nav-wrapper {
-        @include media(phone-tablet) {
-            color: $color__background-color;
+        @include variables-base.media(phone-tablet) {
+            color: colors.$surface-base;
+        }
+
+        .search-trigger__button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            border: 0;
+            background: transparent;
+            color: inherit;
+            cursor: pointer;
+
+            svg {
+                fill: currentColor;
+                width: 24px;
+                height: 24px;
+            }
+
+            &:focus-visible {
+                @include accent-focus-ring;
+                border-radius: 4px;
+            }
         }
 
         ul {
@@ -111,7 +126,7 @@
             align-items: center;
             height: 100%;
 
-            @include media(phone-tablet) {
+            @include variables-base.media(phone-tablet) {
                 padding: 1rem 0;
                 justify-content: space-between;
             }
@@ -119,32 +134,18 @@
             li {
                 margin: 15px 1rem;
 
-                @include media(phone-tablet) {
+                @include variables-base.media(phone-tablet) {
                     margin: 0 1rem;
                 }
 
                 &.current-menu-item a {
                     position: relative;
-
-                    &::after {
-                        content: '';
-                        height: 4px;
-                        width: 100%;
-                        background-color: $color__orange;
-                        display: inline-block;
-                        position: absolute;
-                        bottom: -5px;
-                        left: 50%;
-                        transform: translateX(-50%);
-                    }
+                    font-weight: 800;
                 }
 
-                a {
-                    transition: all 0.2s ease;
-
-                    &:hover {
-                        color: $color__orange;
-                    }
+                a:focus-visible {
+                    @include accent-focus-ring;
+                    border-radius: 4px;
                 }
             }
         }
@@ -154,169 +155,7 @@
 .hero-banner {
     position: relative;
     overflow: hidden;
-
-    @include media(desktop) {
-        min-height: 40rem;
-    }
-
-    .hero-banner-background {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-
-        @include media(phone) {
-            display: flex;
-        }
-
-        img {
-            object-fit: cover;
-            max-width: initial;
-            min-width: 100%;
-            max-height: 100%;
-        }
-
-        &::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 15rem;
-            background: linear-gradient(to top, $color__background-color 10%, rgba(255, 255, 255, 0) 90%);
-        }
-    }
-
-    .headerLogo {
-        position: absolute;
-        width: 200px;
-        height: 200px;
-        top: 20%;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 1;
-        opacity: 0;
-
-        @include media(phone-tablet) {
-            display: none;
-        }
-    }
-
-    .video-background {
-        background: #000;
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        z-index: -99;
-        filter: blur(5px);
-    }
-
-    .video-foreground,
-    .video-background iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-    }
-
-    @media (min-aspect-ratio: 16/9) {
-        .video-foreground {
-            height: 300%; top: -100%;
-        }
-    }
-
-    @media (max-aspect-ratio: 16/9) {
-        .video-foreground {
-            width: 300%; left: -100%;
-        }
-    }
-
-    .banner-info {
-        position: absolute;
-        bottom: 6rem;
-        left: 23rem;
-        max-width: 30rem;
-        top: 50%;
-        transform: translateY(-50%);
-
-        @include media(phone) {
-            left: 50%;
-            top: 7rem;
-            transform: translateX(-50%);
-            text-align: center;
-            max-width: 100%;
-            bottom: 1rem;
-            width: 90%;
-        }
-
-        .name,
-        .album {
-            background-color: transparent;
-            background-image: linear-gradient(270deg,#abb2c4 0%,$color__orange 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 6rem;
-            text-transform: uppercase;
-            font-weight: 900;
-            line-height: 4.7rem;
-
-            @include media(phone) {
-                font-size: 4rem;
-                line-height: 2.9rem;
-            }
-        }
-
-        .album {
-            margin-bottom: 2.3rem;
-
-            @include media(phone) {
-                margin-bottom: .5rem;
-            }
-        }
-
-        button {
-            margin-top: 2.3rem;
-            background-color: $color__orange;
-            border-radius: 2.5rem;
-            padding: 1.3rem 3.2rem;
-            border: 2px solid white;
-
-            @include media(phone) {
-                margin-top: .5rem;
-            }
-        }
-    }
-
-    .banner-more {
-        position: absolute;
-        top: 50%;
-        right: 23rem;
-        transform: translateY(-50%);
-
-        @include media(phone) {
-            display: none;
-        }
-
-        .artist-image {
-            overflow: hidden;
-            border-radius: 50%;
-            border: 2px solid white;
-            max-width: 13rem;
-
-            &:hover img {
-                transform: scale(1.1);
-            }
-
-            img {
-                transition: transform ease-out .2s;
-            }
-        }
-    }
+    background-color: colors.$surface-dark;
 }
 
 .single {
@@ -328,7 +167,7 @@
             display: none;
         }
 
-        @include media(phone) {
+        @include variables-base.media(phone) {
             display: none;
         }
 
@@ -390,9 +229,12 @@
             background-color: transparent;
             font-size: 3rem;
             font-weight: 300;
-            outline: none;
 
-            @include media(phone-small) {
+            &:focus-visible {
+                @include accent-focus-ring;
+            }
+
+            @include variables-base.media(phone-small) {
                 font-size: 20px;
             }
         }
@@ -401,9 +243,9 @@
     .search-overlay__icon {
         margin-right: 1rem;
         font-size: 3rem;
-        color: #fff;
+        color: colors.$surface-light;
 
-        @include media(phone) {
+        @include variables-base.media(phone) {
             font-size: 20px;
         }
     }
@@ -421,17 +263,34 @@
         letter-spacing: 1px;
         text-transform: uppercase;
         
-        @include media(phone) {
-            padding: 1.5rem 0 0;
+        @include variables-base.media(phone) {
+            padding: 1rem 0 0;
             margin-bottom: 20px;
+            font-size: 2.2rem;
         }
     }
 
     .search-overlay__close {
-        fill: currentColor;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5rem;
+        border: 0;
+        background: transparent;
         cursor: pointer;
         transition: all .3s;
-        color: #fff;
+        color: colors.$surface-light;
+        width: 41px;
+        height: 41px;
+
+        &:focus-visible {
+            @include accent-focus-ring;
+            border-radius: 4px;
+        }
+    }
+
+    .search-overlay__close-icon {
+        fill: currentColor;
         width: 25px;
         height: 25px;
     }
@@ -441,6 +300,23 @@
     }
 
     #search-overlay__results {
+        @include variables-base.media(phone) {
+            padding-bottom: 3rem;
+        }
+
+        ul {
+            margin: 0;
+            padding-left: 1.25rem;
+        }
+
+        li {
+            margin-bottom: 0.75rem;
+        }
+
+        a:focus-visible {
+            @include accent-focus-ring(2px);
+        }
+
         .artist-card {
             display: flex;
             align-items: center;
@@ -449,10 +325,11 @@
             .artist-image {
                 border-radius: 50%;
                 overflow: hidden;
-                @include shadow();
+                @include mixins-base.shadow();
                 margin-right: 1rem;
                 width: 50px;
                 height: 50px;
+                min-width: 50px;
 
                 img {
                     transition: all .3s ease-out;
@@ -470,7 +347,7 @@
 body.admin-bar {
     .site-header,
     .search-overlay {
-        @include media(desktop) {
+        @include variables-base.media(desktop) {
             top: 32px;
         }
     }
@@ -501,5 +378,6 @@ body.admin-bar {
 }
 
 .search-trigger {
-    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
 }

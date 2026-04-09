@@ -1,81 +1,72 @@
-@import "colors";
-@import "typography";
+@forward "config";
+@use "config";
+@use "../mixins/breakpoints";
+@use "../mixins/functions";
 
 // Grid breakpoints
 //
 // Define the minimum dimensions at which your layout will change,
 // adapting to different screen sizes, for use in media queries.
 
-$grid-breakpoints: (
-	xs: 0,
-	sm: 375px,
-	md: 768px,
-	lg: 1024px,
-	xl: 1280px
-) !default;
+$grid-breakpoints: config.$grid-breakpoints;
 
-@include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
-@include _assert-starts-at-zero($grid-breakpoints);
+@include functions.assert-ascending(config.$grid-breakpoints, "$grid-breakpoints");
+@include functions.assert-starts-at-zero(config.$grid-breakpoints);
 
 // Grid containers
 //
 // Define the maximum width of `.container` for different screen sizes.
-$container-max-widths: (
-	sm: 350px,
-	md: 670px,
-	lg: 860px,
-	xl: 1150px
-) !default;
+$container-max-widths: config.$container-max-widths;
 
-@include _assert-ascending($container-max-widths, "$container-max-widths");
+@include functions.assert-ascending(config.$container-max-widths, "$container-max-widths");
 
 // Grid columns
 //
 // Set the number of columns and specify the width of the gutters.
-$grid-columns:                12 !default;
-$grid-gutter-width:           20px !default;
-$small-gutter-width:          10px !default;
+$grid-columns: config.$grid-columns;
+$grid-gutter-width: config.$grid-gutter-width;
+$small-gutter-width: config.$small-gutter-width;
 
 // media queries mixins
 @mixin media($b) {
 	@if $b == 'phone-small' {
-		@include media-breakpoint-down(xs) {
+		@include breakpoints.media-breakpoint-down(xs) {
 			@content;
 		}
 	} @else if $b == 'phone' {
-		@include media-breakpoint-down(sm) {
+		@include breakpoints.media-breakpoint-down(sm) {
 			@content;
 		}
 	} @else if $b == 'phone-tablet' {
-		@include media-breakpoint-down(md) {
+		@include breakpoints.media-breakpoint-down(md) {
 			@content;
 		}
 	} @else if $b == 'phone-tablet-desktop-small' {
-		@include media-breakpoint-down(lg) {
+		@include breakpoints.media-breakpoint-down(lg) {
 			@content;
 		}
 	} @else if $b == 'tablet-only' or $b == 'tablet' {
-		@include media-breakpoint-only(md) {
+		@include breakpoints.media-breakpoint-only(md) {
 			@content;
 		}
 	} @else if $b == 'desktop-small-only' or $b == 'desktop-small' {
-		@include media-breakpoint-only(lg) {
+		@include breakpoints.media-breakpoint-only(lg) {
 			@content;
 		}
 	} @else if $b == 'phone-tablet-desktop' {
-		@include media-breakpoint-up(sm) {
+		@include breakpoints.media-breakpoint-up(sm) {
 			@content;
 		}
 	} @else if $b == 'tablet-desktop' {
-		@include media-breakpoint-up(md) {
+		@include breakpoints.media-breakpoint-up(md) {
 			@content;
 		}
 	} @else if $b == 'desktop' {
-		@include media-breakpoint-up(lg) {
+		@include breakpoints.media-breakpoint-up(lg) {
 			@content;
 		}
 	} @else if $b == 'desktop-large' {
-		@include media-breakpoint-up(xl) {
+		@include breakpoints.media-breakpoint-up(xl) {
 			@content;
 		}
 	}	
@@ -84,7 +75,6 @@ $small-gutter-width:          10px !default;
 	}
 }
 
-// global classes
 @mixin visually-hidden() {
 	border: 0;
 	clip: rect(0 0 0 0);
@@ -108,90 +98,4 @@ $small-gutter-width:          10px !default;
 	overflow: visible;
 	display: inline-block;
 	clip: auto;
-}
-
-.padding-inside {
-	padding-top: 2rem;
-	padding-bottom: 2rem;
-}
-
-.margin-outside {
-	margin-top: 5rem;
-	margin-bottom: 5rem;
-
-	@media screen and (max-width: 768px) {
-		margin-top: 2rem;
-		margin-bottom: 2rem;
-	}
-}
-
-.post-meta {
-	font-size: 1.2rem;
-	margin-top: 2rem;
-}
-
-.rotate {
-	position: relative;
-	box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5);
-	border-radius: 50%;
-	overflow: hidden;   
-	border: 2px solid rgba($color__grey, .7);
-	display: block;
-
-	&::before {
-		position: absolute;
-		content: '';
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		width: 2rem;
-		height: 2rem;
-		border: 1px solid $color__grey;
-		border-radius: 50%;
-		z-index: 1;
-	}
-
-	&::after {
-		position: absolute;
-		content: '';
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		width: 1rem;
-		height: 1rem;
-		background-color: $color__background-color;
-		border-radius: 50%;
-		box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5);         
-	}
-
-	&:hover {
-		animation: rotating 2s linear infinite;
-	}
-
-	@keyframes rotating {
-		from {
-			transform: rotate(0deg);
-		}
-		to {
-			transform: rotate(360deg);
-		}
-	}
-}
-
-.title-angle {
-	@media screen and (min-width: 768px) {
-		cursor: pointer;
-		-webkit-text-stroke-color: #fff;
-		-webkit-text-stroke-width: 0.02em;
-		-webkit-text-fill-color: transparent;
-		-webkit-background-clip: text;
-		background-repeat: no-repeat;
-		transition: background-size .5s cubic-bezier(0.67, 0.01, 0.15, 0.98);
-		background-image: linear-gradient(135deg, #fff 0%, #fff 50%, transparent 50.1%);
-		background-size: 0% 100%;
-		
-		&:hover {
-			background-size: 220% 100%;
-		}
-	}
 }

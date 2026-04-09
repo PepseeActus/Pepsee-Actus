@@ -10,9 +10,10 @@
 get_header(); ?>
 
 <?php while ( have_posts() ) : the_post(); ?>
-    <div class="row">
-        <div id="post-<?php the_ID(); ?>" <?php post_class('col-12 col-md-9'); ?>>
+    <div>
+        <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
             <?php $badge = get_field('compte_verifie'); ?>
+            <?php $status = get_field('status'); ?>
             <div class="artist-presentation">
                 <div class="artist-presentation__picture">
                     <?php the_post_thumbnail('thumbnail'); ?>
@@ -20,13 +21,124 @@ get_header(); ?>
                 <div class="artist-presentation__info">
                     <div class="artist-presentation__info-name">
                         <?php the_title( '<h1 class="entry-title title-angle">', '</h1>' ); ?>
-                        <?php if ($badge) echo '<i class="fas fa-check-circle"></i>'; ?>
+                        <?php if ($badge) echo '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/></svg>'; ?>
                     </div>
                     <div class="artist-presentation__info-reseaux">
                         <?php get_template_part( 'parts/reseaux-template' ); ?>
                     </div>
+                    <div class="artist-presentation__status">
+                        <?php if ($status) echo $status; ?>
+                    </div>
                 </div>
             </div>
+            <?php 
+            $perso = get_field('info_perso'); 
+
+            if ($perso) {
+                $nom      = get_field('nom');
+                $origine  = get_field('origine');
+                $genres   = get_field('genres') ?: [];
+                $internet = get_field('internet');
+                $parents  = get_field('parents');
+                $enfants  = get_field('enfants');
+                $siblings = get_field('siblings');
+                $cousins  = get_field('cousins');
+                ?>
+                
+                <div class="artist-perso">
+                    <h2>Biographie</h2>
+                    <ul>
+                        <?php if ($nom): ?>
+                            <li><b>Nom de naissance</b> : <?php echo $nom; ?></li>
+                        <?php endif; ?>
+                        <?php 
+                        $naissance = get_field('naissance', false, false);
+                        $deces = get_field('deces', false, false);
+
+                        if ($naissance):
+                            $date_naissance = new DateTime($naissance);
+                            $age = null;
+
+                            if ($deces) {
+                                $date_deces = new DateTime($deces);
+                                $age = $date_deces->diff($date_naissance)->y;
+                                $info_age = '(mort à ' . $age . ' ans)';
+                                $date_affichee = date_i18n('j F Y', strtotime($naissance)) . ' – ' . date_i18n('j F Y', strtotime($deces));
+                            } else {
+                                $today = new DateTime();
+                                $age = $today->diff($date_naissance)->y;
+                                $info_age = '(' . $age . ' ans)';
+                                $date_affichee = date_i18n('j F Y', strtotime($naissance));
+                            }
+                            ?>
+                            <li><b>Date de naissance</b> : <?php echo $date_affichee . ' ' . $info_age; ?></li>
+                        <?php endif; ?>
+                        <?php if ($origine && is_array($origine)): ?>
+                            <li><b>Origine</b> : <?php echo implode(' / ', $origine); ?></li>
+                        <?php endif; ?>
+                        <?php if (!empty($genres) && is_array($genres)): ?>
+                            <li>
+                                <b>Genres musicaux</b> :
+                                <?php
+                                    $links = [];
+                                    foreach ($genres as $genre) {
+                                        if ($genre instanceof WP_Term) {
+                                            $links[] = '<a href="' . esc_url(get_term_link($genre)) . '"><u>' . esc_html($genre->name) . '</u></a>';
+                                        }
+                                    }
+                                    echo implode(' / ', $links);
+                                ?>
+                            </li>
+                        <?php endif; ?>
+                        <?php if ( $parents ): ?>
+                            <li><b><?= count($parents) > 1 ? 'Parents' : 'Parent' ?></b> :
+                                <?php foreach ( $parents as $p ) :
+                                    setup_postdata( $p );
+                                    $allParents[] = '<a href="' . get_the_permalink($p) . '"><u>' . get_the_title($p) . '</u></a>';
+                                endforeach;
+                                echo implode(' / ', $allParents);
+                                wp_reset_postdata(); ?>
+                            </li>
+                        <?php endif; ?>
+                        <?php if ( $enfants ): ?>
+                            <li><b><?= count($enfants) > 1 ? 'Enfants' : 'Enfant' ?></b> :
+                                <?php foreach ( $enfants as $p ) :
+                                    setup_postdata( $p );
+                                    $allEnfants[] = '<a href="' . get_the_permalink($p) . '"><u>' . get_the_title($p) . '</u></a>';
+                                endforeach;
+                                echo implode(' / ', $allEnfants);
+                                wp_reset_postdata(); ?>
+                            </li>
+                        <?php endif; ?>
+                        <?php if ( $siblings ): ?>
+                            <li><b><?= count($siblings) > 1 ? 'Frères et sœurs' : 'Frère ou sœur' ?></b> :
+                                <?php foreach ( $siblings as $p ) :
+                                    setup_postdata( $p );
+                                    $allSiblings[] = '<a href="' . get_the_permalink($p) . '"><u>' . get_the_title($p) . '</u></a>';
+                                endforeach;
+                                echo implode(' / ', $allSiblings);
+                                wp_reset_postdata(); ?>
+                            </li>
+                        <?php endif; ?>
+                        <?php if ( $cousins ): ?>
+                            <li><b><?= count($cousins) > 1 ? 'Cousins' : 'Cousin' ?></b> :
+                                <?php foreach ( $cousins as $p ) :
+                                    setup_postdata( $p );
+                                    $allCousins[] = '<a href="' . get_the_permalink($p) . '"><u>' . get_the_title($p) . '</u></a>';
+                                endforeach;
+                                echo implode(' / ', $allCousins);
+                                wp_reset_postdata(); ?>
+                            </li>
+                        <?php endif; ?>
+                        <?php if ($internet): ?>
+                            <li><b>Site Web</b> : <?php echo '<a href="'.$internet.'" target="_blank">'.$internet.'</a>'?></li>
+                        <?php endif; ?>
+                    </ul>
+                </div>
+
+            <?php 
+            } 
+            ?>
             <div class="artist-bio readmore">
                 <?php
                     the_content( sprintf(
@@ -45,44 +157,84 @@ get_header(); ?>
 
             <div class="artist-music">
                 <?php 
-                $posts = get_field('musique_associees');
-
-                if (!empty($posts)) :
-                // sort the posts by post date, but you can also sort on ID or whatever
-                    usort($posts, function($a, $b) {
+                $music_posts = get_field('musique_associees');
+                if (!empty($music_posts)) :
+                    // sort the posts by post date, but you can also sort on ID or whatever
+                    usort($music_posts, function($a, $b) {
                         return strcmp($b->post_date,$a->post_date);
                     });
                 endif;
 
-                if ($posts): setup_postdata($post); ?>
+                if ( $music_posts ) { ?>
                     <h2>Singles</h2>
                     <div class="artist-music__container">
-                        <?php foreach ($posts as $post) : setup_postdata($post);
+                        <?php $i = 0;
+                        foreach ( $music_posts as $post ) :
+                            setup_postdata( $post );
                             $artistes = get_field('artistes');
-                            $titre = get_field('titre'); ?>
-                            <div class="artist-music__container-box col-12 col-md-6">
-                                <div class="music-image rotate">
-                                    <a href="<?= get_the_permalink($post); ?>">
-                                        <img src="<?= get_the_post_thumbnail_url($post, 'thumbnail'); ?>" alt="<?= get_the_title($post); ?>">
-                                    </a>
+                            $titre = get_field('titre');
+                            if ( $i < 8 ) { ?>
+                                <div class="artist-music__container-box media-card-row col-12 col-md-6">
+                                    <div class="music-image media-card-row__thumb rotate">
+                                        <a href="<?= get_the_permalink($post); ?>">
+                                            <img src="<?= get_the_post_thumbnail_url($post, 'thumbnail'); ?>" alt="<?= get_the_title($post); ?>">
+                                        </a>
+                                    </div>
+                                    <div class="media-card-row__info media-listing__info">
+                                        <a href="<?= get_the_permalink($post); ?>"><?= wp_trim_words( $artistes, 8, '...' ); ?></a>
+                                        <a class="media-card-row__title media-listing__title" href="<?= get_the_permalink($post); ?>"><?= wp_trim_words( $titre, 5, '...' ); ?></a>
+                                        <span>
+                                            <?php echo get_the_date('F Y'); ?>
+                                        </span>
+                                        <?php get_template_part( 'parts/link-template' ); ?>
+                                    </div>
                                 </div>
-                                <div class="music-info">
-                                    <a href="<?= get_the_permalink($post); ?>"><?= wp_trim_words( $artistes, 8, '...' ); ?></a>
-                                    <a class="music-title" href="<?= get_the_permalink($post); ?>"><?= $titre; ?></a>
-                                    <span>
-                                        <?php if ( get_the_time( 'Y' ) < '2015' ) {
-                                            the_date('Y');
-                                        } else {
-                                            the_date('F Y');
-                                        } ?>
-                                    </span>
-                                    <?php get_template_part( 'parts/link-template' ); ?>
-                                </div>
-                            </div>
-                        <?php endforeach;
+                                <?php $i++;
+                            } else {
+                                break;
+                            }
+                        endforeach;
                         wp_reset_postdata(); ?>
                     </div>
-                <?php endif; ?>
+                    <?php if ( count($music_posts) > 8 ) {
+                        echo '<button id="see-more">Voir plus</button>';
+                    }
+                } ?>
+
+                <script>
+                    jQuery(function($){
+                        var allMusicIDs = <?php echo json_encode( wp_list_pluck( $music_posts, 'ID' ) ); ?>;
+                        var post_per_page = 8;
+                        var page = 1;
+                        var max_pages = Math.ceil(allMusicIDs.length / post_per_page);
+
+                        $('#see-more').click(function(){
+                            page++;
+                            var offset = (page - 1) * post_per_page;
+                            var music_ids = allMusicIDs.slice(offset, offset + post_per_page);
+
+                            $.ajax({
+                                url: pepsee_loadmore_params.ajaxurl,
+                                type: 'POST',
+                                data: {
+                                    action: 'load_music',
+                                    music_ids: music_ids
+                                },
+                                beforeSend: function(){
+                                    $('#see-more').text('Chargement en cours...');
+                                },
+                                success: function(response){
+                                    $('.artist-music__container').append(response);
+                                    if ( page >= max_pages ) {
+                                        $('#see-more').hide();
+                                    } else {
+                                        $('#see-more').text('Voir plus');
+                                    }
+                                }
+                            });
+                        });
+                    });
+                </script>
             </div>
 
             <div class="artist-album">
@@ -102,20 +254,20 @@ get_header(); ?>
                         <?php foreach ($posts as $post) : setup_postdata($post);
                             $artistes = get_field('artistes');
                             $titre = get_field('titre'); ?>
-                            <div class="artist-album__container-box col-12 col-md-6">
-                                <div class="album-image">
+                            <div class="artist-album__container-box media-card-row col-12 col-md-6">
+                                <div class="album-image media-card-row__thumb">
                                     <a href="<?= get_the_permalink($post); ?>">
                                         <img src="<?= get_the_post_thumbnail_url($post, 'thumbnail'); ?>" alt="<?= get_the_title($post); ?>">
                                     </a>
                                 </div>
-                                <div class="album-info">
+                                <div class="media-card-row__info media-listing__info">
                                     <a href="<?= get_the_permalink($post); ?>"><?= $artistes; ?></a>
-                                    <a class="album-title" href="<?= get_the_permalink($post); ?>"><?= $titre; ?></a>
+                                    <a class="media-card-row__title media-listing__title" href="<?= get_the_permalink($post); ?>"><?= $titre; ?></a>
                                     <span>
                                         <?php if ( get_the_time( 'Y' ) < '2015' ) {
-                                            the_date('Y');
+                                            echo get_the_date('Y');
                                         } else {
-                                            the_date('F Y');
+                                            echo get_the_date('F Y');
                                         } ?>
                                     </span>
                                     <?php get_template_part( 'parts/link-template' ); ?>
@@ -144,20 +296,20 @@ get_header(); ?>
                         <?php foreach ($posts as $post) : setup_postdata($post);
                             $artistes = get_field('artistes');
                             $titre = get_field('titre'); ?>
-                            <div class="artist-album__container-box col-12 col-md-6">
-                                <div class="album-image">
+                            <div class="artist-album__container-box media-card-row col-12 col-md-6">
+                                <div class="album-image media-card-row__thumb">
                                     <a href="<?= get_the_permalink($post); ?>">
                                         <img src="<?= get_the_post_thumbnail_url($post, 'thumbnail'); ?>" alt="<?= get_the_title($post); ?>">
                                     </a>
                                 </div>
-                                <div class="album-info">
+                                <div class="media-card-row__info media-listing__info">
                                     <a href="<?= get_the_permalink($post); ?>"><?= $artistes; ?></a>
-                                    <a class="album-title" href="<?= get_the_permalink($post); ?>"><?= $titre; ?></a>
+                                    <a class="media-card-row__title media-listing__title" href="<?= get_the_permalink($post); ?>"><?= $titre; ?></a>
                                     <span>
                                         <?php if ( get_the_time( 'Y' ) < '2015' ) {
-                                            the_date('Y');
+                                            echo get_the_date('Y');
                                         } else {
-                                            the_date('F Y');
+                                            echo get_the_date('F Y');
                                         } ?>
                                     </span>
                                     <?php get_template_part( 'parts/link-template' ); ?>
@@ -185,20 +337,20 @@ get_header(); ?>
                         <?php foreach ($posts as $post) : setup_postdata($post);
                             $artistes = get_field('artistes');
                             $titre = get_field('titre'); ?>
-                            <div class="artist-album__container-box col-12 col-md-6">
-                                <div class="album-image">
+                            <div class="artist-album__container-box media-card-row col-12 col-md-6">
+                                <div class="album-image media-card-row__thumb">
                                     <a href="<?= get_the_permalink($post); ?>">
                                         <img src="<?= get_the_post_thumbnail_url($post, 'thumbnail'); ?>" alt="<?= get_the_title($post); ?>">
                                     </a>
                                 </div>
-                                <div class="album-info">
+                                <div class="media-card-row__info media-listing__info">
                                     <a href="<?= get_the_permalink($post); ?>"><?= $artistes; ?></a>
-                                    <a class="album-title" href="<?= get_the_permalink($post); ?>"><?= $titre; ?></a>
+                                    <a class="media-card-row__title media-listing__title" href="<?= get_the_permalink($post); ?>"><?= $titre; ?></a>
                                     <span>
                                         <?php if ( get_the_time( 'Y' ) < '2015' ) {
-                                            the_date('Y');
+                                            echo get_the_date('Y');
                                         } else {
-                                            the_date('F Y');
+                                            echo get_the_date('F Y');
                                         } ?>
                                     </span>
                                     <?php get_template_part( 'parts/link-template' ); ?>
@@ -265,7 +417,7 @@ get_header(); ?>
             </div>
 
         </div>
-        <?php get_sidebar(); ?>
     </div>
 <?php endwhile; ?>
+
 <?php get_footer();

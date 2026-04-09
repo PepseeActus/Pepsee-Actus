@@ -22,9 +22,9 @@ if ( $query->have_posts() ) :
 
                     <div class="add-artist">
                         <div class="artist-image"><?php the_post_thumbnail('thumbnail'); ?></div>
-                        <div class="artist-info">
+                        <div class="associated-artist__info banner-artist__info">
                             <p>Dernière sortie de</p>
-                            <a href="<?php the_permalink(); ?>" class="artist-name"><?php the_title(); ?></a>
+                            <a href="<?php the_permalink(); ?>" class="associated-artist__name banner-artist__name"><?php the_title(); ?></a>
                         </div>
                     </div>
 
@@ -43,9 +43,9 @@ if ( $query->have_posts() ) :
 
                 <div class="add-song" style="background-image:url('<?= $thumb_url[0]; ?>')">
                     <div class="song-image"><?php the_post_thumbnail('thumbnail'); ?></div>
-                    <div class="song-info">
-                        <a href="<?php the_permalink(); ?>" class="song-name"><?= $titre; ?></a>
-                        <p class="song-artist"><?= $artiste; ?></p>
+                    <div class="featured-song__info">
+                        <a href="<?php the_permalink(); ?>" class="featured-song__name"><?= $titre; ?></a>
+                        <p class="featured-song__artist"><?= $artiste; ?></p>
                     </div>
                 </div>
 

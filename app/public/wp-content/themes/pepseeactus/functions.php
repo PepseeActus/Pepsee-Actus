@@ -3,6 +3,7 @@ require get_theme_file_path('/inc/search-route.php');
 require_once "libs/aq_resizer.php";
 require_once "libs/Mobile_Detect.php";
 
+add_action( 'after_setup_theme', 'pepseeactus_setup' );
 if ( ! function_exists( 'pepseeactus_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
@@ -59,7 +60,6 @@ if ( ! function_exists( 'pepseeactus_setup' ) ) :
 		) );
 	}
 endif;
-add_action( 'after_setup_theme', 'pepseeactus_setup' );
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -68,21 +68,21 @@ add_action( 'after_setup_theme', 'pepseeactus_setup' );
  *
  * @global int $content_width
  */
+add_action( 'after_setup_theme', 'pepseeactus_content_width', 0 );
 function pepseeactus_content_width() {
 	$GLOBALS['content_width'] = apply_filters( 'pepseeactus_content_width', 640 );
 }
-add_action( 'after_setup_theme', 'pepseeactus_content_width', 0 );
 
 // CSS & JavaScript et autres scripts
+add_action( 'wp_enqueue_scripts', 'pepseeactus_scripts' );
 function pepseeactus_scripts() {
-	wp_register_style('bootstrap', 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css', []);
-	wp_register_script('bootstrap', 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js', ['popper', 'jquery'], false, true);
-	wp_register_style('swiperjs', 'https://unpkg.com/swiper@7/swiper-bundle.min.css', []);
-	wp_register_script('swiperjs', 'https://unpkg.com/swiper@7/swiper-bundle.min.js', [], false, true);
-	wp_register_script('popper', 'https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js', [], false, true);
 	wp_deregister_script('jquery');
 	wp_register_script('jquery', 'https://code.jquery.com/jquery-3.4.1.js', [], false, true);	
-	wp_register_script('font-awesome', 'https://kit.fontawesome.com/628ddd9372.js', [], false, true);	
+	wp_register_style('bootstrap', 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css', []);
+	wp_register_script('bootstrap', 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js', ['popper', 'jquery'], false, true);
+	wp_register_style('swiperjs', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css', []);
+	wp_register_script('swiperjs', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', [], false, true);
+	wp_register_script('popper', 'https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js', [], false, true);
 
 	wp_enqueue_style('bootstrap');
 	wp_enqueue_style('swiperjs');
@@ -90,14 +90,9 @@ function pepseeactus_scripts() {
 
 	wp_enqueue_script('bootstrap');
 	wp_enqueue_script('swiperjs');
-	wp_enqueue_script('font-awesome');
-
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
 }
-add_action( 'wp_enqueue_scripts', 'pepseeactus_scripts' );
 
+add_action( 'wp_enqueue_scripts', 'pepsee_script');
 function pepsee_script() {
 	// absolutely need it, because we will get $wp_query->query_vars and $wp_query->max_num_pages from it.
 	global $wp_query;
@@ -120,7 +115,30 @@ function pepsee_script() {
 
 	wp_enqueue_script( 'pepsee_scripts' );
 }
-add_action( 'wp_enqueue_scripts', 'pepsee_script');
+
+add_action( 'wp_enqueue_scripts', 'pepsee_enqueue_dynamic_color_assets' );
+function pepsee_enqueue_dynamic_color_assets() {
+	if ( is_singular( 'music' ) ) {
+		wp_enqueue_script(
+			'color-thief',
+			'https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.2/color-thief.umd.js',
+			array(),
+			'2.3.2',
+			true
+		);
+
+		$dynamic_color_path    = get_stylesheet_directory() . '/js/pepsee-dynamic-color.js';
+		$dynamic_color_version = file_exists( $dynamic_color_path ) ? filemtime( $dynamic_color_path ) : '1.0.0';
+
+		wp_enqueue_script(
+			'pepsee-dynamic-color',
+			get_stylesheet_directory_uri() . '/js/pepsee-dynamic-color.js',
+			array( 'color-thief' ),
+			$dynamic_color_version,
+			true
+		);
+	}
+}
 
 //Rajoute le type module au javascript
 add_filter('script_loader_tag', 'add_type_attribute' , 10, 3);
@@ -139,10 +157,23 @@ add_filter( 'excerpt_length', function($length) {
     return 10;
 } );
 
+add_filter('excerpt_more', 'new_excerpt_more');
 function new_excerpt_more( $more ) {
     return '';
 }
-add_filter('excerpt_more', 'new_excerpt_more');
+
+// Template spécial "share card" pour les single music : ?share-card=1
+add_filter( 'template_include', 'pepsee_music_share_card_template' );
+function pepsee_music_share_card_template( $template ) {
+	if ( is_singular( 'music' ) && isset( $_GET['share-card'] ) && '1' === $_GET['share-card'] ) {
+		$share_template = get_stylesheet_directory() . '/single-music-share-card.php';
+		if ( file_exists( $share_template ) ) {
+			return $share_template;
+		}
+	}
+
+	return $template;
+}
 
 // Format de date sur les posts
 function meks_time_ago() {
@@ -150,43 +181,38 @@ function meks_time_ago() {
 }
 
 // Logo personnalisé lors du login
+add_action('login_head', 'childtheme_custom_login');
 function childtheme_custom_login() {
 	echo '<link rel="stylesheet" type="text/css" href="' . get_bloginfo('stylesheet_directory') . '/login.css" />';
 }
-add_action('login_head', 'childtheme_custom_login');
 
 // Pagination
 if ( !function_exists( 'theme_pagination' ) ) {
-	
     function theme_pagination() {
-	
-	global $wp_query, $wp_rewrite;
-	$wp_query->query_vars['paged'] > 1 ? $current = $wp_query->query_vars['paged'] : $current = 1;
-	
-	$pagination = array(
-		'base' => @add_query_arg('page','%#%'),
-		'format' => '',
-		'total' => $wp_query->max_num_pages,
-		'current' => $current,
-		'show_all' => false,
-		'end_size' => 1,
-		'mid_size' => 2,
-		'type' => 'list',
-		'next_text' => 'Suivant »',
-		'prev_text' => '« Précédent'
-	);
-	
-	if( $wp_rewrite->using_permalinks() )
-		$pagination['base'] = user_trailingslashit( trailingslashit( remove_query_arg( 's', get_pagenum_link( 1 ) ) ) . 'page/%#%/', 'paged' );
-	
-	if( !empty($wp_query->query_vars['s']) )
-		$pagination['add_args'] = array( 's' => str_replace( ' ' , '+', get_query_var( 's' ) ) );
-		
-	echo str_replace('page/1/','', paginate_links( $pagination ) );
+		global $wp_query, $wp_rewrite;
+		$wp_query->query_vars['paged'] > 1 ? $current = $wp_query->query_vars['paged'] : $current = 1;
+		$pagination = array(
+			'base' => @add_query_arg('page','%#%'),
+			'format' => '',
+			'total' => $wp_query->max_num_pages,
+			'current' => $current,
+			'show_all' => false,
+			'end_size' => 1,
+			'mid_size' => 2,
+			'type' => 'list',
+			'next_text' => 'Suivant »',
+			'prev_text' => '« Précédent'
+		);
+		if( $wp_rewrite->using_permalinks() )
+			$pagination['base'] = user_trailingslashit( trailingslashit( remove_query_arg( 's', get_pagenum_link( 1 ) ) ) . 'page/%#%/', 'paged' );
+		if( !empty($wp_query->query_vars['s']) )
+			$pagination['add_args'] = array( 's' => str_replace( ' ' , '+', get_query_var( 's' ) ) );
+		echo str_replace('page/1/','', paginate_links( $pagination ) );
     }	
 }
 
 // Glossaire
+add_shortcode('list_glossary_posts', 'list_glossary_posts');
 function is_post_type($type){
     global $wp_query;
     if ( $type == get_post_type($wp_query->post->ID) ) 
@@ -214,41 +240,30 @@ function list_glossary_posts() {
 
 	$postslist = get_posts( $args );
 	ob_start();
-
 	$previous_letter = null;
 	foreach ( $postslist as $post ) :
-
 		setup_postdata( $post );
-
 		$glossary_title = $post->post_title;
 		$glossary_letter = substr($glossary_title[0], 0, 1);
-
-		if ( $glossary_letter !== $previous_letter ): ?>
-			<?php if ( $previous_letter !== "a" && $previous_letter !== null ): ?>
+		if ( $glossary_letter !== $previous_letter ):
+			if ( $previous_letter !== "a" && $previous_letter !== null ): ?>
 				</div>
 			<?php endif; ?>
 			<div class="group">
-			<h3 class="letter"><span><?php echo $glossary_letter; ?></span></h3>
+				<h3 class="letter"><span><?php echo $glossary_letter; ?></span></h3>
 		<?php endif; ?>
-
-
 		<div class="bloc-letter">
 			<a href="<?php the_permalink(); ?>"><?php echo $glossary_title; ?></a>
 		</div>
-
 		<?php $previous_letter = $glossary_letter; ?>
-
 	<?php endforeach; ?>
-
 	</div>
-
 	<?php wp_reset_postdata();
-
 	$output = ob_get_clean();
 	return $output;
 }
-add_shortcode('list_glossary_posts', 'list_glossary_posts');
 
+add_action( 'widgets_init', 'pepseeactus_widgets_init' );
 function pepseeactus_widgets_init() {
     register_sidebar([
         'name'          => __( 'Blog Sidebar', 'pepseeactus' ),
@@ -260,7 +275,6 @@ function pepseeactus_widgets_init() {
         'after_title'   => '</h3>',
 	]);
 }
-add_action( 'widgets_init', 'pepseeactus_widgets_init' );
 
 // Retirer le mot Archive du titre des pages archives
 add_filter( 'get_the_archive_title', function ($title) {    
@@ -278,17 +292,15 @@ add_filter( 'get_the_archive_title', function ($title) {
 	return $title;    
 });
 
-// Load posts en AJAX
+// Load posts en AJAX sur la page archive music
 add_action('wp_ajax_loadmorebutton', 'pepsee_loadmore_ajax_handler');
 add_action('wp_ajax_nopriv_loadmorebutton', 'pepsee_loadmore_ajax_handler');
-
 function pepsee_loadmore_ajax_handler(){
-
 	// prepare our arguments for the query
 	$params = json_decode( stripslashes( $_POST['query'] ), true ); // query_posts() takes care of the necessary sanitization 
 	$params['paged'] = $_POST['page'] + 1; // we need next page to be loaded
 	$params['post_status'] = 'publish';
-	$params['post_type'] = array('music', 'album');
+	$params['post_type'] = array('music');
 
 	// it is always better to use WP_Query but not here
 	query_posts( $params );
@@ -316,71 +328,58 @@ function pepsee_loadmore_ajax_handler(){
 	die; // here we exit the script and even no wp_reset_query() required!
 }
 
+//Filtre de la page archive musique
 add_action('wp_ajax_pepseefilter', 'pepsee_filter_function'); 
 add_action('wp_ajax_nopriv_pepseefilter', 'pepsee_filter_function');
-
 function pepsee_filter_function(){
-
 	// example: date-ASC 
 	$order = explode( '-', $_POST['pepsee_order_by'] );
 	$year = $_POST['pepsee_year'];
-	
-	
+
 	$params = array(
 		'posts_per_page' => $_POST['pepsee_number_of_results'], // when set to -1, it shows all posts
 		'year' => $year,
-		'post_type' => array('music', 'album'),
+		'post_type' => array('music'),
 		'orderby' => $order[0], // example: date
 		'order'	=> $order[1] // example: ASC
 	);
 
-
 	query_posts( $params );
-
 	global $wp_query;
-
 	if( have_posts() ) :
-
 		ob_start(); // start buffering because we do not need to print the posts now
-
 		while( have_posts() ): the_post(); ?>
-
 		<div class="post-item col-12 col-md-6">
 			<?php
 				$artistes = get_field('artistes');
 				$titre = get_field('titre');
 			?>
 			<a class="rotate" href="<?php the_permalink(); ?>"><?php the_post_thumbnail('thumbnail'); ?></a>
-			<div class="music-infos">
+			<div class="media-card-row__info media-listing__info">
 				<a href="<?php the_permalink(); ?>"><?= $artistes; ?></a>
-				<a href="<?php the_permalink(); ?>"><?= $titre; ?></a>
+				<a class="media-card-row__title media-listing__title" href="<?php the_permalink(); ?>"><?= $titre; ?></a>
 				<?php the_date('M Y') ?>
 			</div>
 		</div>
-
 		<?php endwhile;
-
 		$posts_html = ob_get_contents(); // we pass the posts to variable
 		ob_end_clean(); // clear the buffer
 	else:
 		$posts_html = '<p>Nothing found for your criteria.</p>';
 	endif;
-
 	// no wp_reset_query() required
-
 	echo json_encode( array(
 		'posts' => json_encode( $wp_query->query_vars ),
 		'max_page' => $wp_query->max_num_pages,
 		'found_posts' => $wp_query->found_posts,
 		'content' => $posts_html
 	) );
-
 	die();
 }
 
 // First, make sure Jetpack doesn't concatenate all its CSS
 add_filter( 'jetpack_implode_frontend_css', '__return_false' );
-
+add_action('wp_print_styles', 'jeherve_remove_all_jp_css' );
 // Then, remove each CSS file, one at a time
 function jeherve_remove_all_jp_css() {
   wp_deregister_style( 'AtD_style' ); // After the Deadline
@@ -410,4 +409,93 @@ function jeherve_remove_all_jp_css() {
   wp_deregister_style( 'jetpack-widgets' ); // Widgets
 }
 
-add_action('wp_print_styles', 'jeherve_remove_all_jp_css' );
+// Fonction "see more" pour charger les musiques en Ajax
+add_action('wp_ajax_load_music', 'load_music');
+add_action('wp_ajax_nopriv_load_music', 'load_music');
+function load_music() {
+	$music_ids = $_POST['music_ids'];
+	$args = array(
+		'post_type' => 'music',
+		'post__in' => $music_ids,
+		'orderby' => 'post__in',
+	);
+	$query = new WP_Query( $args );
+	if ( $query->have_posts() ) {
+		while ( $query->have_posts() ) {
+			$query->the_post();
+			setup_postdata( $post );
+			$artistes = get_field('artistes');
+			$titre = get_field('titre');?>
+				<div class="artist-music__container-box media-card-row col-12 col-md-6">
+					<div class="music-image media-card-row__thumb rotate">
+						<a href="<?= get_the_permalink($post); ?>">
+							<img src="<?= get_the_post_thumbnail_url($post, 'thumbnail'); ?>" alt="<?= get_the_title($post); ?>">
+						</a>
+					</div>
+					<div class="media-card-row__info media-listing__info">
+						<a href="<?= get_the_permalink($post); ?>"><?= $artistes; ?></a>
+						<a class="media-card-row__title media-listing__title" href="<?= get_the_permalink($post); ?>"><?= $titre; ?></a>
+						<span>
+							<?php echo get_the_date('F Y'); ?>
+						</span>
+						<?php get_template_part( 'parts/link-template' ); ?>
+					</div>
+				</div>
+		<?php }
+		wp_reset_postdata();
+	}
+	wp_die();
+}
+
+function get_custom_post_counts() {
+    $types = ['music', 'album', 'artist', 'beatmaker', 'riddim'];
+    $counts = [];
+
+    // Total counts
+    foreach ($types as $type) {
+        $counts[$type]['total'] = wp_count_posts($type)->publish;
+    }
+
+    // Counts since 1st January 2025
+    $start_date = '2026-01-01 00:00:00';
+    foreach ($types as $type) {
+        $args = [
+            'post_type' => $type,
+            'post_status' => 'publish',
+            'date_query' => [
+                'after' => $start_date,
+            ],
+            'posts_per_page' => -1,
+            'fields' => 'ids',
+        ];
+        $query = new WP_Query($args);
+        $counts[$type]['since_2025'] = $query->found_posts;
+    }
+
+    return $counts;
+}
+
+// Balises Open Graph pour les partages réseaux sociaux
+function pepsee_custom_open_graph_tags() {
+    if (is_singular('music') || is_singular('artist')) {
+        global $post;
+
+        $title = get_the_title($post);
+        $description = get_field('titre') ?: get_the_excerpt($post);
+        $image = get_the_post_thumbnail_url($post, 'large');
+        $url = get_permalink($post);
+
+        echo '<meta property="og:title" content="' . esc_attr($title) . '" />' . "\n";
+        echo '<meta property="og:description" content="' . esc_attr($description) . '" />' . "\n";
+        echo '<meta property="og:image" content="' . esc_url($image) . '" />' . "\n";
+        echo '<meta property="og:url" content="' . esc_url($url) . '" />' . "\n";
+        echo '<meta property="og:type" content="' . (is_singular('artist') ? 'profile' : 'music.song') . '" />' . "\n";
+
+        // Twitter Card support
+        echo '<meta name="twitter:card" content="summary_large_image" />' . "\n";
+        echo '<meta name="twitter:title" content="' . esc_attr($title) . '" />' . "\n";
+        echo '<meta name="twitter:description" content="' . esc_attr($description) . '" />' . "\n";
+        echo '<meta name="twitter:image" content="' . esc_url($image) . '" />' . "\n";
+    }
+}
+add_action('wp_head', 'pepsee_custom_open_graph_tags', 5);

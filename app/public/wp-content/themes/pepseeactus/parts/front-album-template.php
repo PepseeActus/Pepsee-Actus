@@ -7,8 +7,8 @@ $titre = get_field('titre');
     <a href="<?php the_permalink(); ?>">
         <?php the_post_thumbnail('thumbnail'); ?>
     </a>
-    <div class="info">
-        <div class="title">
+    <div class="media-card__info media-card-row__info">
+        <div class="media-card__title media-card-row__title">
             <a href="<?php the_permalink(); ?>"><?= $artistes; ?></a>
             <?php if ( intval(strtotime($post->post_modified)) > intval($weekAgo) ) : ?>
             <span class="new"><svg class="widget__icon" width="39.45" height="49.68" viewBox="0 0 39.45 49.68">
@@ -23,9 +23,9 @@ $titre = get_field('titre');
             <?= $titre; ?>                                   
             <div>
                 <?php if ( get_the_time( 'Y' ) < '2015' ) {
-                    the_date('Y');
+                    echo get_the_date('Y');
                 } else {
-                    the_date('F Y');
+                    echo get_the_date('F Y');
                 } ?>
             </div>
             </a>

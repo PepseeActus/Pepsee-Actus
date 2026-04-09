@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The base configuration for WordPress
  *
@@ -65,6 +66,11 @@ define('NONCE_SALT',       'wxxYAc7LizHpw1/9sEAuOIhI1agJayqMp1mfB8CufmpzIc99bJ+J
  */
 $table_prefix = 'wp_cs87mn_';
 
+define( 'WP_DEBUG', true );
+define( 'WP_DEBUG_LOG', true );
+define( 'WP_DEBUG_DISPLAY', false );
+@ini_set( 'display_errors', 0 );
+
 /* That's all, stop editing! Happy publishing. */
 
 /** Absolute path to the WordPress directory. */
@@ -73,4 +79,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /** Sets up WordPress vars and included files. */
+@include_once('/var/lib/sec/wp-settings-pre.php'); // Added by SiteGround WordPress management system
 require_once ABSPATH . 'wp-settings.php';
+@include_once('/var/lib/sec/wp-settings.php'); // Added by SiteGround WordPress management system

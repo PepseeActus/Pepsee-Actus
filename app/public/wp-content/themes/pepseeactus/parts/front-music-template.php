@@ -10,8 +10,8 @@ $weekAgo = strtotime('-1 week');
     <a class="rotate" href="<?php the_permalink(); ?>">
         <?php the_post_thumbnail('thumbnail'); ?>
     </a>
-    <div class="info">
-        <div class="title">
+    <div class="media-card__info media-card-row__info">
+        <div class="media-card__title media-card-row__title">
             <a href="<?php the_permalink(); ?>"><?= wp_trim_words( $artistes, 6, '...' ); ?></a>
         </div>
         <p>
@@ -24,6 +24,9 @@ $weekAgo = strtotime('-1 week');
                 </svg> NEW</span>
             <?php endif; ?>
         </p>
+        <div>
+            <?php echo get_the_date('d F Y'); ?>
+        </div>
         <?php get_template_part( 'parts/link-template' ); ?>
     </div>
 </article>

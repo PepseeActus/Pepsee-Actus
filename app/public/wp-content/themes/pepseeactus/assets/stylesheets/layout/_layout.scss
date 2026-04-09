@@ -1,3 +1,4 @@
+@use "sass:meta";
 html {
 	box-sizing: border-box;
 }
@@ -5,12 +6,12 @@ html {
 /*--------------------------------------------------------------
 ## Posts
 --------------------------------------------------------------*/
-@import "posts";
+@include meta.load-css("posts");
 
 /*--------------------------------------------------------------
 ## Pages
 --------------------------------------------------------------*/
-@import "pages";
+@include meta.load-css("pages");
 
-@import "header";
-@import "footer";
+@include meta.load-css("header");
+@include meta.load-css("footer");
