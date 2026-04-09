@@ -3972,384 +3972,481 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 # Media
 	## Galleries
 --------------------------------------------------------------*/
-.home a,
-.home p {
-  color: #fefcfb;
-}
-.home svg {
-  color: #fefcfb;
-  fill: currentColor;
-}
-@media (max-width: 767.98px) {
-  .home > .container {
-    display: flex;
-    flex-direction: column;
-  }
-}
-.home svg {
-  width: 30px;
-  height: 30px;
-}
-.home h2 {
-  text-transform: uppercase;
-  font-weight: 700;
-  margin-bottom: 2rem;
-  position: relative;
-}
-.home .home-layout {
+.home .home-feed {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 3rem;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 0 0 clamp(2.5rem, 6vw, 4rem);
+}
+.home .home-feed__spotlight,
+.home .home-feed__section {
+  border: 1px solid var(--pa-color-border);
+  border-radius: var(--pa-radius-xl);
+  background: linear-gradient(155deg, rgba(18, 24, 34, 0.98), rgba(9, 12, 17, 0.98));
+  box-shadow: var(--pa-shadow-card);
+}
+.home .home-feed__spotlight {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(300px, 0.85fr);
+  gap: 1rem;
+  padding: clamp(1rem, 3vw, 1.5rem);
 }
 @media (max-width: 767.98px) {
-  .home .home-layout {
-    flex-direction: column;
-    gap: 2rem;
+  .home .home-feed__spotlight {
+    grid-template-columns: 1fr;
   }
 }
-.home .riddim,
-.home .releases,
-.home .album {
-  position: relative;
-  color: #fefcfb;
-}
-.home .riddim a,
-.home .releases a,
-.home .album a {
-  color: #fefcfb;
-}
-.home .riddim a:visited, .home .riddim a:hover, .home .riddim a:focus, .home .riddim a:active,
-.home .releases a:visited,
-.home .releases a:hover,
-.home .releases a:focus,
-.home .releases a:active,
-.home .album a:visited,
-.home .album a:hover,
-.home .album a:focus,
-.home .album a:active {
-  color: #fefcfb;
+.home .home-feed__spotlight-primary {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(210px, 0.9fr);
+  gap: 1.25rem;
+  min-width: 0;
+  padding: clamp(1rem, 3vw, 1.5rem);
+  border-radius: var(--pa-radius-lg);
+  background: radial-gradient(circle at top left, rgba(30, 215, 96, 0.14), transparent 50%), linear-gradient(140deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
 }
 @media (max-width: 767.98px) {
-  .home .riddim,
-  .home .releases,
-  .home .album {
-    font-size: 14px;
+  .home .home-feed__spotlight-primary {
+    grid-template-columns: 1fr;
   }
 }
-.home .riddim-wrap,
-.home .releases-wrap,
-.home .album-wrap {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 1.5rem 0;
-}
-@media (max-width: 767.98px) {
-  .home .riddim-wrap,
-  .home .releases-wrap,
-  .home .album-wrap {
-    justify-content: center;
-  }
-}
-@media (max-width: 374.98px) {
-  .home .riddim-wrap,
-  .home .releases-wrap,
-  .home .album-wrap {
-    flex-direction: column;
-  }
-}
-.home .riddim-wrap article,
-.home .releases-wrap article,
-.home .album-wrap article {
-  margin-bottom: 2rem;
-  display: flex;
-  align-items: flex-start;
-  position: relative;
-  width: calc(33.333% - 1rem);
-}
-@media (max-width: 767.98px) {
-  .home .riddim-wrap article,
-  .home .releases-wrap article,
-  .home .album-wrap article {
-    flex-direction: column;
-    align-items: center;
-    width: calc(50% - 1rem);
-  }
-}
-@media (max-width: 374.98px) {
-  .home .riddim-wrap article,
-  .home .releases-wrap article,
-  .home .album-wrap article {
-    width: 100%;
-    flex-direction: row;
-  }
-}
-.home .riddim-wrap article .new,
-.home .releases-wrap article .new,
-.home .album-wrap article .new {
-  display: inline-block;
-  text-transform: uppercase;
-  font-weight: 600;
-  background: linear-gradient(90deg, rgb(131, 58, 180) 0%, rgb(253, 29, 29) 50%, rgb(252, 176, 69) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-size: 10px;
-}
-.home .riddim-wrap article .new svg,
-.home .releases-wrap article .new svg,
-.home .album-wrap article .new svg {
-  width: 13px;
-  height: 13px;
-  color: red;
-  vertical-align: baseline;
-}
-.home .riddim-wrap article .rotate,
-.home .releases-wrap article .rotate,
-.home .album-wrap article .rotate {
-  width: 8rem;
-  height: 8rem;
-  min-width: 8rem;
-}
-@media (max-width: 374.98px) {
-  .home .riddim-wrap article .rotate,
-  .home .releases-wrap article .rotate,
-  .home .album-wrap article .rotate {
-    margin-right: 8px;
-  }
-}
-.home .riddim-wrap article img,
-.home .releases-wrap article img,
-.home .album-wrap article img {
-  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5);
-  width: 100%;
-  max-width: 15rem;
-}
-.home .riddim-wrap article.album img,
-.home .releases-wrap article.album img,
-.home .album-wrap article.album img {
-  min-width: 11rem;
-}
-@media (max-width: 767.98px) {
-  .home .riddim-wrap article.album img,
-  .home .releases-wrap article.album img,
-  .home .album-wrap article.album img {
-    min-width: 6rem;
-  }
-}
-.home .riddim-wrap article .media-card__info,
-.home .releases-wrap article .media-card__info,
-.home .album-wrap article .media-card__info {
+.home .home-feed__spotlight-copy,
+.home .home-feed__artist-spotlight-copy {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-left: 1rem;
-  width: 100%;
-  min-width: 0;
 }
-@media (max-width: 767.98px) {
-  .home .riddim-wrap article .media-card__info,
-  .home .releases-wrap article .media-card__info,
-  .home .album-wrap article .media-card__info {
-    margin-left: 0;
-    margin-top: 1rem;
-    text-align: center;
-  }
-}
-@media (max-width: 374.98px) {
-  .home .riddim-wrap article .media-card__info,
-  .home .releases-wrap article .media-card__info,
-  .home .album-wrap article .media-card__info {
-    text-align: left;
-  }
-}
-.home .riddim-wrap article .media-card__info p,
-.home .releases-wrap article .media-card__info p,
-.home .album-wrap article .media-card__info p {
-  font-weight: 600;
-  margin: 0;
-}
-.home .riddim-wrap article .media-card__info .media-card__title,
-.home .riddim-wrap article .media-card__info .media-card-row__title,
-.home .releases-wrap article .media-card__info .media-card__title,
-.home .releases-wrap article .media-card__info .media-card-row__title,
-.home .album-wrap article .media-card__info .media-card__title,
-.home .album-wrap article .media-card__info .media-card-row__title {
-  line-height: 1.2;
-}
-.home .riddim-wrap article .media-card__info ul,
-.home .releases-wrap article .media-card__info ul,
-.home .album-wrap article .media-card__info ul {
-  display: flex;
-}
-@media (max-width: 767.98px) {
-  .home .riddim-wrap article .media-card__info ul,
-  .home .releases-wrap article .media-card__info ul,
-  .home .album-wrap article .media-card__info ul {
-    justify-content: center;
-  }
-}
-.home .riddim-wrap article .media-card__info ul li:not(:last-of-type),
-.home .releases-wrap article .media-card__info ul li:not(:last-of-type),
-.home .album-wrap article .media-card__info ul li:not(:last-of-type) {
-  margin-right: 10px;
-}
-.home .riddim-wrap article .media-card__info .beatmaker p,
-.home .releases-wrap article .media-card__info .beatmaker p,
-.home .album-wrap article .media-card__info .beatmaker p {
-  display: inline-block;
-}
-.home .riddim-wrap article .media-card__info .beatmaker p + p::before,
-.home .releases-wrap article .media-card__info .beatmaker p + p::before,
-.home .album-wrap article .media-card__info .beatmaker p + p::before {
-  content: "/";
-  margin-right: 5px;
-}
-.home .artist {
-  display: flex;
-  flex-wrap: wrap;
-  color: #fefcfb;
-}
-.home .artist a {
-  color: #fefcfb;
-}
-.home .artist a:visited, .home .artist a:hover, .home .artist a:focus, .home .artist a:active {
-  color: #fefcfb;
-}
-.home .artist .artist-wrap {
-  display: flex;
-  flex-flow: wrap;
-}
-@media (max-width: 767.98px) {
-  .home .artist .artist-wrap {
-    justify-content: center;
-  }
-}
-.home .artist article {
-  display: inline-block;
-  margin: 0 20px;
-  max-width: 11rem;
-  text-align: center;
-}
-@media (max-width: 767.98px) {
-  .home .artist article {
-    margin: 0 0 35px;
-  }
-  .home .artist article:not(:last-of-type) {
-    margin-right: 10px;
-  }
-}
-.home .artist .image-wrapper {
-  position: relative;
-  margin: 0 auto;
-  max-width: 10rem;
-  max-height: 10rem;
-  width: 10rem;
-  height: 10rem;
-  overflow: hidden;
-  border-radius: 50%;
-}
-.home .artist img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  min-height: 100%;
-  max-width: 110%;
-}
-.home .artist .name {
-  max-width: 17rem;
-}
-@media (max-width: 767.98px) {
-  .home .artist .name {
-    max-width: 10rem;
-  }
-}
-.home .artist .name a {
+.home .home-feed__section-kicker {
+  margin: 0 0 0.55rem;
+  color: var(--pa-color-accent);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
 }
-@media (max-width: 767.98px) {
-  .home .artist .name a {
-    font-size: 1.1rem;
-  }
-}
-
-.actus .thumbnail-wrapper {
-  height: 20rem;
-  overflow: hidden;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-.actus .swiper-button-prev,
-.actus .swiper-button-next {
-  top: 35%;
-  padding: 0 8px;
+.home .home-feed__spotlight-primary h2,
+.home .home-feed__section-heading h2,
+.home .home-feed__artist-spotlight-copy h3 {
   margin: 0;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  color: #000;
-  background: #FFF;
-  box-shadow: 0 0 8px 3px rgba(0, 0, 0, 0.5);
+  color: var(--pa-color-text);
+  line-height: 0.95;
+  text-transform: uppercase;
 }
-.actus .swiper-button-prev::after,
-.actus .swiper-button-next::after {
-  display: none;
+.home .home-feed__spotlight-primary h2 {
+  font-size: clamp(2.1rem, 5vw, 4rem);
 }
-.actus .swiper-button-disabled {
-  display: none;
+.home .home-feed__section-heading h2 {
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
 }
-@media (min-width: 1024px) {
-  .actus .actus-wrap {
-    margin-bottom: 60px;
+.home .home-feed__artist-spotlight-copy h3 {
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+.home .home-feed__spotlight-subtitle,
+.home .home-feed__artist-spotlight-copy p,
+.home .home-feed__section-heading p,
+.home .home-feed__spotlight-context {
+  color: var(--pa-color-text-muted);
+}
+.home .home-feed__spotlight-subtitle {
+  margin: 0.7rem 0 0;
+  font-size: 1.05rem;
+}
+.home .home-feed__spotlight-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.home .home-feed__spotlight-meta li {
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  background: var(--pa-color-surface-soft);
+  color: var(--pa-color-text);
+  font-size: 0.9rem;
+}
+.home .home-feed__spotlight-context {
+  margin: 1rem 0 0;
+}
+.home .home-feed__spotlight-context a {
+  color: var(--pa-color-text);
+}
+.home .home-feed__spotlight-actions,
+.home .front-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+.home .home-feed__button,
+.home .front-hero__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.85rem;
+  padding: 0.75rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--pa-color-text);
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+.home .home-feed__button:hover,
+.home .front-hero__button:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.08);
+}
+.home .home-feed__button--primary,
+.home .front-hero__button--primary {
+  background: linear-gradient(135deg, rgba(30, 215, 96, 0.95), rgba(24, 166, 74, 0.95));
+  color: #05100a;
+  border-color: rgba(30, 215, 96, 0.45);
+}
+.home .home-feed__spotlight-cover,
+.home .home-feed__side-card-media,
+.home .home-feed__artist-spotlight-media {
+  display: block;
+  overflow: hidden;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.04);
+}
+.home .home-feed__spotlight-image,
+.home .home-feed__side-card-media img,
+.home .home-feed__artist-spotlight-media img,
+.home .home-story-card__media img,
+.home .home-media-card__thumb img,
+.home .home-feed__artist-card-media img,
+.home .home-feed__discovery-thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.home .home-feed__spotlight-image {
+  aspect-ratio: 1/1;
+}
+.home .home-feed__spotlight-placeholder,
+.home .home-media-card__thumb-placeholder,
+.home .home-story-card__placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 1/1;
+  color: var(--pa-color-text);
+  font-size: clamp(2rem, 6vw, 3rem);
+  font-weight: 800;
+}
+.home .home-feed__spotlight-sidebar {
+  display: grid;
+  gap: 1rem;
+}
+.home .home-feed__side-card,
+.home .home-feed__artist-spotlight,
+.home .home-feed__artist-card,
+.home .home-feed__discovery-card,
+.home .home-story-card,
+.home .home-media-card {
+  border-radius: var(--pa-radius-lg);
+  background: rgba(255, 255, 255, 0.04);
+}
+.home .home-feed__side-card {
+  padding: 1rem;
+}
+.home .home-feed__side-card-media {
+  margin-bottom: 0.9rem;
+  aspect-ratio: 16/10;
+}
+.home .home-feed__side-card-tag,
+.home .home-feed__artist-highlight-meta,
+.home .home-story-card__category,
+.home .home-story-card__date,
+.home .home-media-card__eyebrow,
+.home .home-media-card__meta,
+.home .home-feed__artist-card-meta,
+.home .home-feed__discovery-subtitle {
+  color: var(--pa-color-text-muted);
+  font-size: 0.9rem;
+}
+.home .home-feed__side-card-title,
+.home .home-feed__artist-highlight-name,
+.home .home-story-card__title,
+.home .home-media-card__title,
+.home .home-feed__artist-card-name,
+.home .home-feed__discovery-title {
+  display: block;
+  color: var(--pa-color-text);
+  font-weight: 700;
+  line-height: 1.2;
+  text-decoration: none;
+}
+.home .home-feed__artist-highlight {
+  display: flex;
+  gap: 0.9rem;
+  align-items: center;
+  text-decoration: none;
+}
+.home .home-feed__artist-highlight-media {
+  display: block;
+  width: 88px;
+  min-width: 88px;
+  overflow: hidden;
+  border-radius: 999px;
+}
+.home .home-feed__artist-highlight-media img {
+  aspect-ratio: 1/1;
+}
+.home .home-feed__section {
+  padding: clamp(1rem, 3vw, 1.5rem);
+}
+.home .home-feed__section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+@media (max-width: 767.98px) {
+  .home .home-feed__section-heading {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
-.actus .actus-wrap .swiper-container {
-  position: relative;
+.home .home-feed__section-heading p {
+  margin: 0.45rem 0 0;
+  max-width: 40rem;
+}
+.home .home-feed__section-link {
+  color: var(--pa-color-text);
+  font-weight: 600;
+  text-decoration: none;
+}
+.home .home-feed__rail,
+.home .home-feed__artist-grid {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(220px, 1fr);
+  gap: 1rem;
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+  scroll-snap-type: x proximity;
+}
+.home .home-feed__rail > *,
+.home .home-feed__artist-grid > * {
+  scroll-snap-align: start;
+}
+.home .home-media-card {
+  display: flex;
+  gap: 0.9rem;
+  min-width: 0;
+  padding: 0.9rem;
+}
+.home .home-media-card__thumb {
+  display: block;
+  width: 90px;
+  min-width: 90px;
+  overflow: hidden;
+  border-radius: 18px;
+}
+.home .home-media-card__thumb img,
+.home .home-media-card__thumb .home-media-card__thumb-placeholder {
+  aspect-ratio: 1/1;
+}
+.home .home-media-card--circle .home-media-card__thumb {
+  border-radius: 999px;
+}
+.home .home-media-card__copy {
+  min-width: 0;
+}
+.home .home-media-card__eyebrow-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  align-items: center;
+  margin-bottom: 0.35rem;
+}
+.home .home-media-card__eyebrow,
+.home .home-feed__section-kicker,
+.home .home-story-card__category {
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.home .home-media-card__eyebrow,
+.home .home-story-card__category {
+  margin: 0;
+  color: var(--pa-color-accent);
+  font-size: 0.76rem;
+}
+.home .home-media-card__badge {
+  padding: 0.25rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(30, 215, 96, 0.12);
+  color: var(--pa-color-accent);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.home .home-media-card__title {
+  font-size: 1rem;
+}
+.home .home-media-card__subtitle,
+.home .home-feed__discovery-subtitle {
+  margin: 0.45rem 0 0;
+}
+.home .home-media-card__meta {
+  margin: 0.5rem 0 0;
+}
+.home .home-feed__stories-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 1rem;
+}
+@media (max-width: 767.98px) {
+  .home .home-feed__stories-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.home .home-feed__stories-stack,
+.home .home-feed__stack,
+.home .home-feed__discovery-grid {
+  display: grid;
+  gap: 1rem;
+}
+.home .home-story-card {
+  display: flex;
+  gap: 0.9rem;
+  padding: 0.9rem;
+}
+.home .home-story-card--featured {
+  flex-direction: column;
+}
+.home .home-story-card--featured .home-story-card__media {
+  aspect-ratio: 16/10;
+}
+.home .home-story-card__media {
+  display: block;
+  width: 132px;
+  min-width: 132px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.04);
+}
+.home .home-story-card__media img,
+.home .home-story-card__media .home-story-card__placeholder {
+  aspect-ratio: 1/1;
+}
+.home .home-story-card--featured .home-story-card__media img,
+.home .home-story-card--featured .home-story-card__placeholder {
+  aspect-ratio: 16/10;
+}
+.home .home-story-card__copy {
+  min-width: 0;
+}
+.home .home-story-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.45rem;
+}
+.home .home-feed__duo {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+@media (max-width: 767.98px) {
+  .home .home-feed__duo {
+    grid-template-columns: 1fr;
+  }
+}
+.home .home-feed__artist-spotlight {
+  display: grid;
+  grid-template-columns: minmax(200px, 280px) minmax(0, 1fr);
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+@media (max-width: 767.98px) {
+  .home .home-feed__artist-spotlight {
+    grid-template-columns: 1fr;
+  }
+}
+.home .home-feed__artist-spotlight-media {
+  overflow: hidden;
+  border-radius: 24px;
+}
+.home .home-feed__artist-spotlight-media img {
+  aspect-ratio: 1/1;
+}
+.home .home-feed__artist-grid {
+  grid-auto-columns: minmax(180px, 1fr);
+}
+.home .home-feed__artist-card {
+  padding: 0.9rem;
+}
+.home .home-feed__artist-card-media {
+  display: block;
   width: 100%;
   overflow: hidden;
+  border-radius: 22px;
 }
-.actus .actus-wrap {
-  color: #fefcfb;
+.home .home-feed__artist-card-media img {
+  aspect-ratio: 1/1;
 }
-.actus .actus-wrap a {
-  color: #fefcfb;
+.home .home-feed__artist-card-copy {
+  margin-top: 0.85rem;
 }
-.actus .actus-wrap a:visited, .actus .actus-wrap a:hover, .actus .actus-wrap a:focus, .actus .actus-wrap a:active {
-  color: #fefcfb;
-}
-@media (max-width: 767.98px) {
-  .actus article,
-  .actus .category-actus,
-  .actus .category-videos {
-    width: 100%;
-  }
-}
-.actus .actus-single,
-.actus .actus-info,
-.actus .videos-info,
-.actus .front-story__meta {
-  margin-top: 10px;
-  padding-inline: 0.25rem;
+.home .home-feed__discovery-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 @media (max-width: 767.98px) {
-  .actus .actus-single p,
-  .actus .actus-info p,
-  .actus .videos-info p,
-  .actus .front-story__meta p {
-    display: none;
+  .home .home-feed__discovery-grid {
+    grid-template-columns: 1fr;
   }
 }
-.actus .actus-single .entry-title a,
-.actus .actus-info .entry-title a,
-.actus .videos-info .entry-title a,
-.actus .front-story__meta .entry-title a {
-  line-height: 1.25;
+.home .home-feed__discovery-card {
+  display: flex;
+  gap: 0.9rem;
+  padding: 0.9rem;
 }
-.actus .actus-single a {
-  font-size: 15px;
-  text-transform: initial;
+.home .home-feed__discovery-thumb {
+  display: block;
+  width: 100px;
+  min-width: 100px;
+  overflow: hidden;
+  border-radius: 18px;
+}
+.home .home-feed__discovery-thumb img {
+  aspect-ratio: 1/1;
+}
+.home .home-feed__discovery-copy {
+  min-width: 0;
+}
+.home .front-hero__quicklinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 1.2rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.home .front-hero__quicklinks li {
+  margin: 0;
+}
+.home .front-hero__quicklinks a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.4rem;
+  padding: 0.55rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--pa-color-text);
+  font-size: 0.92rem;
   text-decoration: none;
 }
 
